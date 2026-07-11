@@ -23,6 +23,17 @@ On openEuler, use `python3` if that is the available Python command:
 python3 -m pip install -r requirements.txt
 ```
 
+## M5 Windows-local Llama service
+
+The optional M5 service is hosted on Windows only. Install its separate dependencies there, resolve a local Hugging Face snapshot path at runtime, and bind only to the intended private/NAT address:
+
+```powershell
+python -m pip install -r requirements-local-transformers.txt
+python scripts/serve_local_transformers.py --model-path "<snapshot-path>" --model-name local-llama31-8b-instruct --host <private-address> --port 8000
+```
+
+On openEuler, set `LLM_BACKEND=openai_compatible`, `LLM_BASE_URL=http://<windows-private-address>:8000/v1`, `LLM_MODEL=local-llama31-8b-instruct`, timeout, and retry values. First check `/health`; M5 uses a firewall rule restricted to the openEuler source IP. Do not commit `.env`, model paths, snapshots, or API keys. This pilot is integration validation only, not a formal model comparison or M9 ablation.
+
 ## Acceptance Commands
 
 Windows local:

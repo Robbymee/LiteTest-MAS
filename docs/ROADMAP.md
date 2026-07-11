@@ -11,7 +11,7 @@
 | M2.5 | openEuler Text/Protocol batch validation for both datasets | Completed; four Mock sequence combinations accepted on 2026-07-11 |
 | M3 | Evaluator and Mock-scope Text/Protocol aggregation | Completed; Windows/openEuler accepted on 2026-07-11 |
 | M4 | Unified LLM backend abstraction | Completed; Mock and OpenAI-compatible dry-run accepted on 2026-07-11 |
-| M5 | Real LLM integration | Pending |
+| M5 | Real LLM integration | Completed; Windows-hosted local Transformers service and openEuler pilot accepted on 2026-07-11 |
 | M6 | SharedMemory | Pending |
 | M7 | StateVector | Pending |
 | M8 | Test-quality evaluation and sandbox | Pending |

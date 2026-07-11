@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M4: unified LLM Backend abstraction completed on 2026-07-11. M5 is the next stage and has not started.
+M5: Windows-hosted local Llama 3.1 8B Instruct integration completed on 2026-07-11. M6 has not started.
 
 ## Completed
 
@@ -15,6 +15,17 @@ M4: unified LLM Backend abstraction completed on 2026-07-11. M5 is the next stag
 - M2.5 used the shared deterministic Runner for MBPP-Sanitized Text/Protocol and HumanEval+ Text/Protocol. Each of the four combinations completed 10/10 rounds with zero failures and skips on Windows and openEuler; no formal performance claim is made.
 - M3 strict evaluation discovered all four Mock combinations and produced JSON, CSV, and Markdown aggregates. Windows and openEuler evaluation input hash `3b0e32b25ff312f77fb85408dd069bf29bcd556c3255b0d584b4309bb0034215` and deterministic evaluation hash `acbc2de8c44feb0dad4d2b5cc9b4fd5177277f09ac0ddca443d032261ffcb42d` match after POSIX path normalization. Actual/estimated tokens, timing, memory, SharedMemory, and StateVector remain explicitly unavailable.
 - M4 added deterministic MockLLMBackend and standard-library OpenAI-compatible Backend abstractions. Windows/openEuler backend tests `3 passed` and full tests `32 passed`; OpenAI-compatible dry-run redacted the placeholder key and made no network request.
+- M5 added a local-only Transformers OpenAI-compatible service for Windows, plus a safe real-LLM validation runner. Windows hosted public model name `local-llama31-8b-instruct` at `172.24.64.1:8000`; openEuler used only HTTP and did not load model weights. `/health`, curl chat, and an `OpenAICompatibleBackend` request succeeded. The fixed MBPP first task and HumanEval+ first task pilot both succeeded (2/2); the first approved group of each dataset completed in fixed order (10/10, failed 0, skipped 0). Records are `real_llm_pilot` with conclusion scope `integration_and_runtime_validation_only`, not a formal ablation.
+
+## M5 validation
+
+- Validation code SHA: `d69f2e63614c9a60e7f4440f21a139b0140aec4a`.
+- Windows: full repository tests `34 passed`; local endpoint tests use fake tokenizer/model only. The real local service was loaded from an operator-supplied snapshot path using `local_files_only=True`.
+- openEuler 24.03-LTS-SP3 / Python 3.11.6: full repository tests `33 passed, 1 skipped`. The skipped test is explicitly the Windows-only FastAPI endpoint test; openEuler neither installs the local service stack nor loads the 8B model.
+- Real request configuration: OpenAI-compatible HTTP, `temperature=0`, seed `42`, `max_tokens=256`, timeout `300` seconds, `max_retries=1`, single concurrency, non-streaming.
+- Fixed 10-round result: succeeded `10`, failed `0`, skipped `0`; provider usage prompt/completion/total `1440/2560/4000`; mean/max recorded latency `6.200/6.342` seconds. All ten records had provider usage available.
+- Leakage scan across pilot and 10-round public JSON/JSONL records found `0` matches for prohibited evaluation, credential, or absolute-path fields. Runs and validation logs remain Git-ignored.
+- openEuler acceptance log: `/home/oa/LiteTest-MAS/runs/validation/m5_openeuler-20260711-074049.log`.
 
 ## M2.2 validation
 
@@ -33,9 +44,8 @@ M4: unified LLM Backend abstraction completed on 2026-07-11. M5 is the next stag
 
 ## Boundaries still not completed
 
-- HumanEval formal integration/selection/batch validation.
-- Formal Evaluator, real LLM backend, SharedMemory, StateVector, test-quality evaluation, ablations, and Dashboard.
+- SharedMemory, StateVector, test-quality evaluation, ablations, and Dashboard.
 
 ## Current unique next step
 
-M5: connect an available Windows-hosted or remote OpenAI-compatible real LLM service for a single-request smoke test, two-task pilot, and small 10-round validation. If no endpoint/model/key or cost authorization is available, pause for that single user input.
+M6: implement bounded, closable, group-isolated SharedMemory; it has not started.
