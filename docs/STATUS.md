@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M3: read-only Mock-scope evaluation completed on 2026-07-11. M4 is the next stage and has not started.
+M4: unified LLM Backend abstraction completed on 2026-07-11. M5 is the next stage and has not started.
 
 ## Completed
 
@@ -14,6 +14,7 @@ M3: read-only Mock-scope evaluation completed on 2026-07-11. M4 is the next stag
 - M2.4 delegated technical review generated 164 safe candidates, three double-group review schemes, and a fixed two-group selection with ten unique tasks. The manifests contain only public metadata and no hidden evaluation fields.
 - M2.5 used the shared deterministic Runner for MBPP-Sanitized Text/Protocol and HumanEval+ Text/Protocol. Each of the four combinations completed 10/10 rounds with zero failures and skips on Windows and openEuler; no formal performance claim is made.
 - M3 strict evaluation discovered all four Mock combinations and produced JSON, CSV, and Markdown aggregates. Windows and openEuler evaluation input hash `3b0e32b25ff312f77fb85408dd069bf29bcd556c3255b0d584b4309bb0034215` and deterministic evaluation hash `acbc2de8c44feb0dad4d2b5cc9b4fd5177277f09ac0ddca443d032261ffcb42d` match after POSIX path normalization. Actual/estimated tokens, timing, memory, SharedMemory, and StateVector remain explicitly unavailable.
+- M4 added deterministic MockLLMBackend and standard-library OpenAI-compatible Backend abstractions. Windows/openEuler backend tests `3 passed` and full tests `32 passed`; OpenAI-compatible dry-run redacted the placeholder key and made no network request.
 
 ## M2.2 validation
 
@@ -37,4 +38,4 @@ M3: read-only Mock-scope evaluation completed on 2026-07-11. M4 is the next stag
 
 ## Current unique next step
 
-M4: implement a unified LLM Backend abstraction with Mock and OpenAI-compatible backends, without running a real model experiment.
+M5: connect an available Windows-hosted or remote OpenAI-compatible real LLM service for a single-request smoke test, two-task pilot, and small 10-round validation. If no endpoint/model/key or cost authorization is available, pause for that single user input.

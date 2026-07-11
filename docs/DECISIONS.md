@@ -25,3 +25,5 @@
 23. M2.3 uses HumanEval+ v0.1.10 as the external-validation source. Its canonical solution remains local `code_under_test` only; agent-visible context excludes reference implementations, official tests, contracts, and inputs.
 24. M3 Evaluator is independent and read-only. It reports `mock_validation` only, uses white-listed output fields, and distinguishes unavailable metrics from zero.
 25. Deterministic evaluation paths are repository-relative POSIX strings; absolute paths, usernames, hostnames, timestamps, and output directories do not affect input or deterministic evaluation hashes.
+26. M4 defines a model-independent synchronous Backend interface with deterministic Mock and OpenAI-compatible implementations. Unknown backends never silently fall back to Mock; provider usage absent from a response remains unavailable.
+27. OpenAI-compatible configuration is environment-driven, defaults to SSL verification, uses bounded retry categories, and redacts API keys. M4 performs dry-run validation only; M5 is required for any real request and openEuler must not host a large local model.
