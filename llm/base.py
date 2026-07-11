@@ -1,0 +1,6 @@
+from typing import Protocol
+from llm.models import LLMRequest,LLMResponse
+class LLMBackend(Protocol):
+    backend_name:str
+    def generate(self,request:LLMRequest)->LLMResponse: ...
+    def close(self)->None: ...
