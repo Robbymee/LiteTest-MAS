@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M8: restricted subprocess sandbox and quality baseline completed on 2026-07-11. M9 is the next stage and has not started.
+M9 Readiness Gate completed on 2026-07-11. Formal M9 has not yet started.
 
 ## Completed
 
@@ -19,6 +19,7 @@ M8: restricted subprocess sandbox and quality baseline completed on 2026-07-11. 
 - M6 added bounded in-process FIFO SharedMemory with explicit disabled state, dataset/group/seed instance scope, byte and record limits, stable trace serialization, reset, metrics, and prohibited-content rejection. Revalidated openEuler pilot completed 2/2 and fixed MBPP group 5/5; group trace recorded 5 writes, 4 hits, and 10 reuse references. Scope is `real_llm_memory_pilot`, not a formal ablation.
 - M7 added a schema-validated StateVector with fixed enums, stable JSON, 512-byte cap, prohibited-content rejection, and optional real Runner metrics. openEuler HumanEval+ pilot 1/1 and fixed group 5/5 succeeded with 5 valid vectors (1685 bytes) and no invalid vectors; scope is `real_llm_state_pilot`.
 - M8 added a fixed candidate-code extractor and isolated `python -I` subprocess evaluator with timeout and bounded output accounting. Synthetic normal, syntax-error, and infinite-loop fixtures passed on both platforms. It is explicitly a restricted subprocess sandbox, not a container security boundary.
+- M9 Readiness Gate added a public-only candidate-code prompt, frozen parser `candidate_parser_v1`, and private official-test subprocess path. The real two-task pilot and fixed ten-task preflight produced final records with official metrics available for every task. All ten preflight candidates parsed but failed official tests; this is honestly recorded as model quality failure, not infrastructure completion. Public results passed leakage scan.
 
 ## M5 validation
 
@@ -51,4 +52,4 @@ M8: restricted subprocess sandbox and quality baseline completed on 2026-07-11. 
 
 ## Current unique next step
 
-M9: preregister and run the fixed four-group formal ablation; it has not started.
+M9: create the frozen formal ablation specification and run the fixed 240-task schedule.
