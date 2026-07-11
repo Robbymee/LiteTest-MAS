@@ -27,9 +27,9 @@ def run_tasks(tasks: list[SelectedTask], backend: Any, model: str, output_dir: P
             prior = memory.read(task.group_id) if memory else []
             response = backend.generate(LLMRequest((LLMMessage("system", "You are a precise assistant."), LLMMessage("user", safe_prompt(task))), model, temperature=0, max_tokens=max_tokens, seed=seed))
             record.update({"status": "succeeded", "request_id": response.request_id, "finish_reason": response.finish_reason, "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens, "total_tokens": response.usage.total_tokens, "usage_available": response.usage.usage_available, "latency_seconds": response.latency_seconds, "parse_result": "nonempty_response" if response.text.strip() else "empty_response"})
+            if memory: memory.write(source_task_id=task.source_task_id,source_round_index=index,category='public_test_strategy',key=task.group_id,safe_summary=f"Public strategy for {task.function_name}",tags=(task.group_id,))
         except Exception as error:
             record.update({"error_type": getattr(error, "error_type", type(error).__name__), "parse_result": "backend_error"})
-            if memory and record['status']=='succeeded': memory.write(source_task_id=task.source_task_id,source_round_index=index,category='public_test_strategy',key=task.group_id,safe_summary=f"Public strategy for {task.function_name}",tags=(task.group_id,))
         records.append(record)
     summary = {"result_scope": RESULT_SCOPE, "conclusion_scope": CONCLUSION_SCOPE, "planned_rounds": len(tasks), "executed_rounds": len(records), "succeeded_rounds": sum(r["status"] == "succeeded" for r in records), "failed_rounds": sum(r["status"] == "failed" for r in records), "skipped_rounds": 0, "memory": memory.trace() if memory else {"enabled":False}}
     (output_dir / "rounds.jsonl").write_text("".join(json.dumps(row, sort_keys=True) + "\n" for row in records), encoding="utf-8")

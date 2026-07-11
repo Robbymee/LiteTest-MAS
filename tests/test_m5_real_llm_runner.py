@@ -1,6 +1,7 @@
 import json
 from llm.models import LLMResponse, LLMUsage
 from runtime.real_llm_runner import approved_tasks, run_tasks, safe_prompt, RESULT_SCOPE
+from memory.shared_memory import SharedMemory
 from tests.test_sequence_runner import write_fixture
 class Backend:
  def generate(self,request):
@@ -12,3 +13,7 @@ def test_m5_runner_uses_fixed_safe_order_and_records_usage(tmp_path):
  assert selected[0].task_id=='mbpp_sanitized:11' and 'hidden_reference_tests' not in safe_prompt(selected[0])
  summary=run_tasks(selected,Backend(),'model',tmp_path/'out'); row=json.loads((tmp_path/'out'/'rounds.jsonl').read_text())
  assert summary['succeeded_rounds']==1 and row['result_scope']==RESULT_SCOPE and row['usage_available'] is True and row['total_tokens']==3 and row['parse_result']=='nonempty_response'
+def test_m5_runner_writes_only_safe_memory_after_success(tmp_path):
+ selection,tasks=write_fixture(tmp_path); selected=approved_tasks(selection,tasks,0,limit=1);memory=SharedMemory(dataset='d',group_id='group_1',seed=42)
+ summary=run_tasks(selected,Backend(),'model',tmp_path/'memory',memory=memory)
+ assert summary['memory']['write_count']==1 and summary['memory']['memory_record_count']==1
