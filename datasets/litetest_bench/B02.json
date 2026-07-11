@@ -1,0 +1,62 @@
+{
+  "task_id": "B02",
+  "group_id": "B",
+  "topic": "nested_mapping",
+  "function_name": "flatten_dict",
+  "task_description": "Flatten a nested dictionary using dot-separated keys for child dictionaries.",
+  "signature": "flatten_dict(data: dict) -> dict",
+  "code_under_test": "def flatten_dict(data: dict) -> dict:\n    result = {}\n    def visit(prefix: str, value: dict) -> None:\n        for key, item in value.items():\n            new_key = key if prefix == \"\" else f\"{prefix}.{key}\"\n            if isinstance(item, dict):\n                visit(new_key, item)\n            else:\n                result[new_key] = item\n    visit(\"\", data)\n    return result\n",
+  "risk_tags": [
+    "empty_input",
+    "nested_structure",
+    "missing_key",
+    "mapping"
+  ],
+  "expected_test_focus": [
+    "empty dict returns empty dict",
+    "single nesting level flattens correctly",
+    "multiple nested levels use dot separator"
+  ],
+  "hidden_reference_tests": [
+    "assert flatten_dict({}) == {}",
+    "assert flatten_dict({\"a\": {\"b\": 1}}) == {\"a.b\": 1}",
+    "assert flatten_dict({\"x\": 1}) == {\"x\": 1}"
+  ],
+  "cases": [
+    {
+      "name": "empty dict",
+      "input": {
+        "data": {}
+      },
+      "expected": {}
+    },
+    {
+      "name": "one nested level",
+      "input": {
+        "data": {
+          "a": {
+            "b": 1
+          }
+        }
+      },
+      "expected": {
+        "a.b": 1
+      }
+    },
+    {
+      "name": "mixed keys",
+      "input": {
+        "data": {
+          "x": 1,
+          "y": {
+            "z": 2
+          }
+        }
+      },
+      "expected": {
+        "x": 1,
+        "y.z": 2
+      }
+    }
+  ]
+}

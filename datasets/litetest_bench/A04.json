@@ -1,0 +1,48 @@
+{
+  "task_id": "A04",
+  "group_id": "A",
+  "topic": "format_validation",
+  "function_name": "validate_email",
+  "task_description": "Validate a basic email shape by requiring exactly one @, non-empty local and domain parts, and at least one dot in the domain.",
+  "signature": "validate_email(text: str) -> bool",
+  "code_under_test": "def validate_email(text: str) -> bool:\n    if text.strip() == \"\":\n        return False\n    if text.count(\"@\") != 1:\n        return False\n    local, domain = text.split(\"@\")\n    if local == \"\" or domain == \"\":\n        return False\n    if \".\" not in domain:\n        return False\n    if domain.startswith(\".\") or domain.endswith(\".\"):\n        return False\n    return True\n",
+  "risk_tags": [
+    "string",
+    "empty_input",
+    "invalid_format",
+    "separator_count"
+  ],
+  "expected_test_focus": [
+    "valid simple email returns True",
+    "missing parts return False",
+    "domain must contain a dot"
+  ],
+  "hidden_reference_tests": [
+    "assert validate_email(\"user@example.com\") is True",
+    "assert validate_email(\"user@@example.com\") is False",
+    "assert validate_email(\"user@example\") is False"
+  ],
+  "cases": [
+    {
+      "name": "standard address",
+      "input": {
+        "text": "user@example.com"
+      },
+      "expected": true
+    },
+    {
+      "name": "subdomain address",
+      "input": {
+        "text": "dev@mail.example.org"
+      },
+      "expected": true
+    },
+    {
+      "name": "missing dot in domain",
+      "input": {
+        "text": "user@example"
+      },
+      "expected": false
+    }
+  ]
+}

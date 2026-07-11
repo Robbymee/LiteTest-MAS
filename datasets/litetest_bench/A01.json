@@ -1,0 +1,54 @@
+{
+  "task_id": "A01",
+  "group_id": "A",
+  "topic": "string_parsing",
+  "function_name": "parse_int_list",
+  "task_description": "Parse a comma-separated string of integers into a list of ints, ignoring surrounding whitespace and returning an empty list for empty input.",
+  "signature": "parse_int_list(text: str) -> list[int]",
+  "code_under_test": "def parse_int_list(text: str) -> list[int]:\n    if text.strip() == \"\":\n        return []\n    parts = [part.strip() for part in text.split(\",\")]\n    if any(part == \"\" for part in parts):\n        raise ValueError(\"empty item\")\n    return [int(part) for part in parts]\n",
+  "risk_tags": [
+    "string",
+    "empty_input",
+    "invalid_format",
+    "whitespace"
+  ],
+  "expected_test_focus": [
+    "empty string returns empty list",
+    "whitespace is ignored around numbers",
+    "invalid empty segment raises ValueError"
+  ],
+  "hidden_reference_tests": [
+    "assert parse_int_list(\"\") == []",
+    "assert parse_int_list(\"1, 2,3\") == [1, 2, 3]",
+    "with pytest.raises(ValueError): parse_int_list(\"1,,2\")"
+  ],
+  "cases": [
+    {
+      "name": "empty input",
+      "input": {
+        "text": ""
+      },
+      "expected": []
+    },
+    {
+      "name": "trim spaces",
+      "input": {
+        "text": "1, 2, 3"
+      },
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "single number",
+      "input": {
+        "text": "7"
+      },
+      "expected": [
+        7
+      ]
+    }
+  ]
+}

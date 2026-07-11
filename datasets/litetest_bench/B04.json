@@ -1,0 +1,73 @@
+{
+  "task_id": "B04",
+  "group_id": "B",
+  "topic": "statistics",
+  "function_name": "compute_statistics",
+  "task_description": "Compute count, sum, min, max, and average for a list of numbers, returning zeros and nulls for empty input.",
+  "signature": "compute_statistics(values: list[float]) -> dict",
+  "code_under_test": "def compute_statistics(values: list[float]) -> dict:\n    if not values:\n        return {\"count\": 0, \"sum\": 0, \"min\": None, \"max\": None, \"average\": None}\n    total = sum(values)\n    count = len(values)\n    return {\n        \"count\": count,\n        \"sum\": total,\n        \"min\": min(values),\n        \"max\": max(values),\n        \"average\": total / count,\n    }\n",
+  "risk_tags": [
+    "empty_input",
+    "duplicate",
+    "numeric",
+    "aggregation"
+  ],
+  "expected_test_focus": [
+    "empty input returns null min max average",
+    "count and sum are correct",
+    "average is computed from total and count"
+  ],
+  "hidden_reference_tests": [
+    "assert compute_statistics([])[\"count\"] == 0",
+    "assert compute_statistics([1, 2, 3])[\"average\"] == 2.0",
+    "assert compute_statistics([5])[\"min\"] == 5"
+  ],
+  "cases": [
+    {
+      "name": "empty values",
+      "input": {
+        "values": []
+      },
+      "expected": {
+        "count": 0,
+        "sum": 0,
+        "min": null,
+        "max": null,
+        "average": null
+      }
+    },
+    {
+      "name": "three values",
+      "input": {
+        "values": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": {
+        "count": 3,
+        "sum": 6,
+        "min": 1,
+        "max": 3,
+        "average": 2.0
+      }
+    },
+    {
+      "name": "duplicate values",
+      "input": {
+        "values": [
+          5,
+          5
+        ]
+      },
+      "expected": {
+        "count": 2,
+        "sum": 10,
+        "min": 5,
+        "max": 5,
+        "average": 5.0
+      }
+    }
+  ]
+}

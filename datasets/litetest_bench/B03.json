@@ -1,0 +1,96 @@
+{
+  "task_id": "B03",
+  "group_id": "B",
+  "topic": "grouping",
+  "function_name": "group_by_key",
+  "task_description": "Group a list of dictionaries by a given key, skipping records that do not contain the target key.",
+  "signature": "group_by_key(records: list[dict], key: str) -> dict",
+  "code_under_test": "def group_by_key(records: list[dict], key: str) -> dict:\n    grouped = {}\n    for record in records:\n        if key not in record:\n            continue\n        bucket = record[key]\n        grouped.setdefault(bucket, []).append(record)\n    return grouped\n",
+  "risk_tags": [
+    "empty_input",
+    "missing_key",
+    "duplicate",
+    "nested_structure"
+  ],
+  "expected_test_focus": [
+    "empty input returns empty dict",
+    "records are grouped under their key value",
+    "records missing the key are ignored"
+  ],
+  "hidden_reference_tests": [
+    "assert group_by_key([], \"role\") == {}",
+    "assert len(group_by_key([{\"role\": \"dev\"}, {\"role\": \"dev\"}], \"role\")[\"dev\"]) == 2",
+    "assert group_by_key([{\"name\": \"a\"}], \"role\") == {}"
+  ],
+  "cases": [
+    {
+      "name": "basic grouping",
+      "input": {
+        "records": [
+          {
+            "role": "dev",
+            "name": "a"
+          },
+          {
+            "role": "qa",
+            "name": "b"
+          },
+          {
+            "role": "dev",
+            "name": "c"
+          }
+        ],
+        "key": "role"
+      },
+      "expected": {
+        "dev": [
+          {
+            "role": "dev",
+            "name": "a"
+          },
+          {
+            "role": "dev",
+            "name": "c"
+          }
+        ],
+        "qa": [
+          {
+            "role": "qa",
+            "name": "b"
+          }
+        ]
+      }
+    },
+    {
+      "name": "skip missing key",
+      "input": {
+        "records": [
+          {
+            "name": "a"
+          },
+          {
+            "role": "ops",
+            "name": "b"
+          }
+        ],
+        "key": "role"
+      },
+      "expected": {
+        "ops": [
+          {
+            "role": "ops",
+            "name": "b"
+          }
+        ]
+      }
+    },
+    {
+      "name": "empty input",
+      "input": {
+        "records": [],
+        "key": "role"
+      },
+      "expected": {}
+    }
+  ]
+}

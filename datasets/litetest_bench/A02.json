@@ -1,0 +1,48 @@
+{
+  "task_id": "A02",
+  "group_id": "A",
+  "topic": "string_normalization",
+  "function_name": "normalize_phone_number",
+  "task_description": "Normalize a phone number string by keeping digits only, requiring exactly 10 digits, and formatting it as XXX-XXX-XXXX.",
+  "signature": "normalize_phone_number(text: str) -> str",
+  "code_under_test": "def normalize_phone_number(text: str) -> str:\n    digits = \"\".join(ch for ch in text if ch.isdigit())\n    if digits == \"\":\n        raise ValueError(\"empty input\")\n    if len(digits) != 10:\n        raise ValueError(\"invalid phone number\")\n    return f\"{digits[:3]}-{digits[3:6]}-{digits[6:]}\"\n",
+  "risk_tags": [
+    "string",
+    "empty_input",
+    "invalid_format",
+    "digits_only"
+  ],
+  "expected_test_focus": [
+    "common separators are ignored",
+    "empty input raises ValueError",
+    "wrong digit count raises ValueError"
+  ],
+  "hidden_reference_tests": [
+    "assert normalize_phone_number(\"13800138000\") raises ValueError",
+    "assert normalize_phone_number(\"123-456-7890\") == \"123-456-7890\"",
+    "with pytest.raises(ValueError): normalize_phone_number(\"\")"
+  ],
+  "cases": [
+    {
+      "name": "hyphen format",
+      "input": {
+        "text": "123-456-7890"
+      },
+      "expected": "123-456-7890"
+    },
+    {
+      "name": "parentheses and spaces",
+      "input": {
+        "text": "(123) 456 7890"
+      },
+      "expected": "123-456-7890"
+    },
+    {
+      "name": "plain digits",
+      "input": {
+        "text": "9876543210"
+      },
+      "expected": "987-654-3210"
+    }
+  ]
+}

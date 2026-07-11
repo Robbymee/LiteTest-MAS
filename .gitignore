@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+runs/
+logs/
+models/
+*.log
+env_report.json
+.pytest_cache/
+datasets/raw/mbpp/*.json
+datasets/raw/mbpp/*.jsonl
+datasets/processed/mbpp/*
+!datasets/processed/mbpp/
+!datasets/processed/mbpp/README.md
+import_errors.json
+import_summary.json

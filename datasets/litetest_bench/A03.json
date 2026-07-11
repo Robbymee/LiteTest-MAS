@@ -1,0 +1,60 @@
+{
+  "task_id": "A03",
+  "group_id": "A",
+  "topic": "date_parsing",
+  "function_name": "parse_date",
+  "task_description": "Parse a YYYY-MM-DD string and return a tuple of year, month, and day after basic range checks.",
+  "signature": "parse_date(text: str) -> list[int]",
+  "code_under_test": "def parse_date(text: str) -> list[int]:\n    parts = text.split(\"-\")\n    if len(parts) != 3 or any(part == \"\" for part in parts):\n        raise ValueError(\"invalid format\")\n    year, month, day = (int(part) for part in parts)\n    if month < 1 or month > 12:\n        raise ValueError(\"invalid month\")\n    if day < 1 or day > 31:\n        raise ValueError(\"invalid day\")\n    return [year, month, day]\n",
+  "risk_tags": [
+    "string",
+    "empty_input",
+    "invalid_format",
+    "date_components"
+  ],
+  "expected_test_focus": [
+    "valid format returns tuple",
+    "missing segments raise ValueError",
+    "month and day bounds are enforced"
+  ],
+  "hidden_reference_tests": [
+    "assert parse_date(\"2024-03-08\") == (2024, 3, 8)",
+    "with pytest.raises(ValueError): parse_date(\"2024/03/08\")",
+    "with pytest.raises(ValueError): parse_date(\"2024-13-01\")"
+  ],
+  "cases": [
+    {
+      "name": "normal date",
+      "input": {
+        "text": "2024-03-08"
+      },
+      "expected": [
+        2024,
+        3,
+        8
+      ]
+    },
+    {
+      "name": "year zero allowed by basic parser",
+      "input": {
+        "text": "0001-01-01"
+      },
+      "expected": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "month boundary",
+      "input": {
+        "text": "2025-12-31"
+      },
+      "expected": [
+        2025,
+        12,
+        31
+      ]
+    }
+  ]
+}

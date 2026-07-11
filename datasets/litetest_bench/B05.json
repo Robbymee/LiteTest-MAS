@@ -1,0 +1,86 @@
+{
+  "task_id": "B05",
+  "group_id": "B",
+  "topic": "deduplication",
+  "function_name": "deduplicate_records",
+  "task_description": "Deduplicate a list of records by a target key while keeping the first occurrence and skipping records missing the key.",
+  "signature": "deduplicate_records(records: list[dict], key: str) -> list[dict]",
+  "code_under_test": "def deduplicate_records(records: list[dict], key: str) -> list[dict]:\n    seen = set()\n    result = []\n    for record in records:\n        if key not in record:\n            continue\n        value = record[key]\n        if value in seen:\n            continue\n        seen.add(value)\n        result.append(record)\n    return result\n",
+  "risk_tags": [
+    "empty_input",
+    "duplicate",
+    "missing_key",
+    "nested_structure"
+  ],
+  "expected_test_focus": [
+    "empty input returns empty list",
+    "first occurrence is kept for duplicates",
+    "records missing the key are ignored"
+  ],
+  "hidden_reference_tests": [
+    "assert deduplicate_records([], \"id\") == []",
+    "assert len(deduplicate_records([{\"id\": 1}, {\"id\": 1}], \"id\")) == 1",
+    "assert deduplicate_records([{\"name\": \"x\"}], \"id\") == []"
+  ],
+  "cases": [
+    {
+      "name": "deduplicate by id",
+      "input": {
+        "records": [
+          {
+            "id": 1,
+            "name": "a"
+          },
+          {
+            "id": 1,
+            "name": "b"
+          },
+          {
+            "id": 2,
+            "name": "c"
+          }
+        ],
+        "key": "id"
+      },
+      "expected": [
+        {
+          "id": 1,
+          "name": "a"
+        },
+        {
+          "id": 2,
+          "name": "c"
+        }
+      ]
+    },
+    {
+      "name": "skip missing key",
+      "input": {
+        "records": [
+          {
+            "name": "a"
+          },
+          {
+            "id": 3,
+            "name": "b"
+          }
+        ],
+        "key": "id"
+      },
+      "expected": [
+        {
+          "id": 3,
+          "name": "b"
+        }
+      ]
+    },
+    {
+      "name": "empty input",
+      "input": {
+        "records": [],
+        "key": "id"
+      },
+      "expected": []
+    }
+  ]
+}

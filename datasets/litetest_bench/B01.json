@@ -1,0 +1,102 @@
+{
+  "task_id": "B01",
+  "group_id": "B",
+  "topic": "interval_processing",
+  "function_name": "merge_intervals",
+  "task_description": "Merge overlapping sorted or unsorted intervals and return a normalized list of intervals.",
+  "signature": "merge_intervals(intervals: list[list[int]]) -> list[list[int]]",
+  "code_under_test": "def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:\n    if not intervals:\n        return []\n    ordered = sorted((list(item) for item in intervals), key=lambda item: item[0])\n    merged = [ordered[0]]\n    for start, end in ordered[1:]:\n        last = merged[-1]\n        if start <= last[1]:\n            last[1] = max(last[1], end)\n        else:\n            merged.append([start, end])\n    return merged\n",
+  "risk_tags": [
+    "empty_input",
+    "duplicate",
+    "nested_structure",
+    "boundary_overlap"
+  ],
+  "expected_test_focus": [
+    "empty list returns empty list",
+    "overlapping intervals merge",
+    "disjoint intervals remain separate"
+  ],
+  "hidden_reference_tests": [
+    "assert merge_intervals([]) == []",
+    "assert merge_intervals([[1, 3], [2, 4]]) == [[1, 4]]",
+    "assert merge_intervals([[5, 7], [1, 2]]) == [[1, 2], [5, 7]]"
+  ],
+  "cases": [
+    {
+      "name": "simple overlap",
+      "input": {
+        "intervals": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ]
+        ]
+      },
+      "expected": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          10
+        ]
+      ]
+    },
+    {
+      "name": "unsorted input",
+      "input": {
+        "intervals": [
+          [
+            5,
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          7
+        ]
+      ]
+    },
+    {
+      "name": "touching intervals",
+      "input": {
+        "intervals": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "expected": [
+        [
+          1,
+          3
+        ]
+      ]
+    }
+  ]
+}

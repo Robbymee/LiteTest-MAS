@@ -1,0 +1,48 @@
+{
+  "task_id": "A05",
+  "group_id": "A",
+  "topic": "string_transformation",
+  "function_name": "slugify_title",
+  "task_description": "Convert a title into a lowercase slug by keeping alphanumeric words, collapsing separators, and trimming outer dashes.",
+  "signature": "slugify_title(text: str) -> str",
+  "code_under_test": "def slugify_title(text: str) -> str:\n    cleaned = []\n    for ch in text.lower():\n        if ch.isalnum():\n            cleaned.append(ch)\n        else:\n            cleaned.append(\"-\")\n    slug = \"\".join(cleaned)\n    while \"--\" in slug:\n        slug = slug.replace(\"--\", \"-\")\n    return slug.strip(\"-\")\n",
+  "risk_tags": [
+    "string",
+    "empty_input",
+    "invalid_format",
+    "separator_collapse"
+  ],
+  "expected_test_focus": [
+    "letters are lowercased",
+    "non alphanumeric separators collapse to one dash",
+    "leading and trailing separators are stripped"
+  ],
+  "hidden_reference_tests": [
+    "assert slugify_title(\"Hello, World!\") == \"hello-world\"",
+    "assert slugify_title(\"  A  B  \") == \"a-b\"",
+    "assert slugify_title(\"\") == \"\""
+  ],
+  "cases": [
+    {
+      "name": "basic punctuation",
+      "input": {
+        "text": "Hello, World!"
+      },
+      "expected": "hello-world"
+    },
+    {
+      "name": "extra spaces",
+      "input": {
+        "text": "  LiteTest   MAS  "
+      },
+      "expected": "litetest-mas"
+    },
+    {
+      "name": "already simple",
+      "input": {
+        "text": "bench-v1"
+      },
+      "expected": "bench-v1"
+    }
+  ]
+}

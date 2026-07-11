@@ -1,0 +1,16 @@
+[
+  {
+    "fixture_notice": "synthetic fixture; not formal experiment data",
+    "task_id": 102,
+    "text": "Write a function that returns whether an integer is even.",
+    "code": "def is_even(value):\n    return value % 2 == 0\n",
+    "test_list": ["assert is_even(2) is True"]
+  },
+  {
+    "fixture_notice": "synthetic fixture; not formal experiment data",
+    "task_id": 101,
+    "text": "Write a function that adds two integers.",
+    "code": "def add_two_numbers(first, second):\n    return first + second\n",
+    "test_list": ["assert add_two_numbers(1, 2) == 3"]
+  }
+]
