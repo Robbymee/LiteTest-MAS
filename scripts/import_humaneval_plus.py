@@ -11,12 +11,14 @@ from pathlib import Path
 
 SOURCE_DATASET = "humaneval_plus"
 IMPORT_VERSION = "m2.3"
+DEFAULT_SOURCE_URL = "https://github.com/evalplus/humanevalplus_release/releases/download/v0.1.10/HumanEvalPlus.jsonl.gz"
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Import a local HumanEval+ JSONL file.")
     parser.add_argument("--input", required=True)
     parser.add_argument("--output-dir", default="datasets/processed/humaneval_plus")
+    parser.add_argument("--source-url", default=DEFAULT_SOURCE_URL)
     parser.add_argument("--strict", action="store_true")
     return parser.parse_args()
 
@@ -29,7 +31,7 @@ def _read_records(path: Path) -> list[dict]:
         return [json.loads(line) for line in handle if line.strip()]
 
 
-def _convert(record: dict) -> dict:
+def _convert(record: dict, source_url: str) -> dict:
     required = ("task_id", "prompt", "entry_point", "canonical_solution", "test")
     missing = [name for name in required if not record.get(name)]
     if missing:
@@ -50,7 +52,6 @@ def _convert(record: dict) -> dict:
         "function_name": function.name,
         "signature": signature,
         "entry_point": function.name,
-        "code_under_test": code,
     }
     hidden = [{key: record.get(key) for key in ("test", "contract", "base_input", "plus_input", "atol")}]
     return {
@@ -65,7 +66,7 @@ def _convert(record: dict) -> dict:
         "risk_tags": [],
         "hidden_reference_tests": hidden,
         "agent_visible_context": visible,
-        "provenance": {"dataset_name": "HumanEval+", "original_task_id": record["task_id"], "import_version": IMPORT_VERSION},
+        "provenance": {"dataset_name": "HumanEval+", "original_task_id": record["task_id"], "import_version": IMPORT_VERSION, "source_url": source_url},
     }
 
 
@@ -79,7 +80,7 @@ def main() -> int:
     tasks, errors = [], []
     for index, record in enumerate(records):
         try:
-            tasks.append(_convert(record))
+            tasks.append(_convert(record, args.source_url))
         except (TypeError, ValueError) as error:
             errors.append({"record_index": index, "error": str(error)})
     tasks.sort(key=lambda task: task["source_task_id"])
@@ -87,7 +88,7 @@ def main() -> int:
     output.mkdir(parents=True, exist_ok=True)
     (output / "humaneval_plus_tasks.jsonl").write_text("".join(json.dumps(task, ensure_ascii=False, sort_keys=True) + "\n" for task in tasks), encoding="utf-8")
     (output / "import_errors.json").write_text(json.dumps(errors, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (output / "metadata.json").write_text(json.dumps({"dataset_name": "HumanEval+", "source_record_count": len(records), "imported_task_count": len(tasks), "error_count": len(errors), "import_version": IMPORT_VERSION}, indent=2) + "\n", encoding="utf-8")
+    (output / "metadata.json").write_text(json.dumps({"dataset_name": "HumanEval+", "source_url": args.source_url, "source_record_count": len(records), "imported_task_count": len(tasks), "error_count": len(errors), "import_version": IMPORT_VERSION}, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({"imported_task_count": len(tasks), "error_count": len(errors), "output_dir": str(output)}))
     return 1 if args.strict and errors else 0
 

@@ -22,3 +22,4 @@
 20. M2.2 runs the two approved groups as isolated sequences of five rounds each, for ten rounds per mode. Manifest order is authoritative; Text and Protocol share the task plan but do not share Agent instances, messages, or state.
 21. M2.2 has no cross-task long-term memory or StateVector. Hidden tests remain outside agent views and all `runs/` artifacts remain untracked.
 22. `task_plan_sha256` hashes the mode-independent task plan; `deterministic_result_sha256` hashes only safe logical round results and excludes timestamps, absolute paths, and machine-specific fields. M2.2 is a runner-completeness stage, not formal metric comparison.
+23. M2.3 uses HumanEval+ v0.1.10 as the external-validation source. Its canonical solution remains local `code_under_test` only; agent-visible context excludes reference implementations, official tests, contracts, and inputs.

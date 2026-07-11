@@ -1,0 +1,1 @@
+{"task_id": "HumanEval/0", "prompt": "def increment(value):\n    \"\"\"Return the next integer.\"\"\"\n", "entry_point": "increment", "canonical_solution": "    return value + 1\n", "test": "def check(candidate):\n    assert candidate(1) == 2\n", "contract": "", "base_input": [[1]], "plus_input": [[2]], "atol": 0.0}
