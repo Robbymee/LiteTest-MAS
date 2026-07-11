@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M2.4: HumanEval+ related-task selection completed on 2026-07-11. M2.5 is the next stage and has not started.
+M2.5: dual-dataset Text/Protocol Mock sequence validation completed on 2026-07-11. M3 is the next stage and has not started.
 
 ## Completed
 
@@ -12,6 +12,7 @@ M2.4: HumanEval+ related-task selection completed on 2026-07-11. M2.5 is the nex
 - M2.2 deterministic Mock-Agent sequence runner for the fixed manifest. Text and Protocol each complete two isolated sequences of five rounds, ten rounds per mode.
 - M2.3 HumanEval+ v0.1.10 local import: 164/164 records convert with zero errors on Windows and openEuler. Agent-visible context excludes canonical solutions, reference implementations, official tests, contracts, and test inputs.
 - M2.4 delegated technical review generated 164 safe candidates, three double-group review schemes, and a fixed two-group selection with ten unique tasks. The manifests contain only public metadata and no hidden evaluation fields.
+- M2.5 used the shared deterministic Runner for MBPP-Sanitized Text/Protocol and HumanEval+ Text/Protocol. Each of the four combinations completed 10/10 rounds with zero failures and skips on Windows and openEuler; no formal performance claim is made.
 
 ## M2.2 validation
 
@@ -35,4 +36,4 @@ M2.4: HumanEval+ related-task selection completed on 2026-07-11. M2.5 is the nex
 
 ## Current unique next step
 
-M2.5: validate Text and Protocol sequence runs for both fixed datasets on Windows and openEuler using the existing Mock Agent; do not make formal performance claims.
+M3: add an independent evaluator that aggregates raw sequence records into reproducible Mock-scope Text/Protocol comparison summaries without changing Agent behavior.
