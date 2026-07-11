@@ -2,9 +2,9 @@
 
 ## Current stage
 
-M2.0: project context consolidation and MBPP-Sanitized local import framework.
+M2.0: project context consolidation and MBPP-Sanitized local import framework — completed on 2026-07-11. M2.1 is the next stage and has not started.
 
-The framework is implemented and passed Windows-local acceptance on 2026-07-10. It remains pending synchronized openEuler acceptance; no openEuler result is inferred from the Windows run.
+M2.0 was integrated onto the pre-existing GitHub `main` history through a non-force cherry-pick. The preserved remote ancestor is `6fc58fae819a6d3f9d577904caf2b26e22263dda`; the M2.0 integration commit is `74d2b42bb5e52566be4154a8257dd17e99d10afc`.
 
 On 2026-07-10, the Windows-to-openEuler SSH check succeeded, but openEuler repository synchronization and M2.0 acceptance remained blocked before GitHub access because the VM had no default route and `ping -c 3 1.1.1.1` returned `Network is unreachable`. A sudo-authorized NetworkManager restart was attempted; after restart, the VM still had no default route and external-IP connectivity remained unavailable.
 
@@ -21,6 +21,9 @@ The usable openEuler external path was later identified as `eth1` on Hyper-V Def
 - M2.0 management documents, offline MBPP-Sanitized importer, synthetic importer fixture, and importer tests are implemented.
 - Windows-local acceptance recorded `6 passed` for `tests/test_mbpp_import.py` and `15 passed` for `tests/`.
 - Windows-to-openEuler SSH remote command execution was revalidated on 2026-07-10.
+- Windows M2.0 acceptance on 2026-07-11: `tests/test_mbpp_import.py` reported `6 passed`; `tests/` reported `15 passed`; `git diff --check` passed.
+- openEuler M2.0 acceptance on 2026-07-11: openEuler 24.03-LTS-SP3, Python 3.11.6, `tests/test_mbpp_import.py` reported `6 passed`, `tests/` reported `15 passed`, and `git diff --check` passed.
+- The openEuler validation log is `/home/oa/LiteTest-MAS/runs/validation/m2_0_openeuler-20260711-092254.log`.
 
 ## Not completed
 
@@ -30,12 +33,6 @@ The usable openEuler external path was later identified as `eth1` on Hyper-V Def
 - Formal Evaluator, real LLM backend, SharedMemory, and StateVector.
 - Four ablation experiments, coverage/mutation metrics, Docker/iSulad sandbox, and Dashboard.
 
-## Current acceptance boundary
+## Current unique next step
 
-M2.0 is complete only after the local-import framework passes Windows acceptance and the synchronized repository is actually checked on openEuler. Do not claim the latter before it is run there.
-
-The next openEuler acceptance attempt first requires restoring VM default-route and external-IP connectivity. DNS, GitHub SSH, private repository synchronization, and pytest acceptance were not reached in the 2026-07-10 network diagnostic.
-
-## Current unique next step after M2.0 acceptance
-
-Based on imported MBPP metadata, generate a candidate-task list without automatically determining final tasks; after human review, select two related groups of five tasks each.
+M2.1: place real MBPP-Sanitized data in the local raw directory, use the offline importer to generate unified task data and candidate metadata, then have human review select two related groups of five tasks each.

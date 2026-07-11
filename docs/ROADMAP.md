@@ -3,7 +3,7 @@
 | Milestone | Scope | Status |
 | --- | --- | --- |
 | M1 | A01 minimum closed loop | Completed baseline |
-| M2.0 | Project context consolidation and MBPP-Sanitized local import framework | Implemented on Windows; openEuler acceptance pending |
+| M2.0 | Project context consolidation and MBPP-Sanitized local import framework | Completed; Windows and openEuler accepted on 2026-07-11 |
 | M2.1 | Generate MBPP candidate list and manually select two related groups | Pending |
 | M2.2 | MBPP continuous-task batch execution | Pending |
 | M2.3 | HumanEval adaptation | Pending |
