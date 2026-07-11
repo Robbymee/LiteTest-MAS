@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M2.2: deterministic MBPP continuous-task batch execution completed on 2026-07-11. M2.3 is the next stage and has not started.
+M2.3: HumanEval+ unified-task import and leakage isolation completed on 2026-07-11. M2.4 is the next stage and has not started.
 
 ## Completed
 
@@ -10,6 +10,7 @@ M2.2: deterministic MBPP continuous-task batch execution completed on 2026-07-11
 - M2.0 local MBPP-Sanitized offline importer, management documents, Windows/openEuler acceptance.
 - M2.1 human-approved MBPP selection manifest: two ordered groups of five tasks, ten tasks total.
 - M2.2 deterministic Mock-Agent sequence runner for the fixed manifest. Text and Protocol each complete two isolated sequences of five rounds, ten rounds per mode.
+- M2.3 HumanEval+ v0.1.10 local import: 164/164 records convert with zero errors on Windows and openEuler. Agent-visible context excludes canonical solutions, reference implementations, official tests, contracts, and test inputs.
 
 ## M2.2 validation
 
@@ -20,6 +21,12 @@ M2.2: deterministic MBPP continuous-task batch execution completed on 2026-07-11
 - Protocol deterministic result hash: `329c87684415f67fdabeca9e0ec9cb4e0b7ee9f734cf8ceff522ec51ea936fc2`.
 - Runner validation commit: `c275a15cd71e76a52ce9fa551916541f410320b5`; openEuler log: `/home/oa/LiteTest-MAS/runs/validation/m2_2_openeuler-20260711-105126.log`.
 
+## M2.3 validation
+
+- Windows: HumanEval+ strict import 164/164 with zero errors; importer tests `2 passed`; full repository tests `27 passed`.
+- openEuler 24.03-LTS-SP3 / Python 3.11.6 reproduced strict import 164/164 with zero errors, importer tests `2 passed`, full repository tests `27 passed`, and `git diff --check` passed.
+- openEuler log: `/home/oa/LiteTest-MAS/runs/validation/m2_3_openeuler-20260711-110801.log`.
+
 ## Boundaries still not completed
 
 - HumanEval formal integration/selection/batch validation.
@@ -27,4 +34,4 @@ M2.2: deterministic MBPP continuous-task batch execution completed on 2026-07-11
 
 ## Current unique next step
 
-M2.3: formally integrate the HumanEval dataset without changing MBPP tasks or M2.2 runner behavior; complete unified-task provenance, leakage protection, and dual-platform import validation.
+M2.4: generate HumanEval candidate metadata and have human review select related tasks; do not run a HumanEval batch experiment yet.
