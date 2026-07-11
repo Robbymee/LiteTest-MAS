@@ -10,8 +10,14 @@ env_report.json
 .pytest_cache/
 datasets/raw/mbpp/*.json
 datasets/raw/mbpp/*.jsonl
+datasets/raw/humaneval_plus/*.json
+datasets/raw/humaneval_plus/*.jsonl
+datasets/raw/humaneval_plus/*.jsonl.gz
 datasets/processed/mbpp/*
 !datasets/processed/mbpp/
 !datasets/processed/mbpp/README.md
+datasets/processed/humaneval_plus/*
+!datasets/processed/humaneval_plus/
+!datasets/processed/humaneval_plus/README.md
 import_errors.json
 import_summary.json

@@ -147,7 +147,7 @@ def convert_record(record: Any) -> dict[str, Any]:
         raise RecordValidationError("Source record must be a JSON object.")
 
     source_task_id = _source_task_id(record)
-    task_description = _required_string(record, ("text", "task_description"), "task description")
+    task_description = _required_string(record, ("text", "task_description", "prompt"), "task description")
     code_under_test = _required_string(record, ("code", "code_under_test"), "reference implementation")
     hidden_reference_tests = _hidden_tests(record)
     function_name, signature = _entry_function(code_under_test)

@@ -14,3 +14,5 @@
 12. Reinstall dependencies on openEuler.
 13. M2.0 imports only user-provided local MBPP-Sanitized files; it never downloads data or changes network/certificate configuration.
 14. The M2.0 importer stores official tests separately and constructs agent-visible context from an explicit allowlist.
+15. With explicit authorization on 2026-07-11, MBPP-Sanitized is sourced from Google Research and HumanEval+ v0.1.10 from EvalPlus; raw releases remain local and Git-ignored.
+16. Candidate manifests contain only static agent-visible metadata. Deterministic recommendations are not final experiment selections and require human confirmation.

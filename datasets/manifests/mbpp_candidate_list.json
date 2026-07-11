@@ -1,0 +1,5055 @@
+{
+  "candidate_count": 427,
+  "candidates": [
+    {
+      "description_preview": "Write a function to find the next smallest palindrome of a specified integer, returned as an integer.",
+      "function_name": "next_smallest_palindrome",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "next_smallest_palindrome(num)",
+      "source_task_id": "100",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:100"
+    },
+    {
+      "description_preview": "Write a function to find the kth element in the given array using 1-based indexing.",
+      "function_name": "kth_element",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "kth_element(arr, k)",
+      "source_task_id": "101",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:101"
+    },
+    {
+      "description_preview": "Write a function to convert a snake case string to camel case string.",
+      "function_name": "snake_to_camel",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "snake_to_camel(word)",
+      "source_task_id": "102",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:102"
+    },
+    {
+      "description_preview": "Write a function to find the Eulerian number a(n, m).",
+      "function_name": "eulerian_num",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "eulerian_num(n, m)",
+      "source_task_id": "103",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:103"
+    },
+    {
+      "description_preview": "Write a function to sort each sublist of strings in a given list of lists.",
+      "function_name": "sort_sublists",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "sort_sublists(input_list)",
+      "source_task_id": "104",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:104"
+    },
+    {
+      "description_preview": "Write a python function to count true booleans in the given list.",
+      "function_name": "count",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "count(lst)",
+      "source_task_id": "105",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:105"
+    },
+    {
+      "description_preview": "Write a function to append the given list to the given tuples.",
+      "function_name": "add_lists",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "add_lists(test_list, test_tup)",
+      "source_task_id": "106",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:106"
+    },
+    {
+      "description_preview": "Write a function to merge three lists into a single sorted list.",
+      "function_name": "merge_sorted_list",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "merge_sorted_list(num1, num2, num3)",
+      "source_task_id": "108",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:108"
+    },
+    {
+      "description_preview": "Write a python function to find the number of numbers with an odd value when rotating a binary string the given number of times.",
+      "function_name": "odd_Equivalent",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "odd_Equivalent(s, n)",
+      "source_task_id": "109",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:109"
+    },
+    {
+      "description_preview": "Write a python function to remove first and last occurrence of a given character from the string.",
+      "function_name": "remove_Occ",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "remove_Occ(s, ch)",
+      "source_task_id": "11",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:11"
+    },
+    {
+      "description_preview": "Write a function to find the common elements in given nested lists.",
+      "function_name": "common_in_nested_lists",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "common_in_nested_lists(nestedlist)",
+      "source_task_id": "111",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:111"
+    },
+    {
+      "description_preview": "Write a function to check if a string represents an integer or not.",
+      "function_name": "check_integer",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "check_integer(text)",
+      "source_task_id": "113",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:113"
+    },
+    {
+      "description_preview": "Write a function to check whether all dictionaries in a list are empty or not.",
+      "function_name": "empty_dit",
+      "risk_tags": [
+        "dictionary",
+        "empty_input",
+        "list"
+      ],
+      "signature": "empty_dit(list1)",
+      "source_task_id": "115",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:115"
+    },
+    {
+      "description_preview": "Write a function to convert a given tuple of positive integers into a single integer.",
+      "function_name": "tuple_to_int",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "tuple_to_int(nums)",
+      "source_task_id": "116",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:116"
+    },
+    {
+      "description_preview": "Write a function to convert all possible convertible elements in a list of lists to floats.",
+      "function_name": "list_to_float",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "list_to_float(test_list)",
+      "source_task_id": "117",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:117"
+    },
+    {
+      "description_preview": "Write a function to convert a string to a list of strings split on the space character.",
+      "function_name": "string_to_list",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "string_to_list(string)",
+      "source_task_id": "118",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:118"
+    },
+    {
+      "description_preview": "Write a python function to find the element that appears only once in a sorted array.",
+      "function_name": "search",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "search(arr)",
+      "source_task_id": "119",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:119"
+    },
+    {
+      "description_preview": "Write a function to sort a given matrix in ascending order according to the sum of its rows.",
+      "function_name": "sort_matrix",
+      "risk_tags": [],
+      "signature": "sort_matrix(M)",
+      "source_task_id": "12",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:12"
+    },
+    {
+      "description_preview": "Write a function to find the maximum absolute product between numbers in pairs of tuples within a given list.",
+      "function_name": "max_product_tuple",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "max_product_tuple(list1)",
+      "source_task_id": "120",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:120"
+    },
+    {
+      "description_preview": "Write a function to sum all amicable numbers from 1 to a specified number.",
+      "function_name": "amicable_numbers_sum",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "amicable_numbers_sum(limit)",
+      "source_task_id": "123",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:123"
+    },
+    {
+      "description_preview": "Write a function to get the angle of a complex number.",
+      "function_name": "angle_complex",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "angle_complex(a, b)",
+      "source_task_id": "124",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:124"
+    },
+    {
+      "description_preview": "Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.",
+      "function_name": "find_length",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "find_length(string)",
+      "source_task_id": "125",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:125"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of common divisors of two given numbers.",
+      "function_name": "sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "sum(a, b)",
+      "source_task_id": "126",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:126"
+    },
+    {
+      "description_preview": "Write a function to multiply two integers.",
+      "function_name": "multiply_int",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "multiply_int(x, y)",
+      "source_task_id": "127",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:127"
+    },
+    {
+      "description_preview": "Write a function to find words that are longer than n characters from a given list of words.",
+      "function_name": "long_words",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "string"
+      ],
+      "signature": "long_words(n, str)",
+      "source_task_id": "128",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:128"
+    },
+    {
+      "description_preview": "Write a function to calculate whether the matrix is a magic square.",
+      "function_name": "magic_square_test",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "magic_square_test(my_matrix)",
+      "source_task_id": "129",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:129"
+    },
+    {
+      "description_preview": "Write a function to find the item with maximum frequency in a given list.",
+      "function_name": "max_occurrences",
+      "risk_tags": [
+        "dictionary",
+        "list",
+        "numeric"
+      ],
+      "signature": "max_occurrences(nums)",
+      "source_task_id": "130",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:130"
+    },
+    {
+      "description_preview": "Write a python function to reverse only the vowels of a given string (where y is not a vowel).",
+      "function_name": "reverse_vowels",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "reverse_vowels(str1)",
+      "source_task_id": "131",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:131"
+    },
+    {
+      "description_preview": "Write a function to convert a tuple to a string.",
+      "function_name": "tup_string",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "tup_string(tup1)",
+      "source_task_id": "132",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:132"
+    },
+    {
+      "description_preview": "Write a function to calculate the sum of the negative numbers of a given list of numbers.",
+      "function_name": "sum_negativenum",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "sum_negativenum(nums)",
+      "source_task_id": "133",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:133"
+    },
+    {
+      "description_preview": "Write a function to find the nth hexagonal number.",
+      "function_name": "hexagonal_num",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "hexagonal_num(n)",
+      "source_task_id": "135",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:135"
+    },
+    {
+      "description_preview": "Write a function to find the ratio of zeroes to non-zeroes in an array of integers.",
+      "function_name": "zero_count",
+      "risk_tags": [
+        "empty_input",
+        "numeric"
+      ],
+      "signature": "zero_count(nums)",
+      "source_task_id": "137",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:137"
+    },
+    {
+      "description_preview": "Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not.",
+      "function_name": "is_Sum_Of_Powers_Of_Two",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_Sum_Of_Powers_Of_Two(n)",
+      "source_task_id": "138",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:138"
+    },
+    {
+      "description_preview": "Write a function to find the circumference of a circle.",
+      "function_name": "circle_circumference",
+      "risk_tags": [],
+      "signature": "circle_circumference(r)",
+      "source_task_id": "139",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:139"
+    },
+    {
+      "description_preview": "Write a python function to find the volume of a triangular prism.",
+      "function_name": "find_Volume",
+      "risk_tags": [],
+      "signature": "find_Volume(l, b, h)",
+      "source_task_id": "14",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:14"
+    },
+    {
+      "description_preview": "Write a function to flatten the list of lists into a single set of numbers.",
+      "function_name": "extract_singly",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "extract_singly(test_list)",
+      "source_task_id": "140",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:140"
+    },
+    {
+      "description_preview": "Write a function to sort a list of elements.",
+      "function_name": "pancake_sort",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "pancake_sort(nums)",
+      "source_task_id": "141",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:141"
+    },
+    {
+      "description_preview": "Write a function to count number items that are identical in the same position of three given lists.",
+      "function_name": "count_samepair",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "count_samepair(list1, list2, list3)",
+      "source_task_id": "142",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:142"
+    },
+    {
+      "description_preview": "Write a function to find number of lists present in the given tuple.",
+      "function_name": "find_lists",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_lists(Input)",
+      "source_task_id": "143",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:143"
+    },
+    {
+      "description_preview": "Write a python function to find the maximum difference between any two elements in a given array.",
+      "function_name": "max_Abs_Diff",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "max_Abs_Diff(arr)",
+      "source_task_id": "145",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:145"
+    },
+    {
+      "description_preview": "Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise.",
+      "function_name": "text_lowercase_underscore",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "text_lowercase_underscore(text)",
+      "source_task_id": "16",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:16"
+    },
+    {
+      "description_preview": "Write a function that returns integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists.",
+      "function_name": "find_solution",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find_solution(a, b, n)",
+      "source_task_id": "160",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:160"
+    },
+    {
+      "description_preview": "Write a function to remove all elements from a given list present in another list.",
+      "function_name": "remove_elements",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "remove_elements(list1, list2)",
+      "source_task_id": "161",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:161"
+    },
+    {
+      "description_preview": "Write a function to calculate the sum (n - 2*i) from i=0 to n // 2, for instance n + (n-2) + (n-4)... (until n-x =< 0).",
+      "function_name": "sum_series",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "sum_series(n)",
+      "source_task_id": "162",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:162"
+    },
+    {
+      "description_preview": "Write a function to calculate the area of a regular polygon given the length and number of its sides.",
+      "function_name": "area_polygon",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "area_polygon(s, l)",
+      "source_task_id": "163",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:163"
+    },
+    {
+      "description_preview": "Write a function to determine if the sum of the divisors of two integers are the same.",
+      "function_name": "div_sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "div_sum(n)",
+      "source_task_id": "164",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:164"
+    },
+    {
+      "description_preview": "Write a function to count the number of characters in a string that occur at the same position in the string as in the English alphabet (case insensitive).",
+      "function_name": "count_char_position",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "count_char_position(str1)",
+      "source_task_id": "165",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:165"
+    },
+    {
+      "description_preview": "Write a function that counts the number of pairs of integers in a list that xor to an even number.",
+      "function_name": "find_even_pair",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_even_pair(A)",
+      "source_task_id": "166",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:166"
+    },
+    {
+      "description_preview": "Write a python function to find the smallest power of 2 greater than or equal to n.",
+      "function_name": "next_power_of_2",
+      "risk_tags": [
+        "empty_input",
+        "numeric"
+      ],
+      "signature": "next_power_of_2(n)",
+      "source_task_id": "167",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:167"
+    },
+    {
+      "description_preview": "Write a function to count the number of occurrences of a number in a given list.",
+      "function_name": "frequency",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "frequency(a, x)",
+      "source_task_id": "168",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:168"
+    },
+    {
+      "description_preview": "Write a function that returns the perimeter of a square given its side length as input.",
+      "function_name": "square_perimeter",
+      "risk_tags": [],
+      "signature": "square_perimeter(a)",
+      "source_task_id": "17",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:17"
+    },
+    {
+      "description_preview": "Write a function to find the sum of numbers in a list within a range specified by two indices.",
+      "function_name": "sum_range_list",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "sum_range_list(list1, m, n)",
+      "source_task_id": "170",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:170"
+    },
+    {
+      "description_preview": "Write a function to find the perimeter of a regular pentagon from the length of its sides.",
+      "function_name": "perimeter_pentagon",
+      "risk_tags": [],
+      "signature": "perimeter_pentagon(a)",
+      "source_task_id": "171",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:171"
+    },
+    {
+      "description_preview": "Write a function to count the number of occurence of the string 'std' in a given string.",
+      "function_name": "count_occurance",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "count_occurance(s)",
+      "source_task_id": "172",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:172"
+    },
+    {
+      "description_preview": "Write a function to remove characters from the first string which are present in the second string.",
+      "function_name": "str_to_list",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "str_to_list(string)",
+      "source_task_id": "18",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:18"
+    },
+    {
+      "description_preview": "Write a function to find whether a given array of integers contains any duplicate element.",
+      "function_name": "test_duplicate",
+      "risk_tags": [
+        "empty_input",
+        "numeric"
+      ],
+      "signature": "test_duplicate(arraynums)",
+      "source_task_id": "19",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:19"
+    },
+    {
+      "description_preview": "Write a function to find the shared elements from the given two lists.",
+      "function_name": "similar_elements",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "similar_elements(test_tup1, test_tup2)",
+      "source_task_id": "2",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:2"
+    },
+    {
+      "description_preview": "Write a function to check if the given number is woodball or not.",
+      "function_name": "is_woodall",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_woodall(x)",
+      "source_task_id": "20",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:20"
+    },
+    {
+      "description_preview": "Write a function to check if all the elements in tuple have same data type or not.",
+      "function_name": "check_type",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "check_type(test_tuple)",
+      "source_task_id": "222",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:222"
+    },
+    {
+      "description_preview": "Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array.",
+      "function_name": "is_majority",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "is_majority(arr, n, x)",
+      "source_task_id": "223",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:223"
+    },
+    {
+      "description_preview": "Write a python function to count the number of set bits (binary digits with value 1) in a given number.",
+      "function_name": "count_Set_Bits",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "count_Set_Bits(n)",
+      "source_task_id": "224",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:224"
+    },
+    {
+      "description_preview": "Write a python function to remove the characters which have odd index values of a given string.",
+      "function_name": "odd_values_string",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "odd_values_string(str)",
+      "source_task_id": "226",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:226"
+    },
+    {
+      "description_preview": "Write a function to find minimum of three numbers.",
+      "function_name": "min_of_three",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "min_of_three(a, b, c)",
+      "source_task_id": "227",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:227"
+    },
+    {
+      "description_preview": "Write a python function to check whether all the bits are unset in the given range or not.",
+      "function_name": "all_Bits_Set_In_The_Given_Range",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "all_Bits_Set_In_The_Given_Range(n, l, r)",
+      "source_task_id": "228",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:228"
+    },
+    {
+      "description_preview": "Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before po",
+      "function_name": "re_arrange_array",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "re_arrange_array(arr, n)",
+      "source_task_id": "229",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:229"
+    },
+    {
+      "description_preview": "Write a function that takes in a string and character, replaces blank spaces in the string with the character, and returns the string.",
+      "function_name": "replace_blank",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "replace_blank(str1, char)",
+      "source_task_id": "230",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:230"
+    },
+    {
+      "description_preview": "Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list.",
+      "function_name": "larg_nnum",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "larg_nnum(list1, n)",
+      "source_task_id": "232",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:232"
+    },
+    {
+      "description_preview": "Write a function to find the lateral surface area of a cylinder.",
+      "function_name": "lateralsuface_cylinder",
+      "risk_tags": [],
+      "signature": "lateralsuface_cylinder(r, h)",
+      "source_task_id": "233",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:233"
+    },
+    {
+      "description_preview": "Write a function to find the volume of a cube given its side length.",
+      "function_name": "volume_cube",
+      "risk_tags": [],
+      "signature": "volume_cube(l)",
+      "source_task_id": "234",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:234"
+    },
+    {
+      "description_preview": "Write a python function to set all even bits of a given number.",
+      "function_name": "even_bit_set_number",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "even_bit_set_number(n)",
+      "source_task_id": "235",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:235"
+    },
+    {
+      "description_preview": "Write a function that takes in a list of tuples and returns a dictionary mapping each unique tuple to the number of times it occurs in the list.",
+      "function_name": "check_occurences",
+      "risk_tags": [
+        "dictionary",
+        "list",
+        "numeric"
+      ],
+      "signature": "check_occurences(test_list)",
+      "source_task_id": "237",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:237"
+    },
+    {
+      "description_preview": "Write a python function to count the number of non-empty substrings of a given string.",
+      "function_name": "number_of_substrings",
+      "risk_tags": [
+        "empty_input",
+        "numeric",
+        "string"
+      ],
+      "signature": "number_of_substrings(str)",
+      "source_task_id": "238",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:238"
+    },
+    {
+      "description_preview": "Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer an",
+      "function_name": "get_total_number_of_sequences",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "get_total_number_of_sequences(m, n)",
+      "source_task_id": "239",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:239"
+    },
+    {
+      "description_preview": "Write a function that takes in two lists and replaces the last element of the first list with the elements of the second list.",
+      "function_name": "replace_list",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "replace_list(list1, list2)",
+      "source_task_id": "240",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:240"
+    },
+    {
+      "description_preview": "Write a function to count the total number of characters in a string.",
+      "function_name": "count_charac",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "count_charac(str1)",
+      "source_task_id": "242",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:242"
+    },
+    {
+      "description_preview": "Write a python function to find the next perfect square greater than a given number.",
+      "function_name": "next_Perfect_Square",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "next_Perfect_Square(N)",
+      "source_task_id": "244",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:244"
+    },
+    {
+      "description_preview": "Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasi",
+      "function_name": "max_sum",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "max_sum(arr)",
+      "source_task_id": "245",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:245"
+    },
+    {
+      "description_preview": "Write a function for computing square roots using the babylonian method.",
+      "function_name": "babylonian_squareroot",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "babylonian_squareroot(number)",
+      "source_task_id": "246",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:246"
+    },
+    {
+      "description_preview": "Write a function to find the length of the longest palindromic subsequence in the given string.",
+      "function_name": "lps",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "lps(str)",
+      "source_task_id": "247",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:247"
+    },
+    {
+      "description_preview": "Write a function that takes in an integer n and calculates the harmonic sum of n-1.",
+      "function_name": "harmonic_sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "harmonic_sum(n)",
+      "source_task_id": "248",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:248"
+    },
+    {
+      "description_preview": "Write a function to find the intersection of two arrays.",
+      "function_name": "intersection_array",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "intersection_array(array_nums1, array_nums2)",
+      "source_task_id": "249",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:249"
+    },
+    {
+      "description_preview": "Write a python function that takes in a tuple and an element and counts the occcurences of the element in the tuple.",
+      "function_name": "count_X",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "count_X(tup, x)",
+      "source_task_id": "250",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:250"
+    },
+    {
+      "description_preview": "Write a function that takes in a list and an element and inserts the element before each element in the list, and returns the resulting list.",
+      "function_name": "insert_element",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "insert_element(list, element)",
+      "source_task_id": "251",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:251"
+    },
+    {
+      "description_preview": "Write a python function to convert complex numbers to polar coordinates.",
+      "function_name": "convert",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "convert(numbers)",
+      "source_task_id": "252",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:252"
+    },
+    {
+      "description_preview": "Write a python function that returns the number of integer elements in a given list.",
+      "function_name": "count_integer",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "count_integer(list1)",
+      "source_task_id": "253",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:253"
+    },
+    {
+      "description_preview": "Write a function that takes in a list and length n, and generates all combinations (with repetition) of the elements of the list and returns a list with a tuple",
+      "function_name": "combinations_colors",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "combinations_colors(l, n)",
+      "source_task_id": "255",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:255"
+    },
+    {
+      "description_preview": "Write a python function that takes in a non-negative number and returns the number of prime numbers less than the given non-negative number.",
+      "function_name": "count_Primes_nums",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "count_Primes_nums(n)",
+      "source_task_id": "256",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:256"
+    },
+    {
+      "description_preview": "Write a function that takes in two numbers and returns a tuple with the second number and then the first number.",
+      "function_name": "swap_numbers",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "swap_numbers(a, b)",
+      "source_task_id": "257",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:257"
+    },
+    {
+      "description_preview": "Write a function to maximize the given two tuples.",
+      "function_name": "maximize_elements",
+      "risk_tags": [],
+      "signature": "maximize_elements(test_tup1, test_tup2)",
+      "source_task_id": "259",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:259"
+    },
+    {
+      "description_preview": "Write a function to find the nth newman–shanks–williams prime number.",
+      "function_name": "newman_prime",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "newman_prime(n)",
+      "source_task_id": "260",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:260"
+    },
+    {
+      "description_preview": "Write a function that takes in two tuples and performs mathematical division operation element-wise across the given tuples.",
+      "function_name": "division_elements",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "division_elements(test_tup1, test_tup2)",
+      "source_task_id": "261",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:261"
+    },
+    {
+      "description_preview": "Write a function that takes in a list and an integer L and splits the given list into two parts where the length of the first part of the list is L, and returns",
+      "function_name": "split_two_parts",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "split_two_parts(list1, L)",
+      "source_task_id": "262",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:262"
+    },
+    {
+      "description_preview": "Write a function to calculate a dog's age in dog's years.",
+      "function_name": "dog_age",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "dog_age(h_age)",
+      "source_task_id": "264",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:264"
+    },
+    {
+      "description_preview": "Write a function that takes in a list and an integer n and splits a list for every nth element, returning a list of the resulting lists.",
+      "function_name": "list_split",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "list_split(S, step)",
+      "source_task_id": "265",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:265"
+    },
+    {
+      "description_preview": "Write a function to find the lateral surface area of a cube given its side length.",
+      "function_name": "lateralsurface_cube",
+      "risk_tags": [],
+      "signature": "lateralsurface_cube(l)",
+      "source_task_id": "266",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:266"
+    },
+    {
+      "description_preview": "Write a python function that takes in an integer n and returns the sum of the squares of the first n odd natural numbers.",
+      "function_name": "square_Sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "square_Sum(n)",
+      "source_task_id": "267",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:267"
+    },
+    {
+      "description_preview": "Write a function to find the n'th star number.",
+      "function_name": "find_star_num",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find_star_num(n)",
+      "source_task_id": "268",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:268"
+    },
+    {
+      "description_preview": "Write a function to find the ascii value of a character.",
+      "function_name": "ascii_value",
+      "risk_tags": [],
+      "signature": "ascii_value(k)",
+      "source_task_id": "269",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:269"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of even numbers at even positions of a list.",
+      "function_name": "sum_even_and_even_index",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "sum_even_and_even_index(arr)",
+      "source_task_id": "270",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:270"
+    },
+    {
+      "description_preview": "Write a python function that takes in an integer n and finds the sum of the first n even natural numbers that are raised to the fifth power.",
+      "function_name": "even_Power_Sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "even_Power_Sum(n)",
+      "source_task_id": "271",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:271"
+    },
+    {
+      "description_preview": "Write a function that takes in a list of tuples and returns a list containing the rear element of each tuple.",
+      "function_name": "rear_extract",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "rear_extract(test_list)",
+      "source_task_id": "272",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:272"
+    },
+    {
+      "description_preview": "Write a function that takes in two tuples and subtracts the elements of the first tuple by the elements of the second tuple with the same index.",
+      "function_name": "substract_elements",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "substract_elements(test_tup1, test_tup2)",
+      "source_task_id": "273",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:273"
+    },
+    {
+      "description_preview": "Write a python function that takes in a positive integer n and finds the sum of even index binomial coefficients.",
+      "function_name": "even_binomial_Coeff_Sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "even_binomial_Coeff_Sum(n)",
+      "source_task_id": "274",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:274"
+    },
+    {
+      "description_preview": "Write a function that takes in the radius and height of a cylinder and returns the the volume.",
+      "function_name": "volume_cylinder",
+      "risk_tags": [],
+      "signature": "volume_cylinder(r, h)",
+      "source_task_id": "276",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:276"
+    },
+    {
+      "description_preview": "Write a function that takes in a dictionary and integer n and filters the dictionary to only include entries with values greater than or equal to n.",
+      "function_name": "dict_filter",
+      "risk_tags": [
+        "dictionary",
+        "numeric"
+      ],
+      "signature": "dict_filter(dict, n)",
+      "source_task_id": "277",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:277"
+    },
+    {
+      "description_preview": "Write a function to find the number of elements that occurs before the tuple element in the given tuple.",
+      "function_name": "count_first_elements",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "count_first_elements(test_tup)",
+      "source_task_id": "278",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:278"
+    },
+    {
+      "description_preview": "Write a function to find the nth decagonal number.",
+      "function_name": "is_num_decagonal",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_num_decagonal(n)",
+      "source_task_id": "279",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:279"
+    },
+    {
+      "description_preview": "Write a function that takes in an array and element and returns a tuple containing a boolean that indicates if the element is in the array and the index positio",
+      "function_name": "sequential_search",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "sequential_search(dlist, item)",
+      "source_task_id": "280",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:280"
+    },
+    {
+      "description_preview": "Write a python function to check if the elements of a given list are unique or not.",
+      "function_name": "all_unique",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "all_unique(test_list)",
+      "source_task_id": "281",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:281"
+    },
+    {
+      "description_preview": "Write a function to subtract two lists element-wise.",
+      "function_name": "sub_list",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "sub_list(nums1, nums2)",
+      "source_task_id": "282",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:282"
+    },
+    {
+      "description_preview": "Write a python function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.",
+      "function_name": "validate",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "validate(n)",
+      "source_task_id": "283",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:283"
+    },
+    {
+      "description_preview": "Write a function that takes in a list and element and checks whether all items in the list are equal to the given element.",
+      "function_name": "check_element",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "check_element(list, element)",
+      "source_task_id": "284",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:284"
+    },
+    {
+      "description_preview": "Write a function that checks whether a string contains the 'a' character followed by two or three 'b' characters.",
+      "function_name": "text_match_two_three",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "text_match_two_three(text)",
+      "source_task_id": "285",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "description_preview": "Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.",
+      "function_name": "max_sub_array_sum_repeated",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "max_sub_array_sum_repeated(a, n, k)",
+      "source_task_id": "286",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:286"
+    },
+    {
+      "description_preview": "Write a python function takes in an integer n and returns the sum of squares of first n even natural numbers.",
+      "function_name": "square_Sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "square_Sum(n)",
+      "source_task_id": "287",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:287"
+    },
+    {
+      "description_preview": "Write a function to find the list of maximum length in a list of lists.",
+      "function_name": "max_length",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "max_length(list1)",
+      "source_task_id": "290",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:290"
+    },
+    {
+      "description_preview": "Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts an",
+      "function_name": "count_no_of_ways",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "count_no_of_ways(n, k)",
+      "source_task_id": "291",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:291"
+    },
+    {
+      "description_preview": "Write a python function to find quotient of two numbers (rounded down to the nearest integer).",
+      "function_name": "find",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find(n, m)",
+      "source_task_id": "292",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:292"
+    },
+    {
+      "description_preview": "Write a function to find the third side of a right angled triangle.",
+      "function_name": "otherside_rightangle",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "otherside_rightangle(w, h)",
+      "source_task_id": "293",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:293"
+    },
+    {
+      "description_preview": "Write a function to find the maximum value in a given heterogeneous list.",
+      "function_name": "max_val",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "max_val(listval)",
+      "source_task_id": "294",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:294"
+    },
+    {
+      "description_preview": "Write a function to return the sum of all divisors of a number.",
+      "function_name": "sum_div",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "sum_div(number)",
+      "source_task_id": "295",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:295"
+    },
+    {
+      "description_preview": "Write a python function to count inversions in an array.",
+      "function_name": "get_Inv_Count",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "get_Inv_Count(arr)",
+      "source_task_id": "296",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:296"
+    },
+    {
+      "description_preview": "Write a function to flatten a given nested list structure.",
+      "function_name": "flatten_list",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "string"
+      ],
+      "signature": "flatten_list(list1)",
+      "source_task_id": "297",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:297"
+    },
+    {
+      "description_preview": "Write a function to calculate the maximum aggregate from the list of tuples.",
+      "function_name": "max_aggregate",
+      "risk_tags": [
+        "dictionary",
+        "list",
+        "numeric"
+      ],
+      "signature": "max_aggregate(stdata)",
+      "source_task_id": "299",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:299"
+    },
+    {
+      "description_preview": "Write a python function to identify non-prime numbers.",
+      "function_name": "is_not_prime",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_not_prime(n)",
+      "source_task_id": "3",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:3"
+    },
+    {
+      "description_preview": "Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.",
+      "function_name": "count_binary_seq",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "count_binary_seq(n)",
+      "source_task_id": "300",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:300"
+    },
+    {
+      "description_preview": "Write a function to find the depth of a dictionary.",
+      "function_name": "dict_depth",
+      "risk_tags": [
+        "dictionary",
+        "numeric"
+      ],
+      "signature": "dict_depth(d)",
+      "source_task_id": "301",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:301"
+    },
+    {
+      "description_preview": "Write a python function to find element at a given index after number of rotations.",
+      "function_name": "find_Element",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "find_Element(arr, ranges, rotations, index)",
+      "source_task_id": "304",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:304"
+    },
+    {
+      "description_preview": "Write a function to return two words from a list of words starting with letter 'p'.",
+      "function_name": "start_withp",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "start_withp(words)",
+      "source_task_id": "305",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:305"
+    },
+    {
+      "description_preview": "Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k ",
+      "function_name": "max_sum_increasing_subseq",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "max_sum_increasing_subseq(a, n, index, k)",
+      "source_task_id": "306",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:306"
+    },
+    {
+      "description_preview": "Write a function to get a colon of a tuple.",
+      "function_name": "colon_tuplex",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "colon_tuplex(tuplex, m, n)",
+      "source_task_id": "307",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:307"
+    },
+    {
+      "description_preview": "Write a function to find the specified number of largest products from two given lists, selecting one factor from each list.",
+      "function_name": "large_product",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "large_product(nums1, nums2, N)",
+      "source_task_id": "308",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:308"
+    },
+    {
+      "description_preview": "Write a python function to find the maximum of two numbers.",
+      "function_name": "maximum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "maximum(a, b)",
+      "source_task_id": "309",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:309"
+    },
+    {
+      "description_preview": "Write a function to convert a given string to a tuple of characters.",
+      "function_name": "string_to_tuple",
+      "risk_tags": [
+        "empty_input",
+        "string"
+      ],
+      "signature": "string_to_tuple(str1)",
+      "source_task_id": "310",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:310"
+    },
+    {
+      "description_preview": "Write a python function to set the left most unset bit.",
+      "function_name": "set_left_most_unset_bit",
+      "risk_tags": [
+        "empty_input",
+        "numeric"
+      ],
+      "signature": "set_left_most_unset_bit(n)",
+      "source_task_id": "311",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:311"
+    },
+    {
+      "description_preview": "Write a function to find the volume of a cone.",
+      "function_name": "volume_cone",
+      "risk_tags": [],
+      "signature": "volume_cone(r, h)",
+      "source_task_id": "312",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:312"
+    },
+    {
+      "description_preview": "Write a python function to find the highest power of 2 that is less than or equal to n.",
+      "function_name": "highest_Power_of_2",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "highest_Power_of_2(n)",
+      "source_task_id": "388",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:388"
+    },
+    {
+      "description_preview": "Write a function to find the n'th lucas number.",
+      "function_name": "find_lucas",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find_lucas(n)",
+      "source_task_id": "389",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:389"
+    },
+    {
+      "description_preview": "Write a function to apply a given format string to all of the elements in a list.",
+      "function_name": "add_string",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "add_string(list_, string)",
+      "source_task_id": "390",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:390"
+    },
+    {
+      "description_preview": "Write a function to convert more than one list to nested dictionary.",
+      "function_name": "convert_list_dictionary",
+      "risk_tags": [
+        "dictionary",
+        "list"
+      ],
+      "signature": "convert_list_dictionary(l1, l2, l3)",
+      "source_task_id": "391",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:391"
+    },
+    {
+      "description_preview": "Write a function to find the maximum sum possible by using the given equation f(n) = max( (f(n/2) + f(n/3) + f(n/4) + f(n/5)), n).",
+      "function_name": "get_max_sum",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "get_max_sum(n)",
+      "source_task_id": "392",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:392"
+    },
+    {
+      "description_preview": "Write a function to find the list with maximum length.",
+      "function_name": "max_length_list",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "max_length_list(input_list)",
+      "source_task_id": "393",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:393"
+    },
+    {
+      "description_preview": "Write a function to check if given tuple contains no duplicates.",
+      "function_name": "check_distinct",
+      "risk_tags": [],
+      "signature": "check_distinct(test_tup)",
+      "source_task_id": "394",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:394"
+    },
+    {
+      "description_preview": "Write a python function to find the first non-repeated character in a given string.",
+      "function_name": "first_non_repeating_character",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "first_non_repeating_character(str1)",
+      "source_task_id": "395",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:395"
+    },
+    {
+      "description_preview": "Write a function to check whether the given string starts and ends with the same character or not.",
+      "function_name": "check_char",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "check_char(string)",
+      "source_task_id": "396",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:396"
+    },
+    {
+      "description_preview": "Write a function to find the median of three numbers.",
+      "function_name": "median_numbers",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "median_numbers(a, b, c)",
+      "source_task_id": "397",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:397"
+    },
+    {
+      "description_preview": "Write a function to compute the sum of digits of each number of a given list.",
+      "function_name": "sum_of_digits",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "sum_of_digits(nums)",
+      "source_task_id": "398",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:398"
+    },
+    {
+      "description_preview": "Write a function to perform the mathematical bitwise xor operation across the given tuples.",
+      "function_name": "bitwise_xor",
+      "risk_tags": [],
+      "signature": "bitwise_xor(test_tup1, test_tup2)",
+      "source_task_id": "399",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:399"
+    },
+    {
+      "description_preview": "Write a function to find the n largest integers from a given list of numbers, returned in descending order.",
+      "function_name": "heap_queue_largest",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "heap_queue_largest(nums, n)",
+      "source_task_id": "4",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:4"
+    },
+    {
+      "description_preview": "Write a function to extract the number of unique tuples in the given list.",
+      "function_name": "extract_freq",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "extract_freq(test_list)",
+      "source_task_id": "400",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:400"
+    },
+    {
+      "description_preview": "Write a function to perform index wise addition of tuple elements in the given two nested tuples.",
+      "function_name": "add_nested_tuples",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "add_nested_tuples(test_tup1, test_tup2)",
+      "source_task_id": "401",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:401"
+    },
+    {
+      "description_preview": "Write a python function to find the minimum of two numbers.",
+      "function_name": "minimum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "minimum(a, b)",
+      "source_task_id": "404",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:404"
+    },
+    {
+      "description_preview": "Write a function to check whether an element exists within a tuple.",
+      "function_name": "check_tuplex",
+      "risk_tags": [],
+      "signature": "check_tuplex(tuplex, tuple1)",
+      "source_task_id": "405",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:405"
+    },
+    {
+      "description_preview": "Write a python function to find whether the parity of a given number is odd.",
+      "function_name": "find_Parity",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find_Parity(x)",
+      "source_task_id": "406",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:406"
+    },
+    {
+      "description_preview": "Write a function to create the next bigger number by rearranging the digits of a given number.",
+      "function_name": "rearrange_bigger",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "rearrange_bigger(n)",
+      "source_task_id": "407",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:407"
+    },
+    {
+      "description_preview": "Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.",
+      "function_name": "k_smallest_pairs",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "k_smallest_pairs(nums1, nums2, k)",
+      "source_task_id": "408",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:408"
+    },
+    {
+      "description_preview": "Write a function to find the minimum product from the pairs of tuples within a given list.",
+      "function_name": "min_product_tuple",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "min_product_tuple(list1)",
+      "source_task_id": "409",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:409"
+    },
+    {
+      "description_preview": "Write a function to find the minimum value in a given heterogeneous list.",
+      "function_name": "min_val",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "min_val(listval)",
+      "source_task_id": "410",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:410"
+    },
+    {
+      "description_preview": "Write a function to convert the given snake case string to camel case string.",
+      "function_name": "snake_to_camel",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "snake_to_camel(word)",
+      "source_task_id": "411",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:411"
+    },
+    {
+      "description_preview": "Write a python function to remove odd numbers from a given list.",
+      "function_name": "remove_odd",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "remove_odd(l)",
+      "source_task_id": "412",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:412"
+    },
+    {
+      "description_preview": "Write a function to extract the nth element from a given list of tuples.",
+      "function_name": "extract_nth_element",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "extract_nth_element(list1, n)",
+      "source_task_id": "413",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:413"
+    },
+    {
+      "description_preview": "Write a python function to check whether any value in a sequence exists in a sequence or not.",
+      "function_name": "overlapping",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "overlapping(list1, list2)",
+      "source_task_id": "414",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:414"
+    },
+    {
+      "description_preview": "Write a python function to find a pair with highest product from a given array of integers.",
+      "function_name": "max_Product",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "max_Product(arr)",
+      "source_task_id": "415",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:415"
+    },
+    {
+      "description_preview": "Write a function to find common first element in given list of tuple.",
+      "function_name": "group_tuples",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "group_tuples(Input)",
+      "source_task_id": "417",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:417"
+    },
+    {
+      "description_preview": "Write a python function to find the element of a list having maximum length.",
+      "function_name": "Find_Max",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "Find_Max(lst)",
+      "source_task_id": "418",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:418"
+    },
+    {
+      "description_preview": "Write a function to round every number of a given list of numbers and print the total sum multiplied by the length of the list.",
+      "function_name": "round_and_sum",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "round_and_sum(list1)",
+      "source_task_id": "419",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:419"
+    },
+    {
+      "description_preview": "Write a python function to find the cube sum of first n even natural numbers.",
+      "function_name": "cube_Sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "cube_Sum(n)",
+      "source_task_id": "420",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:420"
+    },
+    {
+      "description_preview": "Write a function to concatenate each element of tuple by the delimiter.",
+      "function_name": "concatenate_tuple",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "concatenate_tuple(test_tup)",
+      "source_task_id": "421",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:421"
+    },
+    {
+      "description_preview": "Write a python function to find the average of cubes of first n natural numbers.",
+      "function_name": "find_Average_Of_Cube",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find_Average_Of_Cube(n)",
+      "source_task_id": "422",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:422"
+    },
+    {
+      "description_preview": "Write a function to extract only the rear index element of each string in the given tuple.",
+      "function_name": "extract_rear",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "extract_rear(test_tuple)",
+      "source_task_id": "424",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:424"
+    },
+    {
+      "description_preview": "Write a function to count the number of sublists containing a particular element.",
+      "function_name": "count_element_in_list",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "count_element_in_list(list1, x)",
+      "source_task_id": "425",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:425"
+    },
+    {
+      "description_preview": "Write a function to filter odd numbers.",
+      "function_name": "filter_oddnumbers",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "filter_oddnumbers(nums)",
+      "source_task_id": "426",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:426"
+    },
+    {
+      "description_preview": "Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.",
+      "function_name": "change_date_format",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "change_date_format(dt)",
+      "source_task_id": "427",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:427"
+    },
+    {
+      "description_preview": "Write a function to sort the given array by using shell sort.",
+      "function_name": "shell_sort",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "shell_sort(my_list)",
+      "source_task_id": "428",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:428"
+    },
+    {
+      "description_preview": "Write a function to extract the elementwise and tuples from the given two tuples.",
+      "function_name": "and_tuples",
+      "risk_tags": [],
+      "signature": "and_tuples(test_tup1, test_tup2)",
+      "source_task_id": "429",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:429"
+    },
+    {
+      "description_preview": "Write a function to find the directrix of a parabola.",
+      "function_name": "parabola_directrix",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "parabola_directrix(a, b, c)",
+      "source_task_id": "430",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:430"
+    },
+    {
+      "description_preview": "Write a function that takes two lists and returns true if they have at least one common element.",
+      "function_name": "common_element",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "common_element(list1, list2)",
+      "source_task_id": "431",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:431"
+    },
+    {
+      "description_preview": "Write a function to find the median length of a trapezium.",
+      "function_name": "median_trapezium",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "median_trapezium(base1, base2, height)",
+      "source_task_id": "432",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:432"
+    },
+    {
+      "description_preview": "Write a function to check whether the entered number is greater than the elements of the given array.",
+      "function_name": "check_greater",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "check_greater(arr, number)",
+      "source_task_id": "433",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:433"
+    },
+    {
+      "description_preview": "Write a function that matches a string that has an a followed by one or more b's.",
+      "function_name": "text_match_one",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "text_match_one(text)",
+      "source_task_id": "434",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "description_preview": "Write a python function to find the last digit of a given number.",
+      "function_name": "last_Digit",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "last_Digit(n)",
+      "source_task_id": "435",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:435"
+    },
+    {
+      "description_preview": "Write a python function to return the negative numbers in a list.",
+      "function_name": "neg_nos",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "neg_nos(list1)",
+      "source_task_id": "436",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:436"
+    },
+    {
+      "description_preview": "Write a function to remove odd characters in a string.",
+      "function_name": "remove_odd",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "remove_odd(str1)",
+      "source_task_id": "437",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:437"
+    },
+    {
+      "description_preview": "Write a function to count bidirectional tuple pairs.",
+      "function_name": "count_bidirectional",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "count_bidirectional(test_list)",
+      "source_task_id": "438",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:438"
+    },
+    {
+      "description_preview": "Write a function to join a list of multiple integers into a single integer.",
+      "function_name": "multiple_to_single",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "multiple_to_single(L)",
+      "source_task_id": "439",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:439"
+    },
+    {
+      "description_preview": "Write a function to find the first adverb and their positions in a given sentence.",
+      "function_name": "find_adverb_position",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find_adverb_position(text)",
+      "source_task_id": "440",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:440"
+    },
+    {
+      "description_preview": "Write a function to find the surface area of a cube of a given size.",
+      "function_name": "surfacearea_cube",
+      "risk_tags": [],
+      "signature": "surfacearea_cube(l)",
+      "source_task_id": "441",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:441"
+    },
+    {
+      "description_preview": "Write a function to find the ration of positive numbers in an array of integers.",
+      "function_name": "positive_count",
+      "risk_tags": [
+        "empty_input",
+        "numeric"
+      ],
+      "signature": "positive_count(nums)",
+      "source_task_id": "442",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:442"
+    },
+    {
+      "description_preview": "Write a python function to find the largest negative number from the given list.",
+      "function_name": "largest_neg",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "largest_neg(list1)",
+      "source_task_id": "443",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:443"
+    },
+    {
+      "description_preview": "Write a function to trim each tuple by k in the given tuple list.",
+      "function_name": "trim_tuple",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "trim_tuple(test_list, K)",
+      "source_task_id": "444",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:444"
+    },
+    {
+      "description_preview": "Write a function to perform index wise multiplication of tuple elements in the given two tuples.",
+      "function_name": "index_multiplication",
+      "risk_tags": [],
+      "signature": "index_multiplication(test_tup1, test_tup2)",
+      "source_task_id": "445",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:445"
+    },
+    {
+      "description_preview": "Write a python function to count the occurence of all elements of list in a tuple.",
+      "function_name": "count_Occurrence",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "count_Occurrence(tup, lst)",
+      "source_task_id": "446",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:446"
+    },
+    {
+      "description_preview": "Write a function to find cubes of individual elements in a list.",
+      "function_name": "cube_nums",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "cube_nums(nums)",
+      "source_task_id": "447",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:447"
+    },
+    {
+      "description_preview": "Write a function to calculate the sum of perrin numbers.",
+      "function_name": "cal_sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "cal_sum(n)",
+      "source_task_id": "448",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:448"
+    },
+    {
+      "description_preview": "Write a function to extract specified size of strings from a given list of string values.",
+      "function_name": "extract_string",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "string"
+      ],
+      "signature": "extract_string(str, l)",
+      "source_task_id": "450",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:450"
+    },
+    {
+      "description_preview": "Write a function to remove all whitespaces from the given string.",
+      "function_name": "remove_whitespaces",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "remove_whitespaces(text1)",
+      "source_task_id": "451",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:451"
+    },
+    {
+      "description_preview": "Write a function that gives loss amount on a sale if the given amount has loss else return 0.",
+      "function_name": "loss_amount",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "loss_amount(actual_cost, sale_amount)",
+      "source_task_id": "452",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:452"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of even factors of a number.",
+      "function_name": "sumofFactors",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "sumofFactors(n)",
+      "source_task_id": "453",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:453"
+    },
+    {
+      "description_preview": "Write a function that matches a word containing 'z'.",
+      "function_name": "text_match_wordz",
+      "risk_tags": [],
+      "signature": "text_match_wordz(text)",
+      "source_task_id": "454",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:454"
+    },
+    {
+      "description_preview": "Write a function to check whether the given month number contains 31 days or not.",
+      "function_name": "check_monthnumb_number",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "check_monthnumb_number(monthnum2)",
+      "source_task_id": "455",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:455"
+    },
+    {
+      "description_preview": "Write a function to reverse each string in a given list of string values.",
+      "function_name": "reverse_string_list",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "reverse_string_list(stringlist)",
+      "source_task_id": "456",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:456"
+    },
+    {
+      "description_preview": "Write a python function to find the sublist having minimum length.",
+      "function_name": "Find_Min",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "Find_Min(lst)",
+      "source_task_id": "457",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:457"
+    },
+    {
+      "description_preview": "Write a function to find the area of a rectangle.",
+      "function_name": "rectangle_area",
+      "risk_tags": [],
+      "signature": "rectangle_area(l, b)",
+      "source_task_id": "458",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:458"
+    },
+    {
+      "description_preview": "Write a function to remove uppercase substrings from a given string.",
+      "function_name": "remove_uppercase",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "remove_uppercase(str1)",
+      "source_task_id": "459",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:459"
+    },
+    {
+      "description_preview": "Write a python function to get the first element of each sublist.",
+      "function_name": "Extract",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "Extract(lst)",
+      "source_task_id": "460",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:460"
+    },
+    {
+      "description_preview": "Write a python function to count the upper case characters in a given string.",
+      "function_name": "upper_ctr",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "upper_ctr(str)",
+      "source_task_id": "461",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:461"
+    },
+    {
+      "description_preview": "Write a function to find all possible combinations of the elements of a given list.",
+      "function_name": "combinations_list",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "combinations_list(list1)",
+      "source_task_id": "462",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:462"
+    },
+    {
+      "description_preview": "Write a function to find the maximum product subarray of the given array.",
+      "function_name": "max_subarray_product",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "max_subarray_product(arr)",
+      "source_task_id": "463",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:463"
+    },
+    {
+      "description_preview": "Write a function to check if all values are same in a dictionary.",
+      "function_name": "check_value",
+      "risk_tags": [
+        "dictionary"
+      ],
+      "signature": "check_value(dict, n)",
+      "source_task_id": "464",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:464"
+    },
+    {
+      "description_preview": "Write a function to drop empty items from a given dictionary.",
+      "function_name": "drop_empty",
+      "risk_tags": [
+        "dictionary",
+        "empty_input"
+      ],
+      "signature": "drop_empty(dict1)",
+      "source_task_id": "465",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:465"
+    },
+    {
+      "description_preview": "Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.",
+      "function_name": "max_product",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "max_product(arr)",
+      "source_task_id": "468",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:468"
+    },
+    {
+      "description_preview": "Write a function to find the pairwise addition of the neighboring elements of the given tuple.",
+      "function_name": "add_pairwise",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "add_pairwise(test_tup)",
+      "source_task_id": "470",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:470"
+    },
+    {
+      "description_preview": "Write a python function to find the product of the array multiplication modulo n.",
+      "function_name": "find_remainder",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_remainder(arr, n)",
+      "source_task_id": "471",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:471"
+    },
+    {
+      "description_preview": "Write a python function to check whether the given list contains consecutive numbers or not.",
+      "function_name": "check_Consecutive",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "check_Consecutive(l)",
+      "source_task_id": "472",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:472"
+    },
+    {
+      "description_preview": "Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.",
+      "function_name": "tuple_intersection",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "tuple_intersection(test_list1, test_list2)",
+      "source_task_id": "473",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:473"
+    },
+    {
+      "description_preview": "Write a function to replace characters in a string.",
+      "function_name": "replace_char",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "replace_char(str1, ch, newch)",
+      "source_task_id": "474",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:474"
+    },
+    {
+      "description_preview": "Write a function to sort a dictionary by value.",
+      "function_name": "sort_counter",
+      "risk_tags": [
+        "dictionary"
+      ],
+      "signature": "sort_counter(dict1)",
+      "source_task_id": "475",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:475"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of the largest and smallest value in a given array.",
+      "function_name": "big_sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "big_sum(nums)",
+      "source_task_id": "476",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:476"
+    },
+    {
+      "description_preview": "Write a python function to convert the given string to lower case.",
+      "function_name": "is_lower",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "is_lower(string)",
+      "source_task_id": "477",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:477"
+    },
+    {
+      "description_preview": "Write a function to remove lowercase substrings from a given string.",
+      "function_name": "remove_lowercase",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "remove_lowercase(str1)",
+      "source_task_id": "478",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:478"
+    },
+    {
+      "description_preview": "Write a python function to find the first digit of a given number.",
+      "function_name": "first_Digit",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "first_Digit(n)",
+      "source_task_id": "479",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:479"
+    },
+    {
+      "description_preview": "Write a python function which takes a list of integers and only returns the odd ones.",
+      "function_name": "Split",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "Split(list)",
+      "source_task_id": "554",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:554"
+    },
+    {
+      "description_preview": "Write a python function to find the difference between the sum of cubes of the first n natural numbers and the sum of the first n natural numbers.",
+      "function_name": "difference",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "difference(n)",
+      "source_task_id": "555",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:555"
+    },
+    {
+      "description_preview": "Write a python function to count the number of pairs whose xor value is odd.",
+      "function_name": "find_Odd_Pair",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "find_Odd_Pair(A, N)",
+      "source_task_id": "556",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:556"
+    },
+    {
+      "description_preview": "Write a function to toggle the case of all characters in a string.",
+      "function_name": "toggle_string",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "toggle_string(string)",
+      "source_task_id": "557",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:557"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of the per-digit difference between two integers.",
+      "function_name": "digit_distance_nums",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "digit_distance_nums(n1, n2)",
+      "source_task_id": "558",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:558"
+    },
+    {
+      "description_preview": "Write a function to find the sum of the largest contiguous sublist in the given list.",
+      "function_name": "max_sub_array_sum",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "max_sub_array_sum(a, size)",
+      "source_task_id": "559",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:559"
+    },
+    {
+      "description_preview": "Write a python function to check if a given number is one less than twice its reverse.",
+      "function_name": "rev",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "rev(num)",
+      "source_task_id": "56",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:56"
+    },
+    {
+      "description_preview": "Write a function to find the union of the elements of two given tuples and output them in sorted order.",
+      "function_name": "union_elements",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "union_elements(test_tup1, test_tup2)",
+      "source_task_id": "560",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:560"
+    },
+    {
+      "description_preview": "Write a python function to find the length of the longest sublists.",
+      "function_name": "Find_Max_Length",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "Find_Max_Length(lst)",
+      "source_task_id": "562",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:562"
+    },
+    {
+      "description_preview": "Write a function to extract values between quotation marks from a string.",
+      "function_name": "extract_values",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "extract_values(text)",
+      "source_task_id": "563",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:563"
+    },
+    {
+      "description_preview": "Write a python function which takes a list of integers and counts the number of possible unordered pairs where both elements are unequal.",
+      "function_name": "count_Pairs",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "count_Pairs(arr, n)",
+      "source_task_id": "564",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:564"
+    },
+    {
+      "description_preview": "Write a python function to split a string into characters.",
+      "function_name": "split",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "split(word)",
+      "source_task_id": "565",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:565"
+    },
+    {
+      "description_preview": "Write a function to get the sum of the digits of a non-negative integer.",
+      "function_name": "sum_digits",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "sum_digits(n)",
+      "source_task_id": "566",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:566"
+    },
+    {
+      "description_preview": "Write a function to check whether a specified list is sorted or not.",
+      "function_name": "issort_list",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "issort_list(list1)",
+      "source_task_id": "567",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:567"
+    },
+    {
+      "description_preview": "Write a function to create a list of N empty dictionaries.",
+      "function_name": "empty_list",
+      "risk_tags": [
+        "dictionary",
+        "empty_input",
+        "list"
+      ],
+      "signature": "empty_list(length)",
+      "source_task_id": "568",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:568"
+    },
+    {
+      "description_preview": "Write a function to sort each sublist of strings in a given list of lists.",
+      "function_name": "sort_sublists",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "sort_sublists(list1)",
+      "source_task_id": "569",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:569"
+    },
+    {
+      "description_preview": "Write a python function to find the largest number that can be formed with the given list of digits.",
+      "function_name": "find_Max_Num",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_Max_Num(arr)",
+      "source_task_id": "57",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:57"
+    },
+    {
+      "description_preview": "Write a python function to remove duplicate numbers from a given number of lists.",
+      "function_name": "two_unique_nums",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "two_unique_nums(nums)",
+      "source_task_id": "572",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:572"
+    },
+    {
+      "description_preview": "Write a python function to calculate the product of the unique numbers in a given list.",
+      "function_name": "unique_product",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "unique_product(list_data)",
+      "source_task_id": "573",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:573"
+    },
+    {
+      "description_preview": "Write a function to find the surface area of a cylinder.",
+      "function_name": "surfacearea_cylinder",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "surfacearea_cylinder(r, h)",
+      "source_task_id": "574",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:574"
+    },
+    {
+      "description_preview": "Write a python function to check whether a list is sublist of another or not.",
+      "function_name": "is_Sub_Array",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "is_Sub_Array(A, B)",
+      "source_task_id": "576",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:576"
+    },
+    {
+      "description_preview": "Write a python function to find the last digit in factorial of a given number.",
+      "function_name": "last_Digit_Factorial",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "last_Digit_Factorial(n)",
+      "source_task_id": "577",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:577"
+    },
+    {
+      "description_preview": "Write a function to interleave 3 lists of the same length into a single flat list.",
+      "function_name": "interleave_lists",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "interleave_lists(list1, list2, list3)",
+      "source_task_id": "578",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:578"
+    },
+    {
+      "description_preview": "Write a function to find the dissimilar elements in the given two tuples.",
+      "function_name": "find_dissimilar",
+      "risk_tags": [],
+      "signature": "find_dissimilar(test_tup1, test_tup2)",
+      "source_task_id": "579",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:579"
+    },
+    {
+      "description_preview": "Write a python function to check whether the given two integers have opposite sign or not.",
+      "function_name": "opposite_Signs",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "opposite_Signs(x, y)",
+      "source_task_id": "58",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:58"
+    },
+    {
+      "description_preview": "Write a function to remove uneven elements in the nested mixed tuple.",
+      "function_name": "even_ele",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "even_ele(test_tuple, even_fnc)",
+      "source_task_id": "580",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:580"
+    },
+    {
+      "description_preview": "Write a python function to find the surface area of a square pyramid with a given base edge and height.",
+      "function_name": "surface_Area",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "surface_Area(b, s)",
+      "source_task_id": "581",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:581"
+    },
+    {
+      "description_preview": "Write a function to check if a dictionary is empty",
+      "function_name": "my_dict",
+      "risk_tags": [
+        "dictionary",
+        "empty_input"
+      ],
+      "signature": "my_dict(dict1)",
+      "source_task_id": "582",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:582"
+    },
+    {
+      "description_preview": "Write a function which returns nth catalan number.",
+      "function_name": "catalan_number",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "catalan_number(num)",
+      "source_task_id": "583",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:583"
+    },
+    {
+      "description_preview": "Write a function to find the first adverb ending with ly and its positions in a given string.",
+      "function_name": "find_adverbs",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "find_adverbs(text)",
+      "source_task_id": "584",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:584"
+    },
+    {
+      "description_preview": "Write a function to find the n most expensive items in a given dataset.",
+      "function_name": "expensive_items",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "expensive_items(items, n)",
+      "source_task_id": "585",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:585"
+    },
+    {
+      "description_preview": "Write a python function to split a list at the nth eelment and add the first part to the end.",
+      "function_name": "split_Arr",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "split_Arr(l, n)",
+      "source_task_id": "586",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "description_preview": "Write a function to convert a list to a tuple.",
+      "function_name": "list_tuple",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "list_tuple(listx)",
+      "source_task_id": "587",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:587"
+    },
+    {
+      "description_preview": "Write a python function to find the difference between largest and smallest value in a given list.",
+      "function_name": "big_diff",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "big_diff(nums)",
+      "source_task_id": "588",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:588"
+    },
+    {
+      "description_preview": "Write a function to find perfect squares between two given numbers.",
+      "function_name": "perfect_squares",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "perfect_squares(a, b)",
+      "source_task_id": "589",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:589"
+    },
+    {
+      "description_preview": "Write a function to find the nth octagonal number.",
+      "function_name": "is_octagonal",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_octagonal(n)",
+      "source_task_id": "59",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:59"
+    },
+    {
+      "description_preview": "Write a function to convert polar coordinates to rectangular coordinates.",
+      "function_name": "polar_rect",
+      "risk_tags": [],
+      "signature": "polar_rect(x, y)",
+      "source_task_id": "590",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:590"
+    },
+    {
+      "description_preview": "Write a python function to interchange the first and last elements in a list.",
+      "function_name": "swap_List",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "swap_List(newList)",
+      "source_task_id": "591",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of the product of consecutive binomial co-efficients.",
+      "function_name": "binomial_Coeff",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "binomial_Coeff(n, k)",
+      "source_task_id": "592",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:592"
+    },
+    {
+      "description_preview": "Write a function to remove leading zeroes from an ip address.",
+      "function_name": "removezero_ip",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "removezero_ip(ip)",
+      "source_task_id": "593",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:593"
+    },
+    {
+      "description_preview": "Write a function to find the difference of the first even and first odd number of a given list.",
+      "function_name": "diff_even_odd",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "diff_even_odd(list1)",
+      "source_task_id": "594",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:594"
+    },
+    {
+      "description_preview": "Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.",
+      "function_name": "min_Swaps",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "min_Swaps(str1, str2)",
+      "source_task_id": "595",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:595"
+    },
+    {
+      "description_preview": "Write a function to find the size in bytes of the given tuple.",
+      "function_name": "tuple_size",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "tuple_size(tuple_list)",
+      "source_task_id": "596",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:596"
+    },
+    {
+      "description_preview": "Write a function to find kth element from the given two sorted arrays.",
+      "function_name": "find_kth",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_kth(arr1, arr2, k)",
+      "source_task_id": "597",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:597"
+    },
+    {
+      "description_preview": "Write a function to check whether the given number is armstrong or not.",
+      "function_name": "armstrong_number",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "armstrong_number(number)",
+      "source_task_id": "598",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:598"
+    },
+    {
+      "description_preview": "Write a function to find sum and average of first n natural numbers.",
+      "function_name": "sum_average",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "sum_average(number)",
+      "source_task_id": "599",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:599"
+    },
+    {
+      "description_preview": "Write a python function to check whether the two numbers differ at one bit position only or not.",
+      "function_name": "is_Power_Of_Two",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_Power_Of_Two(x)",
+      "source_task_id": "6",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:6"
+    },
+    {
+      "description_preview": "Write a python function to check whether the given number is even or not.",
+      "function_name": "is_Even",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_Even(n)",
+      "source_task_id": "600",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:600"
+    },
+    {
+      "description_preview": "Write a python function to find the first repeated character in a given string.",
+      "function_name": "first_repeated_char",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "first_repeated_char(str1)",
+      "source_task_id": "602",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:602"
+    },
+    {
+      "description_preview": "Write a function to get all lucid numbers smaller than or equal to a given integer.",
+      "function_name": "get_ludic",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "get_ludic(n)",
+      "source_task_id": "603",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:603"
+    },
+    {
+      "description_preview": "Write a function to reverse words seperated by spaces in a given string.",
+      "function_name": "reverse_words",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "reverse_words(s)",
+      "source_task_id": "604",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:604"
+    },
+    {
+      "description_preview": "Write a function to check if the given integer is a prime number.",
+      "function_name": "prime_num",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "prime_num(num)",
+      "source_task_id": "605",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:605"
+    },
+    {
+      "description_preview": "Write a function to convert degrees to radians.",
+      "function_name": "radian_degree",
+      "risk_tags": [],
+      "signature": "radian_degree(degree)",
+      "source_task_id": "606",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:606"
+    },
+    {
+      "description_preview": "Write a function to search a string for a regex pattern. The function should return the matching subtring, a start index and an end index.",
+      "function_name": "find_literals",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "find_literals(text, pattern)",
+      "source_task_id": "607",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "description_preview": "Write a python function to find nth bell number.",
+      "function_name": "bell_Number",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "bell_Number(n)",
+      "source_task_id": "608",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:608"
+    },
+    {
+      "description_preview": "Write a python function to count the number of substrings with the sum of digits equal to their length.",
+      "function_name": "count_Substrings",
+      "risk_tags": [
+        "dictionary",
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "count_Substrings(s)",
+      "source_task_id": "61",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:61"
+    },
+    {
+      "description_preview": "Write a python function which takes a list and returns a list with the same elements, but the k'th element removed.",
+      "function_name": "remove_kth_element",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "remove_kth_element(list1, L)",
+      "source_task_id": "610",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:610"
+    },
+    {
+      "description_preview": "Write a function which given a matrix represented as a list of lists returns the max of the n'th column.",
+      "function_name": "max_of_nth",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "max_of_nth(test_list, N)",
+      "source_task_id": "611",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:611"
+    },
+    {
+      "description_preview": "Write a python function which takes a list of lists, where each sublist has two elements, and returns a list of two lists where the first list has the first ele",
+      "function_name": "merge",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "merge(lst)",
+      "source_task_id": "612",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:612"
+    },
+    {
+      "description_preview": "Write a function to find the cumulative sum of all the values that are present in the given tuple list.",
+      "function_name": "cummulative_sum",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "cummulative_sum(test_list)",
+      "source_task_id": "614",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:614"
+    },
+    {
+      "description_preview": "Write a function which takes a tuple of tuples and returns the average value for each tuple as a list.",
+      "function_name": "average_tuple",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "average_tuple(nums)",
+      "source_task_id": "615",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:615"
+    },
+    {
+      "description_preview": "Write a function which takes two tuples of the same length and performs the element wise modulo.",
+      "function_name": "tuple_modulo",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "tuple_modulo(test_tup1, test_tup2)",
+      "source_task_id": "616",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:616"
+    },
+    {
+      "description_preview": "Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.",
+      "function_name": "min_Jumps",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "min_Jumps(steps, d)",
+      "source_task_id": "617",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:617"
+    },
+    {
+      "description_preview": "Write a function to divide two lists element wise.",
+      "function_name": "div_list",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "div_list(nums1, nums2)",
+      "source_task_id": "618",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:618"
+    },
+    {
+      "description_preview": "Write a function to move all the numbers to the end of the given string.",
+      "function_name": "move_num",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "move_num(test_str)",
+      "source_task_id": "619",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:619"
+    },
+    {
+      "description_preview": "Write a python function to find smallest number in a list.",
+      "function_name": "smallest_num",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "smallest_num(xs)",
+      "source_task_id": "62",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:62"
+    },
+    {
+      "description_preview": "Write a function to find the size of the largest subset of a list of numbers so that every pair is divisible.",
+      "function_name": "largest_subset",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "largest_subset(a)",
+      "source_task_id": "620",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:620"
+    },
+    {
+      "description_preview": "Write a function to find the median of two sorted lists of same size.",
+      "function_name": "get_median",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "get_median(arr1, arr2, n)",
+      "source_task_id": "622",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:622"
+    },
+    {
+      "description_preview": "Write a function to compute the n-th power of each number in a list.",
+      "function_name": "nth_nums",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "nth_nums(nums, n)",
+      "source_task_id": "623",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:623"
+    },
+    {
+      "description_preview": "Write a python function to convert a given string to uppercase.",
+      "function_name": "is_upper",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "is_upper(string)",
+      "source_task_id": "624",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:624"
+    },
+    {
+      "description_preview": "Write a python function to interchange the first and last element in a given list.",
+      "function_name": "swap_List",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "swap_List(newList)",
+      "source_task_id": "625",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:625"
+    },
+    {
+      "description_preview": "Write a python function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.",
+      "function_name": "triangle_area",
+      "risk_tags": [],
+      "signature": "triangle_area(r)",
+      "source_task_id": "626",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:626"
+    },
+    {
+      "description_preview": "Write a python function to find the smallest missing number from a sorted list of natural numbers.",
+      "function_name": "find_First_Missing",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_First_Missing(array, start=0, end=None)",
+      "source_task_id": "627",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:627"
+    },
+    {
+      "description_preview": "Write a function to replace all spaces in the given string with '%20'.",
+      "function_name": "replace_spaces",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "replace_spaces(string)",
+      "source_task_id": "628",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:628"
+    },
+    {
+      "description_preview": "Write a python function to find even numbers from a list of numbers.",
+      "function_name": "Split",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "Split(list)",
+      "source_task_id": "629",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:629"
+    },
+    {
+      "description_preview": "Write a function to find the maximum difference between available pairs in the given tuple list.",
+      "function_name": "max_difference",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "max_difference(test_list)",
+      "source_task_id": "63",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:63"
+    },
+    {
+      "description_preview": "Write a function to extract all the adjacent coordinates of the given coordinate tuple.",
+      "function_name": "adjac",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "adjac(ele, sub=[])",
+      "source_task_id": "630",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:630"
+    },
+    {
+      "description_preview": "Write a function to replace whitespaces with an underscore and vice versa in a given string.",
+      "function_name": "replace_spaces",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "replace_spaces(text)",
+      "source_task_id": "631",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:631"
+    },
+    {
+      "description_preview": "Write a python function to move all zeroes to the end of the given list.",
+      "function_name": "move_zero",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "move_zero(num_list)",
+      "source_task_id": "632",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of xor of all pairs of numbers in the given list.",
+      "function_name": "pair_xor_Sum",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "pair_xor_Sum(arr, n)",
+      "source_task_id": "633",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:633"
+    },
+    {
+      "description_preview": "Write a function to sort the given list.",
+      "function_name": "heap_sort",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "heap_sort(iterable)",
+      "source_task_id": "635",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:635"
+    },
+    {
+      "description_preview": "Write a function to check whether the given amount has no profit and no loss",
+      "function_name": "noprofit_noloss",
+      "risk_tags": [],
+      "signature": "noprofit_noloss(actual_cost, sale_amount)",
+      "source_task_id": "637",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:637"
+    },
+    {
+      "description_preview": "Write a function to calculate the wind chill index rounded to the next integer given the wind velocity in km/h and a temperature in celsius.",
+      "function_name": "wind_chill",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "wind_chill(v, t)",
+      "source_task_id": "638",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:638"
+    },
+    {
+      "description_preview": "Write a function to sum the length of the names of a given list of names after removing the names that start with a lowercase letter.",
+      "function_name": "sample_nam",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "string"
+      ],
+      "signature": "sample_nam(sample_names)",
+      "source_task_id": "639",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:639"
+    },
+    {
+      "description_preview": "Write a function to sort a list of tuples using the second value of each tuple.",
+      "function_name": "subject_marks",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "subject_marks(subjectmarks)",
+      "source_task_id": "64",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:64"
+    },
+    {
+      "description_preview": "Write a function to remove the parenthesis and what is inbetween them from a string.",
+      "function_name": "remove_parenthesis",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "remove_parenthesis(items)",
+      "source_task_id": "640",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:640"
+    },
+    {
+      "description_preview": "Write a function to find the nth nonagonal number.",
+      "function_name": "is_nonagonal",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_nonagonal(n)",
+      "source_task_id": "641",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:641"
+    },
+    {
+      "description_preview": "Write a function that checks if a strings contains 'z', except at the start and end of the word.",
+      "function_name": "text_match_wordz_middle",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "text_match_wordz_middle(text)",
+      "source_task_id": "643",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:643"
+    },
+    {
+      "description_preview": "Write a python function to reverse an array upto a given position.",
+      "function_name": "reverse_Array_Upto_K",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "reverse_Array_Upto_K(input, k)",
+      "source_task_id": "644",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "description_preview": "Write a function to flatten a list and sum all of its elements.",
+      "function_name": "recursive_list_sum",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "recursive_list_sum(data_list)",
+      "source_task_id": "65",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:65"
+    },
+    {
+      "description_preview": "Write a python function to count the number of positive numbers in a list.",
+      "function_name": "pos_count",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "pos_count(list)",
+      "source_task_id": "66",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:66"
+    },
+    {
+      "description_preview": "Write a function to find the number of ways to partition a set of Bell numbers.",
+      "function_name": "bell_number",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "bell_number(n)",
+      "source_task_id": "67",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:67"
+    },
+    {
+      "description_preview": "Write a python function to check whether the given array is monotonic or not.",
+      "function_name": "is_Monotonic",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "is_Monotonic(A)",
+      "source_task_id": "68",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:68"
+    },
+    {
+      "description_preview": "Write a function to check whether a list contains the given sublist or not.",
+      "function_name": "is_sublist",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "is_sublist(l, s)",
+      "source_task_id": "69",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:69"
+    },
+    {
+      "description_preview": "Write a function to find all words which are at least 4 characters long in a string.",
+      "function_name": "find_char_long",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "find_char_long(text)",
+      "source_task_id": "7",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:7"
+    },
+    {
+      "description_preview": "Write a function to find whether all the given tuples have equal length or not.",
+      "function_name": "find_equal_tuple",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "find_equal_tuple(Input)",
+      "source_task_id": "70",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:70"
+    },
+    {
+      "description_preview": "Write a function to sort a list of elements.",
+      "function_name": "comb_sort",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "comb_sort(nums)",
+      "source_task_id": "71",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:71"
+    },
+    {
+      "description_preview": "Write a python function to check whether the given number can be represented as the difference of two squares or not.",
+      "function_name": "dif_Square",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "dif_Square(n)",
+      "source_task_id": "72",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:72"
+    },
+    {
+      "description_preview": "Write a function to add a dictionary to the tuple. The output should be a tuple.",
+      "function_name": "add_dict_to_tuple",
+      "risk_tags": [
+        "dictionary",
+        "list"
+      ],
+      "signature": "add_dict_to_tuple(test_tup, test_dict)",
+      "source_task_id": "720",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:720"
+    },
+    {
+      "description_preview": "Given a square matrix of size N*N given as a list of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cell",
+      "function_name": "maxAverageOfPath",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "maxAverageOfPath(cost)",
+      "source_task_id": "721",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:721"
+    },
+    {
+      "description_preview": "The input is given as - a dictionary with a student name as a key and a tuple of float (student_height, student_weight) as a value, - minimal height, - minimal ",
+      "function_name": "filter_data",
+      "risk_tags": [
+        "dictionary",
+        "list",
+        "numeric"
+      ],
+      "signature": "filter_data(students, h, w)",
+      "source_task_id": "722",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:722"
+    },
+    {
+      "description_preview": "The input is defined as two lists of the same length. Write a function to count indices where the lists have the same values.",
+      "function_name": "count_same_pair",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "count_same_pair(nums1, nums2)",
+      "source_task_id": "723",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:723"
+    },
+    {
+      "description_preview": "Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.",
+      "function_name": "power_base_sum",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "power_base_sum(base, power)",
+      "source_task_id": "724",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:724"
+    },
+    {
+      "description_preview": "Write a function to extract values between quotation marks \" \" of the given string.",
+      "function_name": "extract_quotation",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "extract_quotation(text1)",
+      "source_task_id": "725",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:725"
+    },
+    {
+      "description_preview": "Write a function that takes as input a tuple of numbers (t_1,...,t_{N+1}) and returns a tuple of length N where the i-th element of the tuple is equal to t_i * ",
+      "function_name": "multiply_elements",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "multiply_elements(test_tup)",
+      "source_task_id": "726",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:726"
+    },
+    {
+      "description_preview": "Write a function takes as input two lists [a_1,...,a_n], [b_1,...,b_n] and returns [a_1+b_1,...,a_n+b_n].",
+      "function_name": "sum_list",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "sum_list(lst1, lst2)",
+      "source_task_id": "728",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:728"
+    },
+    {
+      "description_preview": "Write a function to remove consecutive duplicates of a given list.",
+      "function_name": "consecutive_duplicates",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "consecutive_duplicates(nums)",
+      "source_task_id": "730",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:730"
+    },
+    {
+      "description_preview": "Write a function to find the lateral surface area of a cone given radius r and the height h.",
+      "function_name": "lateralsurface_cone",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "lateralsurface_cone(r, h)",
+      "source_task_id": "731",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:731"
+    },
+    {
+      "description_preview": "Write a function to replace all occurrences of spaces, commas, or dots with a colon.",
+      "function_name": "replace_specialchar",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "replace_specialchar(text)",
+      "source_task_id": "732",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:732"
+    },
+    {
+      "description_preview": "Write a function to find the index of the first occurrence of a given number in a sorted array.",
+      "function_name": "find_first_occurrence",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_first_occurrence(A, x)",
+      "source_task_id": "733",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:733"
+    },
+    {
+      "description_preview": "Write a python function to find sum of products of all possible sublists of a given list. https://www.geeksforgeeks.org/sum-of-products-of-all-possible-subarray",
+      "function_name": "sum_Of_Subarray_Prod",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "sum_Of_Subarray_Prod(arr)",
+      "source_task_id": "734",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:734"
+    },
+    {
+      "description_preview": "Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/",
+      "function_name": "set_middle_bits",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "set_middle_bits(n)",
+      "source_task_id": "735",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:735"
+    },
+    {
+      "description_preview": "Write a function to locate the left insertion point for a specified value in sorted order. https://www.w3resource.com/python-exercises/data-structures-and-algor",
+      "function_name": "left_insertion",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "left_insertion(a, x)",
+      "source_task_id": "736",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:736"
+    },
+    {
+      "description_preview": "Write a function to check whether the given string is starting with a vowel or not using regex.",
+      "function_name": "check_str",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "check_str(string)",
+      "source_task_id": "737",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:737"
+    },
+    {
+      "description_preview": "Write a function to calculate the geometric sum of n-1. https://www.w3resource.com/python-exercises/data-structures-and-algorithms/python-recursion-exercise-9.p",
+      "function_name": "geometric_sum",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "geometric_sum(n)",
+      "source_task_id": "738",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:738"
+    },
+    {
+      "description_preview": "Write a python function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-",
+      "function_name": "find_Index",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "find_Index(n)",
+      "source_task_id": "739",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:739"
+    },
+    {
+      "description_preview": "Write a function to check whether it follows the sequence given in the patterns array.",
+      "function_name": "is_samepatterns",
+      "risk_tags": [
+        "dictionary",
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "is_samepatterns(colors, patterns)",
+      "source_task_id": "74",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:74"
+    },
+    {
+      "description_preview": "Write a function to convert the given tuple to a key-value dictionary using adjacent elements. https://www.geeksforgeeks.org/python-convert-tuple-to-adjacent-pa",
+      "function_name": "tuple_to_dict",
+      "risk_tags": [
+        "dictionary",
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "tuple_to_dict(test_tup)",
+      "source_task_id": "740",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:740"
+    },
+    {
+      "description_preview": "Write a python function to check whether all the characters are same or not.",
+      "function_name": "all_Characters_Same",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "all_Characters_Same(s)",
+      "source_task_id": "741",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:741"
+    },
+    {
+      "description_preview": "Write a function to caluclate the area of a tetrahedron.",
+      "function_name": "area_tetrahedron",
+      "risk_tags": [],
+      "signature": "area_tetrahedron(side)",
+      "source_task_id": "742",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:742"
+    },
+    {
+      "description_preview": "Write a function to rotate a given list by specified number of items to the right direction. https://www.geeksforgeeks.org/python-program-right-rotate-list-n/",
+      "function_name": "rotate_right",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "rotate_right(list, m)",
+      "source_task_id": "743",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "description_preview": "Write a function to check if the given tuple has any none value or not.",
+      "function_name": "check_none",
+      "risk_tags": [],
+      "signature": "check_none(test_tup)",
+      "source_task_id": "744",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:744"
+    },
+    {
+      "description_preview": "Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource",
+      "function_name": "divisible_by_digits",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "divisible_by_digits(startnum, endnum)",
+      "source_task_id": "745",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:745"
+    },
+    {
+      "description_preview": "Write a function to find area of a sector. The function takes the radius and angle as inputs. Function should return None if the angle is larger than 360 degree",
+      "function_name": "sector_area",
+      "risk_tags": [],
+      "signature": "sector_area(r, a)",
+      "source_task_id": "746",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:746"
+    },
+    {
+      "description_preview": "Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-",
+      "function_name": "lcs_of_three",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "lcs_of_three(X, Y, Z)",
+      "source_task_id": "747",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:747"
+    },
+    {
+      "description_preview": "Write a function to put spaces between words starting with capital letters in a given string.",
+      "function_name": "capital_words_spaces",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "capital_words_spaces(str1)",
+      "source_task_id": "748",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:748"
+    },
+    {
+      "description_preview": "Write a function to sort a given list of strings of numbers numerically. https://www.geeksforgeeks.org/python-sort-numeric-strings-in-a-list/",
+      "function_name": "sort_numeric_strings",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "sort_numeric_strings(nums_str)",
+      "source_task_id": "749",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:749"
+    },
+    {
+      "description_preview": "Write a function to find tuples which have all elements divisible by k from the given list of tuples.",
+      "function_name": "find_tuples",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "find_tuples(test_list, K)",
+      "source_task_id": "75",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:75"
+    },
+    {
+      "description_preview": "Write a function to add the given tuple to the given list.",
+      "function_name": "add_tuple",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "add_tuple(test_list, test_tup)",
+      "source_task_id": "750",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:750"
+    },
+    {
+      "description_preview": "Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/",
+      "function_name": "check_min_heap_helper",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "check_min_heap_helper(arr, i)",
+      "source_task_id": "751",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:751"
+    },
+    {
+      "description_preview": "Write a function to find the nth jacobsthal number. https://www.geeksforgeeks.org/jacobsthal-and-jacobsthal-lucas-numbers/ 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 3",
+      "function_name": "jacobsthal_num",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "jacobsthal_num(n)",
+      "source_task_id": "752",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:752"
+    },
+    {
+      "description_preview": "Write a function to find minimum k records from tuple list. https://www.geeksforgeeks.org/python-find-minimum-k-records-from-tuple-list/ - in this case a verbat",
+      "function_name": "min_k",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "min_k(test_list, K)",
+      "source_task_id": "753",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:753"
+    },
+    {
+      "description_preview": "We say that an element is common for lists l1, l2, l3 if it appears in all three lists under the same index. Write a function to find common elements from three",
+      "function_name": "extract_index_list",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "extract_index_list(l1, l2, l3)",
+      "source_task_id": "754",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:754"
+    },
+    {
+      "description_preview": "Write a function to find the second smallest number in a list.",
+      "function_name": "second_smallest",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "second_smallest(numbers)",
+      "source_task_id": "755",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:755"
+    },
+    {
+      "description_preview": "Write a function that matches a string that has an 'a' followed by one or more 'b's. https://www.w3resource.com/python-exercises/re/python-re-exercise-3.php",
+      "function_name": "text_match_zero_one",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "text_match_zero_one(text)",
+      "source_task_id": "756",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:756"
+    },
+    {
+      "description_preview": "Write a function to count the pairs of reverse strings in the given string list. https://www.geeksforgeeks.org/python-program-to-count-the-pairs-of-reverse-stri",
+      "function_name": "count_reverse_pairs",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "count_reverse_pairs(test_list)",
+      "source_task_id": "757",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:757"
+    },
+    {
+      "description_preview": "Write a function to count lists within a list. The function should return a dictionary where every list is converted to a tuple and the value of such tuple is t",
+      "function_name": "unique_sublists",
+      "risk_tags": [
+        "dictionary",
+        "list",
+        "numeric"
+      ],
+      "signature": "unique_sublists(list1)",
+      "source_task_id": "758",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:758"
+    },
+    {
+      "description_preview": "Write a function to check whether a given string is a decimal number with a precision of 2.",
+      "function_name": "is_decimal",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "is_decimal(num)",
+      "source_task_id": "759",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:759"
+    },
+    {
+      "description_preview": "Write a python function to check whether a list of numbers contains only one distinct element or not.",
+      "function_name": "unique_Element",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "unique_Element(arr)",
+      "source_task_id": "760",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:760"
+    },
+    {
+      "description_preview": "Write a function to check whether the given month number contains 30 days or not. Months are given as number from 1 to 12.",
+      "function_name": "check_monthnumber_number",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "check_monthnumber_number(monthnum3)",
+      "source_task_id": "762",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:762"
+    },
+    {
+      "description_preview": "Write a python function to find the minimum difference between any two elements in a given array. https://www.geeksforgeeks.org/find-minimum-difference-pair/",
+      "function_name": "find_min_diff",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "find_min_diff(arr, n)",
+      "source_task_id": "763",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:763"
+    },
+    {
+      "description_preview": "Write a python function to count number of digits in a given string.",
+      "function_name": "number_ctr",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "number_ctr(str)",
+      "source_task_id": "764",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:764"
+    },
+    {
+      "description_preview": "Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/",
+      "function_name": "is_polite",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_polite(n)",
+      "source_task_id": "765",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:765"
+    },
+    {
+      "description_preview": "Write a function to return a list of all pairs of consecutive items in a given list.",
+      "function_name": "pair_wise",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "pair_wise(l1)",
+      "source_task_id": "766",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:766"
+    },
+    {
+      "description_preview": "Write a python function to count the number of pairs whose sum is equal to ‘sum’. The funtion gets as input a list of numbers and the sum,",
+      "function_name": "get_pairs_count",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "get_pairs_count(arr, sum)",
+      "source_task_id": "767",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:767"
+    },
+    {
+      "description_preview": "Write a python function to get the difference between two lists.",
+      "function_name": "Diff",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "Diff(li1, li2)",
+      "source_task_id": "769",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:769"
+    },
+    {
+      "description_preview": "Write a python function to find whether a number is divisible by 11.",
+      "function_name": "is_Diff",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_Diff(n)",
+      "source_task_id": "77",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:77"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of fourth power of first n odd natural numbers.",
+      "function_name": "odd_num_sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "odd_num_sum(n)",
+      "source_task_id": "770",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:770"
+    },
+    {
+      "description_preview": "Write a function to check if the given expression is balanced or not. https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/",
+      "function_name": "check_expression",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "check_expression(exp)",
+      "source_task_id": "771",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:771"
+    },
+    {
+      "description_preview": "Write a function to remove all the words with k length in the given string.",
+      "function_name": "remove_length",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "string"
+      ],
+      "signature": "remove_length(test_str, K)",
+      "source_task_id": "772",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:772"
+    },
+    {
+      "description_preview": "Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.",
+      "function_name": "occurance_substring",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "occurance_substring(text, pattern)",
+      "source_task_id": "773",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:773"
+    },
+    {
+      "description_preview": "Write a python function to check whether every odd index contains odd numbers of a given list.",
+      "function_name": "odd_position",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "odd_position(nums)",
+      "source_task_id": "775",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:775"
+    },
+    {
+      "description_preview": "Write a function to count those characters which have vowels as their neighbors in the given string.",
+      "function_name": "count_vowels",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "count_vowels(test_str)",
+      "source_task_id": "776",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:776"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of non-repeated elements in a given list.",
+      "function_name": "find_sum",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "find_sum(arr)",
+      "source_task_id": "777",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:777"
+    },
+    {
+      "description_preview": "Write a function to pack consecutive duplicates of a given list elements into sublists.",
+      "function_name": "pack_consecutive_duplicates",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "pack_consecutive_duplicates(list1)",
+      "source_task_id": "778",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:778"
+    },
+    {
+      "description_preview": "Write a function to count the number of lists within a list. The function should return a dictionary, where every list is turned to a tuple, and the value of th",
+      "function_name": "unique_sublists",
+      "risk_tags": [
+        "dictionary",
+        "list",
+        "numeric"
+      ],
+      "signature": "unique_sublists(list1)",
+      "source_task_id": "779",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:779"
+    },
+    {
+      "description_preview": "Write a function to find the combinations of sums with tuples in the given tuple list. https://www.geeksforgeeks.org/python-combinations-of-sum-with-tuples-in-t",
+      "function_name": "find_combinations",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "find_combinations(test_list)",
+      "source_task_id": "780",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:780"
+    },
+    {
+      "description_preview": "Write a python function to check whether the count of divisors is even. https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-24.php",
+      "function_name": "count_divisors",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "count_divisors(n)",
+      "source_task_id": "781",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:781"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of all odd length subarrays. https://www.geeksforgeeks.org/sum-of-all-odd-length-subarrays/",
+      "function_name": "odd_length_sum",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "odd_length_sum(arr)",
+      "source_task_id": "782",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:782"
+    },
+    {
+      "description_preview": "Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/",
+      "function_name": "rgb_to_hsv",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "rgb_to_hsv(r, g, b)",
+      "source_task_id": "783",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:783"
+    },
+    {
+      "description_preview": "Write a function to find the product of first even and odd number of a given list.",
+      "function_name": "mul_even_odd",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "mul_even_odd(list1)",
+      "source_task_id": "784",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:784"
+    },
+    {
+      "description_preview": "Write a function to convert tuple string to integer tuple.",
+      "function_name": "tuple_str_int",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "tuple_str_int(test_str)",
+      "source_task_id": "785",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:785"
+    },
+    {
+      "description_preview": "Write a function to locate the right insertion point for a specified value in sorted order.",
+      "function_name": "right_insertion",
+      "risk_tags": [],
+      "signature": "right_insertion(a, x)",
+      "source_task_id": "786",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:786"
+    },
+    {
+      "description_preview": "Write a function that matches a string that has an a followed by three 'b'.",
+      "function_name": "text_match_three",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "text_match_three(text)",
+      "source_task_id": "787",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "description_preview": "Write a function to create a new tuple from the given string and list.",
+      "function_name": "new_tuple",
+      "risk_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "new_tuple(test_list, test_str)",
+      "source_task_id": "788",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:788"
+    },
+    {
+      "description_preview": "Write a python function to check whether the length of the word is odd or not.",
+      "function_name": "word_len",
+      "risk_tags": [
+        "empty_input",
+        "numeric",
+        "string"
+      ],
+      "signature": "word_len(s)",
+      "source_task_id": "79",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:79"
+    },
+    {
+      "description_preview": "Write a python function to check whether every even index contains even numbers of a given list.",
+      "function_name": "even_position",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "even_position(nums)",
+      "source_task_id": "790",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:790"
+    },
+    {
+      "description_preview": "Write a function to remove tuples from the given tuple.",
+      "function_name": "remove_nested",
+      "risk_tags": [
+        "empty_input",
+        "numeric"
+      ],
+      "signature": "remove_nested(test_tup)",
+      "source_task_id": "791",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:791"
+    },
+    {
+      "description_preview": "Write a python function to count the number of lists in a given number of lists.",
+      "function_name": "count_list",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "count_list(input_list)",
+      "source_task_id": "792",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:792"
+    },
+    {
+      "description_preview": "Write a python function to find the last position of an element in a sorted array.",
+      "function_name": "last",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "last(arr, x)",
+      "source_task_id": "793",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:793"
+    },
+    {
+      "description_preview": "Write a function that matches a string that has an 'a' followed by anything, ending in 'b'.",
+      "function_name": "text_starta_endb",
+      "risk_tags": [
+        "string"
+      ],
+      "signature": "text_starta_endb(text)",
+      "source_task_id": "794",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "description_preview": "Write function to find the sum of all items in the given dictionary.",
+      "function_name": "return_sum",
+      "risk_tags": [
+        "dictionary",
+        "numeric"
+      ],
+      "signature": "return_sum(dict)",
+      "source_task_id": "796",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:796"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of all odd natural numbers within the range l and r.",
+      "function_name": "sum_odd",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "sum_odd(n)",
+      "source_task_id": "797",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:797"
+    },
+    {
+      "description_preview": "Write a python function to find the sum of an array.",
+      "function_name": "_sum",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "_sum(arr)",
+      "source_task_id": "798",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:798"
+    },
+    {
+      "description_preview": "Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.",
+      "function_name": "left_rotate",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "left_rotate(n, d)",
+      "source_task_id": "799",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:799"
+    },
+    {
+      "description_preview": "Write a function to find squares of individual elements in a list.",
+      "function_name": "square_nums",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "square_nums(nums)",
+      "source_task_id": "8",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:8"
+    },
+    {
+      "description_preview": "Write a function to find the nth tetrahedral number.",
+      "function_name": "tetrahedral_number",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "tetrahedral_number(n)",
+      "source_task_id": "80",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:80"
+    },
+    {
+      "description_preview": "Write a function to remove all whitespaces from a string.",
+      "function_name": "remove_all_spaces",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "remove_all_spaces(text)",
+      "source_task_id": "800",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:800"
+    },
+    {
+      "description_preview": "Write a python function to count the number of equal numbers from three given integers.",
+      "function_name": "test_three_equal",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "test_three_equal(x, y, z)",
+      "source_task_id": "801",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:801"
+    },
+    {
+      "description_preview": "Write a python function to count the number of rotations required to generate a sorted array. https://www.geeksforgeeks.org/count-of-rotations-required-to-gener",
+      "function_name": "count_rotation",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "count_rotation(arr)",
+      "source_task_id": "802",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:802"
+    },
+    {
+      "description_preview": "Write a function to check whether the given number is a perfect square or not. https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/",
+      "function_name": "is_perfect_square",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "is_perfect_square(n)",
+      "source_task_id": "803",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:803"
+    },
+    {
+      "description_preview": "Write a function to check whether the product of numbers in a list is even or not.",
+      "function_name": "is_product_even",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "is_product_even(arr)",
+      "source_task_id": "804",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:804"
+    },
+    {
+      "description_preview": "Write a function that returns the list in a list of lists whose sum of elements is the highest.",
+      "function_name": "max_sum_list",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "max_sum_list(lists)",
+      "source_task_id": "805",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:805"
+    },
+    {
+      "description_preview": "Write a function to find maximum run of uppercase characters in the given string.",
+      "function_name": "max_run_uppercase",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "max_run_uppercase(test_str)",
+      "source_task_id": "806",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:806"
+    },
+    {
+      "description_preview": "Write a python function to find the first odd number in a given list of numbers.",
+      "function_name": "first_odd",
+      "risk_tags": [
+        "list",
+        "numeric"
+      ],
+      "signature": "first_odd(nums)",
+      "source_task_id": "807",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:807"
+    },
+    {
+      "description_preview": "Write a function to check if the given tuples contain the k or not.",
+      "function_name": "check_K",
+      "risk_tags": [],
+      "signature": "check_K(test_tup, K)",
+      "source_task_id": "808",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:808"
+    },
+    {
+      "description_preview": "Write a function to check if each element of second tuple is smaller than its corresponding element in the first tuple.",
+      "function_name": "check_smaller",
+      "risk_tags": [],
+      "signature": "check_smaller(test_tup1, test_tup2)",
+      "source_task_id": "809",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:809"
+    },
+    {
+      "description_preview": "Write a function to find the volume of a sphere.",
+      "function_name": "volume_sphere",
+      "risk_tags": [],
+      "signature": "volume_sphere(r)",
+      "source_task_id": "82",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:82"
+    },
+    {
+      "description_preview": "Write a python function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.",
+      "function_name": "get_Char",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "get_Char(strr)",
+      "source_task_id": "83",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:83"
+    },
+    {
+      "description_preview": "Write a function to find the nth number in the newman conway sequence.",
+      "function_name": "sequence",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "sequence(n)",
+      "source_task_id": "84",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:84"
+    },
+    {
+      "description_preview": "Write a function to find the surface area of a sphere.",
+      "function_name": "surfacearea_sphere",
+      "risk_tags": [],
+      "signature": "surfacearea_sphere(r)",
+      "source_task_id": "85",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:85"
+    },
+    {
+      "description_preview": "Write a function to find nth centered hexagonal number.",
+      "function_name": "centered_hexagonal_number",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "centered_hexagonal_number(n)",
+      "source_task_id": "86",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:86"
+    },
+    {
+      "description_preview": "Write a function to merge three dictionaries into a single dictionary.",
+      "function_name": "merge_dictionaries_three",
+      "risk_tags": [
+        "dictionary"
+      ],
+      "signature": "merge_dictionaries_three(dict1, dict2, dict3)",
+      "source_task_id": "87",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:87"
+    },
+    {
+      "description_preview": "Write a function to get the frequency of all the elements in a list, returned as a dictionary.",
+      "function_name": "freq_count",
+      "risk_tags": [
+        "dictionary",
+        "list"
+      ],
+      "signature": "freq_count(list1)",
+      "source_task_id": "88",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:88"
+    },
+    {
+      "description_preview": "Write a function to find the closest smaller number than n.",
+      "function_name": "closest_num",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "closest_num(N)",
+      "source_task_id": "89",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:89"
+    },
+    {
+      "description_preview": "Write a python function to find the minimum number of rotations (greater than 0) required to get the same string.",
+      "function_name": "find_Rotations",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "find_Rotations(str)",
+      "source_task_id": "9",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:9"
+    },
+    {
+      "description_preview": "Write a python function to find the length of the longest word.",
+      "function_name": "len_log",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "len_log(list1)",
+      "source_task_id": "90",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:90"
+    },
+    {
+      "description_preview": "Write a function to check if a string is present as a substring in a given list of string values.",
+      "function_name": "find_substring",
+      "risk_tags": [
+        "list",
+        "string"
+      ],
+      "signature": "find_substring(str1, sub_str)",
+      "source_task_id": "91",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:91"
+    },
+    {
+      "description_preview": "Write a function to check whether the given number is undulating or not.",
+      "function_name": "is_undulating",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric",
+        "string"
+      ],
+      "signature": "is_undulating(n)",
+      "source_task_id": "92",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:92"
+    },
+    {
+      "description_preview": "Write a function to calculate the value of 'a' to the power 'b'.",
+      "function_name": "power",
+      "risk_tags": [
+        "numeric"
+      ],
+      "signature": "power(a, b)",
+      "source_task_id": "93",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:93"
+    },
+    {
+      "description_preview": "Given a list of tuples, write a function that returns the first value of the tuple with the smallest second value.",
+      "function_name": "index_minimum",
+      "risk_tags": [
+        "list"
+      ],
+      "signature": "index_minimum(test_list)",
+      "source_task_id": "94",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:94"
+    },
+    {
+      "description_preview": "Write a python function to find the length of the smallest list in a list of lists.",
+      "function_name": "Find_Min_Length",
+      "risk_tags": [
+        "empty_input",
+        "list"
+      ],
+      "signature": "Find_Min_Length(lst)",
+      "source_task_id": "95",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:95"
+    },
+    {
+      "description_preview": "Write a python function to find the number of divisors of a given integer.",
+      "function_name": "divisor",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "divisor(n)",
+      "source_task_id": "96",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:96"
+    },
+    {
+      "description_preview": "Write a function to find frequency of each element in a flattened list of lists, returned in a dictionary.",
+      "function_name": "frequency_lists",
+      "risk_tags": [
+        "dictionary",
+        "list",
+        "numeric"
+      ],
+      "signature": "frequency_lists(list1)",
+      "source_task_id": "97",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:97"
+    },
+    {
+      "description_preview": "Write a function to multiply all the numbers in a list and divide with the length of the list.",
+      "function_name": "multiply_num",
+      "risk_tags": [
+        "empty_input",
+        "list",
+        "numeric"
+      ],
+      "signature": "multiply_num(numbers)",
+      "source_task_id": "98",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:98"
+    },
+    {
+      "description_preview": "Write a function to convert the given decimal number to its binary equivalent, represented as a string with no leading zeros.",
+      "function_name": "decimal_to_binary",
+      "risk_tags": [
+        "numeric",
+        "string"
+      ],
+      "signature": "decimal_to_binary(n)",
+      "source_task_id": "99",
+      "status": "candidate_pending_human_review",
+      "task_id": "mbpp_sanitized:99"
+    }
+  ],
+  "recommended_groups": [
+    {
+      "label": "list",
+      "status": "recommendation_pending_human_review",
+      "task_ids": [
+        "mbpp_sanitized:100",
+        "mbpp_sanitized:104",
+        "mbpp_sanitized:105",
+        "mbpp_sanitized:106",
+        "mbpp_sanitized:108"
+      ]
+    },
+    {
+      "label": "empty_input",
+      "status": "recommendation_pending_human_review",
+      "task_ids": [
+        "mbpp_sanitized:101",
+        "mbpp_sanitized:11",
+        "mbpp_sanitized:113",
+        "mbpp_sanitized:119",
+        "mbpp_sanitized:123"
+      ]
+    }
+  ],
+  "selection_notice": "This manifest is not a final experiment selection. Human review is required.",
+  "source_dataset": "mbpp_sanitized"
+}

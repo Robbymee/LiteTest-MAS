@@ -27,7 +27,7 @@ The usable openEuler external path was later identified as `eth1` on Hyper-V Def
 
 ## Not completed
 
-- MBPP formal-data import (no official raw data has been downloaded or supplied) and public-dataset related-task selection.
+- Human review and confirmation of the MBPP candidate groups; no final public-dataset task selection has been made.
 - Ten-round public-dataset batch execution.
 - HumanEval adaptation and validation.
 - Formal Evaluator, real LLM backend, SharedMemory, and StateVector.
@@ -35,4 +35,11 @@ The usable openEuler external path was later identified as `eth1` on Hyper-V Def
 
 ## Current unique next step
 
-M2.1: place real MBPP-Sanitized data in the local raw directory, use the offline importer to generate unified task data and candidate metadata, then have human review select two related groups of five tasks each.
+M2.1: review `datasets/manifests/mbpp_candidate_list.json` and manually confirm two related groups of five tasks each; do not treat recommendations as final selection until approved.
+
+## Dataset import progress (2026-07-11)
+
+- The authorized local MBPP-Sanitized source was downloaded from Google Research. The offline importer converted 427 of 427 records into ignored local JSONL output with zero import errors.
+- `datasets/manifests/mbpp_candidate_list.json` contains 427 candidate records and two deterministic five-task recommendations. It includes only agent-visible static metadata and is explicitly pending human review.
+- The authorized local HumanEval+ v0.1.10 release was downloaded from EvalPlus. The local importer converted 164 of 164 records into ignored local JSONL output with zero import errors.
+- The original downloaded files and generated processed task JSONL files remain Git-ignored. No official test or input field appears in the MBPP candidate manifest.
