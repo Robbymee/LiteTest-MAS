@@ -41,7 +41,7 @@ def execute_task(root,item,out,backend):
  from generation.candidate_parser import parse_candidate
  from sandbox.private_eval import evaluate_private
  from llm.models import LLMMessage,LLMRequest
- sel,data=(root/x for x in DATA[item['dataset']]);tasks=approved_tasks(sel,data,0)+approved_tasks(sel,data,1);task=next(x for x in tasks if x.task_id==item['task_id']);private={x['task_id']:x for x in map(json.loads,data.read_text().splitlines())}[task.task_id]
+ sel,data=(root/x for x in DATA[item['dataset']]);tasks=approved_tasks(sel,data,0)+approved_tasks(sel,data,1);task=next(x for x in tasks if x.task_id==item['task_id']);private={x['task_id']:x for x in map(json.loads,data.read_text(encoding='utf8').splitlines())}[task.task_id]
  key=task_key(item);pub=Path(out)/'public'/'tasks';priv=Path(out)/'private';atomic_write(pub/(key+'.json'),{'status':'running','task_id':task.task_id})
  system,prompt,ph=build_prompt(task);r=backend.generate(LLMRequest((LLMMessage('system',system),LLMMessage('user',prompt)),backend.model,temperature=0,max_tokens=256,seed=item['seed']));art=parse_candidate(r.text,task.function_name);priv.mkdir(parents=True,exist_ok=True);(priv/(key+'.txt')).write_text(r.text,encoding='utf8')
  ev=evaluate_private(private,art['candidate_code']) if art['parse_status']=='success' else {'task_success':False,'official_test_count':None,'error_category':art['parse_status']}
