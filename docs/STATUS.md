@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M7: compact StateVector completed on 2026-07-11. M8 is the next stage and has not started.
+M8: restricted subprocess sandbox and quality baseline completed on 2026-07-11. M9 is the next stage and has not started.
 
 ## Completed
 
@@ -18,6 +18,7 @@ M7: compact StateVector completed on 2026-07-11. M8 is the next stage and has no
 - M5 added a local-only Transformers OpenAI-compatible service for Windows, plus a safe real-LLM validation runner. Windows hosted public model name `local-llama31-8b-instruct` at `172.24.64.1:8000`; openEuler used only HTTP and did not load model weights. `/health`, curl chat, and an `OpenAICompatibleBackend` request succeeded. The fixed MBPP first task and HumanEval+ first task pilot both succeeded (2/2); the first approved group of each dataset completed in fixed order (10/10, failed 0, skipped 0). Records are `real_llm_pilot` with conclusion scope `integration_and_runtime_validation_only`, not a formal ablation.
 - M6 added bounded in-process FIFO SharedMemory with explicit disabled state, dataset/group/seed instance scope, byte and record limits, stable trace serialization, reset, metrics, and prohibited-content rejection. Revalidated openEuler pilot completed 2/2 and fixed MBPP group 5/5; group trace recorded 5 writes, 4 hits, and 10 reuse references. Scope is `real_llm_memory_pilot`, not a formal ablation.
 - M7 added a schema-validated StateVector with fixed enums, stable JSON, 512-byte cap, prohibited-content rejection, and optional real Runner metrics. openEuler HumanEval+ pilot 1/1 and fixed group 5/5 succeeded with 5 valid vectors (1685 bytes) and no invalid vectors; scope is `real_llm_state_pilot`.
+- M8 added a fixed candidate-code extractor and isolated `python -I` subprocess evaluator with timeout and bounded output accounting. Synthetic normal, syntax-error, and infinite-loop fixtures passed on both platforms. It is explicitly a restricted subprocess sandbox, not a container security boundary.
 
 ## M5 validation
 
@@ -50,4 +51,4 @@ M7: compact StateVector completed on 2026-07-11. M8 is the next stage and has no
 
 ## Current unique next step
 
-M8: implement sandboxed quality evaluation; it has not started.
+M9: preregister and run the fixed four-group formal ablation; it has not started.

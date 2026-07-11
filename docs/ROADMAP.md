@@ -14,7 +14,7 @@
 | M5 | Real LLM integration | Completed; Windows-hosted local Transformers service and openEuler pilot accepted on 2026-07-11 |
 | M6 | SharedMemory | Completed; bounded group-isolated pilot accepted on 2026-07-11 |
 | M7 | StateVector | Completed; compact protocol-state pilot accepted on 2026-07-11 |
-| M8 | Test-quality evaluation and sandbox | Pending |
+| M8 | Test-quality evaluation and sandbox | Completed; restricted subprocess validation accepted on 2026-07-11 |
 | M9 | Four formal ablation experiments | Pending |
 | M10 | Dashboard, deployment docs, experiment report, final openEuler acceptance | Pending |
 
