@@ -40,6 +40,11 @@ def rebuild_inventory(public_root, planned):
  ids=[x.get('task_id') for x in final];planned_ids=[x['task_id'] for x in planned]
  payload={'schema_version':'1.0','planned_count':len(planned),'final_count':len(final),'final_task_ids':ids,'missing_task_ids':[x for x in planned_ids if x not in ids],'duplicate_task_ids':sorted({x for x in ids if ids.count(x)>1}),'status_counts':{s:sum(x.get('final_status')==s for x in final) for s in sorted({x.get('final_status') for x in final})},'task_result_checksums':{p.stem:hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}
  payload['inventory_sha256']=stable_hash(payload);return payload
+
+def write_inventory(public_root, planned):
+ inventory=rebuild_inventory(public_root,planned)
+ atomic_write(Path(public_root)/'inventory.json',inventory)
+ return inventory
 def group_config(group):
  if group not in GROUPS:raise ValueError('unknown experiment group')
  state,memory=GROUPS[group]
