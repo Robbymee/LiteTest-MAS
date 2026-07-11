@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M2.5: dual-dataset Text/Protocol Mock sequence validation completed on 2026-07-11. M3 is the next stage and has not started.
+M3: read-only Mock-scope evaluation completed on 2026-07-11. M4 is the next stage and has not started.
 
 ## Completed
 
@@ -13,6 +13,7 @@ M2.5: dual-dataset Text/Protocol Mock sequence validation completed on 2026-07-1
 - M2.3 HumanEval+ v0.1.10 local import: 164/164 records convert with zero errors on Windows and openEuler. Agent-visible context excludes canonical solutions, reference implementations, official tests, contracts, and test inputs.
 - M2.4 delegated technical review generated 164 safe candidates, three double-group review schemes, and a fixed two-group selection with ten unique tasks. The manifests contain only public metadata and no hidden evaluation fields.
 - M2.5 used the shared deterministic Runner for MBPP-Sanitized Text/Protocol and HumanEval+ Text/Protocol. Each of the four combinations completed 10/10 rounds with zero failures and skips on Windows and openEuler; no formal performance claim is made.
+- M3 strict evaluation discovered all four Mock combinations and produced JSON, CSV, and Markdown aggregates. Windows and openEuler evaluation input hash `3b0e32b25ff312f77fb85408dd069bf29bcd556c3255b0d584b4309bb0034215` and deterministic evaluation hash `acbc2de8c44feb0dad4d2b5cc9b4fd5177277f09ac0ddca443d032261ffcb42d` match after POSIX path normalization. Actual/estimated tokens, timing, memory, SharedMemory, and StateVector remain explicitly unavailable.
 
 ## M2.2 validation
 
@@ -36,4 +37,4 @@ M2.5: dual-dataset Text/Protocol Mock sequence validation completed on 2026-07-1
 
 ## Current unique next step
 
-M3: add an independent evaluator that aggregates raw sequence records into reproducible Mock-scope Text/Protocol comparison summaries without changing Agent behavior.
+M4: implement a unified LLM Backend abstraction with Mock and OpenAI-compatible backends, without running a real model experiment.

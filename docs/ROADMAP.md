@@ -9,7 +9,7 @@
 | M2.3 | HumanEval adaptation | Completed; Windows and openEuler import validation accepted on 2026-07-11 |
 | M2.4 | HumanEval related-task selection | Completed; delegated technical review accepted on 2026-07-11 |
 | M2.5 | openEuler Text/Protocol batch validation for both datasets | Completed; four Mock sequence combinations accepted on 2026-07-11 |
-| M3 | Evaluator and formal Text/Protocol comparison | Pending |
+| M3 | Evaluator and Mock-scope Text/Protocol aggregation | Completed; Windows/openEuler accepted on 2026-07-11 |
 | M4 | Unified LLM backend abstraction | Pending |
 | M5 | Real LLM integration | Pending |
 | M6 | SharedMemory | Pending |
