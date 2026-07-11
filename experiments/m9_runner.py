@@ -31,3 +31,19 @@ def completed_tasks(output_root):
  if not tasks.exists():return set()
  return {p.stem for p in tasks.glob('*.json') if json.loads(p.read_text()).get('status','').startswith(('completed','failed_'))}
 def task_key(item):return stable_hash(item)[:24]
+def group_config(group):
+ if group not in GROUPS:raise ValueError('unknown experiment group')
+ state,memory=GROUPS[group]
+ return {'mode':'text' if group=='G1' else 'protocol','state_enabled':state,'memory_enabled':memory}
+def execute_task(root,item,out,backend):
+ from runtime.real_llm_runner import approved_tasks
+ from generation.candidate_prompt import build_prompt
+ from generation.candidate_parser import parse_candidate
+ from sandbox.private_eval import evaluate_private
+ from llm.models import LLMMessage,LLMRequest
+ sel,data=(root/x for x in DATA[item['dataset']]);tasks=approved_tasks(sel,data,0)+approved_tasks(sel,data,1);task=next(x for x in tasks if x.task_id==item['task_id']);private={x['task_id']:x for x in map(json.loads,data.read_text().splitlines())}[task.task_id]
+ key=task_key(item);pub=Path(out)/'public'/'tasks';priv=Path(out)/'private';atomic_write(pub/(key+'.json'),{'status':'running','task_id':task.task_id})
+ system,prompt,ph=build_prompt(task);r=backend.generate(LLMRequest((LLMMessage('system',system),LLMMessage('user',prompt)),backend.model,temperature=0,max_tokens=256,seed=item['seed']));art=parse_candidate(r.text,task.function_name);priv.mkdir(parents=True,exist_ok=True);(priv/(key+'.txt')).write_text(r.text,encoding='utf8')
+ ev=evaluate_private(private,art['candidate_code']) if art['parse_status']=='success' else {'task_success':False,'official_test_count':None,'error_category':art['parse_status']}
+ record={'schema_version':'1.0',**item,**group_config(item['experiment_group']),'prompt_version':'candidate_codegen_v1','prompt_sha256':ph,'parser_version':art['parser_version'],'candidate_sha256':art.get('candidate_sha256'),'parse_status':art['parse_status'],'request_ids':[r.request_id],'request_count':1,'finish_reason':r.finish_reason,'prompt_tokens':r.usage.prompt_tokens,'completion_tokens':r.usage.completion_tokens,'total_tokens':r.usage.total_tokens,'usage_available':r.usage.usage_available,'latency_seconds':r.latency_seconds,'retry_count':0,'result_scope':'formal_real_llm_ablation','final_status':'completed_success' if ev['task_success'] else 'failed_official_tests',**{k:v for k,v in ev.items() if k not in {'task_id','dataset','candidate_sha256'}},'infrastructure_failure':False,'model_quality_failure':not ev['task_success']}
+ atomic_write(pub/(key+'.json'),record);return record
