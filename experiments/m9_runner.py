@@ -1,0 +1,22 @@
+from __future__ import annotations
+import hashlib,json,os
+from pathlib import Path
+GROUPS={'G1':(False,False),'G2':(False,False),'G3':(True,False),'G4':(True,True)}
+DATA={'mbpp':('datasets/manifests/mbpp_selected_groups.json','datasets/processed/mbpp/mbpp_tasks.jsonl'),'humaneval':('datasets/manifests/humaneval_selected_groups.json','datasets/processed/humaneval_plus/humaneval_plus_tasks.jsonl')}
+def stable_hash(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+def plan(root):
+ from runtime.real_llm_runner import approved_tasks
+ out=[]
+ for seed in (42,43,44):
+  order=[['G1','G2','G3','G4'],['G2','G3','G4','G1'],['G3','G4','G1','G2']][seed-42]
+  for group in order:
+   for dataset in ('mbpp','humaneval'):
+    s,t=(root/x for x in DATA[dataset]);
+    for task in approved_tasks(s,t,0)+approved_tasks(s,t,1):out.append({'seed':seed,'experiment_group':group,'dataset':dataset,'task_id':task.task_id,'group_id':task.group_id})
+ return out
+def atomic_write(path,value):
+ path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(value,sort_keys=True)+'\n',encoding='utf8');os.replace(tmp,path)
+def verify_inventory(root,spec):
+ p=plan(root)
+ if len(p)!=240 or len({(x['seed'],x['experiment_group'],x['dataset'],x['task_id']) for x in p})!=240:raise ValueError('invalid formal plan')
+ return p
