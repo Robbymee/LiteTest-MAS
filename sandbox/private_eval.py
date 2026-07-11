@@ -14,7 +14,9 @@ def evaluate_private(task, code, timeout=10):
   h=hidden[0]; tests=[h['test']]
  with tempfile.TemporaryDirectory() as d:
   open(os.path.join(d,'candidate.py'),'w',encoding='utf8').write(code)
-  testcode='from candidate import *\n'+ '\n'.join(tests)
+  # python -I intentionally removes the working directory from import search.
+  # Load candidate only inside this isolated child, then execute private tests.
+  testcode="exec(compile(open('candidate.py', encoding='utf8').read(), 'candidate.py', 'exec'))\n"+ '\n'.join(tests)
   open(os.path.join(d,'private_tests.py'),'w',encoding='utf8').write(testcode)
   start=time.perf_counter()
   try:p=subprocess.run([sys.executable,'-I','private_tests.py'],cwd=d,capture_output=True,timeout=timeout,shell=False,env={'PYTHONIOENCODING':'utf-8'})
