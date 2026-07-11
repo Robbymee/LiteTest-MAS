@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M5: Windows-hosted local Llama 3.1 8B Instruct integration completed on 2026-07-11. M6 has not started.
+M6: bounded SharedMemory completed on 2026-07-11. M7 is the next stage and has not started.
 
 ## Completed
 
@@ -16,6 +16,7 @@ M5: Windows-hosted local Llama 3.1 8B Instruct integration completed on 2026-07-
 - M3 strict evaluation discovered all four Mock combinations and produced JSON, CSV, and Markdown aggregates. Windows and openEuler evaluation input hash `3b0e32b25ff312f77fb85408dd069bf29bcd556c3255b0d584b4309bb0034215` and deterministic evaluation hash `acbc2de8c44feb0dad4d2b5cc9b4fd5177277f09ac0ddca443d032261ffcb42d` match after POSIX path normalization. Actual/estimated tokens, timing, memory, SharedMemory, and StateVector remain explicitly unavailable.
 - M4 added deterministic MockLLMBackend and standard-library OpenAI-compatible Backend abstractions. Windows/openEuler backend tests `3 passed` and full tests `32 passed`; OpenAI-compatible dry-run redacted the placeholder key and made no network request.
 - M5 added a local-only Transformers OpenAI-compatible service for Windows, plus a safe real-LLM validation runner. Windows hosted public model name `local-llama31-8b-instruct` at `172.24.64.1:8000`; openEuler used only HTTP and did not load model weights. `/health`, curl chat, and an `OpenAICompatibleBackend` request succeeded. The fixed MBPP first task and HumanEval+ first task pilot both succeeded (2/2); the first approved group of each dataset completed in fixed order (10/10, failed 0, skipped 0). Records are `real_llm_pilot` with conclusion scope `integration_and_runtime_validation_only`, not a formal ablation.
+- M6 added bounded in-process FIFO SharedMemory with explicit disabled state, dataset/group/seed instance scope, byte and record limits, stable trace serialization, reset, metrics, and prohibited-content rejection. Revalidated openEuler pilot completed 2/2 and fixed MBPP group 5/5; group trace recorded 5 writes, 4 hits, and 10 reuse references. Scope is `real_llm_memory_pilot`, not a formal ablation.
 
 ## M5 validation
 
@@ -48,4 +49,4 @@ M5: Windows-hosted local Llama 3.1 8B Instruct integration completed on 2026-07-
 
 ## Current unique next step
 
-M6: implement bounded, closable, group-isolated SharedMemory; it has not started.
+M7: implement compact StateVector integrated with Protocol; it has not started.
