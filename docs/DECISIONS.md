@@ -19,3 +19,6 @@
 17. The automatic `list` and `empty_input` recommendations were rejected: risk-tag co-occurrence does not establish a continuous-task relationship.
 18. The fixed, human-approved primary MBPP sequences are `mbpp_list_rearrangement` (591, 644, 586, 743, 632) and `mbpp_regex_string_matching` (434, 285, 787, 794, 607), in the recorded order.
 19. Selection requires semantic relatedness, reusable testing knowledge, non-duplicative tasks, and coverage of distinct task types. The selection manifest never exposes hidden tests and must not be changed in response to experiment outcomes.
+20. M2.2 runs the two approved groups as isolated sequences of five rounds each, for ten rounds per mode. Manifest order is authoritative; Text and Protocol share the task plan but do not share Agent instances, messages, or state.
+21. M2.2 has no cross-task long-term memory or StateVector. Hidden tests remain outside agent views and all `runs/` artifacts remain untracked.
+22. `task_plan_sha256` hashes the mode-independent task plan; `deterministic_result_sha256` hashes only safe logical round results and excludes timestamps, absolute paths, and machine-specific fields. M2.2 is a runner-completeness stage, not formal metric comparison.

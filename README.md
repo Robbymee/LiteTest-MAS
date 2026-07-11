@@ -74,3 +74,14 @@ python scripts/import_mbpp.py --input datasets/raw/mbpp/mbpp_sanitized.json --ou
 ```
 
 The importer writes a unified JSONL task file and import reports. It stores official dataset tests as `hidden_reference_tests`, but its explicitly allowlisted `agent_visible_context` never contains those tests. Generated outputs and raw dataset files are ignored by Git; the synthetic fixtures are for importer tests only and are not experiment data.
+
+## M2.2 MBPP Sequence Runner
+
+After importing local MBPP-Sanitized data, create a deterministic dry-run plan or execute the human-approved two-group sequence with the existing Mock Agent:
+
+```bash
+python scripts/run_mbpp_sequences.py --mode both --seed 42 --dry-run
+python scripts/run_mbpp_sequences.py --mode text --seed 42 --output-dir runs/m2_2/text_seed42
+```
+
+Outputs are isolated under `runs/m2_2/` and are not committed. This runner validates task sequencing only; it is not a formal Text/Protocol comparison.
