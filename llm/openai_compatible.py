@@ -9,13 +9,15 @@ class OpenAICompatibleBackend:
         self.base_url=base_url.rstrip('/');self.model=model;self.api_key=api_key;self.timeout_seconds=timeout_seconds;self.max_retries=max_retries;self.retry_backoff_seconds=retry_backoff_seconds;self.transport=transport
     def generate(self,request):
         payload={"model":request.model,"messages":[{"role":m.role,"content":m.content} for m in request.messages],"temperature":request.temperature,"max_tokens":request.max_tokens,"stream":False}
+        if request.seed is not None: payload["seed"]=request.seed
         for attempt in range(self.max_retries+1):
             try:
+                started=time.perf_counter()
                 raw=self.transport(payload) if self.transport else self._http(payload)
                 choice=raw.get("choices",[None])[0] or {};content=(choice.get("message") or {}).get("content")
                 if not isinstance(content,str): raise LLMInvalidResponseError("response content missing",request.request_id)
                 u=raw.get("usage") or {}; available=bool(u); usage=LLMUsage(u.get("prompt_tokens"),u.get("completion_tokens"),u.get("total_tokens"),available,"provider" if available else "unavailable")
-                return LLMResponse(content,raw.get("model",self.model),self.backend_name,request.request_id,choice.get("finish_reason"),usage,None,True,None)
+                return LLMResponse(content,raw.get("model",self.model),self.backend_name,request.request_id,choice.get("finish_reason"),usage,time.perf_counter()-started,True,None)
             except LLMBackendError as e:
                 if not e.retryable or attempt>=self.max_retries: raise
                 if self.retry_backoff_seconds: time.sleep(self.retry_backoff_seconds*(attempt+1))

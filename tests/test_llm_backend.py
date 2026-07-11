@@ -14,7 +14,8 @@ def test_request_and_mock_are_deterministic():
  with pytest.raises(Exception): LLMRequest((), 'x')
 def test_openai_parse_and_errors_without_network():
  backend=OpenAICompatibleBackend('http://example.invalid/v1','model',transport=lambda _: {'model':'model','choices':[{'message':{'content':'ok'},'finish_reason':'stop'}]})
- assert backend.generate(LLMRequest((LLMMessage('user','x'),),'model')).text=='ok'
+ response=backend.generate(LLMRequest((LLMMessage('user','x'),),'model'))
+ assert response.text=='ok' and response.latency_seconds is not None
  with pytest.raises(LLMConfigurationError): create_backend(LLMConfig(backend='unknown'))
 def test_cli_mock_and_openai_dry_run_redact():
  cmd=[sys.executable,'scripts/check_llm_backend.py','--backend','mock','--model','mock-deterministic-v1','--prompt','Return exactly OK.','--seed','42']
