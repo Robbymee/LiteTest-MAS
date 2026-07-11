@@ -31,6 +31,15 @@ def completed_tasks(output_root):
  if not tasks.exists():return set()
  return {p.stem for p in tasks.glob('*.json') if json.loads(p.read_text()).get('status','').startswith(('completed','failed_'))}
 def task_key(item):return stable_hash(item)[:24]
+def rebuild_inventory(public_root, planned):
+ files=list(Path(public_root).glob('tasks/*.json')); rows=[]
+ for path in files:
+  try: rows.append(json.loads(path.read_text(encoding='utf8')))
+  except json.JSONDecodeError: continue
+ final=[x for x in rows if x.get('final_status','').startswith(('completed_','failed_'))]
+ ids=[x.get('task_id') for x in final];planned_ids=[x['task_id'] for x in planned]
+ payload={'schema_version':'1.0','planned_count':len(planned),'final_count':len(final),'final_task_ids':ids,'missing_task_ids':[x for x in planned_ids if x not in ids],'duplicate_task_ids':sorted({x for x in ids if ids.count(x)>1}),'status_counts':{s:sum(x.get('final_status')==s for x in final) for s in sorted({x.get('final_status') for x in final})},'task_result_checksums':{p.stem:hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}
+ payload['inventory_sha256']=stable_hash(payload);return payload
 def group_config(group):
  if group not in GROUPS:raise ValueError('unknown experiment group')
  state,memory=GROUPS[group]
