@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M2.3: HumanEval+ unified-task import and leakage isolation completed on 2026-07-11. M2.4 is the next stage and has not started.
+M2.4: HumanEval+ related-task selection completed on 2026-07-11. M2.5 is the next stage and has not started.
 
 ## Completed
 
@@ -11,6 +11,7 @@ M2.3: HumanEval+ unified-task import and leakage isolation completed on 2026-07-
 - M2.1 human-approved MBPP selection manifest: two ordered groups of five tasks, ten tasks total.
 - M2.2 deterministic Mock-Agent sequence runner for the fixed manifest. Text and Protocol each complete two isolated sequences of five rounds, ten rounds per mode.
 - M2.3 HumanEval+ v0.1.10 local import: 164/164 records convert with zero errors on Windows and openEuler. Agent-visible context excludes canonical solutions, reference implementations, official tests, contracts, and test inputs.
+- M2.4 delegated technical review generated 164 safe candidates, three double-group review schemes, and a fixed two-group selection with ten unique tasks. The manifests contain only public metadata and no hidden evaluation fields.
 
 ## M2.2 validation
 
@@ -34,4 +35,4 @@ M2.3: HumanEval+ unified-task import and leakage isolation completed on 2026-07-
 
 ## Current unique next step
 
-M2.4: generate HumanEval candidate metadata and have human review select related tasks; do not run a HumanEval batch experiment yet.
+M2.5: validate Text and Protocol sequence runs for both fixed datasets on Windows and openEuler using the existing Mock Agent; do not make formal performance claims.

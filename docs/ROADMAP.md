@@ -7,7 +7,7 @@
 | M2.1 | Generate MBPP candidate list and manually select two related groups | Completed; two human-approved groups of five recorded |
 | M2.2 | MBPP continuous-task batch execution | Completed; Windows and openEuler accepted on 2026-07-11 |
 | M2.3 | HumanEval adaptation | Completed; Windows and openEuler import validation accepted on 2026-07-11 |
-| M2.4 | HumanEval related-task selection | Pending |
+| M2.4 | HumanEval related-task selection | Completed; delegated technical review accepted on 2026-07-11 |
 | M2.5 | openEuler Text/Protocol batch validation for both datasets | Pending |
 | M3 | Evaluator and formal Text/Protocol comparison | Pending |
 | M4 | Unified LLM backend abstraction | Pending |
