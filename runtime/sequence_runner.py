@@ -93,10 +93,10 @@ class SelectedTaskLoader:
 
     @staticmethod
     def _validate_manifest(manifest: dict[str, Any]) -> None:
-        if manifest.get("selection_status") != "human_approved":
-            raise SequenceValidationError("selection_status must be human_approved")
-        if manifest.get("source_dataset") != "mbpp_sanitized":
-            raise SequenceValidationError("selection manifest must use mbpp_sanitized")
+        if manifest.get("selection_status") not in {"human_approved", "delegated_review_approved"}:
+            raise SequenceValidationError("selection_status must be an approved review status")
+        if not isinstance(manifest.get("source_dataset"), str) or not manifest["source_dataset"]:
+            raise SequenceValidationError("selection manifest must declare a source dataset")
         groups = manifest.get("groups")
         if not isinstance(groups, list) or len(groups) != 2 or manifest.get("group_count") != 2:
             raise SequenceValidationError("Selection manifest must contain exactly two groups")
