@@ -1,0 +1,6 @@
+# Windows-only dependencies for scripts/serve_local_transformers.py.
+# They are intentionally separate from core/openEuler requirements.
+transformers>=4.44,<5
+torch
+fastapi>=0.110,<1
+uvicorn>=0.27,<1

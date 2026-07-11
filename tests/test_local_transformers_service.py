@@ -1,6 +1,7 @@
 import importlib.util,sys
 from pathlib import Path
-from fastapi.testclient import TestClient
+import pytest
+TestClient=pytest.importorskip('fastapi.testclient').TestClient
 ROOT=Path(__file__).resolve().parents[1];spec=importlib.util.spec_from_file_location('service',ROOT/'scripts/serve_local_transformers.py');m=importlib.util.module_from_spec(spec);sys.modules[spec.name]=m;spec.loader.exec_module(m)
 class Tok:
  def apply_chat_template(self,x,**k):return 'prompt'
