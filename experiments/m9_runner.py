@@ -20,3 +20,14 @@ def verify_inventory(root,spec):
  p=plan(root)
  if len(p)!=240 or len({(x['seed'],x['experiment_group'],x['dataset'],x['task_id']) for x in p})!=240:raise ValueError('invalid formal plan')
  return p
+def validate_spec(spec, implementation_sha):
+ required={'schema_version','experiment_id','result_scope','conclusion_scope','implementation_git_sha','model','backend','seeds','experiment_groups','generation_parameters','parser_version','sandbox_version'}
+ missing=required-set(spec)
+ if missing:raise ValueError('spec missing '+','.join(sorted(missing)))
+ if spec['implementation_git_sha']!=implementation_sha:raise ValueError('implementation git SHA mismatch')
+ if spec['result_scope']!='formal_real_llm_ablation' or spec['seeds']!=[42,43,44] or spec['experiment_groups']!=['G1','G2','G3','G4']:raise ValueError('invalid frozen experiment configuration')
+def completed_tasks(output_root):
+ tasks=Path(output_root)/'tasks'
+ if not tasks.exists():return set()
+ return {p.stem for p in tasks.glob('*.json') if json.loads(p.read_text()).get('status','').startswith(('completed','failed_'))}
+def task_key(item):return stable_hash(item)[:24]
