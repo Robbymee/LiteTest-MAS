@@ -1,0 +1,100 @@
+{
+  "group_count": 2,
+  "groups": [
+    {
+      "expected_function_names": [
+        "flip_case",
+        "concatenate",
+        "filter_by_prefix",
+        "remove_vowels",
+        "anti_shuffle"
+      ],
+      "group_id": "humaneval_string_transforms",
+      "leakage_audit": "metadata and prompt summaries only; no hidden tests or solutions",
+      "order": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "possible_confounders": [
+        "mock-agent validation only",
+        "public prompt complexity differs across tasks"
+      ],
+      "recommendation_score": 0.93,
+      "relation_rationale": "String transformation progresses from case conversion and concatenation to prefix filtering, vowel removal, and character ordering.",
+      "reusable_knowledge": [
+        "empty strings",
+        "case handling",
+        "substring boundaries",
+        "stable output ordering"
+      ],
+      "sequence_order": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "task_ids": [
+        "humaneval_plus:HumanEval/27",
+        "humaneval_plus:HumanEval/28",
+        "humaneval_plus:HumanEval/29",
+        "humaneval_plus:HumanEval/51",
+        "humaneval_plus:HumanEval/86"
+      ]
+    },
+    {
+      "expected_function_names": [
+        "remove_duplicates",
+        "sort_third",
+        "sort_even",
+        "strange_sort_list",
+        "sorted_list_sum"
+      ],
+      "group_id": "humaneval_list_transforms",
+      "leakage_audit": "metadata and prompt summaries only; no hidden tests or solutions",
+      "order": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "possible_confounders": [
+        "mock-agent validation only",
+        "public prompt complexity differs across tasks"
+      ],
+      "recommendation_score": 0.9,
+      "relation_rationale": "List transformation progresses through deduplication and selective sorting to ordering and filtered aggregation.",
+      "reusable_knowledge": [
+        "empty lists",
+        "duplicates",
+        "index parity",
+        "ordering invariants"
+      ],
+      "sequence_order": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "task_ids": [
+        "humaneval_plus:HumanEval/26",
+        "humaneval_plus:HumanEval/33",
+        "humaneval_plus:HumanEval/37",
+        "humaneval_plus:HumanEval/70",
+        "humaneval_plus:HumanEval/149"
+      ]
+    }
+  ],
+  "reviewer_type": "codex_technical_review_under_user_authorization",
+  "schema_version": "1.0",
+  "selection_purpose": "related_task_sequence_experiment",
+  "selection_status": "delegated_review_approved",
+  "source_dataset": "humaneval_plus",
+  "tasks_per_group": 5,
+  "total_tasks": 10
+}

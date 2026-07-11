@@ -1,0 +1,2816 @@
+{
+  "candidate_count": 164,
+  "candidates": [
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "has_close_elements",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "has_close_elements(numbers: List[float], threshold: float)",
+      "source_task_id": "HumanEval/0",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/0"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "separate_paren_groups",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "separate_paren_groups(paren_string: str)",
+      "source_task_id": "HumanEval/1",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/1"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "make_palindrome",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "make_palindrome(string: str)",
+      "source_task_id": "HumanEval/10",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/10"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "make_a_pile",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "make_a_pile(n)",
+      "source_task_id": "HumanEval/100",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/100"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "words_string",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "words_string(s)",
+      "source_task_id": "HumanEval/101",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/101"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "choose_num",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "choose_num(x, y)",
+      "source_task_id": "HumanEval/102",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/102"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "rounded_avg",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "rounded_avg(n, m)",
+      "source_task_id": "HumanEval/103",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/103"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "unique_digits",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "unique_digits(x)",
+      "source_task_id": "HumanEval/104",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/104"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "by_length",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "by_length(arr)",
+      "source_task_id": "HumanEval/105",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/105"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "f",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "f(n)",
+      "source_task_id": "HumanEval/106",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/106"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "even_odd_palindrome",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "even_odd_palindrome(n)",
+      "source_task_id": "HumanEval/107",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/107"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "count_nums",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "count_nums(arr)",
+      "source_task_id": "HumanEval/108",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/108"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "move_one_ball",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "move_one_ball(arr)",
+      "source_task_id": "HumanEval/109",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/109"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "string_xor",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "string_xor(a: str, b: str)",
+      "source_task_id": "HumanEval/11",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/11"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "exchange",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "exchange(lst1, lst2)",
+      "source_task_id": "HumanEval/110",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/110"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "histogram",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "histogram(test)",
+      "source_task_id": "HumanEval/111",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/111"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "reverse_delete",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "reverse_delete(s, c)",
+      "source_task_id": "HumanEval/112",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/112"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "odd_count",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "odd_count(lst)",
+      "source_task_id": "HumanEval/113",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/113"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "minSubArraySum",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "minSubArraySum(nums)",
+      "source_task_id": "HumanEval/114",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/114"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "max_fill",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "import math",
+      "risk_tags": [],
+      "signature": "max_fill(grid, capacity)",
+      "source_task_id": "HumanEval/115",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/115"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sort_array",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sort_array(arr)",
+      "source_task_id": "HumanEval/116",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/116"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "select_words",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "select_words(s, n)",
+      "source_task_id": "HumanEval/117",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/117"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "get_closest_vowel",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "get_closest_vowel(word)",
+      "source_task_id": "HumanEval/118",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/118"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "predicate",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "match_parens",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "match_parens(lst)",
+      "source_task_id": "HumanEval/119",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/119"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "longest",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List, Optional",
+      "risk_tags": [],
+      "signature": "longest(strings: List[str])",
+      "source_task_id": "HumanEval/12",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/12"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "maximum",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "maximum(arr, k)",
+      "source_task_id": "HumanEval/120",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/120"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "solution",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "solution(lst)",
+      "source_task_id": "HumanEval/121",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/121"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "add_elements",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "add_elements(arr, k)",
+      "source_task_id": "HumanEval/122",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/122"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "get_odd_collatz",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "get_odd_collatz(n)",
+      "source_task_id": "HumanEval/123",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/123"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "valid_date",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "valid_date(date)",
+      "source_task_id": "HumanEval/124",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/124"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "split_words",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "split_words(txt)",
+      "source_task_id": "HumanEval/125",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/125"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_sorted",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_sorted(lst)",
+      "source_task_id": "HumanEval/126",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/126"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "intersection",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "intersection(interval1, interval2)",
+      "source_task_id": "HumanEval/127",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/127"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "prod_signs",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "prod_signs(arr)",
+      "source_task_id": "HumanEval/128",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/128"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "minPath",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "minPath(grid, k)",
+      "source_task_id": "HumanEval/129",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/129"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "greatest_common_divisor",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "greatest_common_divisor(a: int, b: int)",
+      "source_task_id": "HumanEval/13",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/13"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "tri",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "tri(n)",
+      "source_task_id": "HumanEval/130",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/130"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "digits",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "digits(n)",
+      "source_task_id": "HumanEval/131",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/131"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_nested",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_nested(string)",
+      "source_task_id": "HumanEval/132",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/132"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sum_squares",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sum_squares(lst)",
+      "source_task_id": "HumanEval/133",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/133"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "check_if_last_char_is_a_letter",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "check_if_last_char_is_a_letter(txt)",
+      "source_task_id": "HumanEval/134",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/134"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "can_arrange",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "can_arrange(arr)",
+      "source_task_id": "HumanEval/135",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/135"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "largest_smallest_integers",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "largest_smallest_integers(lst)",
+      "source_task_id": "HumanEval/136",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/136"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "compare_one",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "compare_one(a, b)",
+      "source_task_id": "HumanEval/137",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/137"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_equal_to_sum_even",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_equal_to_sum_even(n)",
+      "source_task_id": "HumanEval/138",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/138"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "special_factorial",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "special_factorial(n)",
+      "source_task_id": "HumanEval/139",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/139"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "all_prefixes",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "all_prefixes(string: str)",
+      "source_task_id": "HumanEval/14",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/14"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "fix_spaces",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "fix_spaces(text)",
+      "source_task_id": "HumanEval/140",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/140"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "file_name_check",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "file_name_check(file_name)",
+      "source_task_id": "HumanEval/141",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/141"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sum_squares",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sum_squares(lst)",
+      "source_task_id": "HumanEval/142",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/142"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "words_in_sentence",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "words_in_sentence(sentence)",
+      "source_task_id": "HumanEval/143",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/143"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "simplify",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "simplify(x, n)",
+      "source_task_id": "HumanEval/144",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/144"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "order_by_points",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "order_by_points(nums)",
+      "source_task_id": "HumanEval/145",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/145"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "specialFilter",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "specialFilter(nums)",
+      "source_task_id": "HumanEval/146",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/146"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "get_max_triples",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "get_max_triples(n)",
+      "source_task_id": "HumanEval/147",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/147"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "predicate",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "bf",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "bf(planet1, planet2)",
+      "source_task_id": "HumanEval/148",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/148"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sorted_list_sum",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sorted_list_sum(lst)",
+      "source_task_id": "HumanEval/149",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "string_sequence",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "string_sequence(n: int)",
+      "source_task_id": "HumanEval/15",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/15"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "x_or_y",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "x_or_y(n, x, y)",
+      "source_task_id": "HumanEval/150",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/150"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "double_the_difference",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "double_the_difference(lst)",
+      "source_task_id": "HumanEval/151",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/151"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "compare",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "compare(game, guess)",
+      "source_task_id": "HumanEval/152",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/152"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "Strongest_Extension",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "Strongest_Extension(class_name, extensions)",
+      "source_task_id": "HumanEval/153",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/153"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "cycpattern_check",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "cycpattern_check(a, b)",
+      "source_task_id": "HumanEval/154",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/154"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "even_odd_count",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "even_odd_count(num)",
+      "source_task_id": "HumanEval/155",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/155"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "int_to_mini_roman",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "int_to_mini_roman(number)",
+      "source_task_id": "HumanEval/156",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/156"
+    },
+    {
+      "algorithm_domain_tags": [],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "right_angle_triangle",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "right_angle_triangle(a, b, c)",
+      "source_task_id": "HumanEval/157",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/157"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "find_max",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "find_max(words)",
+      "source_task_id": "HumanEval/158",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/158"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "eat",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "eat(number, need, remaining)",
+      "source_task_id": "HumanEval/159",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/159"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "count_distinct_characters",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "count_distinct_characters(string: str)",
+      "source_task_id": "HumanEval/16",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/16"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "do_algebra",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "do_algebra(operator, operand)",
+      "source_task_id": "HumanEval/160",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/160"
+    },
+    {
+      "algorithm_domain_tags": [
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "solve",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "solve(s)",
+      "source_task_id": "HumanEval/161",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/161"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "string_to_md5",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "string_to_md5(text)",
+      "source_task_id": "HumanEval/162",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/162"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "generate_integers",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "generate_integers(a, b)",
+      "source_task_id": "HumanEval/163",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/163"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "parse_music",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "parse_music(music_string: str)",
+      "source_task_id": "HumanEval/17",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/17"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "how_many_times",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "how_many_times(string: str, substring: str)",
+      "source_task_id": "HumanEval/18",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/18"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sort_numbers",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "sort_numbers(numbers: str)",
+      "source_task_id": "HumanEval/19",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/19"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "truncate_number",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "truncate_number(number: float)",
+      "source_task_id": "HumanEval/2",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/2"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "find_closest_elements",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List, Tuple",
+      "risk_tags": [],
+      "signature": "find_closest_elements(numbers: List[float])",
+      "source_task_id": "HumanEval/20",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/20"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "rescale_to_unit",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "rescale_to_unit(numbers: List[float])",
+      "source_task_id": "HumanEval/21",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/21"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "filter_integers",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List, Any",
+      "risk_tags": [],
+      "signature": "filter_integers(values: List[Any])",
+      "source_task_id": "HumanEval/22",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/22"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "strlen",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "strlen(string: str)",
+      "source_task_id": "HumanEval/23",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/23"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "largest_divisor",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "largest_divisor(n: int)",
+      "source_task_id": "HumanEval/24",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/24"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "factorize",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "factorize(n: int)",
+      "source_task_id": "HumanEval/25",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/25"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "remove_duplicates",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "remove_duplicates(numbers: List[int])",
+      "source_task_id": "HumanEval/26",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "flip_case",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "flip_case(string: str)",
+      "source_task_id": "HumanEval/27",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "concatenate",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "concatenate(strings: List[str])",
+      "source_task_id": "HumanEval/28",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "filter_by_prefix",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "filter_by_prefix(strings: List[str], prefix: str)",
+      "source_task_id": "HumanEval/29",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "below_zero",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "below_zero(operations: List[int])",
+      "source_task_id": "HumanEval/3",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/3"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "get_positive",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "get_positive(l: list)",
+      "source_task_id": "HumanEval/30",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/30"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_prime",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_prime(n)",
+      "source_task_id": "HumanEval/31",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/31"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "find_zero",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "import math",
+      "risk_tags": [],
+      "signature": "find_zero(xs: list)",
+      "source_task_id": "HumanEval/32",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/32"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sort_third",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sort_third(l: list)",
+      "source_task_id": "HumanEval/33",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "unique",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "unique(l: list)",
+      "source_task_id": "HumanEval/34",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/34"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "max_element",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "max_element(l: list)",
+      "source_task_id": "HumanEval/35",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/35"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "fizz_buzz",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "fizz_buzz(n: int)",
+      "source_task_id": "HumanEval/36",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/36"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sort_even",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sort_even(l: list)",
+      "source_task_id": "HumanEval/37",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "decode_cyclic",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "decode_cyclic(s: str)",
+      "source_task_id": "HumanEval/38",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/38"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "prime_fib",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "prime_fib(n: int)",
+      "source_task_id": "HumanEval/39",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/39"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "mean_absolute_deviation",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "mean_absolute_deviation(numbers: List[float])",
+      "source_task_id": "HumanEval/4",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/4"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "triples_sum_to_zero",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "triples_sum_to_zero(l: list)",
+      "source_task_id": "HumanEval/40",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/40"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "car_race_collision",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "car_race_collision(n: int)",
+      "source_task_id": "HumanEval/41",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/41"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "incr_list",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "incr_list(l: list)",
+      "source_task_id": "HumanEval/42",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/42"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "pairs_sum_to_zero",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "pairs_sum_to_zero(l)",
+      "source_task_id": "HumanEval/43",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/43"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "change_base",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "change_base(x: int, base: int)",
+      "source_task_id": "HumanEval/44",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/44"
+    },
+    {
+      "algorithm_domain_tags": [],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "triangle_area",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "triangle_area(a, h)",
+      "source_task_id": "HumanEval/45",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/45"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "fib4",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "fib4(n: int)",
+      "source_task_id": "HumanEval/46",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/46"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "median",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "median(l: list)",
+      "source_task_id": "HumanEval/47",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/47"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_palindrome",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_palindrome(text: str)",
+      "source_task_id": "HumanEval/48",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/48"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "modp",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "modp(n: int, p: int)",
+      "source_task_id": "HumanEval/49",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/49"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "intersperse",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "intersperse(numbers: List[int], delimeter: int)",
+      "source_task_id": "HumanEval/5",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/5"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "decode_shift",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "decode_shift(s: str)",
+      "source_task_id": "HumanEval/50",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/50"
+    },
+    {
+      "algorithm_domain_tags": [
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "remove_vowels",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "remove_vowels(text)",
+      "source_task_id": "HumanEval/51",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "below_threshold",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "below_threshold(l: list, t: int)",
+      "source_task_id": "HumanEval/52",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/52"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "add",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "add(x: int, y: int)",
+      "source_task_id": "HumanEval/53",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/53"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "same_chars",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "same_chars(s0: str, s1: str)",
+      "source_task_id": "HumanEval/54",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/54"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "fib",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "fib(n: int)",
+      "source_task_id": "HumanEval/55",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/55"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "correct_bracketing",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "correct_bracketing(brackets: str)",
+      "source_task_id": "HumanEval/56",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/56"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "monotonic",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "monotonic(l: list)",
+      "source_task_id": "HumanEval/57",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/57"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "common",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "common(l1: list, l2: list)",
+      "source_task_id": "HumanEval/58",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/58"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "largest_prime_factor",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "largest_prime_factor(n: int)",
+      "source_task_id": "HumanEval/59",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/59"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "parse_nested_parens",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "parse_nested_parens(paren_string: str)",
+      "source_task_id": "HumanEval/6",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/6"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sum_to_n",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sum_to_n(n: int)",
+      "source_task_id": "HumanEval/60",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/60"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "correct_bracketing",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "correct_bracketing(brackets: str)",
+      "source_task_id": "HumanEval/61",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/61"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "derivative",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "derivative(xs: list)",
+      "source_task_id": "HumanEval/62",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/62"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "fibfib",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "fibfib(n: int)",
+      "source_task_id": "HumanEval/63",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/63"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "vowels_count",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "vowels_count(s)",
+      "source_task_id": "HumanEval/64",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/64"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "circular_shift",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "circular_shift(x, shift)",
+      "source_task_id": "HumanEval/65",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/65"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "digitSum",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "digitSum(s)",
+      "source_task_id": "HumanEval/66",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/66"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "fruit_distribution",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "fruit_distribution(s, n)",
+      "source_task_id": "HumanEval/67",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/67"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "pluck",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "pluck(arr)",
+      "source_task_id": "HumanEval/68",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/68"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "search",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "search(lst)",
+      "source_task_id": "HumanEval/69",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/69"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "filter_by_substring",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List",
+      "risk_tags": [],
+      "signature": "filter_by_substring(strings: List[str], substring: str)",
+      "source_task_id": "HumanEval/7",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/7"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "strange_sort_list",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "strange_sort_list(lst)",
+      "source_task_id": "HumanEval/70",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "triangle_area",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "triangle_area(a, b, c)",
+      "source_task_id": "HumanEval/71",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/71"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "will_it_fly",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "will_it_fly(q, w)",
+      "source_task_id": "HumanEval/72",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/72"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "smallest_change",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "smallest_change(arr)",
+      "source_task_id": "HumanEval/73",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/73"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "total_match",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "total_match(lst1, lst2)",
+      "source_task_id": "HumanEval/74",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/74"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_multiply_prime",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_multiply_prime(a)",
+      "source_task_id": "HumanEval/75",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/75"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_simple_power",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_simple_power(x, n)",
+      "source_task_id": "HumanEval/76",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/76"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "iscube",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "iscube(a)",
+      "source_task_id": "HumanEval/77",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/77"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "hex_key",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "hex_key(num)",
+      "source_task_id": "HumanEval/78",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/78"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "decimal_to_binary",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "decimal_to_binary(decimal)",
+      "source_task_id": "HumanEval/79",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/79"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sum_product",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List, Tuple",
+      "risk_tags": [],
+      "signature": "sum_product(numbers: List[int])",
+      "source_task_id": "HumanEval/8",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/8"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_happy",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_happy(s)",
+      "source_task_id": "HumanEval/80",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/80"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "numerical_letter_grade",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "numerical_letter_grade(grades)",
+      "source_task_id": "HumanEval/81",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/81"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "prime_length",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "prime_length(string)",
+      "source_task_id": "HumanEval/82",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/82"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "starts_one_ends",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "starts_one_ends(n)",
+      "source_task_id": "HumanEval/83",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/83"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "solve",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "solve(N)",
+      "source_task_id": "HumanEval/84",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/84"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "add",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "add(lst)",
+      "source_task_id": "HumanEval/85",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/85"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "sequence_transform",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "anti_shuffle",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "anti_shuffle(s)",
+      "source_task_id": "HumanEval/86",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "get_row",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "get_row(lst, x)",
+      "source_task_id": "HumanEval/87",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/87"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric",
+        "sequence_transform"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "sort_array",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "sort_array(array)",
+      "source_task_id": "HumanEval/88",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/88"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "encrypt",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "encrypt(s)",
+      "source_task_id": "HumanEval/89",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/89"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "rolling_max",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "from typing import List, Tuple",
+      "risk_tags": [],
+      "signature": "rolling_max(numbers: List[int])",
+      "source_task_id": "HumanEval/9",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/9"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "next_smallest",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "next_smallest(lst)",
+      "source_task_id": "HumanEval/90",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/90"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "is_bored",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "is_bored(S)",
+      "source_task_id": "HumanEval/91",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/91"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "any_int",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "any_int(x, y, z)",
+      "source_task_id": "HumanEval/92",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/92"
+    },
+    {
+      "algorithm_domain_tags": [
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "encode",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "encode(message)",
+      "source_task_id": "HumanEval/93",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/93"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "skjkasdkd",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "skjkasdkd(lst)",
+      "source_task_id": "HumanEval/94",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/94"
+    },
+    {
+      "algorithm_domain_tags": [
+        "predicate",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "check_dict_case",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "check_dict_case(dict)",
+      "source_task_id": "HumanEval/95",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/95"
+    },
+    {
+      "algorithm_domain_tags": [
+        "list",
+        "numeric"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "count_up_to",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "count_up_to(n)",
+      "source_task_id": "HumanEval/96",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/96"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "predicate"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "multiply",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "multiply(a, b)",
+      "source_task_id": "HumanEval/97",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/97"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "count_upper",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "count_upper(s)",
+      "source_task_id": "HumanEval/98",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/98"
+    },
+    {
+      "algorithm_domain_tags": [
+        "numeric",
+        "string"
+      ],
+      "complexity_tag": "unspecified_public_metadata",
+      "function_name": "closest_integer",
+      "input_output_shape_tags": [
+        "function_call"
+      ],
+      "prompt_summary": "",
+      "risk_tags": [],
+      "signature": "closest_integer(value)",
+      "source_task_id": "HumanEval/99",
+      "status": "candidate_pending_delegated_review",
+      "task_id": "humaneval_plus:HumanEval/99"
+    }
+  ],
+  "source_dataset": "humaneval_plus"
+}
