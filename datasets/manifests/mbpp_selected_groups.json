@@ -1,0 +1,79 @@
+{
+  "group_count": 2,
+  "groups": [
+    {
+      "expected_function_names": [
+        "swap_List",
+        "reverse_Array_Upto_K",
+        "split_Arr",
+        "rotate_right",
+        "move_zero"
+      ],
+      "group_id": "mbpp_list_rearrangement",
+      "label": "List rearrangement and positional operations",
+      "relation_rationale": "From endpoint exchange and prefix reversal through left and right rotation to stable zero movement, the sequence progressively broadens list rearrangement behavior.",
+      "reusable_knowledge": [
+        "empty and single-element lists",
+        "index and slice boundaries",
+        "rotation count modulo length",
+        "in-place mutation versus returned objects",
+        "relative-order preservation",
+        "out-of-range parameters"
+      ],
+      "sequence_order": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "task_ids": [
+        "mbpp_sanitized:591",
+        "mbpp_sanitized:644",
+        "mbpp_sanitized:586",
+        "mbpp_sanitized:743",
+        "mbpp_sanitized:632"
+      ]
+    },
+    {
+      "expected_function_names": [
+        "text_match_one",
+        "text_match_two_three",
+        "text_match_three",
+        "text_starta_endb",
+        "find_literals"
+      ],
+      "group_id": "mbpp_regex_string_matching",
+      "label": "Regex and string pattern matching",
+      "relation_rationale": "The sequence moves from simple quantifiers to range and fixed quantifiers, boundary matching, and general regex search with position reporting.",
+      "reusable_knowledge": [
+        "regular-expression quantifiers",
+        "start and end anchors",
+        "search, match, and fullmatch differences",
+        "empty strings",
+        "no-match behavior",
+        "match spans and indices"
+      ],
+      "sequence_order": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "task_ids": [
+        "mbpp_sanitized:434",
+        "mbpp_sanitized:285",
+        "mbpp_sanitized:787",
+        "mbpp_sanitized:794",
+        "mbpp_sanitized:607"
+      ]
+    }
+  ],
+  "schema_version": "1.0",
+  "selection_purpose": "related_task_sequence_experiment",
+  "selection_status": "human_approved",
+  "source_dataset": "mbpp_sanitized",
+  "tasks_per_group": 5,
+  "total_tasks": 10
+}

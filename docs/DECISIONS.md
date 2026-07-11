@@ -16,3 +16,6 @@
 14. The M2.0 importer stores official tests separately and constructs agent-visible context from an explicit allowlist.
 15. With explicit authorization on 2026-07-11, MBPP-Sanitized is sourced from Google Research and HumanEval+ v0.1.10 from EvalPlus; raw releases remain local and Git-ignored.
 16. Candidate manifests contain only static agent-visible metadata. Deterministic recommendations are not final experiment selections and require human confirmation.
+17. The automatic `list` and `empty_input` recommendations were rejected: risk-tag co-occurrence does not establish a continuous-task relationship.
+18. The fixed, human-approved primary MBPP sequences are `mbpp_list_rearrangement` (591, 644, 586, 743, 632) and `mbpp_regex_string_matching` (434, 285, 787, 794, 607), in the recorded order.
+19. Selection requires semantic relatedness, reusable testing knowledge, non-duplicative tasks, and coverage of distinct task types. The selection manifest never exposes hidden tests and must not be changed in response to experiment outcomes.

@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M2.0: project context consolidation and MBPP-Sanitized local import framework — completed on 2026-07-11. M2.1 is the next stage and has not started.
+M2.1: MBPP candidate review and related-task group selection — completed on 2026-07-11. M2.2 is the next stage and has not started.
 
 M2.0 was integrated onto the pre-existing GitHub `main` history through a non-force cherry-pick. The preserved remote ancestor is `6fc58fae819a6d3f9d577904caf2b26e22263dda`; the M2.0 integration commit is `74d2b42bb5e52566be4154a8257dd17e99d10afc`.
 
@@ -35,7 +35,7 @@ The usable openEuler external path was later identified as `eth1` on Hyper-V Def
 
 ## Current unique next step
 
-M2.1: review `datasets/manifests/mbpp_candidate_list.json` and manually confirm two related groups of five tasks each; do not treat recommendations as final selection until approved.
+M2.2: implement a deterministic sequential runner based on `mbpp_selected_groups.json`, so two groups of five tasks form continuous sequences while retaining the existing mock Agents and without a real LLM.
 
 ## Dataset import progress (2026-07-11)
 
@@ -43,3 +43,4 @@ M2.1: review `datasets/manifests/mbpp_candidate_list.json` and manually confirm 
 - `datasets/manifests/mbpp_candidate_list.json` contains 427 candidate records and two deterministic five-task recommendations. It includes only agent-visible static metadata and is explicitly pending human review.
 - The authorized local HumanEval+ v0.1.10 release was downloaded from EvalPlus. The local importer converted 164 of 164 records into ignored local JSONL output with zero import errors.
 - The original downloaded files and generated processed task JSONL files remain Git-ignored. No official test or input field appears in the MBPP candidate manifest.
+- Human review rejected the tag-only recommendations and approved two fixed groups of five tasks, ten tasks total. The ordered IDs, expected functions, rationale, and reusable knowledge are recorded in `datasets/manifests/mbpp_selected_groups.json` without hidden-test data.
