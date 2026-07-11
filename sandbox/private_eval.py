@@ -11,7 +11,9 @@ def evaluate_private(task, code, timeout=10):
  hidden=task['hidden_reference_tests']; tests=[]
  if task['source_dataset']=='mbpp_sanitized':tests=hidden
  else:
-  h=hidden[0]; tests=[h['test']]
+  h=hidden[0]
+  # EvalPlus stores a private check function; invoke it only inside the child.
+  tests=[h['test']+f"\ncheck({task['entry_point']})"]
  with tempfile.TemporaryDirectory() as d:
   open(os.path.join(d,'candidate.py'),'w',encoding='utf8').write(code)
   # python -I intentionally removes the working directory from import search.
