@@ -24,7 +24,9 @@ PUBLIC_RESULT_REQUIRED = {
     "static_risk_status", "sandbox_started", "sandbox_completed", "official_test_count",
     "official_test_pass_count", "official_test_fail_count", "official_test_pass_rate", "task_success", "timeout",
     "error_category", "exit_code", "execution_time_seconds", "stdout_bytes", "stderr_bytes", "result_scope",
-    "final_status", "infrastructure_failure", "model_quality_failure",
+    "final_status", "infrastructure_failure", "model_quality_failure", "communication_mode", "message_count",
+    "text_character_count", "protocol_event_count", "state_vector_count", "state_vector_bytes", "memory_reference_ids",
+    "memory_read_count", "memory_hit_count", "memory_reuse_count", "memory_write_count",
 }
 
 
@@ -199,9 +201,9 @@ def _public_eval_defaults(parse_status):
     }
 
 
-def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned, write_completion_marker=True):
+def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned, write_completion_marker=True, memory=None, state_metrics=None):
     from generation.candidate_parser import parse_candidate
-    from generation.candidate_prompt import build_prompt
+    from generation.candidate_prompt import build_group_prompt
     from llm.models import LLMMessage, LLMRequest
     from runtime.real_llm_runner import approved_tasks
     from sandbox.private_eval import evaluate_private
@@ -227,7 +229,13 @@ def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned
         "schema_version": "1.0", "status": "running", "task_key": key, **item,
         "attempt_count": attempt_no, "resume_count": resume_count,
     })
-    system, prompt, prompt_hash = build_prompt(task)
+    memory_records = memory.read(task.group_id) if memory is not None else []
+    state_vector = None
+    if state_metrics is not None:
+        from state.vector import StateVector
+        state_vector = StateVector(task_phase='generation', agent_role='testgen', progress_flags=('protocol', 'candidate_generation'), memory_reference_ids=tuple(record.memory_id for record in memory_records), protocol_event_count=1).stable()
+        state_metrics.count += 1; state_metrics.valid += 1; state_metrics.serialized_bytes += len(state_vector); state_metrics.updates += 1; state_metrics.transitions += 1
+    system, prompt, prompt_hash, communication = build_group_prompt(task, item['experiment_group'], state_vector=state_vector, memory_records=memory_records)
     response = backend.generate(LLMRequest((LLMMessage("system", system), LLMMessage("user", prompt)), backend.model, temperature=0, max_tokens=256, seed=item["seed"]))
     artifact = parse_candidate(response.text, task.function_name)
     private_root.mkdir(parents=True, exist_ok=True)
@@ -242,9 +250,15 @@ def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned
         "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens, "total_tokens": response.usage.total_tokens,
         "usage_available": response.usage.usage_available, "latency_seconds": response.latency_seconds, "retry_count": 0,
         "resume_count": resume_count, "attempt_count": attempt_no, "result_scope": spec["result_scope"],
-        "final_status": "completed_success" if evaluation["task_success"] else "failed_official_tests", **{key: value for key, value in evaluation.items() if key not in {"task_id", "dataset", "candidate_sha256"}},
+        "final_status": "completed_success" if evaluation["task_success"] else "failed_official_tests", **communication,
+        "memory_read_count": memory.metrics.read_count if memory is not None else 0, "memory_hit_count": memory.metrics.hit_count if memory is not None else 0, "memory_reuse_count": memory.metrics.reuse_count if memory is not None else 0, "memory_write_count": memory.metrics.write_count if memory is not None else 0,
+        **{key: value for key, value in evaluation.items() if key not in {"task_id", "dataset", "candidate_sha256"}},
         "infrastructure_failure": False, "model_quality_failure": not evaluation["task_success"],
     }
+    if memory is not None:
+        outcome = 'success' if record['task_success'] else 'failure'
+        memory.write(source_task_id=task.task_id, source_round_index=item['plan_index'], category='candidate_generation', key=task.group_id, safe_summary=f"Generation for {task.function_name} completed with parse {record['parse_status']} and outcome {outcome}.", tags=(task.group_id,))
+        record['memory_write_count'] = memory.metrics.write_count
     atomic_write(attempts / f"{key}-attempt-{attempt_no}.json", {
         **attempt_metadata, "status": record["final_status"], "final_status": record["final_status"],
     })
@@ -253,8 +267,8 @@ def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned
     return record
 
 
-def resume_or_execute(root, item, output_root, backend, spec, freeze_git_sha, planned, resume=False, write_completion_marker=True):
+def resume_or_execute(root, item, output_root, backend, spec, freeze_git_sha, planned, resume=False, write_completion_marker=True, memory=None, state_metrics=None):
     prior = final_record(output_root, item) if resume else None
     if prior is not None:
         return prior, True
-    return execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned, write_completion_marker), False
+    return execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned, write_completion_marker, memory, state_metrics), False
