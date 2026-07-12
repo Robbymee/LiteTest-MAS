@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M9 four-group execution semantics are being corrected. Freeze SHA `6c093306ce9c8e48d051fa6371ea6e3e056a35cc` is invalidated because its Runner only printed the full plan instead of executing it; no formal 240-task experiment has started.
+M9 four-group execution semantics were corrected and revalidated on 2026-07-12. The old freeze remains invalid; a replacement Spec and freeze are required before any formal 240-task experiment.
 
 ## Completed
 
@@ -25,6 +25,7 @@ M9 four-group execution semantics are being corrected. Freeze SHA `6c093306ce9c8
 - M9 P3 completed at implementation SHA `d2337d48b835aeb1dba18853d1bb09f121636c27`. Runner recovery now preserves running public metadata and historical attempts, increments `resume_count`, and skips backend calls for final records. The independent canary runner/verifier uses result scope `m9_runner_canary` and never creates a formal completion marker. Windows fake canary and full tests passed. On openEuler, fake canary verification passed; `/health`, `/v1/models`, and an OpenAI-compatible warmup passed; fixed MBPP G1 (`mbpp_sanitized:591`) and HumanEval+ G4 (`humaneval_plus:HumanEval/27`) real canaries both parsed successfully, completed successfully, and passed canary verification with leakage count 0. The openEuler full suite was `50 passed, 1 skipped`, and `git diff --check` passed. The final validation log is `/home/oa/LiteTest-MAS/runs/validation/m9_p3_runner_openeuler-20260712-095208.log`. These are runner integration canaries, not formal M9 results.
 - M9 formal Spec was generated at `experiments/m9_experiment_spec.json` with 240 unique public task identities and task-plan SHA `961e83ea1abc56d762728ea6f25a5d3d07f5de7d54a98077a30068af0ff053b5`. It fixes G1-G4, seeds 42/43/44, execution order, `local-llama31-8b-instruct` over OpenAI-compatible HTTP, temperature 0, max tokens 256, timeout 300 seconds, retry 1, concurrency 1, component versions, FIFO memory limits, and bootstrap seed/resamples. Windows and openEuler strict dry-runs both reported `planned=240`, `duplicates=0`, and no model call. The openEuler dry-run log is `/home/oa/LiteTest-MAS/runs/validation/m9_spec_dry_run_openeuler-20260712-100406.log`, with `8 passed` targeted tests. The freeze commit is `6c093306ce9c8e48d051fa6371ea6e3e056a35cc`; the Spec does not include that SHA.
 - The pre-`5d8b909` M9 freeze is invalidated: the full Runner path did not execute selected tasks and G2-G4 did not apply their actual communication/state/memory paths. The corrected Runner executes selected combinations sequentially, uses Text for G1, protocol messages for G2, StateVector for G3, and StateVector plus group-scoped FIFO memory for G4. Windows Mock tests passed; openEuler at `5d8b909` completed and strictly verified four 10-task MBPP Mock combinations. The follow-up `aeddd07` makes the G4 canary use the same State/Memory path, but openEuler validation is pending because Windows-to-openEuler SSH timed out after that push.
+- The corrected G4 path was revalidated after SSH recovery at `06fd2b216d396d5960cf986e472145847e82f572`: Mock HumanEval+ G4 completed with parse success and valid public leakage scan; real HumanEval+ G4 completed successfully with parse success and leakage count 0. The targeted Runner/P3/Verifier regression command passed on openEuler, with `git diff --check` and a clean worktree. The log is `/home/oa/LiteTest-MAS/runs/validation/m9_corrected_g4_openeuler-20260712-144454.log`. These are acceptance canaries only, not formal experiment results.
 
 ## M5 validation
 
@@ -57,4 +58,4 @@ M9 four-group execution semantics are being corrected. Freeze SHA `6c093306ce9c8
 
 ## Current unique next step
 
-Restore openEuler SSH, then complete corrected four-group and G4 canary validation before generating a replacement Spec and freeze.
+Generate and validate a replacement M9 formal Spec and freeze from the corrected Runner before any formal run.
