@@ -45,6 +45,12 @@ def write_inventory(public_root, planned):
  inventory=rebuild_inventory(public_root,planned)
  atomic_write(Path(public_root)/'inventory.json',inventory)
  return inventory
+def final_record(output_root,item):
+ path=Path(output_root)/'public'/'tasks'/(task_key(item)+'.json')
+ if not path.is_file(): return None
+ value=json.loads(path.read_text(encoding='utf8'))
+ return value if value.get('final_status','').startswith(('completed_','failed_')) else None
+
 def group_config(group):
  if group not in GROUPS:raise ValueError('unknown experiment group')
  state,memory=GROUPS[group]
