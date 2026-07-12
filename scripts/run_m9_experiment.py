@@ -1,22 +1,50 @@
 from __future__ import annotations
-import argparse,json,sys
+
+import argparse
+import json
+import sys
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from experiments.m9_runner import verify_inventory,stable_hash,validate_spec,completed_tasks,task_key,execute_task,final_record
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from experiments.m9_runner import execute_task, final_record, select_plan, spec_sha256, validate_spec, verify_inventory
+
+
 def main():
- p=argparse.ArgumentParser();p.add_argument('--spec',required=True);p.add_argument('--output-root',required=True);p.add_argument('--combination');p.add_argument('--task-id');p.add_argument('--dry-run',action='store_true');p.add_argument('--execute-one',action='store_true');p.add_argument('--strict',action='store_true');p.add_argument('--resume',action='store_true');a=p.parse_args();spec=json.loads(Path(a.spec).read_text());validate_spec(spec,spec['implementation_git_sha']);items=verify_inventory(ROOT,spec)
- selected=items
- if a.combination:
-  try:g,d,s=a.combination.split(':');selected=[x for x in selected if x['experiment_group']==g and x['dataset']==d and x['seed']==int(s)]
-  except ValueError: selected=[]
- if a.task_id:selected=[x for x in selected if x['task_id']==a.task_id]
- if (a.combination or a.task_id) and len(selected)!=1:raise SystemExit('combination/task selection must resolve exactly one task')
- if a.execute_one:
-  if len(selected)!=1:raise SystemExit('--execute-one requires --combination and --task-id')
-  prior=final_record(a.output_root,selected[0]) if a.resume else None
-  if prior:
-   print(json.dumps({'final_status':prior['final_status'],'task_id':prior['task_id'],'resumed_skip':True},sort_keys=True));return
-  from llm.config import LLMConfig,create_backend
-  record=execute_task(ROOT,selected[0],a.output_root,create_backend(LLMConfig.from_env()));print(json.dumps({'final_status':record['final_status'],'task_id':record['task_id']},sort_keys=True));return
- print(json.dumps({'planned':len(items),'selected':len(selected),'duplicates':len(items)-len({tuple(sorted(x.items())) for x in items}),'spec_sha256':stable_hash({k:v for k,v in spec.items() if k!='created_at'}),'dry_run':a.dry_run},sort_keys=True))
-if __name__=='__main__':main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--spec", required=True)
+    parser.add_argument("--output-root", required=True)
+    parser.add_argument("--combination")
+    parser.add_argument("--task-id")
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--execute-one", action="store_true")
+    parser.add_argument("--strict", action="store_true")
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--freeze-git-sha")
+    args = parser.parse_args()
+    spec = json.loads(Path(args.spec).read_text(encoding="utf8"))
+    validate_spec(spec, spec["implementation_git_sha"])
+    items = verify_inventory(ROOT, spec)
+    selected = select_plan(items, args.combination) if args.combination else items
+    if args.task_id:
+        selected = [item for item in selected if item["task_id"] == args.task_id]
+    if (args.combination or args.task_id) and len(selected) != 1:
+        raise SystemExit("combination/task selection must resolve exactly one task")
+    if args.execute_one:
+        if len(selected) != 1:
+            raise SystemExit("--execute-one requires --combination and --task-id")
+        if args.strict and not args.freeze_git_sha:
+            raise SystemExit("--strict --execute-one requires --freeze-git-sha")
+        prior = final_record(args.output_root, selected[0]) if args.resume else None
+        if prior:
+            print(json.dumps({"final_status": prior["final_status"], "task_id": prior["task_id"], "resumed_skip": True}, sort_keys=True))
+            return
+        from llm.config import LLMConfig, create_backend
+        record = execute_task(ROOT, selected[0], args.output_root, create_backend(LLMConfig.from_env()), spec, args.freeze_git_sha, items)
+        print(json.dumps({"final_status": record["final_status"], "task_id": record["task_id"]}, sort_keys=True))
+        return
+    print(json.dumps({"planned": len(items), "selected": len(selected), "duplicates": len(items) - len({tuple(sorted(item.items())) for item in items}), "spec_sha256": spec_sha256(spec), "dry_run": args.dry_run}, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()
