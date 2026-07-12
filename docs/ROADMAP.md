@@ -15,7 +15,7 @@
 | M6 | SharedMemory | Completed; bounded group-isolated pilot accepted on 2026-07-11 |
 | M7 | StateVector | Completed; compact protocol-state pilot accepted on 2026-07-11 |
 | M8 | Test-quality evaluation and sandbox | Completed; restricted subprocess validation accepted on 2026-07-11 |
-| M9 | Four formal ablation experiments | In progress; frozen openEuler run and strict public validation completed, aggregation and audit pending |
+| M9 | Four formal ablation experiments | Completed; frozen openEuler run, strict public validation, aggregation, and paired bootstrap audit accepted on 2026-07-13 |
 | M10 | Dashboard, deployment docs, experiment report, final openEuler acceptance | Pending |
 
 The formal ablation groups are G1 Text, G2 Protocol, G3 Protocol + StateVector, and G4 Protocol + StateVector + SharedMemory.
