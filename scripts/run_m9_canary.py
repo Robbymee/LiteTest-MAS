@@ -11,6 +11,8 @@ sys.path.insert(0, str(ROOT))
 from experiments.m9_runner import canary_item, resume_or_execute, stable_hash
 from llm.config import LLMConfig, create_backend
 from llm.mock_backend import MockLLMBackend
+from memory.shared_memory import SharedMemory
+from state.vector import StateMetrics
 
 
 def implementation_sha():
@@ -47,7 +49,9 @@ def main():
         backend = MockLLMBackend("mock-m9-canary-v1", fixed_response=f"```python\ndef {task.function_name}(*args, **kwargs):\n    return None\n```")
         model = backend.model
     spec = canary_spec(args.backend, model)
-    record, resumed_skip = resume_or_execute(ROOT, item, args.output_root, backend, spec, "not-a-freeze", [item], resume=args.resume, write_completion_marker=False)
+    memory = SharedMemory(enabled=item["experiment_group"] == "G4", dataset=item["dataset"], group_id=item["group_id"], seed=item["seed"])
+    state = StateMetrics(True) if item["experiment_group"] in {"G3", "G4"} else None
+    record, resumed_skip = resume_or_execute(ROOT, item, args.output_root, backend, spec, "not-a-freeze", [item], resume=args.resume, write_completion_marker=False, memory=memory, state_metrics=state)
     print(json.dumps({"canary": args.canary, "final_status": record["final_status"], "parse_status": record["parse_status"], "resumed_skip": resumed_skip, "result_scope": record["result_scope"], "canary_spec_sha256": stable_hash(spec)}, sort_keys=True))
 
 

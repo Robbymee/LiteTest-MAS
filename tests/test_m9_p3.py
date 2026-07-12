@@ -85,3 +85,14 @@ def test_mock_canary_cli_and_public_verifier(tmp_path):
     ], cwd=ROOT, text=True, capture_output=True)
     assert checked.returncode == 0, checked.stderr
     assert json.loads(checked.stdout)["leakage_count"] == 0
+
+
+def test_g4_mock_canary_uses_state_and_memory(tmp_path):
+    output = tmp_path / "run"
+    run = subprocess.run([
+        sys.executable, "scripts/run_m9_canary.py", "--canary", "humaneval_g4", "--backend", "mock", "--output-root", str(output),
+    ], cwd=ROOT, text=True, capture_output=True)
+    assert run.returncode == 0, run.stderr
+    record = next((output / "public" / "tasks").glob("*.json"))
+    value = json.loads(record.read_text(encoding="utf8"))
+    assert value["state_vector_count"] == 1 and value["memory_write_count"] == 1
