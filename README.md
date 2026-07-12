@@ -60,6 +60,17 @@ python -m pytest tests
 
 Each run creates an isolated directory under `runs/<task_id>/<mode>-<timestamp>/` containing materialized source files, generated tests, pytest output, `summary.json`, and `metrics.json`.
 
+## M10 Offline Delivery
+
+The M10 Dashboard is a static, public-aggregate-only delivery artifact. It contains no task prompts, candidate code, private tests, credentials, model paths, or network dependencies. Build it from an accepted M9 aggregate and audit it before sharing:
+
+```bash
+python scripts/build_m10_dashboard.py --aggregate-dir <aggregate-dir> --output-dir <dashboard-dir>
+python scripts/audit_m10_delivery.py --delivery-dir <dashboard-dir>
+```
+
+See `docs/M9_RESULTS.md`, `docs/DEPLOYMENT.md`, `docs/SECURITY.md`, `docs/REPRODUCTION.md`, `docs/DEMO.md`, and `docs/TROUBLESHOOTING.md`.
+
 ## Dataset Shape
 
 Each benchmark task in `datasets/litetest_bench/` uses a self-contained JSON structure built around:
