@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M9 P3 Runner acceptance completed on 2026-07-12. The formal specification and freeze are next; no formal 240-task experiment has started.
+M9 formal Spec and freeze completed on 2026-07-12. Freeze SHA is `6c093306ce9c8e48d051fa6371ea6e3e056a35cc`; the Spec records implementation SHA `d2337d48b835aeb1dba18853d1bb09f121636c27` and does not self-reference the freeze SHA. No formal 240-task experiment has started.
 
 ## Completed
 
@@ -23,6 +23,7 @@ M9 P3 Runner acceptance completed on 2026-07-12. The formal specification and fr
 - M9 Readiness v2 reran after private adapter semantic fixes. The old readiness remains retained but invalidated. The v2 pilot/preflight produced 12 final records, all parse-success and official-metric-available; private official tests were 23/24 passed and task success was 11/12, with one official-test failure. This is still not formal M9.
 - M9 P2 completed the strict public-run verifier. It derives the fixed 240-task plan, or a selected 10-task combination, only from a validated Spec; validates composite task identity, plan order and G1-G4 mode mapping, complete public schema, public inventory checksums, identity fields, forbidden fields, and a full-run completion marker. P2 acceptance uses only synthetic public records and the fake Spec, makes no model call, and reads no private tests. Windows M9 tests and the full test suite passed. On openEuler 24.03-LTS-SP3 / Python 3.11.6 at `2208c3d36e8210eff7c6dcf862250960840e6f9e`, M9 tests were `7 passed` and the full repository suite was `47 passed, 1 skipped`; `git diff --check` passed. The openEuler log is `/home/oa/LiteTest-MAS/runs/validation/m9_p2_verifier_openeuler-20260712-092336.log`.
 - M9 P3 completed at implementation SHA `d2337d48b835aeb1dba18853d1bb09f121636c27`. Runner recovery now preserves running public metadata and historical attempts, increments `resume_count`, and skips backend calls for final records. The independent canary runner/verifier uses result scope `m9_runner_canary` and never creates a formal completion marker. Windows fake canary and full tests passed. On openEuler, fake canary verification passed; `/health`, `/v1/models`, and an OpenAI-compatible warmup passed; fixed MBPP G1 (`mbpp_sanitized:591`) and HumanEval+ G4 (`humaneval_plus:HumanEval/27`) real canaries both parsed successfully, completed successfully, and passed canary verification with leakage count 0. The openEuler full suite was `50 passed, 1 skipped`, and `git diff --check` passed. The final validation log is `/home/oa/LiteTest-MAS/runs/validation/m9_p3_runner_openeuler-20260712-095208.log`. These are runner integration canaries, not formal M9 results.
+- M9 formal Spec was generated at `experiments/m9_experiment_spec.json` with 240 unique public task identities and task-plan SHA `961e83ea1abc56d762728ea6f25a5d3d07f5de7d54a98077a30068af0ff053b5`. It fixes G1-G4, seeds 42/43/44, execution order, `local-llama31-8b-instruct` over OpenAI-compatible HTTP, temperature 0, max tokens 256, timeout 300 seconds, retry 1, concurrency 1, component versions, FIFO memory limits, and bootstrap seed/resamples. Windows and openEuler strict dry-runs both reported `planned=240`, `duplicates=0`, and no model call. The openEuler dry-run log is `/home/oa/LiteTest-MAS/runs/validation/m9_spec_dry_run_openeuler-20260712-100406.log`, with `8 passed` targeted tests. The freeze commit is `6c093306ce9c8e48d051fa6371ea6e3e056a35cc`; the Spec does not include that SHA.
 
 ## M5 validation
 
@@ -55,4 +56,4 @@ M9 P3 Runner acceptance completed on 2026-07-12. The formal specification and fr
 
 ## Current unique next step
 
-M9: create and freeze the formal ablation specification after reviewing the completed P3 evidence.
+M9: run the frozen 240-task formal ablation on openEuler with strict resume semantics.
