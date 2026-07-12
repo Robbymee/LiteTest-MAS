@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from experiments.m9_runner import execute_task, final_record, select_plan, spec_sha256, validate_spec, verify_inventory
+from experiments.m9_runner import resume_or_execute, select_plan, spec_sha256, validate_spec, verify_inventory
 
 
 def main():
@@ -35,13 +35,9 @@ def main():
             raise SystemExit("--execute-one requires --combination and --task-id")
         if args.strict and not args.freeze_git_sha:
             raise SystemExit("--strict --execute-one requires --freeze-git-sha")
-        prior = final_record(args.output_root, selected[0]) if args.resume else None
-        if prior:
-            print(json.dumps({"final_status": prior["final_status"], "task_id": prior["task_id"], "resumed_skip": True}, sort_keys=True))
-            return
         from llm.config import LLMConfig, create_backend
-        record = execute_task(ROOT, selected[0], args.output_root, create_backend(LLMConfig.from_env()), spec, args.freeze_git_sha, items)
-        print(json.dumps({"final_status": record["final_status"], "task_id": record["task_id"]}, sort_keys=True))
+        record, resumed_skip = resume_or_execute(ROOT, selected[0], args.output_root, create_backend(LLMConfig.from_env()), spec, args.freeze_git_sha, items, resume=args.resume)
+        print(json.dumps({"final_status": record["final_status"], "task_id": record["task_id"], "resumed_skip": resumed_skip}, sort_keys=True))
         return
     print(json.dumps({"planned": len(items), "selected": len(selected), "duplicates": len(items) - len({tuple(sorted(item.items())) for item in items}), "spec_sha256": spec_sha256(spec), "dry_run": args.dry_run}, sort_keys=True))
 

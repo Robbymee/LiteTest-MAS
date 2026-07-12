@@ -7,6 +7,10 @@ from pathlib import Path
 
 
 GROUPS = {"G1": (False, False), "G2": (False, False), "G3": (True, False), "G4": (True, True)}
+CANARY_TASKS = {
+    "mbpp_g1": (42, "G1", "mbpp", "mbpp_sanitized:591"),
+    "humaneval_g4": (42, "G4", "humaneval", "humaneval_plus:HumanEval/27"),
+}
 DATA = {
     "mbpp": ("datasets/manifests/mbpp_selected_groups.json", "datasets/processed/mbpp/mbpp_tasks.jsonl"),
     "humaneval": ("datasets/manifests/humaneval_selected_groups.json", "datasets/processed/humaneval_plus/humaneval_plus_tasks.jsonl"),
@@ -101,6 +105,16 @@ def select_plan(items, combination=None):
     return selected
 
 
+def canary_item(root, name):
+    if name not in CANARY_TASKS:
+        raise ValueError("unknown canary")
+    seed, group, dataset, task_id = CANARY_TASKS[name]
+    matches = [item for item in plan(root) if (item["seed"], item["experiment_group"], item["dataset"], item["task_id"]) == (seed, group, dataset, task_id)]
+    if len(matches) != 1:
+        raise ValueError("invalid fixed canary plan")
+    return matches[0]
+
+
 def rebuild_inventory(public_root, planned):
     files = sorted(Path(public_root).glob("tasks/*.json"))
     rows = []
@@ -139,12 +153,12 @@ def completion_marker(inventory, metadata):
     }
 
 
-def write_inventory(public_root, planned, completion_metadata=None):
+def write_inventory(public_root, planned, completion_metadata=None, write_completion_marker=True):
     inventory = rebuild_inventory(public_root, planned)
     atomic_write(Path(public_root) / "inventory.json", inventory)
     marker = Path(public_root) / "completion.json"
     complete = not inventory["missing_task_keys"] and not inventory["duplicate_task_keys"] and inventory["final_count"] == len(planned)
-    if complete and completion_metadata is not None:
+    if complete and completion_metadata is not None and write_completion_marker:
         atomic_write(marker, completion_marker(inventory, completion_metadata))
     elif marker.exists():
         marker.unlink()
@@ -185,7 +199,7 @@ def _public_eval_defaults(parse_status):
     }
 
 
-def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned):
+def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned, write_completion_marker=True):
     from generation.candidate_parser import parse_candidate
     from generation.candidate_prompt import build_prompt
     from llm.models import LLMMessage, LLMRequest
@@ -204,8 +218,15 @@ def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned
     attempt_no = len(list(attempts.glob(key + "-attempt-*.json"))) + 1
     previous = json.loads((public_tasks / (key + ".json")).read_text(encoding="utf8")) if (public_tasks / (key + ".json")).is_file() else {}
     resume_count = int(previous.get("resume_count", 0)) + (1 if previous.get("status") == "running" else 0)
-    atomic_write(attempts / f"{key}-attempt-{attempt_no}.json", {"task_id": task.task_id, "attempt": attempt_no, "resume_count": resume_count, "status": "running"})
-    atomic_write(public_tasks / (key + ".json"), {"status": "running", "task_id": task.task_id, "attempt_count": attempt_no, "resume_count": resume_count})
+    attempt_metadata = {
+        "schema_version": "1.0", "task_key": key, **item,
+        "attempt": attempt_no, "resume_count": resume_count, "status": "running",
+    }
+    atomic_write(attempts / f"{key}-attempt-{attempt_no}.json", attempt_metadata)
+    atomic_write(public_tasks / (key + ".json"), {
+        "schema_version": "1.0", "status": "running", "task_key": key, **item,
+        "attempt_count": attempt_no, "resume_count": resume_count,
+    })
     system, prompt, prompt_hash = build_prompt(task)
     response = backend.generate(LLMRequest((LLMMessage("system", system), LLMMessage("user", prompt)), backend.model, temperature=0, max_tokens=256, seed=item["seed"]))
     artifact = parse_candidate(response.text, task.function_name)
@@ -220,11 +241,20 @@ def execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned
         "request_ids": [response.request_id], "request_count": 1, "finish_reason": response.finish_reason,
         "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens, "total_tokens": response.usage.total_tokens,
         "usage_available": response.usage.usage_available, "latency_seconds": response.latency_seconds, "retry_count": 0,
-        "resume_count": resume_count, "attempt_count": attempt_no, "result_scope": "formal_real_llm_ablation",
+        "resume_count": resume_count, "attempt_count": attempt_no, "result_scope": spec["result_scope"],
         "final_status": "completed_success" if evaluation["task_success"] else "failed_official_tests", **{key: value for key, value in evaluation.items() if key not in {"task_id", "dataset", "candidate_sha256"}},
         "infrastructure_failure": False, "model_quality_failure": not evaluation["task_success"],
     }
-    atomic_write(attempts / f"{key}-attempt-{attempt_no}.json", {"task_id": task.task_id, "attempt": attempt_no, "status": record["final_status"]})
+    atomic_write(attempts / f"{key}-attempt-{attempt_no}.json", {
+        **attempt_metadata, "status": record["final_status"], "final_status": record["final_status"],
+    })
     atomic_write(public_tasks / (key + ".json"), record)
-    write_inventory(Path(output_root) / "public", planned, {"spec_sha256": record["spec_sha256"], "freeze_git_sha": freeze_git_sha, "model": spec["model"], "implementation_git_sha": spec["implementation_git_sha"], "result_scope": record["result_scope"]})
+    write_inventory(Path(output_root) / "public", planned, {"spec_sha256": record["spec_sha256"], "freeze_git_sha": freeze_git_sha, "model": spec["model"], "implementation_git_sha": spec["implementation_git_sha"], "result_scope": record["result_scope"]}, write_completion_marker=write_completion_marker)
     return record
+
+
+def resume_or_execute(root, item, output_root, backend, spec, freeze_git_sha, planned, resume=False, write_completion_marker=True):
+    prior = final_record(output_root, item) if resume else None
+    if prior is not None:
+        return prior, True
+    return execute_task(root, item, output_root, backend, spec, freeze_git_sha, planned, write_completion_marker), False
