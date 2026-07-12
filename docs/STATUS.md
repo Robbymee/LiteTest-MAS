@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M9 replacement Spec and freeze were accepted on 2026-07-12. Freeze SHA is `cc7aac0417afb6acab47baaf7449459692fa9444`; it records corrected Runner implementation SHA `aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e`. No formal 240-task experiment has started.
+M9 frozen formal execution and openEuler strict validation are complete. The accepted freeze SHA is `cc7aac0417afb6acab47baaf7449459692fa9444`, recording corrected Runner implementation SHA `aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e`; the remaining bounded M9 subtask is aggregation and audit of the frozen public results.
 
 ## Completed
 
@@ -27,6 +27,7 @@ M9 replacement Spec and freeze were accepted on 2026-07-12. Freeze SHA is `cc7aa
 - The pre-`5d8b909` M9 freeze is invalidated: the full Runner path did not execute selected tasks and G2-G4 did not apply their actual communication/state/memory paths. The corrected Runner executes selected combinations sequentially, uses Text for G1, protocol messages for G2, StateVector for G3, and StateVector plus group-scoped FIFO memory for G4. Windows Mock tests passed; openEuler at `5d8b909` completed and strictly verified four 10-task MBPP Mock combinations. The follow-up `aeddd07` makes the G4 canary use the same State/Memory path, but openEuler validation is pending because Windows-to-openEuler SSH timed out after that push.
 - The corrected G4 path was revalidated after SSH recovery at `06fd2b216d396d5960cf986e472145847e82f572`: Mock HumanEval+ G4 completed with parse success and valid public leakage scan; real HumanEval+ G4 completed successfully with parse success and leakage count 0. The targeted Runner/P3/Verifier regression command passed on openEuler, with `git diff --check` and a clean worktree. The log is `/home/oa/LiteTest-MAS/runs/validation/m9_corrected_g4_openeuler-20260712-144454.log`. These are acceptance canaries only, not formal experiment results.
 - Replacement formal Spec was generated from corrected implementation SHA `aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e` and frozen in commit `cc7aac0417afb6acab47baaf7449459692fa9444`. Its task-plan SHA remains `961e83ea1abc56d762728ea6f25a5d3d07f5de7d54a98077a30068af0ff053b5` and its Spec SHA is `5f85395ccbd8dd1bcb71e23076be42b5250d043be375d40385469e9b2c22a499`. Windows and openEuler strict dry-runs reported `planned=240`, `duplicates=0`, and no model call; the openEuler log is `/home/oa/LiteTest-MAS/runs/validation/m9_replacement_spec_openeuler-20260712-145917.log` with `7 passed` targeted regression tests. The freeze SHA remains outside the Spec.
+- M9 formal execution used the replacement freeze on openEuler and produced 240 public final records. Strict verification reported `planned_count=240`, `final_count=240`, no errors, and inventory SHA `052ac73833ce6a91c7b7f3dec657b6fcd4a04959b5561eb5dfd39aa49dfbb10a`; the completion marker matches the frozen Spec and SHA. There were 168 `completed_success` records and 72 `failed_official_tests` records. All 240 parsed successfully, completed private evaluation with official metrics, and had zero infrastructure failures; 72 model-quality failures are retained as results, not reclassified as runner failures. Public recursive leakage scanning covered 242 JSON files and found zero prohibited fields. The openEuler acceptance summary is `/home/oa/m9-runs/m9_formal_ablation_v1/validation/m9_formal_openeuler_acceptance-20260713-0127.json`.
 
 ## M5 validation
 
@@ -55,8 +56,8 @@ M9 replacement Spec and freeze were accepted on 2026-07-12. Freeze SHA is `cc7aa
 
 ## Boundaries still not completed
 
-- SharedMemory, StateVector, test-quality evaluation, ablations, and Dashboard.
+- M9 aggregation and paired statistical audit, then M10 Dashboard and delivery work.
 
 ## Current unique next step
 
-Run the corrected frozen 240-task formal ablation on openEuler with strict resume semantics.
+Aggregate the accepted frozen M9 public results and run the specified paired bootstrap audit on openEuler.
