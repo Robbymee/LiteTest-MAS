@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from experiments.m9_runner import rebuild_inventory,stable_hash
 FORBIDDEN={'candidate_code','raw_response','hidden_reference_tests','canonical_solution','reference_solution','official_tests','contract','expected_output','api_key','authorization'}
+REQUIRED={'schema_version','task_id','dataset','experiment_group','seed','mode','state_enabled','memory_enabled','parse_status','final_status','result_scope'}
 def verify(run_root, planned, strict=False, expected_count=None, expected_spec_sha=None, expected_freeze_sha=None, expected_model=None):
  public=Path(run_root)/'public'; tasks=list((public/'tasks').glob('*.json'))
  errors=[]; rows=[]
@@ -11,6 +12,10 @@ def verify(run_root, planned, strict=False, expected_count=None, expected_spec_s
   try: row=json.loads(path.read_text(encoding='utf8'));rows.append(row)
   except Exception: errors.append('invalid_json:'+path.name);continue
   if FORBIDDEN & set(row): errors.append('forbidden_field:'+path.name)
+  if strict and REQUIRED-set(row): errors.append('missing_public_schema:'+path.name)
+  if strict and row.get('result_scope')!='formal_real_llm_ablation': errors.append('result_scope_mismatch')
+  expected_mode='text' if row.get('experiment_group')=='G1' else 'protocol'
+  if strict and row.get('mode')!=expected_mode: errors.append('combination_mode_mismatch')
   if not row.get('final_status','').startswith(('completed_','failed_')): errors.append('non_final:'+path.name)
   if expected_spec_sha is not None and row.get('spec_sha256')!=expected_spec_sha: errors.append('spec_sha_mismatch')
   if expected_freeze_sha is not None and row.get('freeze_git_sha')!=expected_freeze_sha: errors.append('freeze_sha_mismatch')
