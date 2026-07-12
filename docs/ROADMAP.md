@@ -16,6 +16,6 @@
 | M7 | StateVector | Completed; compact protocol-state pilot accepted on 2026-07-11 |
 | M8 | Test-quality evaluation and sandbox | Completed; restricted subprocess validation accepted on 2026-07-11 |
 | M9 | Four formal ablation experiments | Completed; frozen openEuler run, strict public validation, aggregation, and paired bootstrap audit accepted on 2026-07-13 |
-| M10 | Dashboard, deployment docs, experiment report, final openEuler acceptance | Pending |
+| M10 | Dashboard, deployment docs, experiment report, final openEuler acceptance | Completed; offline delivery and independent openEuler reproduction accepted on 2026-07-13 |
 
 The formal ablation groups are G1 Text, G2 Protocol, G3 Protocol + StateVector, and G4 Protocol + StateVector + SharedMemory.

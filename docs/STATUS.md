@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M9 is complete. The accepted freeze SHA is `cc7aac0417afb6acab47baaf7449459692fa9444`, recording corrected Runner implementation SHA `aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e`; formal execution, strict public validation, aggregation, and paired bootstrap audit were accepted on openEuler. M10 has not started.
+M10 is complete. The accepted formal baseline remains freeze SHA `cc7aac0417afb6acab47baaf7449459692fa9444`, recording corrected Runner implementation SHA `aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e`. The offline delivery, security audit, documentation, and independent openEuler reproduction were accepted on 2026-07-13.
 
 ## Completed
 
@@ -29,6 +29,7 @@ M9 is complete. The accepted freeze SHA is `cc7aac0417afb6acab47baaf7449459692fa
 - Replacement formal Spec was generated from corrected implementation SHA `aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e` and frozen in commit `cc7aac0417afb6acab47baaf7449459692fa9444`. Its task-plan SHA remains `961e83ea1abc56d762728ea6f25a5d3d07f5de7d54a98077a30068af0ff053b5` and its Spec SHA is `5f85395ccbd8dd1bcb71e23076be42b5250d043be375d40385469e9b2c22a499`. Windows and openEuler strict dry-runs reported `planned=240`, `duplicates=0`, and no model call; the openEuler log is `/home/oa/LiteTest-MAS/runs/validation/m9_replacement_spec_openeuler-20260712-145917.log` with `7 passed` targeted regression tests. The freeze SHA remains outside the Spec.
 - M9 formal execution used the replacement freeze on openEuler and produced 240 public final records. Strict verification reported `planned_count=240`, `final_count=240`, no errors, and inventory SHA `052ac73833ce6a91c7b7f3dec657b6fcd4a04959b5561eb5dfd39aa49dfbb10a`; the completion marker matches the frozen Spec and SHA. There were 168 `completed_success` records and 72 `failed_official_tests` records. All 240 parsed successfully, completed private evaluation with official metrics, and had zero infrastructure failures; 72 model-quality failures are retained as results, not reclassified as runner failures. Public recursive leakage scanning covered 242 JSON files and found zero prohibited fields. The openEuler acceptance summary is `/home/oa/m9-runs/m9_formal_ablation_v1/validation/m9_formal_openeuler_acceptance-20260713-0127.json`.
 - M9 aggregation and audit used the public-only `scripts/aggregate_m9_results.py` at analysis SHA `9e0961cd590f5d70729ffe49b089d715eb041b70`, with the frozen worktree used read-only to rebuild the fixed plan. On openEuler, `8` aggregation/verifier/spec tests passed and the real 240-record aggregate passed strict verification again. The output is `/home/oa/m9-runs/m9_formal_ablation_v1/analysis/m9_aggregate_9e0961c`; it contains task/group/dataset/seed JSON and CSV, a Markdown report, and 40 paired comparison rows. Bootstrap used the frozen 2,000 resamples, 95% confidence, and seed `20260711`, pairing `(seed, dataset, task_id)`. G1/G2/G3/G4 task success rates were `0.60/0.75/0.75/0.70`; observed paired task-success differences (treatment minus control) were G2-G1 `0.15` (95% CI `0.0333` to `0.2671`), G3-G2 `0.00` (CI `-0.0833` to `0.0833`), G4-G3 `-0.05` (CI `-0.1167` to `0.0000`), and G4-G1 `0.10` (CI `0.0000` to `0.2167`). These are fixed-task, fixed-model results only.
+- M10 added a standard-library offline Dashboard builder and delivery audit. The Dashboard reads only public M9 aggregate manifest, group, dataset, seed, and paired-comparison JSON; it embeds sanitized data for offline viewing and excludes task prompts, candidates, private tests, credentials, request IDs, absolute paths, and model paths. An independent openEuler clone at `97eb5012d9e20083233840e898f490fb09db6f32` passed the M10 delivery tests (`3 passed`), built a 240-record Dashboard, and passed the delivery audit with zero errors. Checksums were `fdb7d2de84b89804a5b24d85190c4f6a9285ddcdd32c6752d7754869a86b3f98` for `index.html` and `41483d40d3ee85fb2da0c180e5273457f8c135b8074376a0ac9af3357636ccdd` for `data.json`. The output is `/home/oa/m9-delivery/m10_dashboard_97eb501`.
 
 ## M5 validation
 
@@ -57,8 +58,8 @@ M9 is complete. The accepted freeze SHA is `cc7aac0417afb6acab47baaf7449459692fa
 
 ## Boundaries still not completed
 
-- M10 Dashboard and delivery work.
+- No planned milestone remains.
 
 ## Current unique next step
 
-Plan the bounded M10 delivery and independent-reproduction scope without starting implementation.
+Maintain the tagged release; any future experiment or feature work requires a separately approved milestone.
