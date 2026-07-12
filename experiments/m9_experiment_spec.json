@@ -88,7 +88,7 @@
       "state_enabled": true
     }
   },
-  "implementation_git_sha": "d2337d48b835aeb1dba18853d1bb09f121636c27",
+  "implementation_git_sha": "aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e",
   "memory_config": {
     "backend": "in_process_fifo",
     "max_bytes": 8192,
