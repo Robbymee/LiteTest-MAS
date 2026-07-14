@@ -8,10 +8,16 @@ import hashlib
 import json
 import math
 import random
+import sys
 from collections import defaultdict
 from pathlib import Path
 from statistics import mean
 from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from scripts.aggregate_m9_results import COMPARISONS, METRICS, metric_value, read_public_tasks
 
