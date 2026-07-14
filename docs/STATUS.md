@@ -67,3 +67,13 @@ M10 is complete. The accepted formal baseline remains freeze SHA `cc7aac0417afb6
 P1 已验收。唯一下一步是 P2：基于既有 240 条 M9 公开记录进行不调用真实 LLM 的指标补充聚合。
 
 Maintain the tagged release; any future experiment or feature work requires a separately approved milestone.
+
+## M9.1 P2 验收记录
+
+P2 已完成。补充聚合脚本只读取 M9 正式运行的公开 `public/` 记录和公开聚合字段，没有调用真实 LLM，也没有读取或修改 private attempts、candidate code、raw responses、hidden tests、M9 原始运行目录、Dashboard 或发布标签。
+
+本阶段生成了 `reports/m9/` 下的通信层、状态效率、记忆复用、数据集任务组、seed 一致性和质量开销 CSV，以及中文补充分析报告。原始公开字段可以支持的任务成功率、official-test、解析、Sandbox、总 Token、StateVector 已重新聚合；通信 Token 分层、Protocol 字节、握手、重复上下文、StateVector 等价文本与编解码耗时、Memory 门控和有效复用、总墙钟时间等无法从 M9 公开 schema 恢复的字段均保持 `unavailable`，未以零值或推测值替代。
+
+Windows 验收：P2 专项测试 `3 passed`，全量测试 `66 passed`，`git diff --check` 通过。openEuler 24.03-LTS-SP3 验收：P2 专项测试 `3 passed`，全量测试 `65 passed, 1 skipped`，`git diff --check` 通过；跳过项为既有 Windows-only 测试。两端代码 SHA 均为 `f6ea9aad97ec9e3dd2c8eb094a6d421a2a615785`。正式 M9 freeze SHA `cc7aac0417afb6acab47baaf7449459692fa9444` 与 `v1.0.0-experiment` 未改变。
+
+P2 验收通过。唯一下一步是 P3：按正式 manifest 对 MBPP 与 HumanEval+ 的数据集、关联任务组和失败分布进行公开字段分析；P3 开始前仍不得实现 Protocol V2、StateVector V2、SharedMemory V2 或运行 M9.1 正式实验。
