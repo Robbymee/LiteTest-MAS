@@ -84,6 +84,6 @@ P3 已完成。新增 `scripts/analyze_m9_task_groups.py`，从正式 `experimen
 
 报告覆盖 MBPP 与 HumanEval+ 的每个实验组、任务成功率、official-test 通过率、总 Token、provider latency、StateVector 次数和字节、模型质量失败与基础设施失败。两类数据集各有两个真实关联组，每组 5 个真实 task ID；连续任务顺序、Memory reset 边界和 G4 可确认的 hit/reuse task ID 均由 manifest 或公开明细生成。accept、reject、abstain、注入 Token 和 effective reuse 未被推测，继续标记为 `unavailable`。
 
-Windows P3 专项测试 `2 passed`，`git diff --check` 通过。P3 仍未进入 P4、Protocol V2、StateVector V2、SharedMemory V2 或 M9.1 正式实验。
+Windows P3 专项测试 `2 passed`，全量测试 `68 passed`，`git diff --check` 通过。openEuler P3 专项测试 `2 passed`，全量测试 `67 passed, 1 skipped`，`git diff --check` 通过；两端当前 SHA 均为 `3ec3a88d3c2d6d66d95394895a5023a81d122356`，openEuler 工作区干净。P3 仍未进入 P4、Protocol V2、StateVector V2、SharedMemory V2 或 M9.1 正式实验。
 
 P3 验收通过。唯一下一步是 P4：基于公开 task-level 记录开展 seed 相关性与 task-cluster Bootstrap 敏感性分析，固定 `bootstrap_seed=20260711` 和 `bootstrap_resamples=2000`。
