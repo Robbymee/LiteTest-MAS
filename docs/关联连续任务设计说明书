@@ -1,0 +1,91 @@
+# M9 数据集与关联连续任务分析
+
+## 数据边界
+
+本报告只读取正式 `experiments/m9_experiment_spec.json` 的任务计划，以及 `reports/m9/` 中已经生成的公开聚合 CSV。报告不读取 private attempts、candidate code、raw responses、hidden tests 或模型服务。
+
+- `task_plan_count`：240
+- `task_plan_sha256`：`961e83ea1abc56d762728ea6f25a5d3d07f5de7d54a98077a30068af0ff053b5`
+- 任务顺序：以 manifest 的 `plan_index` 为准；下表中的任务 ID 未重新命名。
+
+## 数据集与实验组指标
+
+| 数据集 | 实验组 | 记录数 | 任务成功率 | official-test 通过率 | 平均总 Token | 平均延迟（秒） | StateVector 次数 | StateVector 字节 | 模型质量失败 | 基础设施失败 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| humaneval | G1 | 30 | 0.6 | 0.6 | 261.7 | 1.1821 | 0 | 0 | 12 | 0 |
+| humaneval | G2 | 30 | 0.7 | 0.7 | 457.8 | 3.0098 | 0 | 0 | 9 | 0 |
+| humaneval | G3 | 30 | 0.7 | 0.7 | 554.6 | 3.4607 | 1 | 353 | 9 | 0 |
+| humaneval | G4 | 30 | 0.7 | 0.7 | 585.6 | 3.3724 | 1 | 368.2 | 9 | 0 |
+| mbpp | G1 | 30 | 0.6 | 0.5806 | 162.1 | 0.8163 | 0 | 0 | 12 | 0 |
+| mbpp | G2 | 30 | 0.8 | 0.8065 | 285.1 | 1.3606 | 0 | 0 | 6 | 0 |
+| mbpp | G3 | 30 | 0.8 | 0.8065 | 372.4 | 1.5628 | 1 | 353 | 6 | 0 |
+| mbpp | G4 | 30 | 0.7 | 0.7097 | 410.8 | 1.5947 | 1 | 368.2 | 9 | 0 |
+
+## 关联连续任务
+
+### humaneval / humaneval_list_transforms
+
+固定顺序（5 个任务）：`humaneval_plus:HumanEval/26`、`humaneval_plus:HumanEval/33`、`humaneval_plus:HumanEval/37`、`humaneval_plus:HumanEval/70`、`humaneval_plus:HumanEval/149`。
+
+该组在每个 seed 下按 manifest 顺序连续执行；两组各 5 个任务，因此每个 dataset 的关联任务设计包含 10 个连续轮次。正式实验中的 G1-G4 和 3 个 seed 是重复的实验条件，不改变组内任务顺序。
+
+可理论复用的经验：列表重排任务之间可能共享边界条件和索引处理经验。
+
+SharedMemory reset 边界：由正式 Spec 固定为 `dataset`、`experiment_group`、`seed`；不同 dataset、实验组或 seed 之间不共享实例。
+
+G4 公开 Memory 明细：
+- 可确认发生 hit 的 task ID：`humaneval_plus:HumanEval/33`、`humaneval_plus:HumanEval/37`、`humaneval_plus:HumanEval/70`、`humaneval_plus:HumanEval/149`、`humaneval_plus:HumanEval/33`、`humaneval_plus:HumanEval/37`、`humaneval_plus:HumanEval/70`、`humaneval_plus:HumanEval/149`、`humaneval_plus:HumanEval/33`、`humaneval_plus:HumanEval/37`、`humaneval_plus:HumanEval/70`、`humaneval_plus:HumanEval/149`。
+- 可确认发生 reuse 的 task ID：`humaneval_plus:HumanEval/33`、`humaneval_plus:HumanEval/37`、`humaneval_plus:HumanEval/70`、`humaneval_plus:HumanEval/149`、`humaneval_plus:HumanEval/33`、`humaneval_plus:HumanEval/37`、`humaneval_plus:HumanEval/70`、`humaneval_plus:HumanEval/149`、`humaneval_plus:HumanEval/33`、`humaneval_plus:HumanEval/37`、`humaneval_plus:HumanEval/70`、`humaneval_plus:HumanEval/149`。
+- accept、reject、abstain、注入 Token 和 effective reuse 未在公开字段中记录，保持 `unavailable`。
+- 是否存在因 Memory 导致的因果负迁移不能由该明细单独判定；只能结合 G3/G4 的固定任务结果描述为观察到的质量差异。
+### humaneval / humaneval_string_transforms
+
+固定顺序（5 个任务）：`humaneval_plus:HumanEval/27`、`humaneval_plus:HumanEval/28`、`humaneval_plus:HumanEval/29`、`humaneval_plus:HumanEval/51`、`humaneval_plus:HumanEval/86`。
+
+该组在每个 seed 下按 manifest 顺序连续执行；两组各 5 个任务，因此每个 dataset 的关联任务设计包含 10 个连续轮次。正式实验中的 G1-G4 和 3 个 seed 是重复的实验条件，不改变组内任务顺序。
+
+可理论复用的经验：字符串匹配或字符串变换任务之间可能共享输入规范化和边界处理经验。
+
+SharedMemory reset 边界：由正式 Spec 固定为 `dataset`、`experiment_group`、`seed`；不同 dataset、实验组或 seed 之间不共享实例。
+
+G4 公开 Memory 明细：
+- 可确认发生 hit 的 task ID：`humaneval_plus:HumanEval/28`、`humaneval_plus:HumanEval/29`、`humaneval_plus:HumanEval/51`、`humaneval_plus:HumanEval/86`、`humaneval_plus:HumanEval/28`、`humaneval_plus:HumanEval/29`、`humaneval_plus:HumanEval/51`、`humaneval_plus:HumanEval/86`、`humaneval_plus:HumanEval/28`、`humaneval_plus:HumanEval/29`、`humaneval_plus:HumanEval/51`、`humaneval_plus:HumanEval/86`。
+- 可确认发生 reuse 的 task ID：`humaneval_plus:HumanEval/28`、`humaneval_plus:HumanEval/29`、`humaneval_plus:HumanEval/51`、`humaneval_plus:HumanEval/86`、`humaneval_plus:HumanEval/28`、`humaneval_plus:HumanEval/29`、`humaneval_plus:HumanEval/51`、`humaneval_plus:HumanEval/86`、`humaneval_plus:HumanEval/28`、`humaneval_plus:HumanEval/29`、`humaneval_plus:HumanEval/51`、`humaneval_plus:HumanEval/86`。
+- accept、reject、abstain、注入 Token 和 effective reuse 未在公开字段中记录，保持 `unavailable`。
+- 是否存在因 Memory 导致的因果负迁移不能由该明细单独判定；只能结合 G3/G4 的固定任务结果描述为观察到的质量差异。
+### mbpp / mbpp_list_rearrangement
+
+固定顺序（5 个任务）：`mbpp_sanitized:591`、`mbpp_sanitized:644`、`mbpp_sanitized:586`、`mbpp_sanitized:743`、`mbpp_sanitized:632`。
+
+该组在每个 seed 下按 manifest 顺序连续执行；两组各 5 个任务，因此每个 dataset 的关联任务设计包含 10 个连续轮次。正式实验中的 G1-G4 和 3 个 seed 是重复的实验条件，不改变组内任务顺序。
+
+可理论复用的经验：列表重排任务之间可能共享边界条件和索引处理经验。
+
+SharedMemory reset 边界：由正式 Spec 固定为 `dataset`、`experiment_group`、`seed`；不同 dataset、实验组或 seed 之间不共享实例。
+
+G4 公开 Memory 明细：
+- 可确认发生 hit 的 task ID：`mbpp_sanitized:644`、`mbpp_sanitized:586`、`mbpp_sanitized:743`、`mbpp_sanitized:632`、`mbpp_sanitized:644`、`mbpp_sanitized:586`、`mbpp_sanitized:743`、`mbpp_sanitized:632`、`mbpp_sanitized:644`、`mbpp_sanitized:586`、`mbpp_sanitized:743`、`mbpp_sanitized:632`。
+- 可确认发生 reuse 的 task ID：`mbpp_sanitized:644`、`mbpp_sanitized:586`、`mbpp_sanitized:743`、`mbpp_sanitized:632`、`mbpp_sanitized:644`、`mbpp_sanitized:586`、`mbpp_sanitized:743`、`mbpp_sanitized:632`、`mbpp_sanitized:644`、`mbpp_sanitized:586`、`mbpp_sanitized:743`、`mbpp_sanitized:632`。
+- accept、reject、abstain、注入 Token 和 effective reuse 未在公开字段中记录，保持 `unavailable`。
+- 是否存在因 Memory 导致的因果负迁移不能由该明细单独判定；只能结合 G3/G4 的固定任务结果描述为观察到的质量差异。
+### mbpp / mbpp_regex_string_matching
+
+固定顺序（5 个任务）：`mbpp_sanitized:434`、`mbpp_sanitized:285`、`mbpp_sanitized:787`、`mbpp_sanitized:794`、`mbpp_sanitized:607`。
+
+该组在每个 seed 下按 manifest 顺序连续执行；两组各 5 个任务，因此每个 dataset 的关联任务设计包含 10 个连续轮次。正式实验中的 G1-G4 和 3 个 seed 是重复的实验条件，不改变组内任务顺序。
+
+可理论复用的经验：字符串匹配或字符串变换任务之间可能共享输入规范化和边界处理经验。
+
+SharedMemory reset 边界：由正式 Spec 固定为 `dataset`、`experiment_group`、`seed`；不同 dataset、实验组或 seed 之间不共享实例。
+
+G4 公开 Memory 明细：
+- 可确认发生 hit 的 task ID：`mbpp_sanitized:285`、`mbpp_sanitized:787`、`mbpp_sanitized:794`、`mbpp_sanitized:607`、`mbpp_sanitized:285`、`mbpp_sanitized:787`、`mbpp_sanitized:794`、`mbpp_sanitized:607`、`mbpp_sanitized:285`、`mbpp_sanitized:787`、`mbpp_sanitized:794`、`mbpp_sanitized:607`。
+- 可确认发生 reuse 的 task ID：`mbpp_sanitized:285`、`mbpp_sanitized:787`、`mbpp_sanitized:794`、`mbpp_sanitized:607`、`mbpp_sanitized:285`、`mbpp_sanitized:787`、`mbpp_sanitized:794`、`mbpp_sanitized:607`、`mbpp_sanitized:285`、`mbpp_sanitized:787`、`mbpp_sanitized:794`、`mbpp_sanitized:607`。
+- accept、reject、abstain、注入 Token 和 effective reuse 未在公开字段中记录，保持 `unavailable`。
+- 是否存在因 Memory 导致的因果负迁移不能由该明细单独判定；只能结合 G3/G4 的固定任务结果描述为观察到的质量差异。
+
+## 失败分布与解释边界
+
+公开聚合显示，失败记录按 `model_quality_failure` 和 `infrastructure_failure` 分开统计。P3 不把 official-test 失败改写为基础设施失败，也不使用 private test 内容解释具体失败原因。
+
+对于 MBPP 和 HumanEval+，表格给出 dataset×G1-G4 的任务成功率、official-test 通过率、总 Token、延迟、StateVector 和失败计数。通信 Token 分层、StateVector 等价文本、Memory 门控及有效复用仍按 P2 规则保持 `unavailable`。
