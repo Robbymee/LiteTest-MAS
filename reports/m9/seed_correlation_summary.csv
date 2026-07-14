@@ -1,0 +1,9 @@
+candidate_sha256_all_seed_equal_rate,candidate_sha256_availability,dataset,experiment_group,official_test_pass_status_all_seed_equal_rate,official_test_pass_status_availability,task_success_all_seed_equal_rate,task_success_availability,task_unit_count,total_tokens_all_seed_equal_rate,total_tokens_availability
+1.0,available,humaneval,G1,1.0,available,1.0,available,10,1.0,available
+1.0,available,mbpp,G1,1.0,available,1.0,available,10,1.0,available
+1.0,available,humaneval,G2,1.0,available,1.0,available,10,1.0,available
+1.0,available,mbpp,G2,1.0,available,1.0,available,10,1.0,available
+1.0,available,humaneval,G3,1.0,available,1.0,available,10,1.0,available
+1.0,available,mbpp,G3,1.0,available,1.0,available,10,1.0,available
+1.0,available,humaneval,G4,1.0,available,1.0,available,10,1.0,available
+1.0,available,mbpp,G4,1.0,available,1.0,available,10,1.0,available

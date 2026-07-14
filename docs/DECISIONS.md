@@ -49,3 +49,4 @@
 47. M9.1 P1 对既有 M9 公开记录采用“可恢复字段才可聚合”的规则：缺少通信分层、握手、StateVector 等价文本和 Memory 门控字段时，报告必须使用 `unavailable` 并说明原因，不得填 `0`、不得由总 Token 或结果反推。M9 冻结结果保持只读。
 48. M9.1 P2 补充聚合只允许使用 M9 正式公开记录中的可恢复字段。通信层分项、Protocol 字节、握手、重复上下文、StateVector 等价文本和编解码耗时、Memory 门控与有效复用、总墙钟时间等缺失字段必须写为 `unavailable` 并说明原因；不得从总 Token、成功结果或已有 M9 结论反推。P2 不调用真实 LLM，不修改 M9 结果、冻结 SHA、Dashboard 或发布标签。
 49. M9.1 P3 的任务组分析必须从正式 manifest 读取真实任务身份和顺序。公开聚合仅用于展示 dataset×G1-G4 指标和 G4 已记录的 Memory hit/reuse；不得根据任务名称、总 Token 或成功结果推断未记录的 Memory 门控、因果复用或失败原因。
+50. M9.1 P4 保留既有普通配对 Bootstrap，不替换其统计结果；新增 task-cluster Bootstrap 的聚类单位固定为 `dataset + task_id`，每个聚类保留 3 个 seed，`bootstrap_seed=20260711`、`bootstrap_resamples=2000`。跨 seed 的 candidate SHA、成功状态、official-test 全通过状态和总 Token 重复率只描述固定任务、固定模型和 temperature=0 的本次运行相关性，不作泛化或因果结论。

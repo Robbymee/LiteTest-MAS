@@ -1,0 +1,6 @@
+{
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 20260711,
+  "record_count": 240,
+  "schema_version": "1.0"
+}

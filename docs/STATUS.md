@@ -87,3 +87,13 @@ P3 已完成。新增 `scripts/analyze_m9_task_groups.py`，从正式 `experimen
 Windows P3 专项测试 `2 passed`，全量测试 `68 passed`，`git diff --check` 通过。openEuler P3 专项测试 `2 passed`，全量测试 `67 passed, 1 skipped`，`git diff --check` 通过；两端当前 SHA 均为 `3ec3a88d3c2d6d66d95394895a5023a81d122356`，openEuler 工作区干净。P3 仍未进入 P4、Protocol V2、StateVector V2、SharedMemory V2 或 M9.1 正式实验。
 
 P3 验收通过。唯一下一步是 P4：基于公开 task-level 记录开展 seed 相关性与 task-cluster Bootstrap 敏感性分析，固定 `bootstrap_seed=20260711` 和 `bootstrap_resamples=2000`。
+
+## M9.1 P4 验收记录
+
+P4 已完成。`scripts/analyze_m9_seed_sensitivity.py` 只读取正式 M9 的 `public/tasks` 和既有公开普通配对比较文件，新增 `seed_correlation_summary.csv`、`task_cluster_bootstrap.csv`、`seed_sensitivity_manifest.json` 与中文 `reports/m9/随机种子相关性分析.md`。它没有修改 M9 原始聚合、正式记录、冻结 SHA、Dashboard 或发布标签，也没有调用真实 LLM。
+
+在所有 dataset×G1-G4 单元中，三个 seed 的 candidate SHA、任务成功状态、official-test 全通过状态和总 Token 完全重复率均为 `1.0`。因此 task-cluster Bootstrap 使用 `dataset + task_id` 作为重采样单位，每个聚类包含 3 个 seed。普通 CI 保留不替换；任务成功率的聚类 CI 分别为 G2-G1 `[-0.05, 0.35]`、G3-G2 `[-0.15, 0.15]`、G4-G3 `[-0.15, 0.0]`、G4-G1 `[-0.1, 0.3]`。它们相对普通 CI 更宽，说明本次 temperature=0 运行的三 seed 高度相关，普通 CI 的独立观测解释应保持谨慎。
+
+Windows P4 专项测试 `2 passed`，全量测试 `70 passed`，`git diff --check` 通过。openEuler P4 专项测试 `2 passed`，全量测试 `69 passed, 1 skipped`，`git diff --check` 通过，工作区干净。P4 未进入 Protocol V2、StateVector V2、SharedMemory V2 或 M9.1 正式实验。
+
+P4 验收通过。唯一下一步是 P5：在独立模块中实现 `compact_protocol_v2`，并使用合成 fixtures 与 Mock Backend 完成单元测试；不得修改 `protocol_v1` 语义或运行 M9.1 正式实验。
