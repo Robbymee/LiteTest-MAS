@@ -136,7 +136,12 @@ def analyze_records(records: list[dict[str, Any]]) -> dict[str, list[dict[str, A
         quality_row = _quality_summary(rows, {"dataset": dataset, "experiment_group": group})
         dataset_group.append(flatten({**communication_row, **state_row, **quality_row}))
     for group, rows in sorted(by_group.items()):
-        quality_cost.append(flatten({**_communication_summary(rows, {"experiment_group": group}), **_quality_summary(rows, {"experiment_group": group})}))
+        # 质量成本表同时展示可恢复的非文本状态规模，不能因表格合并遗漏 G3/G4 指标。
+        quality_cost.append(flatten({
+            **_communication_summary(rows, {"experiment_group": group}),
+            **_state_summary(rows, {"experiment_group": group}),
+            **_quality_summary(rows, {"experiment_group": group}),
+        }))
 
     seed = [flatten({**_communication_summary(rows, {"seed": seed_value, "experiment_group": group}), **_quality_summary(rows, {"seed": seed_value, "experiment_group": group})}) for (seed_value, group), rows in sorted(by_seed_group.items())]
     memory = []

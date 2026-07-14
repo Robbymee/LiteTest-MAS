@@ -56,3 +56,4 @@ def test_public_metrics_write_csv_and_chinese_report(tmp_path):
     content = report.read_text(encoding="utf-8")
     assert "M9 赛题指标补充分析" in content
     assert "`unavailable`" in content
+    assert "| G4 |" in content and "| 64.0 |" in content
