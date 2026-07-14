@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M9.1 赛题对齐强化的 P1（赛题需求与证据矩阵）正在进行。该阶段只审计代码、测试和 M9 公开数据，不调用真实模型，不修改 M9 正式运行、冻结提交、公开聚合、Dashboard 或发布标签。M9 的唯一有效正式基线仍为 freeze SHA `cc7aac0417afb6acab47baaf7449459692fa9444`。
+M9.1 赛题对齐强化的 P1（赛题需求与证据矩阵）已完成 Windows 与 openEuler 验收。该阶段只审计代码、测试和 M9 公开数据，未调用真实模型，未修改 M9 正式运行、冻结提交、公开聚合、Dashboard 或发布标签。M9 的唯一有效正式基线仍为 freeze SHA `cc7aac0417afb6acab47baaf7449459692fa9444`；P1 验收时 strict verifier 仍返回 240 条 final records、零错误和零重复。
 
 M10 is complete. The accepted formal baseline remains freeze SHA `cc7aac0417afb6acab47baaf7449459692fa9444`, recording corrected Runner implementation SHA `aeddd07c1dabb1ef18df7eac6a3c6d94866fa3e`. The offline delivery, security audit, documentation, and independent openEuler reproduction were accepted on 2026-07-13.
 
@@ -64,6 +64,6 @@ M10 is complete. The accepted formal baseline remains freeze SHA `cc7aac0417afb6
 
 ## Current unique next step
 
-完成 P1 的 Windows 与 openEuler 验收；验收通过后，唯一下一步是 P2：基于既有 240 条 M9 公开记录进行不调用真实 LLM 的指标补充聚合。
+P1 已验收。唯一下一步是 P2：基于既有 240 条 M9 公开记录进行不调用真实 LLM 的指标补充聚合。
 
 Maintain the tagged release; any future experiment or feature work requires a separately approved milestone.
