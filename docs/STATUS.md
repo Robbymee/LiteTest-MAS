@@ -144,6 +144,14 @@ P9.1 验收通过。唯一下一步是 P9.2：在独立 M9.1 Runner/Verifier 门
 
 ## M9.1 P9.2 Preflight 验收记录
 
+## M9.1 P9.3 S 组 Runner 语义记录
+
+P9.3 已完成 S1-S4 计划和配置语义的独立实现：新增 `experiments/m9_1_runner.py`、`scripts/run_m9_1_canary.py` 和对应测试。Runner 不复用 M9 的 G1-G4 group 配置；S1-S4 的 component、mode、StateVector 和 Memory 开关均从 M9.1 Spec 读取。S2 Mock canary 在 Windows/openEuler 均输出 `result_scope=m9_1_runner_canary`、`component=compact_protocol_v2` 和 `model_call=false`。
+
+Windows P9.3 专项测试 `3 passed`，全量测试 `86 passed`，`git diff --check` 通过。openEuler P9.3 专项测试 `3 passed`，全量测试 `85 passed, 1 skipped`，`git diff --check` 通过，工作区干净。当前提交 SHA 为 `06b1c4f`。
+
+本阶段只完成 S 组计划/配置和 Mock canary 语义，未调用真实模型，未完成两项真实 canary，未声明 public leakage=0 或 freeze SHA 正式运行门槛通过。唯一下一步是 P9.4：接入真实 Backend、V2 Prompt/Protocol/State/Memory 运行路径并完成两项真实 canary。
+
 P9.2 的独立 Spec Verifier 和 fake canary 门槛已完成。新增 `scripts/verify_m9_1_spec.py` 与 `scripts/run_m9_1_fake_canary.py`，校验 S1-S4、240 条计划、唯一 task identity、plan index、公开泄漏字段、独立 result scope 和 fake scope；fake canary 不调用模型，也不能冒充正式 supplementary 结果。
 
 Windows P9.2 专项测试 `4 passed`，全量测试 `85 passed`，`git diff --check` 通过。openEuler P9.2 专项测试 `4 passed`，全量测试 `84 passed, 1 skipped`，`git diff --check` 通过，工作区干净。当前提交 SHA 为 `ed160a2`。
