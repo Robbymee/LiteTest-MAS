@@ -227,3 +227,15 @@ P9.9 已在 Windows 重建独立 `experiments/m9_1/spec.json`，将 `implementat
 openEuler 在 Spec 提交 SHA `7c7d0a3faaea4c8404725a78215e3ab30b7b86d9` 上通过专项 `13 passed`、全量 `93 passed, 1 skipped`、Spec Verifier、`git diff --check` 和 mock dry-run。dry-run 返回 `planned=240`、`completed=0`，未生成 completion marker。Windows 与 openEuler 的文件字节 SHA 因 CRLF/LF 不同而不同，因此正式门槛只使用确定性 JSON `spec_hash`；两端均得到 `fb7d4946fe76a731ae5b44fe626e795345763ddecfc5fa94979eda44051ad81b`。P9.9 验收通过，但当前 Spec 提交仍不是 freeze SHA；未创建 freeze 候选、未调用真实模型、未运行正式 240 条实验，旧 freeze `e5f3777` 继续禁止使用。
 
 唯一下一步是：从已验收 Spec 提交创建新的 M9.1 freeze 候选，并在 Windows 与 openEuler 对该候选执行最终只读门槛复核；复核通过前不得启动正式实验。
+
+## M9.1 P9.10 Freeze 候选与最终运行前复核
+
+M9.1 的新 freeze SHA 确定为 `87c44618538cb662567e0f629055cb62adfc5910`。这是包含 fake canary CLI 入口修复、其 subprocess 回归测试和重新绑定 Spec 的非空提交；Spec 中的 `implementation_git_sha` 为 `b3d85113af279a5e94c4876c6326cb85a78d4aab`。当前跨平台确定性 Spec SHA 为 `122504c83ac175799269207eb396027ad6cbe1efd801e8756a902b90809f82c2`，任务计划 SHA 仍为 `c1b4ef24773480b9cd55ab2f774465a6b32955f62d0c0eefe0e4d5c4bf03db4b`。
+
+候选在 Windows detached worktree 上通过全量 `95 passed`、Spec Verifier、fake canary、fake-record 验证、mock dry-run 和 `git diff --check`。首次候选 worktree 缺少 Git 忽略的本地处理数据，导致 19 项文件缺失失败；随后仅对已有本地 JSONL 建立 worktree 文件链接后重跑，未改变源码、Spec 或数据内容。openEuler 同一候选 SHA 上通过全量 `94 passed, 1 skipped`、Spec Verifier、fake canary、fake-record 验证、mock dry-run 和 `git diff --check`。
+
+在 openEuler 候选 worktree 上重新运行两项真实 canary：S2/MBPP `mbpp_sanitized:591` 的 `task_success=true`，S4/HumanEval+ `humaneval_plus:HumanEval/27` 的 `task_success=false`。两条公开记录的审计结果为 `valid=true`、`record_count=2`、`task_success_count=1`、错误数 0；负结果保留，不解释为基础设施失败或性能结论。所有 canary 与 dry-run 均在 Git 忽略目录或 `/tmp` 中运行，未生成正式 completion marker，未覆盖 M9 结果。
+
+P9.10 验收通过。M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、M9 正式结果、Dashboard 和 `v1.0.0-experiment` 未修改。现在允许在 `87c44618538cb662567e0f629055cb62adfc5910` 上启动一次且仅一次的 M9.1 正式 240 条运行；运行中不得调参、换题或改写统计方法。
+
+唯一下一步是：在 openEuler 的 `87c44618538cb662567e0f629055cb62adfc5910` freeze worktree 中执行 M9.1 S1-S4 正式 240 条实验，随后运行 Strict Verifier、公开泄漏审计和只读聚合。
