@@ -31,3 +31,10 @@ def test_m9_1_spec_keeps_formal_parameters_and_v2_components():
     assert spec["component_versions"]["protocol"] == "compact_protocol_v2"
     assert spec["component_versions"]["state_vector"] == "state_vector_v2"
     assert spec["component_versions"]["shared_memory"] == "gated_shared_memory_v2"
+
+
+def test_checked_in_m9_1_spec_matches_public_builder_input():
+    """验证提交的 M9.1 Spec 由当前构建器和固定 M9 公开计划确定生成。"""
+    m9 = json.loads((ROOT / "experiments/m9_experiment_spec.json").read_text(encoding="utf-8"))
+    checked_in = json.loads((ROOT / "experiments/m9_1/spec.json").read_text(encoding="utf-8"))
+    assert checked_in == build_spec(m9, checked_in["implementation_git_sha"])
