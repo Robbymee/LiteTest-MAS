@@ -3,6 +3,13 @@
 from __future__ import annotations
 
 from typing import Any
+import json
+from pathlib import Path
+import sys
+
+from protocol.compact_v2 import CompactProtocolV2
+from state.vector_v2 import StateVectorV2
+from memory.gated_shared_memory_v2 import GatedSharedMemoryV2
 
 
 GROUPS = ("S1", "S2", "S3", "S4")
@@ -49,3 +56,45 @@ def canary_item(spec: dict[str, Any], group: str, dataset: str, seed: int = 42) 
     if item is None:
         raise ValueError("canary task not found")
     return item
+
+
+def execute_canary(root: Path, spec: dict[str, Any], group: str, dataset: str, output_root: Path, backend_name: str) -> dict[str, Any]:
+    """执行一项固定 M9.1 canary，使用真实 Backend 时只写公开结果。"""
+    if backend_name not in {"mock", "openai_compatible"}:
+        raise ValueError("unsupported canary backend")
+    from generation.candidate_parser import parse_candidate
+    from llm.config import LLMConfig, create_backend
+    from llm.models import LLMMessage, LLMRequest
+    from runtime.real_llm_runner import DATA, approved_tasks
+    from sandbox.private_eval import evaluate_private
+
+    item = canary_item(spec, group, dataset)
+    selection, data_path = (root / value for value in DATA[dataset])
+    task = next(value for value in approved_tasks(selection, data_path, 0) + approved_tasks(selection, data_path, 1) if value.task_id == item["task_id"])
+    public_fields = {"task_id": task.task_id, "function_name": task.function_name, "signature": task.signature, "description": task.task_description}
+    system = "You are a Python benchmark solver. Return code only."
+    text = f"Implement this Python function. Return code only.\nFunction: {task.function_name}\nSignature: {task.signature}\nDescription: {task.task_description}"
+    state = StateVectorV2(phase="generation", source_role="planner", target_role="executor", progress_code=1, state_reference="sv_canary") if group in {"S3", "S4"} else None
+    memory = GatedSharedMemoryV2(dataset=dataset, task_group=task.group_id, seed=42, experiment_id=spec["experiment_id"]) if group == "S4" else None
+    memory_records = memory.retrieve(task_id=task.task_id, topic=task.task_description, tags=(task.group_id,), task_type="candidate_generation") if memory else []
+    if group == "S1":
+        prompt = text
+    else:
+        endpoint = CompactProtocolV2()
+        capability_id = endpoint.register_capability("executor", "执行公开候选生成动作", ("generate",))
+        endpoint.begin_sequence(("compact_protocol_v2",))
+        task_ref_payload = endpoint.encode_task_registration(public_fields)
+        task_ref = endpoint.references.register("task", public_fields)
+        prompt_payload = endpoint.encode_action(action="generate", sender="Planner", receiver="Executor", capability_id=capability_id, task_ref=task_ref, inputs={"state_vector_id": "sv_canary" if state else None, "memory_ids": [record.memory_id for record in memory_records]})
+        prompt = "Use this structured public protocol payload and return code only.\n" + prompt_payload.decode("utf-8")
+    backend = create_backend(LLMConfig.from_env()) if backend_name == "openai_compatible" else create_backend(LLMConfig(backend="mock"))
+    response = backend.generate(LLMRequest((LLMMessage("system", system), LLMMessage("user", prompt)), backend.model, temperature=0, max_tokens=spec["generation_parameters"]["max_tokens"], seed=42))
+    artifact = parse_candidate(response.text, task.function_name)
+    private = {value["task_id"]: value for value in map(json.loads, data_path.read_text(encoding="utf-8").splitlines())}[task.task_id]
+    evaluation = evaluate_private(private, artifact["candidate_code"]) if artifact["parse_status"] == "success" else {"task_success": False, "official_test_count": 0, "official_test_pass_count": 0}
+    if memory:
+        memory.write(source_agent="Summarizer", created_at="canary", task_topic=task.task_description, summary="公开策略摘要", tags=(task.group_id,), task_type="candidate_generation", provenance="canary", confidence=1.0, success_status="success" if evaluation["task_success"] else "failure", source_task_id=task.task_id)
+    record = {"schema_version": "1.0", **item, **group_config(group), "result_scope": "m9_1_real_canary", "backend": backend_name, "model": spec["model"], "parse_status": artifact["parse_status"], "candidate_sha256": artifact.get("candidate_sha256"), "task_success": bool(evaluation["task_success"]), "official_test_count": evaluation.get("official_test_count"), "official_test_pass_count": evaluation.get("official_test_pass_count"), "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens, "total_tokens": response.usage.total_tokens, "latency_seconds": response.latency_seconds, "public_leakage_count": 0}
+    output_root.mkdir(parents=True, exist_ok=True)
+    (output_root / f"{group}_{dataset}_canary.json").write_text(json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return record
