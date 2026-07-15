@@ -65,7 +65,8 @@ def execute_canary(root: Path, spec: dict[str, Any], group: str, dataset: str, o
     from generation.candidate_parser import parse_candidate
     from llm.config import LLMConfig, create_backend
     from llm.models import LLMMessage, LLMRequest
-    from runtime.real_llm_runner import DATA, approved_tasks
+    from experiments.m9_runner import DATA
+    from runtime.real_llm_runner import approved_tasks
     from sandbox.private_eval import evaluate_private
 
     item = canary_item(spec, group, dataset)
