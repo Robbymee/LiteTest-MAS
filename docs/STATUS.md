@@ -141,3 +141,11 @@ M9.1 Spec 保留 M9 的模型、数据集、任务、seed、temperature、timeou
 Windows P9.1 Spec 专项测试 `3 passed`，全量测试 `83 passed`，`git diff --check` 通过。openEuler Spec 专项测试 `3 passed`，M9 Spec 回归通过，全量测试 `82 passed, 1 skipped`，`git diff --check` 通过，工作区干净。尚未调用真实 LLM，尚未运行 M9.1 canary 或正式实验。
 
 P9.1 验收通过。唯一下一步是 P9.2：在独立 M9.1 Runner/Verifier 门槛上完成 fake canary、两项真实 canary、public leakage=0 和 freeze SHA 校验；未通过前不得启动 240 条正式运行。
+
+## M9.1 P9.2 Preflight 验收记录
+
+P9.2 的独立 Spec Verifier 和 fake canary 门槛已完成。新增 `scripts/verify_m9_1_spec.py` 与 `scripts/run_m9_1_fake_canary.py`，校验 S1-S4、240 条计划、唯一 task identity、plan index、公开泄漏字段、独立 result scope 和 fake scope；fake canary 不调用模型，也不能冒充正式 supplementary 结果。
+
+Windows P9.2 专项测试 `4 passed`，全量测试 `85 passed`，`git diff --check` 通过。openEuler P9.2 专项测试 `4 passed`，全量测试 `84 passed, 1 skipped`，`git diff --check` 通过，工作区干净。当前提交 SHA 为 `ed160a2`。
+
+真实 canary 尚未执行，public leakage=0 与 freeze SHA 运行门槛尚未宣称通过；原因是现有 M9 Runner 的 group 语义固定为 G1-G4，尚不能安全执行 S1-S4。P9.2 Preflight 部分验收通过。唯一下一步是 P9.3：实现独立 M9.1 Runner/Verifier 的 S1-S4 执行语义，然后再执行两项真实 canary。
