@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,8 +24,12 @@ def main() -> int:
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     spec = json.loads(args.spec.read_text(encoding="utf-8"))
-    if not args.dry_run and args.freeze_git_sha != "e5f3777":
-        raise SystemExit("formal M9.1 execution must use freeze SHA e5f3777")
+    if not args.dry_run:
+        if not args.freeze_git_sha:
+            raise SystemExit("formal M9.1 execution requires --freeze-git-sha")
+        head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+        if head != args.freeze_git_sha:
+            raise SystemExit("formal M9.1 execution must run at the declared freeze SHA")
     result = run_batch(ROOT, spec, args.output_root, args.backend, args.freeze_git_sha, dry_run=args.dry_run, resume=args.resume)
     print(json.dumps(result, ensure_ascii=False, sort_keys=True))
     return 0

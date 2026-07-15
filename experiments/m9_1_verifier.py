@@ -7,10 +7,10 @@ import json
 from pathlib import Path
 from typing import Any
 
-from experiments.m9_1_runner import group_config, plan, task_key
+from experiments.m9_1_runner import METRIC_FIELDS, group_config, plan, task_key
 
 FORBIDDEN = {"candidate_code", "raw_response", "hidden_reference_tests", "canonical_solution", "official_tests", "expected_output", "api_key", "authorization", "private_traceback"}
-REQUIRED = {"schema_version", "seed", "experiment_group", "dataset", "group_id", "task_id", "plan_index", "mode", "state_enabled", "memory_enabled", "component", "result_scope", "freeze_git_sha", "implementation_git_sha", "task_success", "final_status"}
+REQUIRED = {"schema_version", "seed", "experiment_group", "dataset", "group_id", "task_id", "plan_index", "mode", "state_enabled", "memory_enabled", "component", "result_scope", "freeze_git_sha", "implementation_git_sha", "task_success", "final_status", *METRIC_FIELDS}
 
 
 def spec_hash(spec: dict[str, Any]) -> str:

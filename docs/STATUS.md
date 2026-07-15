@@ -207,3 +207,13 @@ P9.2 的独立 Spec Verifier 和 fake canary 门槛已完成。新增 `scripts/v
 Windows P9.2 专项测试 `4 passed`，全量测试 `85 passed`，`git diff --check` 通过。openEuler P9.2 专项测试 `4 passed`，全量测试 `84 passed, 1 skipped`，`git diff --check` 通过，工作区干净。当前提交 SHA 为 `ed160a2`。
 
 真实 canary 尚未执行，public leakage=0 与 freeze SHA 运行门槛尚未宣称通过；原因是现有 M9 Runner 的 group 语义固定为 G1-G4，尚不能安全执行 S1-S4。P9.2 Preflight 部分验收通过。唯一下一步是 P9.3：实现独立 M9.1 Runner/Verifier 的 S1-S4 执行语义，然后再执行两项真实 canary。
+
+## M9.1 P9.8 批量运行加固
+
+P9.8 已在 Windows 完成批量运行链加固。独立 Runner 现在为每条公开记录写入完整的通信、模型、StateVector、Memory、质量和耗时指标字段：可直接观测的值按实际运行记录，无法由单条公开记录可靠得到的值统一写为 `unavailable`，不以 `0` 或推测替代。基础设施异常仍会写入脱敏的 `failed_infrastructure` 最终记录，批次继续执行；公开记录采用临时文件替换，completion marker 仅在 240 条规范路径记录均存在时写入。
+
+连续任务的 `compact_protocol_v2` 会话按 dataset、任务组、seed 和实验组复用，握手只在该 sequence 的首条任务中发出并计入通信指标；后续任务复用 capability registry。S4 Memory 保持 dataset、任务组、seed 和 experiment ID 隔离，并记录实际的检索、门控、注入和复用计数。CLI 正式运行仍要求显式 `--freeze-git-sha`，且当前 `HEAD` 必须与该 SHA 严格一致。M9 原始结果、`reports/m9`、Dashboard、冻结 SHA `cc7aac0417afb6acab47baaf7449459692fa9444` 和标签 `v1.0.0-experiment` 均未修改；未调用真实模型，未创建 M9.1 freeze，未运行正式 240 条任务。
+
+Windows 专项回归为 `19 passed`，全量测试为 `93 passed`，`git diff --check` 通过。openEuler 专项与全量验收尚未执行，故 P9.8 尚未完成，旧 freeze `e5f3777` 仍禁止用于 M9.1 正式运行。
+
+唯一下一步是：提交 P9.8 加固补丁并在 openEuler 拉取同一 SHA，执行专项与全量测试、`git diff --check` 和无模型 dry-run；全部通过后才可重新生成 M9.1 Spec 和新的 freeze 候选。
