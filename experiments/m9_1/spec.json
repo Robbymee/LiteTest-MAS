@@ -1,0 +1,2056 @@
+{
+  "backend": "openai_compatible",
+  "bootstrap": {
+    "confidence": 0.95,
+    "resamples": 2000,
+    "seed": 20260711
+  },
+  "component_versions": {
+    "parser": "candidate_parser_v1",
+    "private_adapter": "private_adapter_v2",
+    "prompt": "candidate_codegen_v1",
+    "protocol": "compact_protocol_v2",
+    "sandbox": "private_subprocess_v1",
+    "shared_memory": "gated_shared_memory_v2",
+    "state_vector": "state_vector_v2"
+  },
+  "conclusion_scope": "fixed_task_fixed_model_supplementary_analysis",
+  "datasets": [
+    "mbpp",
+    "humaneval"
+  ],
+  "execution_order": {
+    "seed_42": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "seed_43": [
+      "S2",
+      "S3",
+      "S4",
+      "S1"
+    ],
+    "seed_44": [
+      "S3",
+      "S4",
+      "S1",
+      "S2"
+    ],
+    "within_dataset": "manifest_order",
+    "within_group": [
+      "mbpp",
+      "humaneval"
+    ]
+  },
+  "experiment_groups": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "experiment_id": "m9_1_competition_alignment",
+  "formal_acceptance": {
+    "expected_duplicates": 0,
+    "expected_final_records": 240,
+    "expected_missing": 0,
+    "private_metrics": "available_or_explicit_unavailable_reason",
+    "public_leakage_scan": 0
+  },
+  "generation_parameters": {
+    "concurrency": 1,
+    "max_retries": 1,
+    "max_tokens": 256,
+    "retry": 1,
+    "stream": false,
+    "temperature": 0,
+    "timeout_seconds": 300
+  },
+  "group_configs": {
+    "S1": {
+      "component": "text_baseline",
+      "memory_enabled": false,
+      "mode": "text",
+      "state_enabled": false
+    },
+    "S2": {
+      "component": "compact_protocol_v2",
+      "memory_enabled": false,
+      "mode": "protocol",
+      "state_enabled": false
+    },
+    "S3": {
+      "component": "compact_protocol_v2+state_vector_v2",
+      "memory_enabled": false,
+      "mode": "protocol",
+      "state_enabled": true
+    },
+    "S4": {
+      "component": "compact_protocol_v2+state_vector_v2+gated_shared_memory_v2",
+      "memory_enabled": true,
+      "mode": "protocol",
+      "state_enabled": true
+    }
+  },
+  "implementation_git_sha": "b704253fc245875e6b5138a608263361b4e30a60",
+  "memory_config": {
+    "backend": "gated_in_process_v2",
+    "confidence_threshold": 0.5,
+    "relevance_threshold": 0.5,
+    "reset": "at_group_boundary",
+    "scope": [
+      "dataset",
+      "task_group",
+      "seed",
+      "experiment_id"
+    ],
+    "token_budget": 128,
+    "top_k": 3
+  },
+  "model": "local-llama31-8b-instruct",
+  "parser_version": "candidate_parser_v1",
+  "preflight_gates": [
+    "unit_tests",
+    "windows_full_tests",
+    "openEuler_full_tests",
+    "fake_canary",
+    "two_real_canaries",
+    "public_leakage_zero",
+    "implementation_freeze_sha",
+    "run_on_freeze_sha"
+  ],
+  "result_scope": "supplementary_competition_alignment_ablation",
+  "sandbox_version": "private_subprocess_v1",
+  "schema_version": "1.0",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "source_m9_freeze_sha": "cc7aac0417afb6acab47baaf7449459692fa9444",
+  "task_plan": [
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 0,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 1,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 2,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 3,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 4,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 5,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 6,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 7,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 8,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 9,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 10,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 11,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 12,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 13,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 14,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 15,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 16,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 17,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 18,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 19,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 20,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 21,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 22,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 23,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 24,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 25,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 26,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 27,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 28,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 29,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 30,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 31,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 32,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 33,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 34,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 35,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 36,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 37,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 38,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 39,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 40,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 41,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 42,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 43,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 44,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 45,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 46,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 47,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 48,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 49,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 50,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 51,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 52,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 53,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 54,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 55,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 56,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 57,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 58,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 59,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 60,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 61,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 62,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 63,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 64,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 65,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 66,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 67,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 68,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 69,
+      "seed": 42,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 70,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 71,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 72,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 73,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 74,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 75,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 76,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 77,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 78,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 79,
+      "seed": 42,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 80,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 81,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 82,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 83,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 84,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 85,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 86,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 87,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 88,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 89,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 90,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 91,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 92,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 93,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 94,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 95,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 96,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 97,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 98,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 99,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 100,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 101,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 102,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 103,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 104,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 105,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 106,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 107,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 108,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 109,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 110,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 111,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 112,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 113,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 114,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 115,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 116,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 117,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 118,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 119,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 120,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 121,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 122,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 123,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 124,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 125,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 126,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 127,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 128,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 129,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 130,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 131,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 132,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 133,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 134,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 135,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 136,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 137,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 138,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 139,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 140,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 141,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 142,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 143,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 144,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 145,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 146,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 147,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 148,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 149,
+      "seed": 43,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 150,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 151,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 152,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 153,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 154,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 155,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 156,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 157,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 158,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 159,
+      "seed": 43,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 160,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 161,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 162,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 163,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 164,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 165,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 166,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 167,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 168,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S3",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 169,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 170,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 171,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 172,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 173,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 174,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 175,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 176,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 177,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 178,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S3",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 179,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 180,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 181,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 182,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 183,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 184,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 185,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 186,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 187,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 188,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S4",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 189,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 190,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 191,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 192,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 193,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 194,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 195,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 196,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 197,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 198,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S4",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 199,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 200,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 201,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 202,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 203,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 204,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 205,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 206,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 207,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 208,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S1",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 209,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 210,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 211,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 212,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 213,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 214,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 215,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 216,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 217,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 218,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S1",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 219,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/149"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 220,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:591"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 221,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:644"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 222,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:586"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 223,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:743"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_list_rearrangement",
+      "plan_index": 224,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:632"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 225,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:434"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 226,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:285"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 227,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:787"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 228,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:794"
+    },
+    {
+      "dataset": "mbpp",
+      "experiment_group": "S2",
+      "group_id": "mbpp_regex_string_matching",
+      "plan_index": 229,
+      "seed": 44,
+      "task_id": "mbpp_sanitized:607"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 230,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/27"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 231,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/28"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 232,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/29"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 233,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/51"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_string_transforms",
+      "plan_index": 234,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/86"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 235,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/26"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 236,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/33"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 237,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/37"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 238,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/70"
+    },
+    {
+      "dataset": "humaneval",
+      "experiment_group": "S2",
+      "group_id": "humaneval_list_transforms",
+      "plan_index": 239,
+      "seed": 44,
+      "task_id": "humaneval_plus:HumanEval/149"
+    }
+  ],
+  "task_plan_count": 240,
+  "task_plan_sha256": "c1b4ef24773480b9cd55ab2f774465a6b32955f62d0c0eefe0e4d5c4bf03db4b"
+}
