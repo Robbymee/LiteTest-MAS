@@ -158,6 +158,14 @@ Windows P9.5 审计专项测试 `2 passed`，Spec/preflight 测试 `4 passed`，
 
 P9.5 验收通过。唯一下一步是 P9.6：在 freeze SHA `e5f3777` 上完成正式运行前最终门槛复核，然后才可启动 S1-S4 的 240 条 M9.1 正式实验。
 
+## M9.1 P9.6 最终运行前门槛
+
+P9.6 已完成。Spec Verifier 返回 `valid=true`，任务计划为 240 条且 S1-S4 identity 唯一；freeze 候选 `e5f3777` 存在，M9.1 Spec 的 implementation SHA 与 V2 canary 运行链一致。当前 HEAD 相对 freeze 候选只增加 `docs/STATUS.md` 和 `docs/DECISIONS.md`，没有改变 M9.1 运行代码或 Spec；正式运行必须 checkout `e5f3777`。
+
+M9 `v1.0.0-experiment` 标签和正式结果未改变。Windows/openEuler 的 P9.4 全量回归分别为 `86 passed`、`85 passed, 1 skipped`；P9.5 openEuler canary 审计为 `valid=true`、2 条记录、泄漏错误 0。P9.6 未调用模型，未创建 M9.1 正式完成标记。
+
+P9.6 验收通过。唯一下一步是 P9.7：在 freeze SHA `e5f3777` 上启动并完成 M9.1 S1-S4 的 240 条正式实验，使用独立 `runs/m9_1/`，不得覆盖 M9 运行目录或结果。
+
 P9.4 已接入真实 Backend canary 运行链：S1 保持 Text，S2 使用 CompactProtocol V2，S3 增加 StateVector V2，S4 增加 GatedSharedMemory V2；输出范围独立为 `m9_1_real_canary`，运行目录为被 Git 忽略的 `runs/m9_1_canary`，未创建正式完成标记。
 
 已执行两项真实 canary：S2 + MBPP `mbpp_sanitized:591`，S4 + HumanEval+ `humaneval_plus:HumanEval/27`。两项都完成了 Backend 请求和私有评测流程，但 `task_success=false`；这是本次固定模型 canary 的真实质量结果，未被改写为基础设施失败或成功。正式 M9.1 仍未启动。
