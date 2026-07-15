@@ -220,10 +220,10 @@ Windows 专项回归为 `19 passed`，全量测试为 `93 passed`，`git diff --
 
 ## M9.1 P9.9 Spec 重建与冻结前门槛
 
-P9.9 已在 Windows 重建独立 `experiments/m9_1/spec.json`，将 `implementation_git_sha` 从过期的 V2 canary 链 SHA 更新为 P9.8 已验收 Runner/Verifier 实现 SHA `b529dc1177e94526f41bb6049e6d280fcd56b46f`。除此之外，M9.1 的 240 条真实公开任务身份与顺序、S1-S4、模型、seed、生成参数、Parser、Sandbox、Memory 阈值、Bootstrap 参数、`result_scope` 和 `conclusion_scope` 均未改变。任务计划 SHA 仍为 `c1b4ef24773480b9cd55ab2f774465a6b32955f62d0c0eefe0e4d5c4bf03db4b`，当前 Spec 文件 SHA256 为 `7ff97f159a5c9b0754169d3839595457cb0e6a217e584848479dd9c22e9a9064`。
+P9.9 已在 Windows 重建独立 `experiments/m9_1/spec.json`，将 `implementation_git_sha` 从过期的 V2 canary 链 SHA 更新为 P9.8 已验收 Runner/Verifier 实现 SHA `b529dc1177e94526f41bb6049e6d280fcd56b46f`。除此之外，M9.1 的 240 条真实公开任务身份与顺序、S1-S4、模型、seed、生成参数、Parser、Sandbox、Memory 阈值、Bootstrap 参数、`result_scope` 和 `conclusion_scope` 均未改变。任务计划 SHA 仍为 `c1b4ef24773480b9cd55ab2f774465a6b32955f62d0c0eefe0e4d5c4bf03db4b`，按确定性 JSON 序列化计算的跨平台 Spec SHA256 为 `fb7d4946fe76a731ae5b44fe626e795345763ddecfc5fa94979eda44051ad81b`。
 
 新增一致性测试保证已提交 Spec 可由固定 M9 公开计划、当前构建器和 Spec 自身声明的 implementation SHA 确定性重建。Windows P9.9 专项测试 `13 passed`、全量测试 `94 passed`，Spec Verifier 返回 `valid=true`、240 条计划、零错误，递归禁用字段检查通过，`git diff --check` 通过。文本扫描命中的 `candidate_codegen_v1` 是公开组件版本值，不是 `candidate_code` 字段或候选代码泄漏。
 
-openEuler P9.9 验收尚未执行，因此本阶段尚未完成。当前 Spec 提交也不是 freeze SHA，未创建 freeze 候选、未调用真实模型、未运行正式 240 条实验；旧 freeze `e5f3777` 继续禁止使用。
+openEuler 在 Spec 提交 SHA `7c7d0a3faaea4c8404725a78215e3ab30b7b86d9` 上通过专项 `13 passed`、全量 `93 passed, 1 skipped`、Spec Verifier、`git diff --check` 和 mock dry-run。dry-run 返回 `planned=240`、`completed=0`，未生成 completion marker。Windows 与 openEuler 的文件字节 SHA 因 CRLF/LF 不同而不同，因此正式门槛只使用确定性 JSON `spec_hash`；两端均得到 `fb7d4946fe76a731ae5b44fe626e795345763ddecfc5fa94979eda44051ad81b`。P9.9 验收通过，但当前 Spec 提交仍不是 freeze SHA；未创建 freeze 候选、未调用真实模型、未运行正式 240 条实验，旧 freeze `e5f3777` 继续禁止使用。
 
-唯一下一步是：提交 P9.9 Spec 补丁并在 openEuler 同一 SHA 上执行专项、全量、Spec Verifier、公开字段检查和 mock dry-run；全部通过后才能创建新的 freeze 候选。
+唯一下一步是：从已验收 Spec 提交创建新的 M9.1 freeze 候选，并在 Windows 与 openEuler 对该候选执行最终只读门槛复核；复核通过前不得启动正式实验。
