@@ -93,7 +93,7 @@
       "state_enabled": true
     }
   },
-  "implementation_git_sha": "b529dc1177e94526f41bb6049e6d280fcd56b46f",
+  "implementation_git_sha": "b3d85113af279a5e94c4876c6326cb85a78d4aab",
   "memory_config": {
     "backend": "gated_in_process_v2",
     "confidence_threshold": 0.5,
