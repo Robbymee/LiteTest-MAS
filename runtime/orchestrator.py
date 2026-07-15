@@ -6,6 +6,7 @@ from pathlib import Path
 import time
 
 from agents.executor import ExecutorAgent
+from agents.collaboration import build_role_events
 from agents.memory_agent import MemoryAgent
 from agents.planner import PlannerAgent
 from agents.summarizer import SummarizerAgent
@@ -47,11 +48,16 @@ class Orchestrator:
         summary_message = SummarizerAgent().summarize(task, mode, pytest_result, run_dir)
         self._record(summary_message, messages, transcript, adapter)
 
+        role_events = build_role_events(messages)
+        (run_dir / "agent_collaboration.json").write_text(
+            json.dumps([event.to_dict() for event in role_events], ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+
         duration = time.perf_counter() - started
         metrics = build_metrics(task["task_id"], mode, messages, duration, pytest_result)
         write_metrics(metrics, run_dir / "metrics.json")
         (run_dir / "transcript.txt").write_text("\n".join(transcript), encoding="utf-8")
-        return {"run_dir": str(run_dir), "metrics": metrics}
+        return {"run_dir": str(run_dir), "metrics": metrics, "agent_collaboration": [event.to_dict() for event in role_events]}
 
     def _make_run_dir(self, task_id: str, mode: str) -> Path:
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
