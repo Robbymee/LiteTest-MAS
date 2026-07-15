@@ -148,6 +148,16 @@ P9.1 验收通过。唯一下一步是 P9.2：在独立 M9.1 Runner/Verifier 门
 
 ## M9.1 P9.4 真实 Canary 记录
 
+## M9.1 P9.5 Canary 审计与 Freeze 记录
+
+P9.5 已完成。新增 `scripts/audit_m9_1_canary.py`，在 openEuler 对两条 `m9_1_real_canary` 公开 JSON 完成字段、scope、绝对路径、凭据和敏感字段审计：`valid=true`、`record_count=2`、错误数为 0。两项 `task_success=false` 仍被保留，`infrastructure_failure` 未由 canary 记录推断，保持 `unavailable`。
+
+M9.1 Spec 的 `implementation_git_sha` 已校正为真实 V2 canary 运行链提交 `0c1782e705e261a91748cee59aa06a9922fb70f6`。包含 Spec 校正、canary 审计代码并已在 openEuler 完成审计的 freeze 候选 SHA 为 `e5f3777`；freeze SHA 不写入 Spec 自身，正式运行必须明确 checkout 该 SHA。
+
+Windows P9.5 审计专项测试 `2 passed`，Spec/preflight 测试 `4 passed`，`git diff --check` 通过。openEuler 审计专项测试 `4 passed`，真实 canary 审计 `valid=true`，`git diff --check` 通过，工作区干净。正式 240 条 M9.1 运行尚未启动。
+
+P9.5 验收通过。唯一下一步是 P9.6：在 freeze SHA `e5f3777` 上完成正式运行前最终门槛复核，然后才可启动 S1-S4 的 240 条 M9.1 正式实验。
+
 P9.4 已接入真实 Backend canary 运行链：S1 保持 Text，S2 使用 CompactProtocol V2，S3 增加 StateVector V2，S4 增加 GatedSharedMemory V2；输出范围独立为 `m9_1_real_canary`，运行目录为被 Git 忽略的 `runs/m9_1_canary`，未创建正式完成标记。
 
 已执行两项真实 canary：S2 + MBPP `mbpp_sanitized:591`，S4 + HumanEval+ `humaneval_plus:HumanEval/27`。两项都完成了 Backend 请求和私有评测流程，但 `task_success=false`；这是本次固定模型 canary 的真实质量结果，未被改写为基础设施失败或成功。正式 M9.1 仍未启动。
