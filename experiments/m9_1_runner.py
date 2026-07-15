@@ -139,7 +139,8 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
     system = "You are a Python benchmark solver. Return code only."
     text = f"Implement this Python function. Return code only.\nFunction: {task.function_name}\nSignature: {task.signature}\nDescription: {task.task_description}"
     state = StateVectorV2(phase="generation", source_role="planner", target_role="executor", progress_code=1, state_reference="sv_canary") if group in {"S3", "S4"} else None
-    state_metrics = metric_defaults()
+    # 各来源仅返回自身实测字段，避免后续 unavailable 默认值覆盖已有指标。
+    state_metrics: dict[str, Any] = {}
     if state is not None:
         # 编解码均在传递边界执行，保证只传递固定 bytes 而不附加完整状态文本。
         encode_started = time.perf_counter()
@@ -160,7 +161,7 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
         # Canary 独立执行时创建本地 scope；批量执行会显式传入组级实例。
         memory = GatedSharedMemoryV2(dataset=dataset, task_group=task.group_id, seed=item["seed"], experiment_id=spec["experiment_id"])
     memory_records = memory.retrieve(task_id=task.task_id, topic=task.task_description, tags=(task.group_id,), task_type="candidate_generation") if memory else []
-    protocol_metrics = metric_defaults()
+    protocol_metrics: dict[str, Any] = {}
     if group == "S1":
         prompt = text
         protocol_metrics.update({
@@ -190,7 +191,7 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
     artifact = parse_candidate(response.text, task.function_name)
     private = {value["task_id"]: value for value in map(json.loads, data_path.read_text(encoding="utf-8").splitlines())}[task.task_id]
     evaluation = evaluate_private(private, artifact["candidate_code"]) if artifact["parse_status"] == "success" else {"task_success": False, "official_test_count": 0, "official_test_pass_count": 0}
-    memory_metrics = metric_defaults()
+    memory_metrics: dict[str, Any] = {}
     if memory:
         for memory_record in memory_records:
             memory.reuse(memory_record.memory_id, task_id=task.task_id, task_success=bool(evaluation["task_success"]))
@@ -199,7 +200,7 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
         memory_metrics.update(memory_values)
         memory_metrics["memory_injected_bytes"] = sum(len(record.summary.encode("utf-8")) for record in memory_records)
     success = bool(evaluation["task_success"])
-    model_metrics = metric_defaults()
+    model_metrics: dict[str, Any] = {}
     model_metrics.update({
         "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens,
         "total_tokens": response.usage.total_tokens, "request_count": 1,

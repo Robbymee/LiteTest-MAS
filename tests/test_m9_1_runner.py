@@ -5,7 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from experiments.m9_1_runner import _protocol_session, _write_public_record, canary_item, group_config, metric_defaults, plan, run_batch, select_plan
+from experiments.m9_1_runner import _protocol_session, _write_public_record, canary_item, execute_item, group_config, metric_defaults, plan, run_batch, select_plan
+from memory.gated_shared_memory_v2 import GatedSharedMemoryV2
 from experiments.m9_1_verifier import verify
 
 
@@ -57,3 +58,24 @@ def test_protocol_session_sends_handshake_once_per_related_sequence():
     session = _protocol_session()
     first = session.pop("pending_handshake")
     assert first and session.get("pending_handshake") is None
+
+
+def test_s4_metric_sources_do_not_overwrite_each_other(tmp_path):
+    """验证 S4 的通信、状态、记忆和模型指标可同时保留。"""
+    spec = json.loads((ROOT / "experiments/m9_1/spec.json").read_text(encoding="utf-8"))
+    item = canary_item(spec, "S4", "humaneval")
+    memory = GatedSharedMemoryV2(
+        dataset=item["dataset"], task_group=item["group_id"], seed=item["seed"],
+        experiment_id=spec["experiment_id"],
+    )
+    # 使用 Mock Backend 覆盖完整计量合并路径，不调用真实模型或暴露私有字段。
+    record = execute_item(
+        ROOT, spec, item, tmp_path, "mock", freeze_git_sha="freeze",
+        result_scope=spec["result_scope"], memory=memory, protocol_session=_protocol_session(),
+    )
+    for field in (
+        "agent_message_count", "protocol_payload_bytes", "state_vector_count",
+        "state_vector_bytes", "memory_query_count", "memory_write_count",
+        "prompt_tokens", "completion_tokens", "total_tokens", "request_count",
+    ):
+        assert record[field] != "unavailable"
