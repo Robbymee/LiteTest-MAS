@@ -146,6 +146,14 @@ P9.1 验收通过。唯一下一步是 P9.2：在独立 M9.1 Runner/Verifier 门
 
 ## M9.1 P9.3 S 组 Runner 语义记录
 
+## M9.1 P9.4 真实 Canary 记录
+
+P9.4 已接入真实 Backend canary 运行链：S1 保持 Text，S2 使用 CompactProtocol V2，S3 增加 StateVector V2，S4 增加 GatedSharedMemory V2；输出范围独立为 `m9_1_real_canary`，运行目录为被 Git 忽略的 `runs/m9_1_canary`，未创建正式完成标记。
+
+已执行两项真实 canary：S2 + MBPP `mbpp_sanitized:591`，S4 + HumanEval+ `humaneval_plus:HumanEval/27`。两项都完成了 Backend 请求和私有评测流程，但 `task_success=false`；这是本次固定模型 canary 的真实质量结果，未被改写为基础设施失败或成功。正式 M9.1 仍未启动。
+
+Windows P9.4 全量测试 `86 passed`，openEuler P9.4 全量测试 `85 passed, 1 skipped`，`git diff --check` 通过，两端当前 SHA 为 `0c1782e`。P9.4 尚未完成独立 canary 记录的最终 leakage 扫描、freeze SHA 绑定和两项 canary 的正式验收报告。唯一下一步是 P9.5：完成真实 canary 公开字段/泄漏审计、freeze SHA 校验和正式运行前最终门槛。
+
 P9.3 已完成 S1-S4 计划和配置语义的独立实现：新增 `experiments/m9_1_runner.py`、`scripts/run_m9_1_canary.py` 和对应测试。Runner 不复用 M9 的 G1-G4 group 配置；S1-S4 的 component、mode、StateVector 和 Memory 开关均从 M9.1 Spec 读取。S2 Mock canary 在 Windows/openEuler 均输出 `result_scope=m9_1_runner_canary`、`component=compact_protocol_v2` 和 `model_call=false`。
 
 Windows P9.3 专项测试 `3 passed`，全量测试 `86 passed`，`git diff --check` 通过。openEuler P9.3 专项测试 `3 passed`，全量测试 `85 passed, 1 skipped`，`git diff --check` 通过，工作区干净。当前提交 SHA 为 `06b1c4f`。
