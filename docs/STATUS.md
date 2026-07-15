@@ -307,3 +307,13 @@ S2 canary 的 `parse_status=success`、`task_success=true`，private official te
 P9.16 验收通过。M9.1 的 unit tests、Windows/openEuler 全量测试、fake canary、两项真实 canary 与公开泄漏审计门槛均已完成；下一阶段只允许在相同候选 freeze worktree 启动一次完整 240 条正式运行。
 
 唯一下一步是：在 openEuler 候选 worktree `c79fd4826627bf61faf5d90540a014d243a59edd` 上以固定 Spec 启动一次 M9.1 正式 240 条运行，并保留所有 final 记录、checkpoint 与失败分类。
+
+## M9.1 P9.17 正式 240 条运行完整性与公开审计
+
+P9.17 已在 openEuler 的独立 detached worktree `/home/oa/LiteTest-MAS-m9_1-freeze-c79` 完成一次 M9.1 正式 240 条运行。运行固定在 freeze SHA `c79fd4826627bf61faf5d90540a014d243a59edd`，使用确定性 Spec SHA `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6`；未改变任务、顺序、模型、组件、生成参数、评测边界或统计方法。
+
+Strict Verifier 返回 `valid=true`，`planned=240`、`final=240`、缺失和重复均为 `0`。公开结果递归泄漏审计覆盖 240 条 final records，返回 `valid=true` 与 `public_leakage_count=0`。运行结果包含 `135` 条 `completed_success` 和 `105` 条 `failed_official_tests`；未发现基础设施失败。失败记录按原样保留，不能被重新分类、删除或作为调参依据。
+
+此前在 `87c4461` 的首次 240 条运行及其公开审计产物继续保留，但因计量默认值覆盖错误而无效，不得用于有效 M9.1 计量结论。本阶段未修改 M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、`v1.0.0-experiment`、M9 原始公开结果、`reports/m9` 或冻结 Dashboard。
+
+P9.17 完整性与公开审计验收通过。唯一下一步是：公开结果聚合、统计与 M9.1 报告。
