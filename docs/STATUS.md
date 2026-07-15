@@ -113,3 +113,11 @@ P6 已完成。新增独立 `state/vector_v2.py` 和中文设计文档 `docs/非
 Windows P6 专项测试 `4 passed`，全量测试 `76 passed`，`git diff --check` 通过。openEuler P6 专项测试 `4 passed`，全量测试 `75 passed, 1 skipped`，`git diff --check` 通过。两端代码 SHA 为 `af8999a`，openEuler 工作区干净。P6 使用合成 fixtures，未调用真实 LLM、未接入正式 Runner、未运行 M9.1 正式实验。
 
 P6 验收通过。唯一下一步是 P7：实现独立 `gated_shared_memory_v2`，加入成功门控、隔离、阈值、top_k、预算和 abstain，并先完成合成测试。
+
+## M9.1 P7 验收记录
+
+P7 已完成。新增独立 `memory/gated_shared_memory_v2.py` 和中文设计文档 `docs/共享记忆设计与门控策略.md`。V2 支持完整记忆元数据、success-only 默认门控、失败经验标记、dataset/task_group/seed/experiment 隔离、轻量相关性评分、固定 `top_k`、relevance/confidence threshold、token budget、主动 abstain、reuse/effective reuse、eviction 和敏感字段拒绝；现有 `memory/shared_memory.py` V1 未修改。
+
+Windows P7 专项测试 `5 passed`，全量测试 `79 passed`，`git diff --check` 通过。openEuler P7 专项测试 `5 passed`，全量测试 `78 passed, 1 skipped`，`git diff --check` 通过。两端代码 SHA 为 `c5b971e`，openEuler 工作区干净。P7 使用合成 fixtures，未调用真实 LLM、未接入正式 Runner、未运行 M9.1 正式实验。
+
+P7 验收通过。唯一下一步是 P8：补充真实多 Agent 逻辑角色与协作链证据，并说明逻辑角色和 LLM 调用次数的区别；不得虚构独立 Agent。
