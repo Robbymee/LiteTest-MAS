@@ -97,3 +97,11 @@ P4 已完成。`scripts/analyze_m9_seed_sensitivity.py` 只读取正式 M9 的 `
 Windows P4 专项测试 `2 passed`，全量测试 `70 passed`，`git diff --check` 通过。openEuler P4 专项测试 `2 passed`，全量测试 `69 passed, 1 skipped`，`git diff --check` 通过，工作区干净。P4 未进入 Protocol V2、StateVector V2、SharedMemory V2 或 M9.1 正式实验。
 
 P4 验收通过。唯一下一步是 P5：在独立模块中实现 `compact_protocol_v2`，并使用合成 fixtures 与 Mock Backend 完成单元测试；不得修改 `protocol_v1` 语义或运行 M9.1 正式实验。
+
+## M9.1 P5 验收记录
+
+P5 已完成。新增独立 `protocol/compact_v2.py`、`capability_registry.py`、`reference_registry.py` 和 `protocol_metrics.py`，以及中文设计文档 `docs/结构化通信协议设计.md`。V2 支持一次握手、能力发现与协议映射、task/reference registry、状态和记忆 ID、稳定序列化、默认字段省略、版本拒绝和通信字节统计；未修改 `protocol_v1`、`ProtocolAdapter`、Text Mode 或 M9 Runner。
+
+Windows P5 专项测试 `6 passed`，全量测试 `73 passed`，`git diff --check` 通过。openEuler P5 专项测试 `6 passed`，全量测试 `72 passed, 1 skipped`，`git diff --check` 通过。两端代码 SHA 为 `a2ca0edc09117e3b9f5192426f4c1f57790a1de0`，openEuler 工作区干净。测试使用合成 fixtures，未调用真实 LLM、未运行 M9.1 正式实验；私有字段拒绝测试通过。
+
+P5 验收通过。唯一下一步是 P6：实现独立 `state_vector_v2`，以确定性 bytes 替代重复文本状态，并先完成合成 fixtures 的跨平台测试。
