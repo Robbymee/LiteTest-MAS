@@ -275,3 +275,13 @@ P9.13 已从固定 M9 公开计划重建 `experiments/m9_1/spec.json`，只将 `
 Windows 专项测试为 `10 passed`、全量为 `96 passed`；openEuler 同一提交的专项为 `10 passed`、全量为 `95 passed, 1 skipped`，两端 `git diff --check` 通过且工作树干净。两端提交的 Spec Git blob 均为 `03de55d511c61e405cf4f648b18742f857639714`。Spec Verifier、fake canary 和 mock dry-run 均返回有效，dry-run 仅报告 `planned=240`、`completed=0`，未调用真实模型、未生成 completion marker 或正式结果。
 
 P9.13 验收通过。M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、`v1.0.0-experiment`、M9 运行和公开结果均未改动；旧 M9.1 freeze `87c4461` 及其首次 240 条失效运行继续保留审计。唯一下一步是：从包含该 Spec 的非空提交创建新的 M9.1 freeze 候选，并在 Windows 与 openEuler 对该候选复核全部无模型运行前门槛。
+
+## M9.1 P9.14 计量修复候选 freeze 双平台无模型复核
+
+P9.14 将包含已修复 Runner 和重建 Spec 的非空提交 `c79fd4826627bf61faf5d90540a014d243a59edd` 设为 M9.1 候选 freeze，并在 Windows 与 openEuler 主工作树完成无模型复核。Spec Verifier 在两端均返回 `valid=true`、`task_plan_count=240`；确定性 Spec SHA256 为 `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6`，任务计划 SHA 为 `c1b4ef24773480b9cd55ab2f774465a6b32955f62d0c0eefe0e4d5c4bf03db4b`。
+
+Windows 全量测试为 `97 passed in 115.14s`；openEuler 全量测试为 `96 passed, 1 skipped in 63.55s`，跳过项为既有平台专属测试。两端 fake canary 均返回 `valid=true`，Mock dry-run 均返回 `planned=240`、`completed=0`，并确认未写入 `runs/m9_1/completion.json`。两端 `git diff --check` 通过且工作树保持干净。本阶段未调用真实模型，未生成新的真实 canary、正式 M9.1 记录或 completion marker，也未读取、写入或公开 private tests、候选代码、raw response 或私有回溯。
+
+P9.14 仅证明候选 freeze 在双平台满足无模型运行前门槛。M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、`v1.0.0-experiment`、M9 公开报告、Dashboard，以及旧 M9.1 freeze `87c4461` 的失效 240 条审计产物均未改动。候选 freeze 尚未完成真实 canary 前的冻结复核，故不得启动 240 条正式实验。
+
+唯一下一步是：在候选 freeze `c79fd4826627bf61faf5d90540a014d243a59edd` 上创建独立 worktree，完成两项真实 canary 前的冻结复核。
