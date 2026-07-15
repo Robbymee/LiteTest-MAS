@@ -267,3 +267,11 @@ P9.12 修复提交为 `47c6647254cce1419b3ea0e2438db0039570ceee`。openEuler 主
 Windows 复验结果为专项 `7 passed`、全量 `96 passed`；平台间一项 Windows 专属测试在 openEuler 跳过，属于既有平台差异。P9.12 未调用真实模型，未生成新的 canary、正式记录或 completion marker；没有读取或写出 private tests、候选代码、raw response 或私有回溯。M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、`v1.0.0-experiment`、M9 公开报告和 Dashboard 均未改动。
 
 P9.12 验收通过。唯一下一步是：以已修复 Runner 重新生成 M9.1 Spec，完成双平台无模型门槛后创建新的 implementation/freeze SHA；旧 `87c4461` 及其首次 240 条运行继续禁止作为有效 M9.1 正式结果。
+
+## M9.1 P9.13 Spec 重建与双平台无模型门槛
+
+P9.13 已从固定 M9 公开计划重建 `experiments/m9_1/spec.json`，只将 `implementation_git_sha` 更新为计量修复代码提交 `47c6647254cce1419b3ea0e2438db0039570ceee`。240 条公开任务身份与顺序、S1-S4、模型、数据集、seeds、生成参数、Parser、Sandbox、Memory 门槛、Bootstrap、`result_scope` 和 `conclusion_scope` 均未改变；任务计划 SHA 仍为 `c1b4ef24773480b9cd55ab2f774465a6b32955f62d0c0eefe0e4d5c4bf03db4b`。确定性 Spec SHA256 为 `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6`。
+
+Windows 专项测试为 `10 passed`、全量为 `96 passed`；openEuler 同一提交的专项为 `10 passed`、全量为 `95 passed, 1 skipped`，两端 `git diff --check` 通过且工作树干净。两端提交的 Spec Git blob 均为 `03de55d511c61e405cf4f648b18742f857639714`。Spec Verifier、fake canary 和 mock dry-run 均返回有效，dry-run 仅报告 `planned=240`、`completed=0`，未调用真实模型、未生成 completion marker 或正式结果。
+
+P9.13 验收通过。M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、`v1.0.0-experiment`、M9 运行和公开结果均未改动；旧 M9.1 freeze `87c4461` 及其首次 240 条失效运行继续保留审计。唯一下一步是：从包含该 Spec 的非空提交创建新的 M9.1 freeze 候选，并在 Windows 与 openEuler 对该候选复核全部无模型运行前门槛。
