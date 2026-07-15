@@ -317,3 +317,9 @@ Strict Verifier 返回 `valid=true`，`planned=240`、`final=240`、缺失和重
 此前在 `87c4461` 的首次 240 条运行及其公开审计产物继续保留，但因计量默认值覆盖错误而无效，不得用于有效 M9.1 计量结论。本阶段未修改 M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、`v1.0.0-experiment`、M9 原始公开结果、`reports/m9` 或冻结 Dashboard。
 
 P9.17 完整性与公开审计验收通过。唯一下一步是：公开结果聚合、统计与 M9.1 报告。
+
+## M9.1 P9.18 公开结果聚合入口修复
+
+P9.18 的公开聚合器仅读取已通过 Strict Verifier 的 `public/tasks` final records，并在读取前拒绝私有字段。Windows 直接执行 `python scripts/aggregate_m9_1_results.py --help` 曾因脚本入口未将仓库根目录加入模块搜索路径而失败；现已以标准库 `sys.path` 的最小兼容处理修复。该修复不读取、不修改 M9.1 正式运行目录，不调用模型，不访问 private tests、candidate code 或 raw response。
+
+Windows 专项回归 `python -m pytest tests/test_m9_1_aggregation.py tests/test_m9_1_verifier.py tests/test_m9_1_runner.py -q` 为 `9 passed`，并新增了从仓库根目录直接启动聚合脚本帮助入口的测试。下一步是在 openEuler 主工作树同步此提交后，对冻结目录的 240 条公开 final records 执行一次只读聚合。

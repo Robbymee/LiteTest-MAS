@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 from experiments.m9_1_runner import group_config, metric_defaults, plan, task_key
 from experiments.m9_1_verifier import write_completion
@@ -37,3 +39,17 @@ def test_m9_1_public_aggregate_is_deterministic_and_rejects_private_fields(tmp_p
         assert "strict_verifier_failed" in str(error)
     else:
         raise AssertionError("私有字段必须被拒绝")
+
+
+def test_m9_1_aggregate_script_can_run_from_repository_root():
+    """验证公开聚合脚本可由仓库根目录直接启动，不依赖外部 PYTHONPATH。"""
+    # 仅检查命令行帮助，避免测试读取正式运行结果或调用模型。
+    result = subprocess.run(
+        [sys.executable, "scripts/aggregate_m9_1_results.py", "--help"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0
+    assert "--run-root" in result.stdout

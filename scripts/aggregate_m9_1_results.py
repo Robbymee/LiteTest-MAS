@@ -7,15 +7,19 @@ import csv
 import hashlib
 import json
 import random
+import sys
 from collections import defaultdict
 from pathlib import Path
 from statistics import mean
 from typing import Any, Iterable
 
-from experiments.m9_1_verifier import FORBIDDEN, verify
-
-
 ROOT = Path(__file__).resolve().parents[1]
+
+# 允许从仓库根目录直接执行脚本，避免依赖调用方预先设置 PYTHONPATH。
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from experiments.m9_1_verifier import FORBIDDEN, verify
 UNAVAILABLE = "unavailable"
 COMPARISONS = (("S2", "S1"), ("S3", "S2"), ("S4", "S3"), ("S4", "S1"))
 QUALITY_METRICS = ("task_success", "official_test_pass_rate", "parse_success_rate", "sandbox_completion_rate")
