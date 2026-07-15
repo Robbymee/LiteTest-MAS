@@ -131,3 +131,13 @@ P8 已完成。新增 `agents/collaboration.py`，并在既有 Runtime 生成 `a
 Windows P8 专项测试 `5 passed`，全量测试 `81 passed`，`git diff --check` 通过。openEuler P8 专项测试 `5 passed`，全量测试 `80 passed, 1 skipped`，`git diff --check` 通过。两端代码 SHA 为 `a2b92a2`，openEuler 工作区干净。
 
 P8 验收通过。唯一下一步是 P9：生成独立 M9.1 Spec 并完成正式运行前的测试、canary、泄漏和冻结门槛；不得把 M9 结果复制为 M9.1 结果。
+
+## M9.1 P9.1 Spec 验收记录
+
+P9.1 已完成。新增 `experiments/m9_1/spec.json`、Spec 生成脚本和中文说明。Spec 使用真实 M9 manifest 的 240 个公开 task ID 和固定顺序，映射为独立 S1-S4，固定 `result_scope=supplementary_competition_alignment_ablation`、`conclusion_scope=fixed_task_fixed_model_supplementary_analysis`，并声明 CompactProtocol V2、StateVector V2 和 GatedSharedMemory V2。
+
+M9.1 Spec 保留 M9 的模型、数据集、任务、seed、temperature、timeout、retry、max_tokens、Parser、Sandbox 和评测边界；正式规模为 240 条。当前 Spec 的 `implementation_git_sha` 固定为 P8 完成 SHA，Spec 提交 SHA 为 `45ad79b`；这不是正式实验 freeze SHA。M9 原 Spec、M9 结果、Dashboard 和 `v1.0.0-experiment` 未修改。
+
+Windows P9.1 Spec 专项测试 `3 passed`，全量测试 `83 passed`，`git diff --check` 通过。openEuler Spec 专项测试 `3 passed`，M9 Spec 回归通过，全量测试 `82 passed, 1 skipped`，`git diff --check` 通过，工作区干净。尚未调用真实 LLM，尚未运行 M9.1 canary 或正式实验。
+
+P9.1 验收通过。唯一下一步是 P9.2：在独立 M9.1 Runner/Verifier 门槛上完成 fake canary、两项真实 canary、public leakage=0 和 freeze SHA 校验；未通过前不得启动 240 条正式运行。
