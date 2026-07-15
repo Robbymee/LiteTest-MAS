@@ -176,6 +176,14 @@ Windows P9.7a 全量测试 `89 passed`，openEuler P9.7a 全量测试 `88 passed
 
 P9.7a 部分验收通过。唯一下一步是 P9.7b：定义 M9.1 公共结果 schema、Strict Verifier 和 completion marker，并以合成记录验证 Checkpoint/Resume 与逐条失败继续。
 
+## M9.1 P9.7c 公共结果协议接通
+
+P9.7c 已完成。批量 Runner 现在将每条公开结果写入独立 `public/tasks/`，包含 S 组配置、result scope、freeze SHA、implementation SHA、final status 和公开质量字段；240 条均完成后才由 M9.1 Strict Verifier 写入 completion marker。合成 240 条记录、缺失/重复拒绝、checkpoint/resume 和 dry-run 均通过测试。
+
+Windows P9.7c 全量测试 `91 passed`，openEuler P9.7c 全量测试 `90 passed, 1 skipped`，`git diff --check` 通过。该运行代码提交为 `017c2fb`，因此旧 freeze `e5f3777` 不再包含完整正式 Runner/Verifier，已不适用于 M9.1 正式运行；M9 不受影响，正式 M9.1 仍未启动。
+
+P9.7c 验收通过。唯一下一步是 P9.8：从完整 Runner/Verifier 实现生成新的 M9.1 Spec、重新冻结并重新执行运行前门槛；旧 freeze 不得用于正式实验。
+
 P9.6 已完成。Spec Verifier 返回 `valid=true`，任务计划为 240 条且 S1-S4 identity 唯一；freeze 候选 `e5f3777` 存在，M9.1 Spec 的 implementation SHA 与 V2 canary 运行链一致。当前 HEAD 相对 freeze 候选只增加 `docs/STATUS.md` 和 `docs/DECISIONS.md`，没有改变 M9.1 运行代码或 Spec；正式运行必须 checkout `e5f3777`。
 
 M9 `v1.0.0-experiment` 标签和正式结果未改变。Windows/openEuler 的 P9.4 全量回归分别为 `86 passed`、`85 passed, 1 skipped`；P9.5 openEuler canary 审计为 `valid=true`、2 条记录、泄漏错误 0。P9.6 未调用模型，未创建 M9.1 正式完成标记。
