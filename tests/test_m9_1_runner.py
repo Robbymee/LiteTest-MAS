@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from experiments.m9_1_runner import canary_item, group_config, plan, select_plan
+from experiments.m9_1_runner import canary_item, group_config, plan, run_batch, select_plan
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,3 +21,10 @@ def test_m9_1_runner_uses_s_group_semantics():
     assert canary_item(spec, "S4", "humaneval")["task_id"] == "humaneval_plus:HumanEval/27"
     with pytest.raises(ValueError):
         group_config("G1")
+
+
+def test_batch_runner_dry_run_and_checkpoint_scope(tmp_path):
+    """验证 240 条批量 dry-run 不调用模型且输出独立 scope。"""
+    spec = json.loads((ROOT / "experiments/m9_1/spec.json").read_text(encoding="utf-8"))
+    result = run_batch(ROOT, spec, tmp_path / "run", "mock", None, dry_run=True)
+    assert result["planned"] == 240 and result["dry_run"] is True

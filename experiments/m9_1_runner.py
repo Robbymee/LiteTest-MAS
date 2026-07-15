@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 import json
+import hashlib
 from pathlib import Path
 import sys
 
@@ -58,7 +59,7 @@ def canary_item(spec: dict[str, Any], group: str, dataset: str, seed: int = 42) 
     return item
 
 
-def execute_canary(root: Path, spec: dict[str, Any], group: str, dataset: str, output_root: Path, backend_name: str) -> dict[str, Any]:
+def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_root: Path, backend_name: str) -> dict[str, Any]:
     """执行一项固定 M9.1 canary，使用真实 Backend 时只写公开结果。"""
     if backend_name not in {"mock", "openai_compatible"}:
         raise ValueError("unsupported canary backend")
@@ -69,7 +70,7 @@ def execute_canary(root: Path, spec: dict[str, Any], group: str, dataset: str, o
     from runtime.real_llm_runner import approved_tasks
     from sandbox.private_eval import evaluate_private
 
-    item = canary_item(spec, group, dataset)
+    group, dataset = item["experiment_group"], item["dataset"]
     selection, data_path = (root / value for value in DATA[dataset])
     task = next(value for value in approved_tasks(selection, data_path, 0) + approved_tasks(selection, data_path, 1) if value.task_id == item["task_id"])
     public_fields = {"task_id": task.task_id, "function_name": task.function_name, "signature": task.signature, "description": task.task_description}
@@ -97,5 +98,40 @@ def execute_canary(root: Path, spec: dict[str, Any], group: str, dataset: str, o
         memory.write(source_agent="Summarizer", created_at="canary", task_topic=task.task_description, summary="公开策略摘要", tags=(task.group_id,), task_type="candidate_generation", provenance="canary", confidence=1.0, success_status="success" if evaluation["task_success"] else "failure", source_task_id=task.task_id)
     record = {"schema_version": "1.0", **item, **group_config(group), "result_scope": "m9_1_real_canary", "backend": backend_name, "model": spec["model"], "parse_status": artifact["parse_status"], "candidate_sha256": artifact.get("candidate_sha256"), "task_success": bool(evaluation["task_success"]), "official_test_count": evaluation.get("official_test_count"), "official_test_pass_count": evaluation.get("official_test_pass_count"), "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens, "total_tokens": response.usage.total_tokens, "latency_seconds": response.latency_seconds, "public_leakage_count": 0}
     output_root.mkdir(parents=True, exist_ok=True)
-    (output_root / f"{group}_{dataset}_canary.json").write_text(json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    (output_root / f"{item['plan_index']:03d}_{group}_{dataset}_{task.task_id.replace(':', '_').replace('/', '_')}.json").write_text(json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return record
+
+
+def execute_canary(root: Path, spec: dict[str, Any], group: str, dataset: str, output_root: Path, backend_name: str) -> dict[str, Any]:
+    """执行一项固定 canary；正式批量循环使用 execute_item。"""
+    return execute_item(root, spec, canary_item(spec, group, dataset), output_root, backend_name)
+
+
+def task_key(item: dict[str, Any]) -> str:
+    """生成不含任务原文的稳定 checkpoint key。"""
+    value = json.dumps({key: item[key] for key in ("seed", "experiment_group", "dataset", "task_id")}, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()[:24]
+
+
+def run_batch(root: Path, spec: dict[str, Any], output_root: Path, backend_name: str, freeze_git_sha: str | None, *, dry_run: bool = False, resume: bool = False) -> dict[str, Any]:
+    """执行或 dry-run 全部 240 条任务，逐条失败并更新 checkpoint。"""
+    items = plan(spec)
+    if not dry_run and freeze_git_sha is None:
+        raise ValueError("formal execution requires freeze_git_sha")
+    output_root.mkdir(parents=True, exist_ok=True)
+    checkpoint_path = output_root / "checkpoint.json"
+    checkpoint = json.loads(checkpoint_path.read_text(encoding="utf-8")) if resume and checkpoint_path.exists() else {"result_scope": spec["result_scope"], "freeze_git_sha": freeze_git_sha, "planned": len(items), "completed": {}}
+    if dry_run:
+        return {"planned": len(items), "completed": len(checkpoint.get("completed", {})), "dry_run": True, "result_scope": spec["result_scope"]}
+    results = checkpoint.setdefault("completed", {})
+    for item in items:
+        key = task_key(item)
+        if key in results:
+            continue
+        try:
+            record = execute_item(root, spec, item, output_root, backend_name)
+            results[key] = {"status": "completed", "task_success": bool(record.get("task_success"))}
+        except Exception as error:
+            results[key] = {"status": "infrastructure_failure", "error_category": type(error).__name__}
+        checkpoint_path.write_text(json.dumps(checkpoint, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return {"planned": len(items), "completed": len(results), "dry_run": False, "result_scope": spec["result_scope"]}
