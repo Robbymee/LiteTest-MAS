@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "m9_1_competition_alignment",
+  "freeze_purpose": "post_metric_merge_replacement_candidate",
+  "implementation_git_sha": "47c6647254cce1419b3ea0e2438db0039570ceee",
+  "spec_sha256": "3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6",
+  "task_plan_sha256": "c1b4ef24773480b9cd55ab2f774465a6b32955f62d0c0eefe0e4d5c4bf03db4b",
+  "source_m9_freeze_sha": "cc7aac0417afb6acab47baaf7449459692fa9444",
+  "result_scope": "supplementary_competition_alignment_ablation",
+  "freeze_sha_recording": "候选提交 SHA 在双平台复核后记录；Spec 不包含自引用 freeze SHA。"
+}
