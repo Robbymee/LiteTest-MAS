@@ -295,3 +295,15 @@ P9.15 在 Windows 的 `H:\OA\LiteTest-MAS-m9_1-freeze-c79` 与 openEuler 的 `/h
 两端 Spec Verifier 均返回 `valid=true`、`task_plan_count=240`；fake canary 均有效；Mock dry-run 均为 `planned=240`、`completed=0`，且临时输出目录没有 `completion.json`。本阶段不调用真实模型、不生成真实 canary 或正式 M9.1 记录。P9.15 验收通过，允许在该独立候选 worktree 上按固定 S2/MBPP 与 S4/HumanEval+ 组合执行两项真实 canary；真实 canary 完成并审计前仍禁止启动正式 240 条实验。
 
 唯一下一步是：在 openEuler 候选 worktree `c79fd4826627bf61faf5d90540a014d243a59edd` 上执行 S2/MBPP 与 S4/HumanEval+ 两项真实 canary，并进行独立公开字段泄漏审计。
+
+## M9.1 P9.16 候选 freeze 真实 canary 与公开审计
+
+P9.16 仅在 openEuler 的候选 detached worktree `c79fd4826627bf61faf5d90540a014d243a59edd` 执行预注册的两项真实 canary：S2/MBPP 的 `mbpp_sanitized:591` 与 S4/HumanEval+ 的 `humaneval_plus:HumanEval/27`。服务 `/health` 与 `/v1/models` 预检通过；SSH 非交互会话未继承 LLM 环境变量，故仅对本次命令显式提供 Spec 已固定的 OpenAI-compatible 服务参数，未修改远端环境文件、模型服务或生成配置。
+
+S2 canary 的 `parse_status=success`、`task_success=true`，private official tests 为 `3/3`；其公开模型计量为 prompt/completion/total Token `237/118/355`，Protocol Payload 为 `433` bytes。S4 canary 的 `parse_status=syntax_error`、`task_success=false`、`final_status=failed_official_tests`；该质量负结果按原样保留，不据此调参或更换任务。S4 的公开模型计量为 `282/256/538` Token，Protocol Payload 为 `568` bytes，StateVector 为 `1` 个、`33` bytes；首次独立任务无可接受 Memory，query/hit/accept/reuse 为 `1/0/0/0`。两项均为 canary，不构成正式 M9.1 结论。
+
+`audit_m9_1_canary.py` 对两条公开记录返回 `valid=true`、`record_count=2`、`task_success_count=1`、错误列表为空。独立字段和路径扫描未发现 private tests、candidate code、raw response、官方测试字段、凭据或绝对路径；两条记录的 `public_leakage_count=0`。候选 worktree 仍为干净 detached HEAD，未生成 `runs/m9_1/completion.json` 或任何正式 240 条记录。M9、旧 M9.1 失效审计产物、Dashboard、发布标签均未改动。
+
+P9.16 验收通过。M9.1 的 unit tests、Windows/openEuler 全量测试、fake canary、两项真实 canary 与公开泄漏审计门槛均已完成；下一阶段只允许在相同候选 freeze worktree 启动一次完整 240 条正式运行。
+
+唯一下一步是：在 openEuler 候选 worktree `c79fd4826627bf61faf5d90540a014d243a59edd` 上以固定 Spec 启动一次 M9.1 正式 240 条运行，并保留所有 final 记录、checkpoint 与失败分类。
