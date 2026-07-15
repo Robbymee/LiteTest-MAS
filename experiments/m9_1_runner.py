@@ -59,7 +59,7 @@ def canary_item(spec: dict[str, Any], group: str, dataset: str, seed: int = 42) 
     return item
 
 
-def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_root: Path, backend_name: str) -> dict[str, Any]:
+def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_root: Path, backend_name: str, *, freeze_git_sha: str | None = None, result_scope: str = "m9_1_real_canary") -> dict[str, Any]:
     """执行一项固定 M9.1 canary，使用真实 Backend 时只写公开结果。"""
     if backend_name not in {"mock", "openai_compatible"}:
         raise ValueError("unsupported canary backend")
@@ -96,7 +96,8 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
     evaluation = evaluate_private(private, artifact["candidate_code"]) if artifact["parse_status"] == "success" else {"task_success": False, "official_test_count": 0, "official_test_pass_count": 0}
     if memory:
         memory.write(source_agent="Summarizer", created_at="canary", task_topic=task.task_description, summary="公开策略摘要", tags=(task.group_id,), task_type="candidate_generation", provenance="canary", confidence=1.0, success_status="success" if evaluation["task_success"] else "failure", source_task_id=task.task_id)
-    record = {"schema_version": "1.0", **item, **group_config(group), "result_scope": "m9_1_real_canary", "backend": backend_name, "model": spec["model"], "parse_status": artifact["parse_status"], "candidate_sha256": artifact.get("candidate_sha256"), "task_success": bool(evaluation["task_success"]), "official_test_count": evaluation.get("official_test_count"), "official_test_pass_count": evaluation.get("official_test_pass_count"), "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens, "total_tokens": response.usage.total_tokens, "latency_seconds": response.latency_seconds, "public_leakage_count": 0}
+    success = bool(evaluation["task_success"])
+    record = {"schema_version": "1.0", **item, **group_config(group), "result_scope": result_scope, "freeze_git_sha": freeze_git_sha, "implementation_git_sha": spec["implementation_git_sha"], "backend": backend_name, "model": spec["model"], "parse_status": artifact["parse_status"], "candidate_sha256": artifact.get("candidate_sha256"), "task_success": success, "final_status": "completed_success" if success else "failed_official_tests", "official_test_count": evaluation.get("official_test_count"), "official_test_pass_count": evaluation.get("official_test_pass_count"), "prompt_tokens": response.usage.prompt_tokens, "completion_tokens": response.usage.completion_tokens, "total_tokens": response.usage.total_tokens, "latency_seconds": response.latency_seconds, "public_leakage_count": 0}
     output_root.mkdir(parents=True, exist_ok=True)
     (output_root / f"{item['plan_index']:03d}_{group}_{dataset}_{task.task_id.replace(':', '_').replace('/', '_')}.json").write_text(json.dumps(record, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return record
@@ -124,14 +125,18 @@ def run_batch(root: Path, spec: dict[str, Any], output_root: Path, backend_name:
     if dry_run:
         return {"planned": len(items), "completed": len(checkpoint.get("completed", {})), "dry_run": True, "result_scope": spec["result_scope"]}
     results = checkpoint.setdefault("completed", {})
+    public_tasks = output_root / "public" / "tasks"
     for item in items:
         key = task_key(item)
         if key in results:
             continue
         try:
-            record = execute_item(root, spec, item, output_root, backend_name)
+            record = execute_item(root, spec, item, public_tasks, backend_name, freeze_git_sha=freeze_git_sha, result_scope=spec["result_scope"])
             results[key] = {"status": "completed", "task_success": bool(record.get("task_success"))}
         except Exception as error:
             results[key] = {"status": "infrastructure_failure", "error_category": type(error).__name__}
         checkpoint_path.write_text(json.dumps(checkpoint, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    if len(results) == len(items):
+        from experiments.m9_1_verifier import write_completion
+        write_completion(output_root / "public", spec, freeze_git_sha)
     return {"planned": len(items), "completed": len(results), "dry_run": False, "result_scope": spec["result_scope"]}
