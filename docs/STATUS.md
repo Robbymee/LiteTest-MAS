@@ -160,6 +160,14 @@ P9.5 验收通过。唯一下一步是 P9.6：在 freeze SHA `e5f3777` 上完成
 
 ## M9.1 P9.6 最终运行前门槛
 
+## M9.1 P9.7 启动安全检查
+
+P9.7 未启动正式实验。无模型 dry-run 已确认 Spec 计划为 `240` 条、scope 为 `supplementary_competition_alignment_ablation`、实验组为 S1-S4；openEuler 当前不存在 `runs/m9_1/completion.json`。
+
+检查 freeze `e5f3777` 发现独立 Runner 当前只有单项 `execute_canary`，尚未实现 240 条批量执行、Checkpoint/Resume、逐条失败继续、Strict Verifier 和正式 completion marker。直接运行会产生不符合 M9.1 验收定义的结果，因此本阶段主动停止，未调用模型、未写入正式 runs、未复制 M9 结果。
+
+P9.7 启动检查未通过，但原因已明确且可修复。唯一下一步是 P9.7a：补齐独立 M9.1 批量 Runner、Checkpoint/Resume、Strict Verifier 和正式 completion marker，再重新执行启动门槛。
+
 P9.6 已完成。Spec Verifier 返回 `valid=true`，任务计划为 240 条且 S1-S4 identity 唯一；freeze 候选 `e5f3777` 存在，M9.1 Spec 的 implementation SHA 与 V2 canary 运行链一致。当前 HEAD 相对 freeze 候选只增加 `docs/STATUS.md` 和 `docs/DECISIONS.md`，没有改变 M9.1 运行代码或 Spec；正式运行必须 checkout `e5f3777`。
 
 M9 `v1.0.0-experiment` 标签和正式结果未改变。Windows/openEuler 的 P9.4 全量回归分别为 `86 passed`、`85 passed, 1 skipped`；P9.5 openEuler canary 审计为 `valid=true`、2 条记录、泄漏错误 0。P9.6 未调用模型，未创建 M9.1 正式完成标记。
