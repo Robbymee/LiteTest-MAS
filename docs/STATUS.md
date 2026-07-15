@@ -285,3 +285,13 @@ Windows 全量测试为 `97 passed in 115.14s`；openEuler 全量测试为 `96 p
 P9.14 仅证明候选 freeze 在双平台满足无模型运行前门槛。M9 freeze `cc7aac0417afb6acab47baaf7449459692fa9444`、`v1.0.0-experiment`、M9 公开报告、Dashboard，以及旧 M9.1 freeze `87c4461` 的失效 240 条审计产物均未改动。候选 freeze 尚未完成真实 canary 前的冻结复核，故不得启动 240 条正式实验。
 
 唯一下一步是：在候选 freeze `c79fd4826627bf61faf5d90540a014d243a59edd` 上创建独立 worktree，完成两项真实 canary 前的冻结复核。
+
+## M9.1 P9.15 候选 freeze 独立 worktree 复核
+
+P9.15 在 Windows 的 `H:\OA\LiteTest-MAS-m9_1-freeze-c79` 与 openEuler 的 `/home/oa/LiteTest-MAS-m9_1-freeze-c79` 创建 detached worktree，两端均固定为候选 freeze `c79fd4826627bf61faf5d90540a014d243a59edd`。旧 M9.1 worktree `/home/oa/LiteTest-MAS-m9_1-freeze-7c7` 继续保留，M9 freeze worktree、M9 公开结果、Dashboard 与发布标签均未触碰。
+
+候选 worktree 不提交 Git 忽略的 processed dataset；为运行仅限本地 Sandbox 的既有测试，两端仅将现有的 `mbpp_tasks.jsonl` 与 `humaneval_plus_tasks.jsonl` 以同卷硬链接提供给 worktree，不产生副本、不变更文件内容、不将 private tests 加入 Git，也不把它们传入 Agent、Prompt、Protocol、StateVector、SharedMemory、公开记录或日志。Windows 全量测试为 `97 passed in 110.35s`，openEuler 全量测试为 `96 passed, 1 skipped in 59.25s`；两端 M9.1 freeze 专项测试均为 `14 passed`。
+
+两端 Spec Verifier 均返回 `valid=true`、`task_plan_count=240`；fake canary 均有效；Mock dry-run 均为 `planned=240`、`completed=0`，且临时输出目录没有 `completion.json`。本阶段不调用真实模型、不生成真实 canary 或正式 M9.1 记录。P9.15 验收通过，允许在该独立候选 worktree 上按固定 S2/MBPP 与 S4/HumanEval+ 组合执行两项真实 canary；真实 canary 完成并审计前仍禁止启动正式 240 条实验。
+
+唯一下一步是：在 openEuler 候选 worktree `c79fd4826627bf61faf5d90540a014d243a59edd` 上执行 S2/MBPP 与 S4/HumanEval+ 两项真实 canary，并进行独立公开字段泄漏审计。
