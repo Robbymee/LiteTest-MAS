@@ -1,5 +1,11 @@
 # Decisions
 
+## 88. 演示 PPT 与视频可由公开结果生成，参赛承诺书必须由真实主体签署
+
+演示材料使用独立 `requirements-presentation.txt` 和 `build_competition_presentation.py` 生成。PPTX 保持可编辑，视频由相同公开内容生成并通过真实解码与像素检查；openEuler 测试只用标准库检查 Open XML、MP4 容器签名、体积和禁止字段，不要求安装演示构建依赖。视频是无声演示，文档必须如实标注。
+
+参赛承诺书涉及参赛主体身份和法律承诺，自动化流程不得代签、虚构主体或生成假完成材料。严格审计在真实承诺书到位前继续失败，`v1.1.0-competition` 仍不得创建。
+
 ## 87. 全部 tracked Markdown 必须中文化，历史主目录路径以中性占位符脱敏
 
 交付审计的 Markdown 规则已提升为零缺口：全部 tracked Markdown 必须为 UTF-8 且含中文正文，测试固定断言 `markdown_failure_count == 0`。对 `docs/STATUS.md` 中已不适合公开的历史 openEuler 主目录，以 `<openEuler 工作目录>/` 中性前缀替换；不修改日志文件名、SHA、实验数值、冻结关系或结论。

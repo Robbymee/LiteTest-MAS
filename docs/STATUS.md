@@ -1,5 +1,11 @@
 # Status
 
+## 中文演示 PPT 与视频
+
+中文赛事演示材料阶段已完成。根目录新增 `LiteTest-MAS赛事演示.pptx` 与 `LiteTest-MAS演示视频.mp4`：PPTX 为十页、16:9、可编辑 Open XML 文稿并含中文讲者备注；MP4 为同一公开内容生成的 1280×720、10 fps、445 帧无声演示视频。PowerPoint 实际渲染和 OpenCV 解码均通过，页面无明显截断或空白。PPTX SHA-256 为 `de41da992847812cc796af8a1e5ef1da0029b551ad675bc1ded75e5af693f427`，MP4 SHA-256 为 `ab890e515f5b7a48f73909d276c8af8bb04778d2d95b62fd8d0febcd88efbc3c`。
+
+Windows 在 `6676ed280d2aebe4e1b8bb9d0130a536e9c60537` 通过材料专项 `7 passed`、全量 `113 passed`；openEuler 同一 SHA 通过专项 `7 passed`、全量 `112 passed, 1 skipped`。交付审计根目录类别已满足 7/8，严格结果仍为 `valid=false`，唯一缺口是需由真实参赛主体提供和签署的参赛承诺书。演示材料不含学校、人员、单位、private tests、candidate code、raw response、凭据或绝对路径；未使用 Git LFS。M9/M9.1 正式结果和既有标签未修改。
+
 ## 全量 Markdown 中文化与路径脱敏
 
 全量 Markdown 中文化与路径脱敏阶段已完成。`AGENTS.md`、README、数据目录 README、核心设计/部署/安全/结果文档、M9 readiness 报告均已改为中文正文；`docs/STATUS.md` 中 14 处旧 openEuler 主目录前缀已替换为 `<openEuler 工作目录>/`，实验数值、SHA、日志标识和结论未改写。交付审计现显示 44/44 tracked Markdown 通过、Markdown 缺口为 0、指定中文文档缺失为 0。
