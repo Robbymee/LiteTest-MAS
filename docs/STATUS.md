@@ -1,5 +1,11 @@
 # Status
 
+## 中文核心文档补齐
+
+中文核心文档补齐阶段已完成。已新增项目总体设计、关联连续任务、安全 Sandbox、Windows/openEuler 部署、复现、结果统计、演示、故障排查、匿名化提交检查和最终技术报告；M9 补充分析报告已修正为 `reports/m9/赛题指标补充分析.md`，内容未改写。`README.md` 已增加中文项目入口。文档只引用公开 Spec、公开聚合和已验收命令，不暴露 private tests、candidate code、raw response、凭据或模型绝对路径。
+
+Windows 在 `c549cb08d5f2c53595c516b05b502877af5a4f54` 通过文档专项 `5 passed`、全量 `111 passed`；openEuler 同一 SHA 通过专项 `5 passed`、全量 `110 passed, 1 skipped`。交付审计的指定中文文档缺失数已从 12 降为 0，根目录交付类别满足数从 2 增为 5；严格审计仍为 `valid=false`，因为仍有英文存量 Markdown、`docs/STATUS.md` 的历史个人路径记录，以及真实承诺书、PPT、视频或视频下载说明未交付。M9/M9.1 正式结果、冻结 SHA、Dashboard 和 `v1.0.0-experiment` 均未修改。
+
 ## 中文 Markdown 与赛事交付物审计
 
 中文 Markdown 与最终赛事交付物审计阶段已完成。`scripts/audit_competition_delivery.py` 对 tracked Markdown 执行严格 UTF-8、中文正文、代码围栏、相对链接、个人绝对路径和凭据形态检查，并核对总流程要求的中文文档、根目录交付类别和受保护修订。审计报告见 `reports/赛事中文文档与交付物审计报告.md`。
