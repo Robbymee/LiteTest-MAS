@@ -44,7 +44,8 @@ def test_repository_audit_reports_real_gaps_and_preserves_protected_revisions(tm
     assert result["missing_documents"] == []
     assert result["summary"]["markdown_failure_count"] == 0
     assert result["delivery"]["commitment_letter"] is False
-    assert result["delivery"]["presentation"] is False
+    assert result["delivery"]["presentation"] is True
+    assert result["delivery"]["video_or_download_instructions"] is True
     assert all(item["valid"] for item in result["protected_revisions"].values())
 
     report = tmp_path / "report.md"
