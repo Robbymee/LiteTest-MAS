@@ -1,5 +1,11 @@
 # Status
 
+## 中文 Markdown 与赛事交付物审计
+
+中文 Markdown 与最终赛事交付物审计阶段已完成。`scripts/audit_competition_delivery.py` 对 tracked Markdown 执行严格 UTF-8、中文正文、代码围栏、相对链接、个人绝对路径和凭据形态检查，并核对总流程要求的中文文档、根目录交付类别和受保护修订。审计报告见 `reports/赛事中文文档与交付物审计报告.md`。
+
+审计器在 Windows 与 openEuler 同一 SHA `2fd876f50ba02a9c158098dc5e2c3ea62c178f7e` 均通过专项 `4 passed`；全量测试分别为 `110 passed` 和 `109 passed, 1 skipped`。严格模式如实返回 `valid=false` 与退出码 1，`--allow-incomplete` 返回 0 仅表示审计命令成功执行，不改变交付不完整的结论。当前 33 份 tracked Markdown 中 12 份通过、21 份存在中文或路径缺口；20 份指定中文文档中缺失 12 份，根目录交付类别仅满足 README 和完整源码。承诺书、演示 PPT、视频或下载说明、最终技术报告及部分中文设计/部署文档仍缺失。M9/M9.1 正式结果、冻结 SHA 和 `v1.0.0-experiment` 未修改。
+
 ## 赛事 Dashboard 中文页面验收
 
 独立赛事 Dashboard 页面子任务已完成双平台验收。`scripts/build_competition_dashboard.py` 仅从 M9/M9.1 公开聚合产物生成离线 `data.json` 与 `index.html`，页面提供中文实验切换、概览、数据集、任务组和 Seed 视图，以及 Strict Verifier、freeze SHA、Spec hash 与通信、模型、StateVector、Memory、质量和延迟指标。动态内容使用安全 DOM API，缺失指标保持 `unavailable`，未读取私有候选、原始响应、隐藏测试或绝对路径。
