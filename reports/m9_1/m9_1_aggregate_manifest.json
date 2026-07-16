@@ -1,0 +1,18 @@
+{
+  "aggregate_input_sha256": "2452301f29e9cd9758f94e3b9573fb8dd5822df5c05f70561dd4d8dd829d3460",
+  "bootstrap": {
+    "confidence": 0.95,
+    "resamples": 2000,
+    "seed": 20260711
+  },
+  "conclusion_scope": "fixed_task_fixed_model_supplementary_analysis",
+  "deterministic_aggregate_sha256": "7745118aa03152d7e1656fd3765acba2ed451303f9a6ad184fc1eb0c26194ab0",
+  "final_record_count": 240,
+  "freeze_git_sha": "c79fd4826627bf61faf5d90540a014d243a59edd",
+  "result_scope": "supplementary_competition_alignment_ablation",
+  "schema_version": "1.0",
+  "spec_sha256": "3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6",
+  "strict_verifier": {
+    "valid": true
+  }
+}

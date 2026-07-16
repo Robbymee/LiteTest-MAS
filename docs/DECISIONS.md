@@ -1,5 +1,8 @@
 # Decisions
 
+79. M9.1 P9.18 的有效计量只使用 freeze `c79fd4826627bf61faf5d90540a014d243a59edd`、Spec SHA `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6` 和 Strict Verifier 通过的 240 条 `public/tasks` final records。公开聚合归档在 Windows 回传后必须同时匹配远端归档 SHA-256 `24bc21fca5517e69d3d3610872c7d1c7d2fd974a7cd0115de1ad5e77a8e07aa9` 与聚合 SHA `7745118aa03152d7e1656fd3765acba2ed451303f9a6ad184fc1eb0c26194ab0`；不得使用旧 `87c4461` 的无效正式结果生成结论。
+80. M9.1 公开报告中，S2 相对 S1 的同单位 Agent 通信 Token/字符比较、握手摊销、重复上下文、task-cluster Bootstrap 和 Memory effective reuse 等未由公开记录可靠恢复的字段必须标记为 `unavailable`。不得将不同单位的 Text 字符与 Protocol bytes 直接比较，不得把 Memory 引用后的可评测结果解释为因果质量提升。
+
 1. Use a lightweight in-house system; do not heavily fork AutoCodeAI.
 2. Use AutoCodeAI only as a reference for Agent, sandbox, and memory modules.
 3. MBPP-Sanitized is the primary experiment dataset.
