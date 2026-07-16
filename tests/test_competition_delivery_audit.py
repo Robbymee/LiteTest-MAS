@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import subprocess
+import sys
 from pathlib import Path
 
 from scripts.audit_competition_delivery import audit_markdown, audit_repository, write_report
@@ -57,7 +58,7 @@ def test_audit_cli_supports_incomplete_acceptance(tmp_path):
     report = tmp_path / "audit.md"
     process = subprocess.run(
         [
-            "python",
+            sys.executable,
             "scripts/audit_competition_delivery.py",
             "--root",
             ".",
