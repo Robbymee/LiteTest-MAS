@@ -1,25 +1,11 @@
-# Experiment Specification
+# 实验规范
 
-## Target comparison
+## M9
 
-LiteTest-MAS evaluates whether structured communication reduces message cost, whether StateVector reduces repeated context, and whether SharedMemory enables useful cross-task reuse without harming outcomes.
+M9 是固定任务、固定模型的四组消融：G1 Text、G2 Protocol、G3 Protocol + StateVector、G4 Protocol + StateVector + SharedMemory。有效 freeze 为 `cc7aac0417afb6acab47baaf7449459692fa9444`，共 240 条 final records，模型参数包含 `temperature=0`、`max_tokens=256`、`timeout_seconds=300`、三组 seed 与 2000 次 Bootstrap。
 
-Formal groups are G1 Text, G2 Protocol, G3 Protocol + StateVector, and G4 Protocol + StateVector + SharedMemory.
+## M9.1
 
-## Required eventual metrics
+M9.1 是独立补充实验：S1 Text baseline、S2 CompactProtocol V2、S3 CompactProtocol V2 + StateVector V2、S4 CompactProtocol V2 + StateVector V2 + GatedSharedMemory V2。有效 freeze 为 `c79fd4826627bf61faf5d90540a014d243a59edd`，Spec SHA 为 `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6`。
 
-- Agent message count, text character count, token count, LLM call count, and per-task duration.
-- Non-text state-transfer count and data size.
-- Shared-memory query count, hit rate, and effective-reuse rate.
-- Test-generation success rate, executable-test-file rate, and test pass rate.
-- Coverage, branch coverage, and mutation score may be added later; none are current results.
-
-## Dataset conversion and leakage boundary
-
-Each imported public task must retain `source_dataset`, `source_task_id`, and provenance. Its reference implementation is `code_under_test`; task description, function name, signature, and entry point may form `agent_visible_context`.
-
-Official dataset tests are stored as `hidden_reference_tests`. They must not be included in any Agent prompt, agent-visible record, or risk-tag derivation. The first importer derives risk tags only through deterministic static inspection of task description, signature, and code.
-
-## Reproducibility
-
-Formal results require openEuler 24.03-LTS-SP3 x86_64 reproduction. Windows development environments, including `.venv`, are not copied to openEuler; dependencies are installed anew there.
+正式 Spec、任务顺序、模型、参数、评测边界和统计方法在运行前冻结。private tests 只在 Sandbox 内使用，不能进入 Agent 上下文。

@@ -1,17 +1,5 @@
-# Troubleshooting
+# 故障排查
 
-## Strict Verification Fails
+详细中文步骤见 `docs/常见故障排查.md`。常见问题包括：在非仓库根目录运行导致模块导入失败、SSH 暂时不可达、严格交付审计因真实缺口返回 1，以及 Dashboard 输入目录缺少有效公开 manifest。
 
-Use the original frozen Spec and freeze SHA. Confirm that the formal public directory has 240 task JSON files, `inventory.json`, and `completion.json`. Do not regenerate final records or edit the formal output.
-
-## Aggregate Cannot Rebuild The Plan
-
-Pass `--plan-root` pointing to the read-only frozen checkout that has the locally processed task data. The aggregate output directory may be separate from that checkout.
-
-## Delivery Audit Fails
-
-Read the reported file and remove the offending generated artifact. Typical causes are a copied absolute path, credential-shaped text, or a forbidden field in input aggregate JSON. Rebuild from clean public aggregate inputs rather than editing `data.json` by hand.
-
-## Pytest Collects Historical Run Tests
-
-Use the supported command `python3 -m pytest tests/`. A bare `pytest` may collect generated tests under ignored `runs/` directories, which are not repository tests.
+排查时先检查 `git status --short`、`git diff --check`、当前 SHA 与公开审计报告。不得通过修改私有评测、实验配置、网络配置或冻结内容来掩盖问题。

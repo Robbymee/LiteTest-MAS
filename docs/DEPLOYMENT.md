@@ -1,22 +1,5 @@
-# Deployment
+# 部署说明
 
-## Supported Delivery
+Windows 部署见 `docs/Windows部署说明.md`，openEuler 部署见 `docs/openEuler部署说明.md`。基础依赖为 `requirements.txt`；真实模型服务与仓库运行环境解耦，未启动服务时可运行测试、聚合、审计和离线 Dashboard。
 
-The M10 delivery is a static offline Dashboard. It needs only a browser after generation and makes no network request, model request, or private-test request.
-
-Build it from the public M9 aggregate:
-
-```bash
-python3 scripts/build_m10_dashboard.py \
-  --aggregate-dir <public-aggregate-dir> \
-  --output-dir <delivery-dir>
-python3 scripts/audit_m10_delivery.py --delivery-dir <delivery-dir>
-```
-
-Open `<delivery-dir>/index.html` directly in a browser. The page embeds its sanitized data so it also works when opened from the filesystem rather than a web server.
-
-## Runtime Boundaries
-
-- Dashboard input is limited to aggregate manifest, group, dataset, seed, and paired-comparison JSON.
-- Task records, private attempts, raw model responses, candidate code, official tests, credentials, and model snapshots are excluded.
-- Core M10 scripts use the Python standard library; no new package is required.
+正式 M9/M9.1 只可在相应 freeze 的 openEuler worktree 执行。部署过程不得暴露凭据、用户目录、模型绝对路径或私有评测数据。

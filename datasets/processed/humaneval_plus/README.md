@@ -1,3 +1,3 @@
-# Generated HumanEval+ Output
+# HumanEval+ 处理后数据
 
-Generated unified tasks and import reports are local, reproducible artifacts and are ignored by Git.
+此目录存放本地处理后的公开 HumanEval+ 元数据。处理产物不包含参考解、官方测试或任何私有评测材料。

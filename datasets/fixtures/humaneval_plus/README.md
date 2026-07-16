@@ -1,3 +1,3 @@
-# Synthetic HumanEval+ Import Fixture
+# HumanEval+ 合成导入夹具
 
-This fixture is synthetic and exists only for importer tests. It is not formal HumanEval+ data and must not be used for experiments or final results.
+本目录仅包含用于导入器测试的合成 HumanEval+ 数据，不是正式数据集，也不包含 private tests、canonical solution 或模型输出。

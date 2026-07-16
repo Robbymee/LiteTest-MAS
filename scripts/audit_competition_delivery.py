@@ -202,7 +202,10 @@ def write_report(result: dict[str, Any], path: Path) -> None:
         "| 路径 | 问题 |",
         "| --- | --- |",
     ]
-    lines.extend(f"| `{item['path']}` | {', '.join(item['errors'])} |" for item in failed)
+    if failed:
+        lines.extend(f"| `{item['path']}` | {', '.join(item['errors'])} |" for item in failed)
+    else:
+        lines.append("| 无 | 无 |")
     lines.extend(["", "## 缺失中文文档", ""])
     if result["missing_documents"]:
         lines.extend(f"- `{item}`" for item in result["missing_documents"])
@@ -220,7 +223,7 @@ def write_report(result: dict[str, Any], path: Path) -> None:
             "",
             "## 边界说明",
             "",
-            "本阶段只建立并执行审计，不改写 M9/M9.1 正式结果，不创建承诺书、PPT 或视频占位文件，也不修改冻结提交和既有发布标签。英文主体文档和缺失交付物必须在后续独立阶段逐项修复并重新审计。",
+            "本阶段不改写 M9/M9.1 正式结果，不创建承诺书、PPT 或视频占位文件，也不修改冻结提交和既有发布标签。报告列出的缺失交付物必须在后续独立阶段以真实材料补齐后重新执行严格审计。",
             "",
         ]
     )

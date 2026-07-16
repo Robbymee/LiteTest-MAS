@@ -1,3 +1,3 @@
-# Dataset Manifests
+# 数据集 Manifest
 
-Future manually reviewed task selections and experiment manifests belong here. M2.0 does not select public-dataset tasks or create a final experiment manifest.
+本目录保存公开任务选择、组别和固定顺序的 manifest。正式 Runner 只能从已验证 manifest 派生计划，不得根据 private tests 改题、重排或补充任务。

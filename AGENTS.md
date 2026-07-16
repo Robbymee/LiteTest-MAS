@@ -1,31 +1,22 @@
-# LiteTest-MAS Agent Working Rules
+# LiteTest-MAS Agent 工作规则
 
-## Required reading before every task
+## 每项任务前的必读内容
 
-Before making changes, Codex must read this file and all of the following:
+修改前必须阅读本文件以及 `docs/PROJECT_CONTEXT.md`、`docs/ROADMAP.md`、`docs/STATUS.md`、`docs/EXPERIMENT_SPEC.md` 和 `docs/DECISIONS.md`，并检查相关实现、测试和依赖文件。
 
-- `docs/PROJECT_CONTEXT.md`
-- `docs/ROADMAP.md`
-- `docs/STATUS.md`
-- `docs/EXPERIMENT_SPEC.md`
-- `docs/DECISIONS.md`
+## 交付规则
 
-It must also inspect the relevant implementation, tests, and dependency files.
+- 一次只完成一个里程碑或边界清晰的子任务；当前阶段未验收不得进入下一阶段。
+- 运行适用验收命令，只报告实际结果，并确认既有行为未退化。
+- 任务完成后更新 `docs/STATUS.md`，重要技术或实验决定写入 `docs/DECISIONS.md`。
+- 结束时复核最终目标、当前阶段和剩余路线，只给出一个下一步。
+- 不得虚构实验、平台、基准、覆盖率或模型结果。
 
-## Delivery rules
+## 实验与可移植性约束
 
-- Complete exactly one milestone or clearly bounded subtask at a time. Do not begin the next stage automatically.
-- Do not proceed to the next stage when the current stage fails acceptance.
-- Run the applicable acceptance commands, report only their actual results, and check that existing behavior remains intact.
-- Update `docs/STATUS.md` after the task. Record material technical or experimental decisions in `docs/DECISIONS.md`.
-- At the end of a task, review the final goal, current stage, and remaining route; provide exactly one next step and stop.
-- Never fabricate experiment, platform, benchmark, coverage, or model results.
-
-## Experiment and portability constraints
-
-- `hidden_reference_tests` must never be exposed to Planner, TestGen, or any other Agent prompt/context.
-- Do not put Windows-only paths into core code. Use portable `pathlib` paths.
-- Do not download models, configure CUDA, or modify openEuler package sources, certificates, or network settings without explicit authorization.
-- Explain the necessity of every new dependency. Preserve the mock/template backend unless a separately accepted stage replaces it.
-- A single task failure must not terminate a future batch experiment; it must be recorded and processing must continue.
-- Formal results must be reproduced on openEuler. A Windows result is not an openEuler result.
+- `hidden_reference_tests` 绝不进入 Planner、TestGen 或其他 Agent 的 Prompt 或上下文。
+- 核心代码使用可移植的 `pathlib`，不得写入 Windows 专用路径。
+- 未获明确授权，不下载模型、不配置 CUDA、不修改 openEuler 软件源、证书或网络设置。
+- 每个新依赖都必须说明必要性；保留 Mock/template backend，除非独立阶段验收替换。
+- 单个任务失败必须记录并继续后续批次，不能中止整个实验。
+- 正式结果必须在 openEuler 复现；Windows 结果不等同于 openEuler 结果。

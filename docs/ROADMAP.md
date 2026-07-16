@@ -1,21 +1,5 @@
-# Roadmap
+# 路线图
 
-| Milestone | Scope | Status |
-| --- | --- | --- |
-| M1 | A01 minimum closed loop | Completed baseline |
-| M2.0 | Project context consolidation and MBPP-Sanitized local import framework | Completed; Windows and openEuler accepted on 2026-07-11 |
-| M2.1 | Generate MBPP candidate list and manually select two related groups | Completed; two human-approved groups of five recorded |
-| M2.2 | MBPP continuous-task batch execution | Completed; Windows and openEuler accepted on 2026-07-11 |
-| M2.3 | HumanEval adaptation | Completed; Windows and openEuler import validation accepted on 2026-07-11 |
-| M2.4 | HumanEval related-task selection | Completed; delegated technical review accepted on 2026-07-11 |
-| M2.5 | openEuler Text/Protocol batch validation for both datasets | Completed; four Mock sequence combinations accepted on 2026-07-11 |
-| M3 | Evaluator and Mock-scope Text/Protocol aggregation | Completed; Windows/openEuler accepted on 2026-07-11 |
-| M4 | Unified LLM backend abstraction | Completed; Mock and OpenAI-compatible dry-run accepted on 2026-07-11 |
-| M5 | Real LLM integration | Completed; Windows-hosted local Transformers service and openEuler pilot accepted on 2026-07-11 |
-| M6 | SharedMemory | Completed; bounded group-isolated pilot accepted on 2026-07-11 |
-| M7 | StateVector | Completed; compact protocol-state pilot accepted on 2026-07-11 |
-| M8 | Test-quality evaluation and sandbox | Completed; restricted subprocess validation accepted on 2026-07-11 |
-| M9 | Four formal ablation experiments | Completed; frozen openEuler run, strict public validation, aggregation, and paired bootstrap audit accepted on 2026-07-13 |
-| M10 | Dashboard, deployment docs, experiment report, final openEuler acceptance | Completed; offline delivery and independent openEuler reproduction accepted on 2026-07-13 |
+M1 至 M10 的基础系统、数据导入、连续任务、评测、LLM 后端、SharedMemory、StateVector、Sandbox、正式 M9 和离线 Dashboard 已完成历史验收。M9.1 的 V2 组件、独立 Spec、冻结运行、公开聚合和补充报告亦已完成，结论仅限固定任务与固定模型。
 
-The formal ablation groups are G1 Text, G2 Protocol, G3 Protocol + StateVector, and G4 Protocol + StateVector + SharedMemory.
+当前交付路线是：完成存量 Markdown 中文化和路径脱敏，补齐真实承诺书、PPT、视频或下载说明，执行严格交付审计，再评估 `v1.1.0-competition`。不得修改 M9/M9.1 正式结果、旧 Dashboard 或 `v1.0.0-experiment`。

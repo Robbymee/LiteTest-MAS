@@ -1,28 +1,10 @@
-# Reproduction
+# 复现说明
 
-## Preconditions
-
-- openEuler 24.03-LTS-SP3 x86_64 with Python 3.
-- A fresh clone of the delivery revision.
-- Locally available processed task data only for strict plan reconstruction; no model download is required.
-- The immutable M9 formal run root and its public aggregate directory.
-
-## Procedure
+完整中文说明见 `docs/实验复现说明.md`。从仓库根目录设置 `PYTHONPATH` 后运行：
 
 ```bash
-python3 -m pip install -r requirements.txt
-python3 -m pytest tests/
-python3 scripts/aggregate_m9_results.py \
-  --run-root <formal-run-root> \
-  --spec experiments/m9_experiment_spec.json \
-  --plan-root <frozen-plan-checkout> \
-  --output-dir <aggregate-output-dir> \
-  --expected-freeze-sha cc7aac0417afb6acab47baaf7449459692fa9444
-python3 scripts/build_m10_dashboard.py \
-  --aggregate-dir <aggregate-output-dir> \
-  --output-dir <dashboard-output-dir>
-python3 scripts/audit_m10_delivery.py --delivery-dir <dashboard-output-dir>
-git diff --check
+python -m pytest tests -q
+python scripts/audit_competition_delivery.py --root . --allow-incomplete
 ```
 
-Record the formal freeze SHA, Spec SHA, aggregate input checksum, aggregate checksum, Dashboard checksums, and actual command output. Do not substitute a Windows result for the openEuler validation.
+M9/M9.1 的公开聚合可复现，private tests 与模型原始响应不可公开重放。正式结果必须在 openEuler 的相应 freeze worktree 验收。

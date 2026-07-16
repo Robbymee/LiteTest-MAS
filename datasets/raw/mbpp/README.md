@@ -1,13 +1,3 @@
-# MBPP-Sanitized Raw Data
+# MBPP-Sanitized 原始数据
 
-Place a manually downloaded MBPP-Sanitized JSON or JSONL file in this directory, or pass its local path directly to the importer. The importer never downloads data and does not require network access.
-
-Raw public-dataset files are not recommended for Git commits. The repository ignores `*.json` and `*.jsonl` in this directory.
-
-Example:
-
-```bash
-python scripts/import_mbpp.py --input datasets/raw/mbpp/mbpp_sanitized.json --output-dir datasets/processed/mbpp
-```
-
-The importer accepts the common fields `task_id`, `text` or `task_description`, `code` or `code_under_test`, and `test_list` or `hidden_reference_tests`. Formal experiments must preserve the original task ID and MBPP-Sanitized source information. Official tests are imported only as hidden reference tests and are not agent input.
+此目录保存 MBPP-Sanitized 的本地原始输入。导入器只向 Agent 暴露任务描述、签名和入口等允许字段；官方测试和参考实现不应作为 Agent 上下文。

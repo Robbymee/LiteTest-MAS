@@ -1,111 +1,56 @@
 # LiteTest-MAS 多智能体测试生成系统
 
-> 本仓库的正式中文入口、部署、复现、结果和安全说明位于 `docs/` 与 `reports/`。历史英文内容将在后续独立翻译阶段逐份替换；命令、路径、JSON 字段和 SHA 保持原样。
+## 项目简介
 
-LiteTest-MAS is a minimal closed-loop experiment for validating a low-overhead multi-agent workflow for code test generation on openEuler 24.03-LTS-SP3 x86_64.
+LiteTest-MAS 是面向测试生成的低开销多智能体系统。它在固定公开任务上比较 Text、Protocol、StateVector 和 SharedMemory，并将 private official tests 保持在 Agent 上下文之外。
 
-This first stage only validates Python, Git, Codex-assisted development, deterministic agent orchestration, test generation, pytest execution, and metrics collection. It does not install or run local LLMs, CUDA, Docker, iSulad, ChromaDB, FAISS, or any model runtime.
+## 系统组成
 
-## Modes
+- `agents/`：Planner、Memory、TestGen、Executor、Summarizer 等逻辑角色。
+- `protocol/`：Text、Protocol V1 与独立 CompactProtocol V2。
+- `state/`：StateVector V1 与独立 StateVector V2。
+- `memory/`：SharedMemory V1 与 GatedSharedMemory V2。
+- `sandbox/`、`evaluator/`：Candidate Parser、Private Sandbox 与 Strict Verifier 边界。
+- `experiments/`：M9 与 M9.1 Spec、Runner 和校验器。
+- `reports/`：仅含公开聚合、统计和脱敏报告。
 
-- Text Mode: agents exchange plain natural-language text messages.
-- Protocol Mode: agents exchange structured JSON-compatible messages.
+## 正式实验
 
-## Requirements
+M9 的有效 freeze 为 `cc7aac0417afb6acab47baaf7449459692fa9444`，完成 240/240 final records。其 G1/G2/G3/G4 任务成功率为 0.60、0.75、0.75、0.70。M9 说明 Protocol V1 在本次固定条件下提高任务成功率，但总 Token 和延迟更高；StateVector V1 无成功率增益；SharedMemory V1 有真实复用且存在负迁移风险。
 
-Core code uses only the Python standard library. Pytest is only needed to execute generated tests and repository tests.
+M9.1 的有效 freeze 为 `c79fd4826627bf61faf5d90540a014d243a59edd`，完成独立 240/240 final records。S1/S2/S3/S4 的任务成功率为 0.55、0.55、0.60、0.55。其结论仅适用于固定任务、固定模型和固定参数，详见 `reports/M9.1补充实验报告.md` 与 `reports/最终技术报告.md`。
+
+## 快速验证
+
+在仓库根目录运行：
 
 ```bash
 python -m pip install -r requirements.txt
+python -m pytest tests -q
+python scripts/audit_competition_delivery.py --root . --allow-incomplete
 ```
 
-On openEuler, use `python3` if that is the available Python command:
-
-```bash
-python3 -m pip install -r requirements.txt
-```
-
-## M5 Windows-local Llama service
-
-The optional M5 service is hosted on Windows only. Install its separate dependencies there, resolve a local Hugging Face snapshot path at runtime, and bind only to the intended private/NAT address:
+Windows 需设置：
 
 ```powershell
-python -m pip install -r requirements-local-transformers.txt
-python scripts/serve_local_transformers.py --model-path "<snapshot-path>" --model-name local-llama31-8b-instruct --host <private-address> --port 8000
+$env:PYTHONPATH = "$PWD;$env:PYTHONPATH"
 ```
 
-On openEuler, set `LLM_BACKEND=openai_compatible`, `LLM_BASE_URL=http://<windows-private-address>:8000/v1`, `LLM_MODEL=local-llama31-8b-instruct`, timeout, and retry values. First check `/health`; M5 uses a firewall rule restricted to the openEuler source IP. Do not commit `.env`, model paths, snapshots, or API keys. This pilot is integration validation only, not a formal model comparison or M9 ablation.
-
-## Acceptance Commands
-
-Windows local:
+POSIX 环境需设置：
 
 ```bash
-python scripts/run_one.py --mode text --task datasets/litetest_bench/A01.json
-python scripts/run_one.py --mode protocol --task datasets/litetest_bench/A01.json
+export PYTHONPATH="$PWD:${PYTHONPATH:-}"
 ```
 
-openEuler:
+## 文档入口
 
-```bash
-python3 scripts/run_one.py --mode text --task datasets/litetest_bench/A01.json
-python3 scripts/run_one.py --mode protocol --task datasets/litetest_bench/A01.json
-```
+- 系统设计：`docs/项目总体设计.md`
+- 赛题证据：`docs/赛题需求与证据矩阵.md`
+- 部署与复现：`docs/Windows部署说明.md`、`docs/openEuler部署说明.md`、`docs/实验复现说明.md`
+- 安全边界：`docs/安全沙箱与私有评测.md`
+- 离线 Dashboard：`docs/演示操作指南.md`
+- 交付审计：`reports/赛事中文文档与交付物审计报告.md`
 
-Repository tests:
+## 安全与发布
 
-```bash
-python -m pytest tests
-```
-
-## Outputs
-
-Each run creates an isolated directory under `runs/<task_id>/<mode>-<timestamp>/` containing materialized source files, generated tests, pytest output, `summary.json`, and `metrics.json`.
-
-## M10 Offline Delivery
-
-The M10 Dashboard is a static, public-aggregate-only delivery artifact. It contains no task prompts, candidate code, private tests, credentials, model paths, or network dependencies. Build it from an accepted M9 aggregate and audit it before sharing:
-
-```bash
-python scripts/build_m10_dashboard.py --aggregate-dir <aggregate-dir> --output-dir <dashboard-dir>
-python scripts/audit_m10_delivery.py --delivery-dir <dashboard-dir>
-```
-
-See `docs/M9_RESULTS.md`, `docs/DEPLOYMENT.md`, `docs/SECURITY.md`, `docs/REPRODUCTION.md`, `docs/DEMO.md`, and `docs/TROUBLESHOOTING.md`.
-
-## Dataset Shape
-
-Each benchmark task in `datasets/litetest_bench/` uses a self-contained JSON structure built around:
-
-- `task_id`
-- `group_id`
-- `topic`
-- `function_name`
-- `task_description`
-- `signature`
-- `code_under_test`
-- `risk_tags`
-- `expected_test_focus`
-- `hidden_reference_tests`
-- `cases`
-
-## MBPP-Sanitized Local Import (M2.0)
-
-MBPP-Sanitized is the planned primary public experiment dataset. Its raw JSON or JSONL file must be downloaded manually and kept locally; the importer performs no network requests.
-
-```bash
-python scripts/import_mbpp.py --input datasets/raw/mbpp/mbpp_sanitized.json --output-dir datasets/processed/mbpp
-```
-
-The importer writes a unified JSONL task file and import reports. It stores official dataset tests as `hidden_reference_tests`, but its explicitly allowlisted `agent_visible_context` never contains those tests. Generated outputs and raw dataset files are ignored by Git; the synthetic fixtures are for importer tests only and are not experiment data.
-
-## M2.2 MBPP Sequence Runner
-
-After importing local MBPP-Sanitized data, create a deterministic dry-run plan or execute the human-approved two-group sequence with the existing Mock Agent:
-
-```bash
-python scripts/run_mbpp_sequences.py --mode both --seed 42 --dry-run
-python scripts/run_mbpp_sequences.py --mode text --seed 42 --output-dir runs/m2_2/text_seed42
-```
-
-Outputs are isolated under `runs/m2_2/` and are not committed. This runner validates task sequencing only; it is not a formal Text/Protocol comparison.
+private tests、candidate code、raw response、canonical solution、凭据、用户目录和模型绝对路径不进入公开文档、Dashboard 或 Agent 上下文。保留 `v1.0.0-experiment`；在严格交付审计通过及真实赛事材料齐备前，不创建 `v1.1.0-competition`。

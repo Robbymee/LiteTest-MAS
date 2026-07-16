@@ -1,3 +1,3 @@
-# Synthetic MBPP Import Fixtures
+# MBPP 合成导入夹具
 
-These files are synthetic fixtures for importer tests only. They are not MBPP-Sanitized source data, not formal experiment data, and must never be used to report final results. Their test strings are artificial examples and are never supplied to an Agent context.
+本目录用于测试 MBPP 导入和字段过滤。夹具只含合成公开样本，不可用于正式实验结论或模型调参。

@@ -1,9 +1,5 @@
-# Demonstration
+# 演示说明
 
-1. Open the generated `index.html` while disconnected from the network.
-2. Verify that it shows 240 final records and a strict-verifier pass.
-3. Compare the four group cards and the paired task-success table.
-4. Inspect `data.json` and run `scripts/audit_m10_delivery.py` against the same directory.
-5. Show the aggregate manifest checksum and the formal freeze SHA used to build the Dashboard.
+离线 Dashboard 的操作步骤见 `docs/演示操作指南.md`。演示只能使用 `reports/m9/` 和 `reports/m9_1/` 的公开聚合产物，不读取 private tests、候选代码或原始模型响应。
 
-The demonstration is a result-inspection workflow. It does not run a model, expose task prompts, or execute private evaluation material.
+视频或下载说明尚未作为真实交付材料提供；本文件不构成视频替代物。

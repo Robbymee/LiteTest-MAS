@@ -1,3 +1,3 @@
-# Generated MBPP Output
+# MBPP 处理后数据
 
-This directory receives reproducible local output from `scripts/import_mbpp.py`. Generated task files and reports are ignored because they can contain locally supplied dataset material. This README remains tracked.
+此目录存放本地处理后的公开 MBPP 元数据。正式实验使用固定 manifest 选择任务，处理数据不承载 private tests 或候选答案。

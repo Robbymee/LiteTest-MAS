@@ -42,6 +42,7 @@ def test_repository_audit_reports_real_gaps_and_preserves_protected_revisions(tm
     assert result["valid"] is False
     assert result["summary"]["tracked_markdown_count"] >= 30
     assert result["missing_documents"] == []
+    assert result["summary"]["markdown_failure_count"] == 0
     assert result["delivery"]["commitment_letter"] is False
     assert result["delivery"]["presentation"] is False
     assert all(item["valid"] for item in result["protected_revisions"].values())
