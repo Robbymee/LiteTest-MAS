@@ -9,7 +9,7 @@ import sys
 
 from experiments.m9_1_runner import group_config, metric_defaults, plan, task_key
 from experiments.m9_1_verifier import write_completion
-from scripts.aggregate_m9_1_results import aggregate
+from scripts.aggregate_m9_1_results import aggregate, normalize_records
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -53,3 +53,17 @@ def test_m9_1_aggregate_script_can_run_from_repository_root():
     )
     assert result.returncode == 0
     assert "--run-root" in result.stdout
+
+
+def test_m9_1_normalizes_cumulative_memory_and_preserves_group_dimensions():
+    """验证累计 Memory 指标按 sequence 还原，且数据集汇总不混合实验组。"""
+    records = [
+        {"experiment_group": "S4", "dataset": "mbpp", "group_id": "g", "seed": 42,
+         "plan_index": index, "memory_query_count": query, "memory_hit_count": hit,
+         "memory_candidate_count": candidate, "memory_accept_count": accepted}
+        for index, query, hit, candidate, accepted in ((1, 1, 0, 0, 0), (2, 2, 1, 2, 2))
+    ]
+    rows = normalize_records(records)
+    assert [row["memory_query_count"] for row in rows] == [1.0, 1.0]
+    assert [row["memory_hit_count"] for row in rows] == [0.0, 1.0]
+    assert rows[0]["capability_handshake_count"] == "unavailable"

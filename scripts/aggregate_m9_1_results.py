@@ -23,6 +23,11 @@ from experiments.m9_1_verifier import FORBIDDEN, verify
 UNAVAILABLE = "unavailable"
 COMPARISONS = (("S2", "S1"), ("S3", "S2"), ("S4", "S3"), ("S4", "S1"))
 QUALITY_METRICS = ("task_success", "official_test_pass_rate", "parse_success_rate", "sandbox_completion_rate")
+MEMORY_CUMULATIVE_FIELDS = (
+    "memory_query_count", "memory_candidate_count", "memory_hit_count", "memory_accept_count",
+    "memory_reject_count", "memory_abstain_count", "memory_reuse_count", "memory_injected_count",
+    "memory_injected_tokens", "memory_write_count", "memory_success_write_count", "memory_eviction_count",
+)
 
 
 def canonical(value: Any) -> str:
@@ -73,6 +78,33 @@ def rate(records: list[dict[str, Any]], numerator: str, denominator: str) -> flo
     return sum(numerators) / total if total else UNAVAILABLE
 
 
+def normalize_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """将 sequence 累计 Memory 计数还原为逐任务增量，并隔离已知不可恢复计量。"""
+    normalized = [dict(record) for record in records]
+    sequences: dict[tuple[Any, ...], list[dict[str, Any]]] = defaultdict(list)
+    for record in normalized:
+        key = (record["experiment_group"], record["dataset"], record["group_id"], record["seed"])
+        sequences[key].append(record)
+        # 握手在 Runner 建立差分基线前完成，正式记录中的零值不能证明握手未发生。
+        if record["experiment_group"] != "S1":
+            record["capability_handshake_count"] = UNAVAILABLE
+            record["capability_handshake_bytes"] = UNAVAILABLE
+    for rows in sequences.values():
+        rows.sort(key=lambda item: int(item["plan_index"]))
+        previous = {field: 0.0 for field in MEMORY_CUMULATIVE_FIELDS}
+        for row in rows:
+            for field in MEMORY_CUMULATIVE_FIELDS:
+                value = row.get(field)
+                if isinstance(value, (int, float)) and not isinstance(value, bool):
+                    current = float(value)
+                    row[field] = current - previous[field]
+                    previous[field] = current
+            row["memory_hit_rate"] = UNAVAILABLE
+            row["memory_accept_rate"] = UNAVAILABLE
+            row["memory_effective_reuse_rate"] = UNAVAILABLE
+    return normalized
+
+
 def summarize(records: list[dict[str, Any]], dimensions: dict[str, Any]) -> dict[str, Any]:
     """汇总一组公开记录，稳定保留质量、通信、状态与记忆指标。"""
     row = {**dimensions, "record_count": len(records)}
@@ -97,6 +129,8 @@ def summarize(records: list[dict[str, Any]], dimensions: dict[str, Any]) -> dict
     row["parse_success_rate"] = mean(float(record.get("parse_status") == "success") for record in records)
     row["sandbox_completion_rate"] = average(records, "sandbox_completion_rate")
     row["infrastructure_failure"] = sum(record.get("final_status") == "failed_infrastructure" for record in records)
+    row["memory_hit_rate"] = rate(records, "memory_hit_count", "memory_query_count")
+    row["memory_accept_rate"] = rate(records, "memory_accept_count", "memory_candidate_count")
     return row
 
 
@@ -177,23 +211,23 @@ def aggregate(run_root: Path, spec_path: Path, output_dir: Path, freeze_git_sha:
     strict = verify(run_root, spec, freeze_git_sha)
     if not strict["valid"]:
         raise ValueError("strict_verifier_failed:" + ",".join(strict["errors"]))
-    records = read_public_tasks(run_root)
+    records = normalize_records(read_public_tasks(run_root))
     if output_dir.exists():
         raise ValueError("output_dir_exists")
     output_dir.mkdir(parents=True)
     by_group: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    by_dataset: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    by_task_group: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
-    by_seed: dict[int, list[dict[str, Any]]] = defaultdict(list)
+    by_dataset: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    by_task_group: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    by_seed: dict[tuple[int, str], list[dict[str, Any]]] = defaultdict(list)
     for record in records:
         by_group[record["experiment_group"]].append(record)
-        by_dataset[record["dataset"]].append(record)
-        by_task_group[(record["dataset"], record["group_id"])].append(record)
-        by_seed[int(record["seed"])].append(record)
+        by_dataset[(record["dataset"], record["experiment_group"])].append(record)
+        by_task_group[(record["dataset"], record["group_id"], record["experiment_group"])].append(record)
+        by_seed[(int(record["seed"]), record["experiment_group"])].append(record)
     groups = [summarize(rows, {"experiment_group": key}) for key, rows in sorted(by_group.items())]
-    datasets = [summarize(rows, {"dataset": key}) for key, rows in sorted(by_dataset.items())]
-    task_groups = [summarize(rows, {"dataset": key[0], "group_id": key[1]}) for key, rows in sorted(by_task_group.items())]
-    seeds = [summarize(rows, {"seed": key}) for key, rows in sorted(by_seed.items())]
+    datasets = [summarize(rows, {"dataset": key[0], "experiment_group": key[1]}) for key, rows in sorted(by_dataset.items())]
+    task_groups = [summarize(rows, {"dataset": key[0], "group_id": key[1], "experiment_group": key[2]}) for key, rows in sorted(by_task_group.items())]
+    seeds = [summarize(rows, {"seed": key[0], "experiment_group": key[1]}) for key, rows in sorted(by_seed.items())]
     comparisons = paired_comparisons(records, spec["bootstrap"])
     manifest = {"schema_version": "1.0", "result_scope": spec["result_scope"], "conclusion_scope": spec["conclusion_scope"], "freeze_git_sha": freeze_git_sha, "spec_sha256": hashlib.sha256(canonical(spec).encode("utf-8")).hexdigest(), "final_record_count": len(records), "strict_verifier": {"valid": True}, "bootstrap": spec["bootstrap"], "aggregate_input_sha256": hashlib.sha256(canonical(records).encode("utf-8")).hexdigest()}
     manifest["deterministic_aggregate_sha256"] = hashlib.sha256(canonical({"groups": groups, "datasets": datasets, "task_groups": task_groups, "seeds": seeds, "comparisons": comparisons}).encode("utf-8")).hexdigest()
