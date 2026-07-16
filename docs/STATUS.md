@@ -2,7 +2,7 @@
 
 ## Current stage
 
-赛事 Dashboard 数据契约子任务已在 Windows 完成：新增独立 `build_competition_dashboard.py`，只读取仓库内 M9/M9.1 公开聚合产物，输出统一双实验 `data.json`，并保持 `unavailable` 不变。旧 M10 Dashboard 构建器和冻结交付物未修改；中文页面实现与 openEuler 验收仍属于后续独立子任务。
+赛事 Dashboard 中文页面子任务已完成实现：独立 `build_competition_dashboard.py` 现从 M9/M9.1 公开聚合产物生成离线 `data.json` 与 `index.html`。页面提供实验、视图、实验组、数据集/任务组/Seed 筛选，展示 Strict Verifier、freeze SHA、Spec hash 和公开指标；缺失指标保持 `unavailable`。旧 M10 Dashboard 构建器和冻结交付物未修改；Windows/openEuler 验收仍待本子任务测试完成后记录。
 
 M9.1 P9.18 已完成有效正式运行公开聚合产物的回传、完整性校验、公开字段审计和中文补充报告。归档 SHA-256 为 `24bc21fca5517e69d3d3610872c7d1c7d2fd974a7cd0115de1ad5e77a8e07aa9`，聚合 SHA 为 `7745118aa03152d7e1656fd3765acba2ed451303f9a6ad184fc1eb0c26194ab0`。导入的 240 条 final records 对应 freeze `c79fd4826627bf61faf5d90540a014d243a59edd` 与 Spec SHA `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6`；Strict Verifier 为 `valid=true`，公开禁止字段扫描为 0。Windows 专项/全量测试和 openEuler 专项/全量测试均已通过；两端 SHA 均为 `a7089ef8550121206463af9bb6f2e51f9ec6c6ca`。M9 原始结果、冻结提交、Dashboard 和 `v1.0.0-experiment` 未改动。下一步必须在独立任务中审计 P9.18 结论与后续交付路线，不得直接启动新实验。
 
