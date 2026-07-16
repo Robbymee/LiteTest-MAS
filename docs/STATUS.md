@@ -1,5 +1,11 @@
 # Status
 
+## 全量 Markdown 中文化与路径脱敏
+
+全量 Markdown 中文化与路径脱敏阶段已完成。`AGENTS.md`、README、数据目录 README、核心设计/部署/安全/结果文档、M9 readiness 报告均已改为中文正文；`docs/STATUS.md` 中 14 处旧 openEuler 主目录前缀已替换为 `<openEuler 工作目录>/`，实验数值、SHA、日志标识和结论未改写。交付审计现显示 44/44 tracked Markdown 通过、Markdown 缺口为 0、指定中文文档缺失为 0。
+
+Windows 在 `8a6ada8ec56bcd44ecc10f6632db10937ce3d177` 通过文档专项 `5 passed`、全量 `111 passed`；openEuler 同一 SHA 通过专项 `5 passed`、全量 `110 passed, 1 skipped`。严格交付审计仍为 `valid=false`，唯一剩余缺口是根目录真实参赛承诺书、演示 PPT、视频或视频下载说明。M9/M9.1 正式结果、冻结 SHA、Dashboard 与 `v1.0.0-experiment` 均未修改。
+
 ## 中文核心文档补齐
 
 中文核心文档补齐阶段已完成。已新增项目总体设计、关联连续任务、安全 Sandbox、Windows/openEuler 部署、复现、结果统计、演示、故障排查、匿名化提交检查和最终技术报告；M9 补充分析报告已修正为 `reports/m9/赛题指标补充分析.md`，内容未改写。`README.md` 已增加中文项目入口。文档只引用公开 Spec、公开聚合和已验收命令，不暴露 private tests、candidate code、raw response、凭据或模型绝对路径。
