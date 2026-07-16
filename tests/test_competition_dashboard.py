@@ -30,6 +30,21 @@ def test_competition_dashboard_builds_public_dual_experiment_data(tmp_path):
     assert all(value in html for value in ("Prompt Token", "Completion Token", "StateVector", "Memory", "official-test"))
     assert not any(value in html for value in ("innerHTML", "insertAdjacentHTML", "document.write"))
     assert {path.name for path in tmp_path.iterdir()} == {"data.json", "index.html"}
+    assert b"\r\n" not in (tmp_path / "data.json").read_bytes()
+    assert b"\r\n" not in (tmp_path / "index.html").read_bytes()
+
+
+def test_competition_dashboard_build_is_byte_stable(tmp_path):
+    """验证重复离线构建生成完全一致的 UTF-8 字节和哈希。"""
+    first = build_data(ROOT / "reports/m9", ROOT / "reports/m9_1", tmp_path)
+    first_data = (tmp_path / "data.json").read_bytes()
+    first_index = (tmp_path / "index.html").read_bytes()
+
+    second = build_data(ROOT / "reports/m9", ROOT / "reports/m9_1", tmp_path)
+
+    assert second == first
+    assert (tmp_path / "data.json").read_bytes() == first_data
+    assert (tmp_path / "index.html").read_bytes() == first_index
 
 
 def test_competition_dashboard_rejects_forbidden_csv_field(tmp_path):

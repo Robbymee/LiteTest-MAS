@@ -162,9 +162,10 @@ def build_data(m9_dir: Path, m9_1_dir: Path, output_dir: Path) -> dict[str, Any]
     }
     output_dir.mkdir(parents=True, exist_ok=True)
     output = output_dir / "data.json"
-    output.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    # 显式写入 UTF-8 字节，避免 Windows 与 openEuler 的文本换行转换造成产物哈希不同。
+    output.write_bytes((json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8"))
     index = output_dir / "index.html"
-    index.write_text(page(data), encoding="utf-8")
+    index.write_bytes(page(data).encode("utf-8"))
     return {
         "data_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
         "index_sha256": hashlib.sha256(index.read_bytes()).hexdigest(),
