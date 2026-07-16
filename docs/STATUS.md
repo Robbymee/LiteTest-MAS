@@ -2,7 +2,7 @@
 
 ## Current stage
 
-M9.1 P9.18 已在 Windows 完成有效正式运行公开聚合产物的回传、完整性校验、公开字段审计和中文补充报告初稿。归档 SHA-256 为 `24bc21fca5517e69d3d3610872c7d1c7d2fd974a7cd0115de1ad5e77a8e07aa9`，聚合 SHA 为 `7745118aa03152d7e1656fd3765acba2ed451303f9a6ad184fc1eb0c26194ab0`。导入的 240 条 final records 对应 freeze `c79fd4826627bf61faf5d90540a014d243a59edd` 与 Spec SHA `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6`；Strict Verifier 为 `valid=true`，公开禁止字段扫描为 0。Windows 专项聚合测试通过，openEuler 回归验收、提交和后续 P9.18 统计报告工作仍待单独完成。M9 原始结果、冻结提交、Dashboard 和 `v1.0.0-experiment` 未改动。
+M9.1 P9.18 已完成有效正式运行公开聚合产物的回传、完整性校验、公开字段审计和中文补充报告。归档 SHA-256 为 `24bc21fca5517e69d3d3610872c7d1c7d2fd974a7cd0115de1ad5e77a8e07aa9`，聚合 SHA 为 `7745118aa03152d7e1656fd3765acba2ed451303f9a6ad184fc1eb0c26194ab0`。导入的 240 条 final records 对应 freeze `c79fd4826627bf61faf5d90540a014d243a59edd` 与 Spec SHA `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6`；Strict Verifier 为 `valid=true`，公开禁止字段扫描为 0。Windows 专项/全量测试和 openEuler 专项/全量测试均已通过；两端 SHA 均为 `a7089ef8550121206463af9bb6f2e51f9ec6c6ca`。M9 原始结果、冻结提交、Dashboard 和 `v1.0.0-experiment` 未改动。下一步必须在独立任务中审计 P9.18 结论与后续交付路线，不得直接启动新实验。
 
 M9.1 赛题对齐强化的 P1（赛题需求与证据矩阵）已完成 Windows 与 openEuler 验收。该阶段只审计代码、测试和 M9 公开数据，未调用真实模型，未修改 M9 正式运行、冻结提交、公开聚合、Dashboard 或发布标签。M9 的唯一有效正式基线仍为 freeze SHA `cc7aac0417afb6acab47baaf7449459692fa9444`；P1 验收时 strict verifier 仍返回 240 条 final records、零错误和零重复。
 

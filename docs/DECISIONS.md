@@ -3,6 +3,8 @@
 79. M9.1 P9.18 的有效计量只使用 freeze `c79fd4826627bf61faf5d90540a014d243a59edd`、Spec SHA `3ad520c75bb66e8a4617daa64d6824183cbeaa5a1e1cb01dcd50035f145231f6` 和 Strict Verifier 通过的 240 条 `public/tasks` final records。公开聚合归档在 Windows 回传后必须同时匹配远端归档 SHA-256 `24bc21fca5517e69d3d3610872c7d1c7d2fd974a7cd0115de1ad5e77a8e07aa9` 与聚合 SHA `7745118aa03152d7e1656fd3765acba2ed451303f9a6ad184fc1eb0c26194ab0`；不得使用旧 `87c4461` 的无效正式结果生成结论。
 80. M9.1 公开报告中，S2 相对 S1 的同单位 Agent 通信 Token/字符比较、握手摊销、重复上下文、task-cluster Bootstrap 和 Memory effective reuse 等未由公开记录可靠恢复的字段必须标记为 `unavailable`。不得将不同单位的 Text 字符与 Protocol bytes 直接比较，不得把 Memory 引用后的可评测结果解释为因果质量提升。
 
+81. 为恢复 Windows 到 openEuler 的稳定公开产物传输，断开了 `openEuler-24.03-LTS-SP3` 上无 IP 的冗余 `OA-HostOnly` 虚拟网卡，保留承载 `192.168.77.2` 的 `OA HostOnly Adapter`；同时恢复 HostOnly 适配器的 RSC、LSO、RSS 禁用设置。该调整只作用于主机—来宾传输稳定性，不修改模型、任务、Spec、冻结 worktree 或正式实验结果。公开归档在 1 KB 传输块重建后必须匹配远端 SHA-256，Git bundle 同步必须匹配本地 SHA 并以 `merge --ff-only` 完成。
+
 1. Use a lightweight in-house system; do not heavily fork AutoCodeAI.
 2. Use AutoCodeAI only as a reference for Agent, sandbox, and memory modules.
 3. MBPP-Sanitized is the primary experiment dataset.
