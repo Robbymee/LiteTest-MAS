@@ -1,4 +1,6 @@
-# LiteTest-MAS
+# LiteTest-MAS 多智能体测试生成系统
+
+> 本仓库的正式中文入口、部署、复现、结果和安全说明位于 `docs/` 与 `reports/`。历史英文内容将在后续独立翻译阶段逐份替换；命令、路径、JSON 字段和 SHA 保持原样。
 
 LiteTest-MAS is a minimal closed-loop experiment for validating a low-overhead multi-agent workflow for code test generation on openEuler 24.03-LTS-SP3 x86_64.
 

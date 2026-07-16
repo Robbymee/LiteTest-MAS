@@ -4,7 +4,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from scripts.audit_competition_delivery import audit_markdown, audit_repository, write_report
+from scripts.audit_competition_delivery import REQUIRED_DOCUMENTS, audit_markdown, audit_repository, write_report
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,11 +37,11 @@ def test_markdown_audit_detects_personal_path_and_real_secret(tmp_path):
 
 
 def test_repository_audit_reports_real_gaps_and_preserves_protected_revisions(tmp_path):
-    """验证当前审计如实保留缺失项，同时确认冻结提交和标签仍可解析。"""
+    """验证审计如实保留剩余交付缺口，同时确认冻结提交和标签仍可解析。"""
     result = audit_repository(ROOT)
     assert result["valid"] is False
     assert result["summary"]["tracked_markdown_count"] >= 30
-    assert "docs/项目总体设计.md" in result["missing_documents"]
+    assert result["missing_documents"] == []
     assert result["delivery"]["commitment_letter"] is False
     assert result["delivery"]["presentation"] is False
     assert all(item["valid"] for item in result["protected_revisions"].values())
@@ -51,6 +51,16 @@ def test_repository_audit_reports_real_gaps_and_preserves_protected_revisions(tm
     text = report.read_text(encoding="utf-8")
     assert "# 赛事中文文档与交付物审计报告" in text
     assert "valid=false" in text
+
+
+def test_required_chinese_documents_are_utf8_and_have_chinese_titles():
+    """验证总流程要求的中文文档存在、可解码且具有中文一级标题。"""
+    for relative in REQUIRED_DOCUMENTS:
+        path = ROOT / relative
+        text = path.read_bytes().decode("utf-8", errors="strict")
+        title = text.splitlines()[0]
+        assert title.startswith("# ")
+        assert any("\u4e00" <= char <= "\u9fff" for char in title)
 
 
 def test_audit_cli_supports_incomplete_acceptance(tmp_path):

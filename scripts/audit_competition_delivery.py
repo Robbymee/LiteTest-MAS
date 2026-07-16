@@ -204,7 +204,10 @@ def write_report(result: dict[str, Any], path: Path) -> None:
     ]
     lines.extend(f"| `{item['path']}` | {', '.join(item['errors'])} |" for item in failed)
     lines.extend(["", "## 缺失中文文档", ""])
-    lines.extend(f"- `{item}`" for item in result["missing_documents"])
+    if result["missing_documents"]:
+        lines.extend(f"- `{item}`" for item in result["missing_documents"])
+    else:
+        lines.append("- 无")
     lines.extend(["", "## 根目录交付清单", "", "| 类别 | 状态 |", "| --- | --- |"]) 
     lines.extend(f"| `{name}` | {'已存在' if value else '缺失'} |" for name, value in result["delivery"].items())
     lines.extend(["", "## 受保护版本", "", "| 名称 | 修订 | 状态 |", "| --- | --- | --- |"]) 
