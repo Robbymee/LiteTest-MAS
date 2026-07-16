@@ -2,7 +2,7 @@
 
 ## 87. 全部 tracked Markdown 必须中文化，历史主目录路径以中性占位符脱敏
 
-交付审计的 Markdown 规则已提升为零缺口：全部 tracked Markdown 必须为 UTF-8 且含中文正文，测试固定断言 `markdown_failure_count == 0`。对 `docs/STATUS.md` 中已不适合公开的历史 openEuler 主目录，仅将 `/home/oa/` 替换为 `<openEuler 工作目录>/`；不修改日志文件名、SHA、实验数值、冻结关系或结论。
+交付审计的 Markdown 规则已提升为零缺口：全部 tracked Markdown 必须为 UTF-8 且含中文正文，测试固定断言 `markdown_failure_count == 0`。对 `docs/STATUS.md` 中已不适合公开的历史 openEuler 主目录，以 `<openEuler 工作目录>/` 中性前缀替换；不修改日志文件名、SHA、实验数值、冻结关系或结论。
 
 Markdown 合规不等于最终赛事交付完成。严格审计在真实承诺书、PPT、视频或下载说明到位前继续失败；不得通过占位内容或放宽审计规则取得 `valid=true`，也不得创建 `v1.1.0-competition`。
 
