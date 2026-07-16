@@ -1,5 +1,11 @@
 # Decisions
 
+## 84. 赛事 Dashboard 离线产物采用显式 UTF-8 LF 字节写入
+
+赛事 Dashboard 继续保留 `build_data()` 的公开双实验数据契约，并在同一输出目录生成独立、无需网络请求的 `index.html`。由于 `Path.write_text()` 会按平台执行文本换行转换，Windows 与 openEuler 曾在语义一致的情况下产生不同文件 SHA。构建器因此固定使用 UTF-8 编码后的字节写入，并以 `\n` 作为唯一换行符，使公开离线交付物可跨平台逐字节复现。
+
+页面将 M9/M9.1 的概览、数据集、任务组与 Seed 聚合视图隔离展示，不从不同粒度的聚合行推导交叉结果。前端仅用 `createElement`、`textContent` 和属性赋值渲染公开数据；嵌入 JSON 会转义 HTML 上下文敏感字符。构建前继续拒绝禁止字段、凭据和绝对路径值。该决定不改变正式实验记录、冻结提交或统计结论。
+
 82. 赛事 Dashboard 使用独立公开数据构建器，不修改冻结 M10 Dashboard 语义。输入限定为 `reports/m9/` 的公开 CSV/manifest 与 `reports/m9_1/` 的公开 JSON；输出采用字段白名单并递归拒绝候选代码、私有测试、原始响应、凭据和请求 ID，缺失指标继续保留为 `unavailable`。
 
 83. 赛事 Dashboard 的离线 `index.html` 将公开数据嵌入 `application/json` 节点，数据序列化时转义 `&`、`<`、`>`，页面动态渲染只使用 `createElement`、`textContent` 与属性赋值。M9 的 dataset/task-group/seed 和 M9.1 的同类聚合分别显示，不交叉推导；M9 缺失的 Spec hash 显示为 `unavailable`。
