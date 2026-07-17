@@ -83,10 +83,11 @@ class GatedSharedMemoryV2:
         self.top_k, self.relevance_threshold, self.confidence_threshold, self.token_budget, self.max_records = top_k, relevance_threshold, confidence_threshold, token_budget, max_records
         self.metrics = MemoryV2Metrics()
         self._records: list[MemoryV2Record] = []
+        self._accepted_by_task: dict[str, set[str]] = {}
         self._counter = 0
 
     @staticmethod
-    def _check_public(values: Iterable[str]) -> None:
+    def check_public(values: Iterable[str]) -> None:
         """拒绝私有评测材料、候选代码和凭据。"""
         for value in values:
             if not isinstance(value, str) or any(blocked in value.lower() for blocked in _BLOCKED):
@@ -97,7 +98,7 @@ class GatedSharedMemoryV2:
         if success_status not in {"success", "failure"} or not 0 <= confidence <= 1:
             raise ValueError("invalid memory status or confidence")
         tag_values = tuple(sorted(set(str(tag) for tag in tags)))
-        self._check_public((source_agent, created_at, task_topic, summary, *tag_values, task_type, provenance, source_task_id))
+        self.check_public((source_agent, created_at, task_topic, summary, *tag_values, task_type, provenance, source_task_id))
         self._counter += 1
         record = MemoryV2Record(f"mem2_{self._counter:04d}", source_agent, created_at, task_topic, summary, tag_values, self.task_group, task_type, provenance, confidence, success_status, 0, None, dataset=self.dataset, seed=self.seed, experiment_id=self.experiment_id, source_task_id=source_task_id)
         self._records.append(record)
@@ -113,7 +114,7 @@ class GatedSharedMemoryV2:
         """检索并门控 top_k 记忆；没有满足条件时主动 abstain。"""
         self.metrics.memory_query_count += 1
         query_tags = set(str(tag) for tag in tags)
-        self._check_public((task_id, topic, task_type, *query_tags))
+        self.check_public((task_id, topic, task_type, *query_tags))
         candidates: list[tuple[float, MemoryV2Record]] = []
         query_words = set(re.findall(r"[a-zA-Z0-9_]+", topic.lower()))
         for record in self._records:
@@ -137,16 +138,51 @@ class GatedSharedMemoryV2:
             accepted.append(record)
             budget += record.token_count
         self.metrics.memory_accept_count += len(accepted)
-        self.metrics.memory_injected_count += len(accepted)
-        self.metrics.memory_injected_tokens += budget
+        self._accepted_by_task[task_id] = {record.memory_id for record in accepted}
         if not accepted:
             self.metrics.memory_abstain_count += 1
         return accepted
 
+    def resolve_accepted(self, memory_ids: Iterable[str], *, task_id: str) -> list[MemoryV2Record]:
+        """Resolve only records accepted for this task and isolated store."""
+        ids = tuple(memory_ids)
+        if len(ids) != len(set(ids)):
+            raise ValueError("duplicate memory reference")
+        accepted = self._accepted_by_task.get(task_id, set())
+        records: list[MemoryV2Record] = []
+        for memory_id in ids:
+            record = next((item for item in self._records if item.memory_id == memory_id), None)
+            if (
+                record is None
+                or memory_id not in accepted
+                or record.source_task_id == task_id
+                or record.success_status != "success"
+                or record.dataset != self.dataset
+                or record.task_group != self.task_group
+                or record.seed != self.seed
+                or record.experiment_id != self.experiment_id
+            ):
+                self.metrics.group_isolation_violations += 1
+                raise ValueError("memory reference violates isolation or acceptance gate")
+            self.check_public((record.memory_id, record.summary, record.provenance))
+            records.append(record)
+        return records
+
+    def record_injection(self, *, count: int, token_estimate: int) -> None:
+        """Record content that actually crossed into an executor prompt."""
+        if count < 0 or token_estimate < 0:
+            raise ValueError("invalid memory injection metrics")
+        self.metrics.memory_injected_count += count
+        self.metrics.memory_injected_tokens += token_estimate
+
     def reuse(self, memory_id: str, *, task_id: str, task_success: bool) -> None:
         """记录下游实际引用及其最终可评测结果，不宣称因果提升。"""
         record = next((item for item in self._records if item.memory_id == memory_id), None)
-        if record is None or record.source_task_id == task_id:
+        if (
+            record is None
+            or record.source_task_id == task_id
+            or memory_id not in self._accepted_by_task.get(task_id, set())
+        ):
             self.metrics.group_isolation_violations += 1
             raise ValueError("memory reuse violates isolation")
         record.reuse_count += 1
