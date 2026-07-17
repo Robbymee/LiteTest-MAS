@@ -6,6 +6,8 @@
 
 Memory 注入 Token 在当前代码中标记为 `whitespace_v1` 估算，`memory_injected_bytes` 只统计真正进入执行上下文的 Memory JSON。README、总体设计、证据矩阵和最终技术报告已按两条运行链与冻结范围统一；真实承诺书仍待参赛主体提供。
 
+Windows 专项测试为 `31 passed`，全量测试为 `120 passed`；openEuler 同代码专项测试为 `31 passed`，全量测试为 `119 passed, 1 skipped`。两端离线 Dashboard 的 `data.json` SHA-256 均为 `a82d349fa12f2a4d7a8ba286cd36e07f091fa1ba666749b05fe2918c442c6f69`，`index.html` SHA-256 均为 `63216c7acbfb5368c08b0fecbdee6b9f3a984d9cf4a976883dd4c91c6e493148`。交付审计中 44/44 tracked Markdown 通过、20/20 必需文档存在、受保护版本均可解析；严格结果仍为 `valid=false`，唯一缺口是真实签署的参赛承诺书。
+
 ## 中文演示 PPT 与视频
 
 中文赛事演示材料阶段已完成。根目录新增 `LiteTest-MAS赛事演示.pptx` 与 `LiteTest-MAS演示视频.mp4`：PPTX 为十页、16:9、可编辑 Open XML 文稿并含中文讲者备注；MP4 为同一公开内容生成的 1280×720、10 fps、445 帧无声演示视频。PowerPoint 实际渲染和 OpenCV 解码均通过，页面无明显截断或空白。PPTX SHA-256 为 `de41da992847812cc796af8a1e5ef1da0029b551ad675bc1ded75e5af693f427`，MP4 SHA-256 为 `ab890e515f5b7a48f73909d276c8af8bb04778d2d95b62fd8d0febcd88efbc3c`。
