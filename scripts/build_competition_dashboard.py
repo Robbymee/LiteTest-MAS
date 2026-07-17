@@ -29,6 +29,7 @@ SAFE_FIELDS = {
     "memory_query_count", "memory_candidate_count", "memory_hit_count",
     "memory_accept_count", "memory_reject_count", "memory_abstain_count",
     "memory_reuse_count", "memory_injected_tokens", "memory_injected_bytes",
+    "memory_token_estimator",
     "memory_hit_rate", "memory_accept_rate", "memory_effective_reuse_rate",
     "infrastructure_failure", "model_quality_failure",
 }
@@ -43,7 +44,8 @@ METRICS = (
     ("state_vector_bytes", "StateVector Bytes"), ("state_compression_ratio", "StateVector 压缩率"),
     ("memory_hit_count", "Memory 命中"), ("memory_accept_count", "Memory 接受"),
     ("memory_reject_count", "Memory 拒绝"), ("memory_abstain_count", "Memory 放弃"),
-    ("memory_reuse_count", "Memory 复用"), ("memory_injected_tokens", "Memory 注入 Token"),
+    ("memory_reuse_count", "Memory 复用"),
+    ("memory_injected_tokens", "Memory 注入估算 Token（whitespace_v1）"),
     ("task_success", "任务成功率"), ("task_success_rate", "任务成功率"),
     ("official_test_pass_rate", "official-test 通过率"), ("parse_success_rate", "解析成功率"),
     ("sandbox_completion_rate", "Sandbox 完成率"), ("infrastructure_failure", "基础设施失败"),
