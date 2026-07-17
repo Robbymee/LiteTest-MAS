@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "docs" / "赛题需求与证据矩阵.md"
 ALLOWED_STATUSES = {
-    "已充分证明",
+    "已实现且有正式证据",
     "已实现但证据不足",
     "部分实现",
     "未实现",

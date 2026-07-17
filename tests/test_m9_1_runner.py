@@ -5,9 +5,10 @@ from pathlib import Path
 
 import pytest
 
-from experiments.m9_1_runner import _protocol_session, _write_public_record, canary_item, execute_item, group_config, metric_defaults, plan, run_batch, select_plan
+from experiments.m9_1_runner import _executor_prompt, _protocol_session, _write_public_record, canary_item, execute_item, group_config, metric_defaults, plan, run_batch, select_plan
 from memory.gated_shared_memory_v2 import GatedSharedMemoryV2
 from experiments.m9_1_verifier import verify
+from runtime.context_resolver import ResolvedExecutionContext
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,13 +61,49 @@ def test_protocol_session_sends_handshake_once_per_related_sequence():
     assert first and session.get("pending_handshake") is None
 
 
+def test_executor_prompt_injects_resolved_semantics_once_without_private_content():
+    """验证引用解析结果只在执行端出现一次且不携带私有字段。"""
+    context = ResolvedExecutionContext(
+        state={
+            "phase": "generation",
+            "progress_code": 1,
+            "error_code": "none",
+            "retry_count": 0,
+        },
+        reusable_public_memory=(
+            {
+                "memory_id": "mem2_0001",
+                "summary": "use stable ordering",
+                "confidence": 1.0,
+                "provenance": "public-summary",
+            },
+        ),
+    )
+    prompt = _executor_prompt([b'{"task_ref":"t_1","state_vector_id":"sv_1"}'], context)
+    lowered = prompt.lower()
+    assert prompt.count("resolved_state:") == 1
+    assert prompt.count('"phase":"generation"') == 1
+    assert prompt.count("use stable ordering") == 1
+    assert "hidden_reference_tests" not in lowered
+    assert "candidate_code" not in lowered
+    assert "raw_response" not in lowered
+
+
 def test_s4_metric_sources_do_not_overwrite_each_other(tmp_path):
     """验证 S4 的通信、状态、记忆和模型指标可同时保留。"""
     spec = json.loads((ROOT / "experiments/m9_1/spec.json").read_text(encoding="utf-8"))
     item = canary_item(spec, "S4", "humaneval")
     memory = GatedSharedMemoryV2(
         dataset=item["dataset"], task_group=item["group_id"], seed=item["seed"],
-        experiment_id=spec["experiment_id"],
+        experiment_id=spec["experiment_id"], relevance_threshold=0.0,
+        confidence_threshold=0.0,
+    )
+    injected = memory.write(
+        source_agent="Summarizer", created_at="before-current-task",
+        task_topic="public candidate generation", summary="reuse public strategy",
+        tags=(item["group_id"],), task_type="candidate_generation",
+        provenance="public-summary", confidence=1.0, success_status="success",
+        source_task_id="previous-task",
     )
     # 使用 Mock Backend 覆盖完整计量合并路径，不调用真实模型或暴露私有字段。
     record = execute_item(
@@ -79,3 +116,15 @@ def test_s4_metric_sources_do_not_overwrite_each_other(tmp_path):
         "prompt_tokens", "completion_tokens", "total_tokens", "request_count",
     ):
         assert record[field] != "unavailable"
+    expected_memory = ResolvedExecutionContext(
+        None,
+        ({
+            "confidence": 1.0,
+            "memory_id": injected.memory_id,
+            "provenance": "public-summary",
+            "summary": "reuse public strategy",
+        },),
+    )
+    assert record["memory_injected_bytes"] == expected_memory.memory_injected_bytes
+    assert record["memory_injected_tokens"] == expected_memory.memory_injected_tokens
+    assert record["memory_token_estimator"] == "whitespace_v1"

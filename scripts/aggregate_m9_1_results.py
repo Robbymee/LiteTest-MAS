@@ -197,7 +197,7 @@ def write_report(path: Path, manifest: dict[str, Any], groups: list[dict[str, An
         f"- freeze SHA：`{manifest['freeze_git_sha']}`",
         f"- Spec SHA：`{manifest['spec_sha256']}`",
         f"- final records：`{manifest['final_record_count']}`", "", "## 组别概览", "",
-        "| 组别 | 任务成功率 | official-test 通过率 | Agent 通信字符 | 总模型 Token | StateVector 字节 | Memory 注入 Token |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| 组别 | 任务成功率 | official-test 通过率 | Agent 通信字符 | 总模型 Token | StateVector 字节 | Memory 注入估算 Token（whitespace_v1） |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for row in groups:
         lines.append("| {experiment_group} | {task_success} | {official_test_pass_rate} | {agent_text_characters} | {total_tokens} | {state_vector_bytes} | {memory_injected_tokens} |".format(**row))

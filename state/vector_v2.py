@@ -13,7 +13,7 @@ class StateVectorError(ValueError):
 
 @dataclass(frozen=True)
 class StateVectorV2:
-    """可跨平台确定性编码的 32 字节状态向量。"""
+    """可跨平台确定性编码的 33 字节状态向量。"""
 
     schema_version: int = 2
     phase: str = "planning"

@@ -10,6 +10,7 @@ import sys
 import time
 
 from protocol.compact_v2 import CompactProtocolV2
+from runtime.context_resolver import ExecutionContextRegistry, ResolvedExecutionContext
 from state.vector_v2 import StateVectorV2
 from memory.gated_shared_memory_v2 import GatedSharedMemoryV2
 
@@ -56,7 +57,22 @@ def _protocol_session() -> dict[str, Any]:
     """创建一个连续任务组共享的 V2 协议会话，并缓存唯一握手。"""
     endpoint = CompactProtocolV2()
     capability_id = endpoint.register_capability("executor", "执行公开候选生成动作", ("generate",))
-    return {"endpoint": endpoint, "capability_id": capability_id, "pending_handshake": endpoint.begin_sequence(("compact_protocol_v2",))}
+    return {
+        "endpoint": endpoint,
+        "capability_id": capability_id,
+        "context_registry": ExecutionContextRegistry(),
+        "pending_handshake": endpoint.begin_sequence(("compact_protocol_v2",)),
+    }
+
+
+def _executor_prompt(messages: list[bytes], context: ResolvedExecutionContext) -> str:
+    """Build one protocol prompt with locally resolved semantics appended once."""
+    prompt = (
+        "Use these structured public protocol messages and return code only.\n"
+        + "\n".join(payload.decode("utf-8") for payload in messages)
+    )
+    suffix = context.prompt_suffix()
+    return prompt if not suffix else prompt + "\n" + suffix
 
 
 def plan(spec: dict[str, Any]) -> list[dict[str, Any]]:
@@ -114,6 +130,7 @@ def _failure_record(spec: dict[str, Any], item: dict[str, Any], backend_name: st
         "result_scope": spec["result_scope"], "freeze_git_sha": freeze_git_sha,
         "implementation_git_sha": spec["implementation_git_sha"], "backend": backend_name,
         "model": spec["model"], "task_success": False,
+        "memory_token_estimator": "whitespace_v1" if item["experiment_group"] == "S4" else "unavailable",
         "final_status": "failed_infrastructure", "infrastructure_failure": True,
         # 只保留异常类别，避免将路径、请求或私有回溯写入公开结果。
         "error_category": type(error).__name__, "public_leakage_count": 0,
@@ -138,7 +155,36 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
     public_fields = {"task_id": task.task_id, "function_name": task.function_name, "signature": task.signature, "description": task.task_description}
     system = "You are a Python benchmark solver. Return code only."
     text = f"Implement this Python function. Return code only.\nFunction: {task.function_name}\nSignature: {task.signature}\nDescription: {task.task_description}"
-    state = StateVectorV2(phase="generation", source_role="planner", target_role="executor", progress_code=1, state_reference="sv_canary") if group in {"S3", "S4"} else None
+    if group == "S4" and memory is None:
+        # Canary execution owns a local scope; batch execution passes a group-scoped store.
+        memory = GatedSharedMemoryV2(
+            dataset=dataset,
+            task_group=task.group_id,
+            seed=item["seed"],
+            experiment_id=spec["experiment_id"],
+        )
+    memory_records = (
+        memory.retrieve(
+            task_id=task.task_id,
+            topic=task.task_description,
+            tags=(task.group_id,),
+            task_type="candidate_generation",
+        )
+        if memory
+        else []
+    )
+    state = (
+        StateVectorV2(
+            phase="generation",
+            source_role="planner",
+            target_role="executor",
+            progress_code=1,
+            state_reference="sv_" + task_key(item)[:12],
+            memory_reference_count=len(memory_records),
+        )
+        if group in {"S3", "S4"}
+        else None
+    )
     # 各来源仅返回自身实测字段，避免后续 unavailable 默认值覆盖已有指标。
     state_metrics: dict[str, Any] = {}
     if state is not None:
@@ -157,11 +203,8 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
             "state_decode_latency": time.perf_counter() - decode_started,
             "invalid_state_count": 0,
         })
-    if group == "S4" and memory is None:
-        # Canary 独立执行时创建本地 scope；批量执行会显式传入组级实例。
-        memory = GatedSharedMemoryV2(dataset=dataset, task_group=task.group_id, seed=item["seed"], experiment_id=spec["experiment_id"])
-    memory_records = memory.retrieve(task_id=task.task_id, topic=task.task_description, tags=(task.group_id,), task_type="candidate_generation") if memory else []
     protocol_metrics: dict[str, Any] = {}
+    resolved_context = ResolvedExecutionContext(None, ())
     if group == "S1":
         prompt = text
         protocol_metrics.update({
@@ -172,14 +215,37 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
         session = protocol_session if protocol_session is not None else _protocol_session()
         endpoint = session["endpoint"]
         capability_id = session["capability_id"]
+        context_registry = session["context_registry"]
         before = endpoint.metrics.as_dict()
         handshake = session.pop("pending_handshake", None)
         task_ref_payload = endpoint.encode_task_registration(public_fields)
         task_ref = endpoint.references.register("task", public_fields)
-        prompt_payload = endpoint.encode_action(action="generate", sender="Planner", receiver="Executor", capability_id=capability_id, task_ref=task_ref, inputs={"state_vector_id": "sv_canary" if state else None, "memory_ids": [record.memory_id for record in memory_records]})
+        state_vector_id = state.state_reference if state is not None else None
+        memory_ids = [record.memory_id for record in memory_records]
+        if state_vector_id is not None:
+            context_registry.register_state(state_vector_id, encoded_state)
+        prompt_payload = endpoint.encode_action(
+            action="generate",
+            sender="Planner",
+            receiver="Executor",
+            capability_id=capability_id,
+            task_ref=task_ref,
+            inputs={"state_vector_id": state_vector_id, "memory_ids": memory_ids},
+        )
         # 任务注册和动作引用共同构成对 Executor 的公开通信；任务说明不以额外自然语言重复注入。
         messages = ([handshake] if handshake is not None else []) + [task_ref_payload, prompt_payload]
-        prompt = "Use these structured public protocol messages and return code only.\n" + "\n".join(payload.decode("utf-8") for payload in messages)
+        resolved_context = context_registry.resolve(
+            state_vector_id=state_vector_id,
+            memory_ids=memory_ids,
+            memory=memory,
+            task_id=task.task_id,
+        )
+        prompt = _executor_prompt(messages, resolved_context)
+        if memory is not None:
+            memory.record_injection(
+                count=len(resolved_context.reusable_public_memory),
+                token_estimate=resolved_context.memory_injected_tokens,
+            )
         values = endpoint.metrics.as_dict()
         protocol_metrics.update({
             "agent_message_count": len(messages), "agent_text_message_count": 0,
@@ -198,7 +264,7 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
         memory.write(source_agent="Summarizer", created_at="canary", task_topic=task.task_description, summary="公开策略摘要", tags=(task.group_id,), task_type="candidate_generation", provenance="canary", confidence=1.0, success_status="success" if evaluation["task_success"] else "failure", source_task_id=task.task_id)
         memory_values = memory.metrics.as_dict()
         memory_metrics.update(memory_values)
-        memory_metrics["memory_injected_bytes"] = sum(len(record.summary.encode("utf-8")) for record in memory_records)
+        memory_metrics["memory_injected_bytes"] = resolved_context.memory_injected_bytes
     success = bool(evaluation["task_success"])
     model_metrics: dict[str, Any] = {}
     model_metrics.update({
@@ -207,7 +273,7 @@ def execute_item(root: Path, spec: dict[str, Any], item: dict[str, Any], output_
         "provider_latency_seconds": response.latency_seconds, "sandbox_completion_rate": 1.0,
         "total_wall_time": time.perf_counter() - started, "model_quality_failure": not success,
     })
-    record = {"schema_version": "1.0", **item, **group_config(group), **metric_defaults(), **protocol_metrics, **state_metrics, **memory_metrics, **model_metrics, "result_scope": result_scope, "freeze_git_sha": freeze_git_sha, "implementation_git_sha": spec["implementation_git_sha"], "backend": backend_name, "model": spec["model"], "parse_status": artifact["parse_status"], "candidate_sha256": artifact.get("candidate_sha256"), "task_success": success, "final_status": "completed_success" if success else "failed_official_tests", "official_test_count": evaluation.get("official_test_count"), "official_test_pass_count": evaluation.get("official_test_pass_count"), "latency_seconds": response.latency_seconds, "public_leakage_count": 0}
+    record = {"schema_version": "1.0", **item, **group_config(group), **metric_defaults(), **protocol_metrics, **state_metrics, **memory_metrics, **model_metrics, "memory_token_estimator": "whitespace_v1" if memory is not None else "unavailable", "result_scope": result_scope, "freeze_git_sha": freeze_git_sha, "implementation_git_sha": spec["implementation_git_sha"], "backend": backend_name, "model": spec["model"], "parse_status": artifact["parse_status"], "candidate_sha256": artifact.get("candidate_sha256"), "task_success": success, "final_status": "completed_success" if success else "failed_official_tests", "official_test_count": evaluation.get("official_test_count"), "official_test_pass_count": evaluation.get("official_test_pass_count"), "latency_seconds": response.latency_seconds, "public_leakage_count": 0}
     _write_public_record(output_root, item, record)
     return record
 

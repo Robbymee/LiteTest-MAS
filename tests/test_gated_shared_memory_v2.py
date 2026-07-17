@@ -26,6 +26,7 @@ def test_dataset_seed_group_experiment_and_self_isolation():
     store = memory(relevance_threshold=0.0, confidence_threshold=0.0)
     record = store.write(source_agent="Summarizer", created_at="now", task_topic="lists", summary="safe strategy", tags=("lists",), task_type="algorithm", provenance="public", confidence=1.0, success_status="success", source_task_id="task-1")
     assert store.retrieve(task_id="task-1", topic="lists", tags=("lists",), task_type="algorithm") == []
+    assert store.retrieve(task_id="task-2", topic="lists", tags=("lists",), task_type="algorithm") == [record]
     store.reuse(record.memory_id, task_id="task-2", task_success=True)
     with pytest.raises(ValueError):
         store.reuse(record.memory_id, task_id="task-1", task_success=True)
